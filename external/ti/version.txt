@@ -1,0 +1,3 @@
+Simplelink SDK version: 1.60.00.04 (01 Jan 2018)
+
+Note : The components useful for AmazonFreeRTOS are used from TI's Simplelink SDK. Do not replace this directory with any other version.

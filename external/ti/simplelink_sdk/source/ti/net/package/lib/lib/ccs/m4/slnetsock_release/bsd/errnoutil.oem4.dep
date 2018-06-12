@@ -1,0 +1,9 @@
+package/lib/lib/ccs/m4/slnetsock_release/bsd/errnoutil.oem4: bsd/errnoutil.c /vagrant/Q4_04/sdk_root/source/ti/posix/ccs/errno.h bsd/errnoutil.h slneterr.h /opt/ti/ccs-latest/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/errno.h /opt/ti/ccs-latest/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stdint.h /opt/ti/ccs-latest/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/linkage.h /opt/ti/ccs-latest/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/_tls.h 
+bsd/errnoutil.c:
+/vagrant/Q4_04/sdk_root/source/ti/posix/ccs/errno.h:
+bsd/errnoutil.h:
+slneterr.h:
+/opt/ti/ccs-latest/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/errno.h:
+/opt/ti/ccs-latest/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stdint.h:
+/opt/ti/ccs-latest/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/linkage.h:
+/opt/ti/ccs-latest/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/_tls.h:

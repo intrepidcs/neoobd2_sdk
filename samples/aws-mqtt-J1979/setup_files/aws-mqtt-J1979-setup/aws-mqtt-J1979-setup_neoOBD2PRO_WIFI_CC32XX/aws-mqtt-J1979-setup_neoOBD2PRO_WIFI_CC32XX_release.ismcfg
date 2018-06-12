@@ -1,0 +1,36 @@
+ISMCONFIG_VERSION = 1
+ISM_DEVICE = OBD2PRO_WIFI_CC32XX
+TARGET_TYPE = APP
+MINGW32_MAKE_PATH = C:\INTREP~1\VEHICL~1\ISM\BUILD_~1\MinGW\bin\MINGW3~1.EXE
+BSP_ROOT = C:\INTREP~1\VEHICL~1\ISM\Targets\OBD2PR~2
+TOOLCHAIN_ROOT = C:\INTREP~1\VEHICL~1\ISM\BUILD_~1\ARM_GC~1
+CC = $(TOOLCHAIN_ROOT)\bin\arm-none-eabi-gcc.exe
+CXX = $(TOOLCHAIN_ROOT)\bin\arm-none-eabi-g++.exe
+LD = $(TOOLCHAIN_ROOT)\bin\arm-none-eabi-gcc.exe
+AR = $(TOOLCHAIN_ROOT)\bin\arm-none-eabi-ar.exe
+OBJCOPY = $(TOOLCHAIN_ROOT)\bin\arm-none-eabi-objcopy.exe
+PREPROCESSORS_CONFIG = NDEBUG=1 RELEASE=1 BUILD_OBD2PRO_WIFI_CC32XX_ISM_PROJECT TARGET_IS_CC32XX cc32xx
+PREPROCESSORS_DEVICE = gcc
+INCLUDE_DIRS_CONFIG =
+INCLUDE_DIRS_DEVICE = C:\INTREP~1\VEHICL~1\ISM\Targets\OBD2PR~2\TI_SIM~1\source C:\INTREP~1\VEHICL~1\ISM\Targets\OBD2PR~2\TI_SIM~1\kernel\nortos C:\INTREP~1\VEHICL~1\ISM\Targets\OBD2PR~2\TI_SIM~1\kernel\nortos\posix
+LIBRARY_DIRS_CONFIG =
+LIBRARY_DIRS_DEVICE =
+LIBRARY_NAMES_CONFIG =
+LIBRARY_NAMES_DEVICE =
+ADDITIONAL_LINKER_INPUTS_CONFIG =
+ADDITIONAL_LINKER_INPUTS_DEVICE = $(BSP_ROOT)\ism_lib\gcc\obd2pro_wifi_cc32xx_ism.a $(BSP_ROOT)\ti_simplelink_sdk\source\ti\devices\cc32xx\driverlib\gcc\Release\driverlib.a $(BSP_ROOT)\ti_simplelink_sdk\source\ti\drivers\net\wifi\gcc\nortos\simplelink.a $(BSP_ROOT)\ti_simplelink_sdk\kernel\nortos\lib\nortos_cc32xx.am4g $(BSP_ROOT)\ti_simplelink_sdk\source\ti\drivers\lib\drivers_cc32xx.am4g $(BSP_ROOT)\ti_simplelink_sdk\source\ti\display\lib\display.am4g $(BSP_ROOT)\ti_simplelink_sdk\source\third_party\fatfs\lib\fatfs.am4g
+CFLAGS_CONFIG = -ggdb -ffunction-sections -O3
+CFLAGS_DEVICE =
+CXXFLAGS_CONFIG = -ggdb -ffunction-sections -fno-exceptions -fno-rtti -O3
+CXXFLAGS_DEVICE = 
+ASFLAGS_CONFIG =
+ASFLAGS_DEVICE =
+LDFLAGS_CONFIG = -Wl,-gc-sections, --specs=nano.specs --specs=nosys.specs
+LDFLAGS_DEVICE =
+COMMONFLAGS_CONFIG =
+COMMONFLAGS_DEVICE = -mcpu=cortex-m4 -mthumb
+LINKER_SCRIPT_CONFIG =
+LINKER_SCRIPT_DEVICE = $(BSP_ROOT)\cc3220sf.lds
+GENERATE_BIN = 1
+GENERATE_HEX = 1
+GENERATE_MAP = 1

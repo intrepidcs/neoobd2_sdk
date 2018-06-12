@@ -1,0 +1,1400 @@
+<?xml version="1.0"?>
+<VSpy3>
+<!--Created on: 5/22/2018 11:00:28 am-->
+<VersionCreatedWith>3.8.3.58</VersionCreatedWith>
+<SimulationEnabled>False</SimulationEnabled>
+<NumberJ1850HeaderBytes>3</NumberJ1850HeaderBytes>
+<AutoDetectHardwareSupport>True</AutoDetectHardwareSupport>
+<DatabasePlatform></DatabasePlatform>
+<NetworkMappings>0</NetworkMappings>
+<GenerateVScapeDecodingsOnStart>False</GenerateVScapeDecodingsOnStart>
+<LoopTime>3</LoopTime>
+<LINVersion>2</LINVersion>
+<EnableLINSupport>False</EnableLINSupport>
+<TextAPITCPIPEnabled>False</TextAPITCPIPEnabled>
+<TextAPITCPIPPort>8000</TextAPITCPIPPort>
+<TextAPICommPortServer1Enabled>False</TextAPICommPortServer1Enabled>
+<TextAPICommPortServer2Enabled>False</TextAPICommPortServer2Enabled>
+<TextAPICommPortServer3Enabled>False</TextAPICommPortServer3Enabled>
+<TextAPICommPortServer1Port>34</TextAPICommPortServer1Port>
+<TextAPICommPortServer2Port>10</TextAPICommPortServer2Port>
+<TextAPICommPortServer3Port>14</TextAPICommPortServer3Port>
+<UICurrentDesktop>0</UICurrentDesktop>
+<ESpySettings>
+	<Protocol>0</Protocol>
+	<HardwareSetup>0</HardwareSetup>
+	<SPIBitOrder>0</SPIBitOrder>
+	<SPISlaveSelectPolarity>0</SPISlaveSelectPolarity>
+	<DefaultBitRateKhzForSPI>8000</DefaultBitRateKhzForSPI>
+	<DefaultBitRateKhzForI2C>100</DefaultBitRateKhzForI2C>
+	<DefaultSPIMode>0</DefaultSPIMode>
+	<SPIMaster>True</SPIMaster>
+	<SPIMonitor>True</SPIMonitor>
+	<Pullups>False</Pullups>
+</ESpySettings>
+<GMLAN_CGI>
+	<ScreenHeight>64</ScreenHeight>
+	<ScreenWidth>128</ScreenWidth>
+</GMLAN_CGI>
+<CANTerminal>
+	<NetworkKey>net0</NetworkKey>
+	<LogFilePath>CAN Terminal LogFile</LogFilePath>
+</CANTerminal>
+<EthernetNetworks>
+	<EthernetNetwork>
+		<Key>0</Key>
+	</EthernetNetwork>
+</EthernetNetworks>
+<ScreenWidgets>
+	<ScreenWidget>
+		<Key>0</Key>
+	</ScreenWidget>
+	<ScreenWidget>
+		<Key>1</Key>
+	</ScreenWidget>
+	<ScreenWidget>
+		<Key>2</Key>
+	</ScreenWidget>
+	<ScreenWidget>
+		<Key>3</Key>
+	</ScreenWidget>
+	<ScreenWidget>
+		<Key>4</Key>
+	</ScreenWidget>
+	<ScreenWidget>
+		<Key>5</Key>
+	</ScreenWidget>
+	<ScreenWidget>
+		<Key>6</Key>
+	</ScreenWidget>
+	<ScreenWidget>
+		<Key>7</Key>
+	</ScreenWidget>
+	<ScreenWidget>
+		<Key>8</Key>
+	</ScreenWidget>
+	<ScreenWidget>
+		<Key>9</Key>
+	</ScreenWidget>
+	<ScreenWidget>
+		<Key>10</Key>
+	</ScreenWidget>
+	<ScreenWidget>
+		<Key>11</Key>
+	</ScreenWidget>
+	<ScreenWidget>
+		<Key>12</Key>
+	</ScreenWidget>
+	<ScreenWidget>
+		<Key>13</Key>
+	</ScreenWidget>
+	<ScreenWidget>
+		<Key>14</Key>
+	</ScreenWidget>
+	<ScreenWidget>
+		<Key>15</Key>
+	</ScreenWidget>
+	<ScreenWidget>
+		<Key>16</Key>
+	</ScreenWidget>
+	<ScreenWidget>
+		<Key>17</Key>
+	</ScreenWidget>
+</ScreenWidgets>
+<DAQSetups>
+	<DAQSetup>
+		<Key>dq0</Key>
+		<Description>DAQ 1</Description>
+		<AutoStartDiag>True</AutoStartDiag>
+		<VScapeStandaloneLoggerOptions>
+			<Collection>
+				<ColKey>1</ColKey>
+				<Filename>Collection 1</Filename>
+			</Collection>
+			<EthDaqDltFire2>0</EthDaqDltFire2>
+			<TriggerEvents>107</TriggerEvents>
+			<neoMoteBuzzerIndex>0</neoMoteBuzzerIndex>
+			<SleepType>3</SleepType>
+			<SignalGroup>
+				<LogAllData>False</LogAllData>
+				<LogRateMs>10</LogRateMs>
+				<LogPath>icsSpyLogFile</LogPath>
+				<StartMode>0</StartMode>
+			</SignalGroup>
+			<GWMode>1</GWMode>
+			<AcceleratedPolling>True</AcceleratedPolling>
+			<VScapeDiagWatch>
+				<TimeoutValue>60</TimeoutValue>
+			</VScapeDiagWatch>
+		</VScapeStandaloneLoggerOptions>
+		<SignalGroup>
+			<Description>DAQ 1</Description>
+			<LogAllData>True</LogAllData>
+			<LoggingEnabled>True</LoggingEnabled>
+			<LogRateMs>10</LogRateMs>
+			<LogPath>DAQ 1 Log File</LogPath>
+		</SignalGroup>
+	</DAQSetup>
+</DAQSetups>
+<NetworkHardwares>
+	<NetworkHardware>
+		<Description>Intrepid0</Description>
+	</NetworkHardware>
+</NetworkHardwares>
+<Networks>
+	<Network>
+		<Description>HS CAN</Description>
+		<Key>net0</Key>
+		<NetworkName>HS CAN</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<BaudRateSecondary>2000000</BaudRateSecondary>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<IsOBDNetwork>1</IsOBDNetwork>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>MS CAN</Description>
+		<Key>net1</Key>
+		<NetworkName>MS CAN</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<BaudRateSecondary>2000000</BaudRateSecondary>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>SW CAN</Description>
+		<Key>net2</Key>
+		<NetworkName>SW CAN</NetworkName>
+		<BaudRate>33333</BaudRate>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<IsSWCAN>1</IsSWCAN>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>J1850 VPW</Description>
+		<Key>net3</Key>
+		<NetworkName>J1850 VPW</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>3</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>ISO9141/KW2K</Description>
+		<Key>net4</Key>
+		<NetworkName>ISO9141/KW2K</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>6</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>LSFT CAN</Description>
+		<Key>net5</Key>
+		<NetworkName>LSFT CAN</NetworkName>
+		<BaudRate>125000</BaudRate>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>J1850 PWM</Description>
+		<Key>net6</Key>
+		<NetworkName>J1850 PWM</NetworkName>
+		<BaudRate>41600</BaudRate>
+		<Protocol>4</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>J1708</Description>
+		<Key>net7</Key>
+		<NetworkName>J1708</NetworkName>
+		<BaudRate>9600</BaudRate>
+		<Protocol>13</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>neoVI</Description>
+		<Key>net8</Key>
+		<NetworkName>neoVI</NetworkName>
+		<BaudRate>0</BaudRate>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>HS CAN2</Description>
+		<Key>net9</Key>
+		<NetworkName>HS CAN2 (neoVI 3G)</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<BaudRateSecondary>2000000</BaudRateSecondary>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>HS CAN3</Description>
+		<Key>net10</Key>
+		<NetworkName>HS CAN3 (neoVI 3G)</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<BaudRateSecondary>2000000</BaudRateSecondary>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>LIN2</Description>
+		<Key>net11</Key>
+		<NetworkName>LIN2 (neoVI 3G)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>12</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>LIN3</Description>
+		<Key>net12</Key>
+		<NetworkName>LIN3 (neoVI 3G)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>12</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>LIN4</Description>
+		<Key>net13</Key>
+		<NetworkName>LIN4 (neoVI 3G)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>12</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>CGI</Description>
+		<Key>net14</Key>
+		<NetworkName>CGI (neoVI 3G)</NetworkName>
+		<BaudRate>625000</BaudRate>
+		<Protocol>18</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>LIN</Description>
+		<Key>net15</Key>
+		<NetworkName>LIN</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>12</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>ISO9141/KW2K 2</Description>
+		<Key>net16</Key>
+		<NetworkName>ISO9141/KW2K 2</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>6</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>ISO9141/KW2K 3</Description>
+		<Key>net17</Key>
+		<NetworkName>ISO9141/KW2K 3</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>6</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>ISO9141/KW2K 4</Description>
+		<Key>net18</Key>
+		<NetworkName>ISO9141/KW2K 4</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>6</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>HS CAN4</Description>
+		<Key>net19</Key>
+		<NetworkName>HS CAN4</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<BaudRateSecondary>2000000</BaudRateSecondary>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>HS CAN5</Description>
+		<Key>net20</Key>
+		<NetworkName>HS CAN5</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<BaudRateSecondary>2000000</BaudRateSecondary>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>UART</Description>
+		<Key>net21</Key>
+		<NetworkName>UART (neoVI 3G)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>28</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>UART2</Description>
+		<Key>net22</Key>
+		<NetworkName>UART2 (neoVI 3G)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>28</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>LIN5</Description>
+		<Key>net23</Key>
+		<NetworkName>LIN5 (neoVI 3G)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>12</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>MOST (VNET A)</Description>
+		<Key>net24</Key>
+		<NetworkName>MOST (VNET A)</NetworkName>
+		<BaudRate>1000000</BaudRate>
+		<Protocol>17</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>FlexRay1A (VNET A)</Description>
+		<Key>net25</Key>
+		<NetworkName>FlexRay1A (VNET A)</NetworkName>
+		<BaudRate>5000000</BaudRate>
+		<Protocol>16</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+		<FlexRayCluster>
+			<CAS_RX_LOW_MAX>3473486</CAS_RX_LOW_MAX>
+			<CAS_RX_LOW_MIN>4784128</CAS_RX_LOW_MIN>
+		</FlexRayCluster>
+	</Network>
+	<Network>
+		<Description>FlexRay1B (VNET A)</Description>
+		<Key>net26</Key>
+		<NetworkName>FlexRay1B (VNET A)</NetworkName>
+		<BaudRate>5000000</BaudRate>
+		<Protocol>16</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>FlexRay2A (VNET A)</Description>
+		<Key>net27</Key>
+		<NetworkName>FlexRay2A (VNET A)</NetworkName>
+		<BaudRate>5000000</BaudRate>
+		<Protocol>16</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+		<FlexRayCluster>
+			<CAS_RX_LOW_MAX>3473486</CAS_RX_LOW_MAX>
+			<CAS_RX_LOW_MIN>4784128</CAS_RX_LOW_MIN>
+		</FlexRayCluster>
+	</Network>
+	<Network>
+		<Description>FlexRay2B (VNET A)</Description>
+		<Key>net28</Key>
+		<NetworkName>FlexRay2B (VNET A)</NetworkName>
+		<BaudRate>5000000</BaudRate>
+		<Protocol>16</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+		<FlexRayCluster>
+			<CAS_RX_LOW_MAX>3473486</CAS_RX_LOW_MAX>
+			<CAS_RX_LOW_MIN>4784128</CAS_RX_LOW_MIN>
+		</FlexRayCluster>
+	</Network>
+	<Network>
+		<Description>HS CAN (VNET A)</Description>
+		<Key>net29</Key>
+		<NetworkName>HS CAN (VNET A)</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<BaudRateSecondary>2000000</BaudRateSecondary>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>MS CAN (VNET A)</Description>
+		<Key>net30</Key>
+		<NetworkName>MS CAN (VNET A)</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<BaudRateSecondary>2000000</BaudRateSecondary>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>SW CAN (VNET A)</Description>
+		<Key>net31</Key>
+		<NetworkName>SW CAN (VNET A)</NetworkName>
+		<BaudRate>33333</BaudRate>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>J1850 VPW (VNET A)</Description>
+		<Key>net32</Key>
+		<NetworkName>J1850 VPW (VNET A)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>3</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>LSFT CAN (VNET A)</Description>
+		<Key>net33</Key>
+		<NetworkName>LSFT CAN (VNET A)</NetworkName>
+		<BaudRate>125000</BaudRate>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>J1708 (VNET A)</Description>
+		<Key>net34</Key>
+		<NetworkName>J1708 (VNET A)</NetworkName>
+		<BaudRate>9600</BaudRate>
+		<Protocol>13</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>neoVI (VNET A)</Description>
+		<Key>net35</Key>
+		<NetworkName>neoVI (VNET A)</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>HS CAN2 (VNET A)</Description>
+		<Key>net36</Key>
+		<NetworkName>HS CAN2 (VNET A)</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<BaudRateSecondary>2000000</BaudRateSecondary>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>HS CAN3 (VNET A)</Description>
+		<Key>net37</Key>
+		<NetworkName>HS CAN3 (VNET A)</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<BaudRateSecondary>2000000</BaudRateSecondary>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>LIN (VNET A)</Description>
+		<Key>net38</Key>
+		<NetworkName>LIN (VNET A)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>12</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>LIN2 (VNET A)</Description>
+		<Key>net39</Key>
+		<NetworkName>LIN2 (VNET A)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>12</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>LIN3 (VNET A)</Description>
+		<Key>net40</Key>
+		<NetworkName>LIN3 (VNET A)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>12</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>LIN4 (VNET A)</Description>
+		<Key>net41</Key>
+		<NetworkName>LIN4 (VNET A)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>12</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>CGI (VNET A)</Description>
+		<Key>net42</Key>
+		<NetworkName>CGI (VNET A)</NetworkName>
+		<BaudRate>625000</BaudRate>
+		<Protocol>18</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>ISO9141/KW2K (VNET A)</Description>
+		<Key>net43</Key>
+		<NetworkName>ISO9141/KW2K (VNET A)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>6</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>ISO9141/KW2K 2 (VNET A)</Description>
+		<Key>net44</Key>
+		<NetworkName>ISO9141/KW2K 2 (VNET A)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>6</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>ISO9141/KW2K 3 (VNET A)</Description>
+		<Key>net45</Key>
+		<NetworkName>ISO9141/KW2K 3 (VNET A)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>6</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>ISO9141/KW2K 4 (VNET A)</Description>
+		<Key>net46</Key>
+		<NetworkName>ISO9141/KW2K 4 (VNET A)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>6</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>HS CAN (VNET B)</Description>
+		<Key>net47</Key>
+		<NetworkName>HS CAN (VNET B)</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<BaudRateSecondary>2000000</BaudRateSecondary>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>MS CAN (VNET B)</Description>
+		<Key>net48</Key>
+		<NetworkName>MS CAN (VNET B)</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<BaudRateSecondary>2000000</BaudRateSecondary>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>SW CAN (VNET B)</Description>
+		<Key>net49</Key>
+		<NetworkName>SW CAN (VNET B)</NetworkName>
+		<BaudRate>33333</BaudRate>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>J1850 VPW (VNET B)</Description>
+		<Key>net50</Key>
+		<NetworkName>J1850 VPW (VNET B)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>3</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>LSFT CAN (VNET B)</Description>
+		<Key>net51</Key>
+		<NetworkName>LSFT CAN (VNET B)</NetworkName>
+		<BaudRate>125000</BaudRate>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>J1708 (VNET B)</Description>
+		<Key>net52</Key>
+		<NetworkName>J1708 (VNET B)</NetworkName>
+		<BaudRate>9600</BaudRate>
+		<Protocol>13</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>neoVI (VNET B)</Description>
+		<Key>net53</Key>
+		<NetworkName>neoVI (VNET B)</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>HS CAN2 (VNET B)</Description>
+		<Key>net54</Key>
+		<NetworkName>HS CAN2 (VNET B)</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<BaudRateSecondary>2000000</BaudRateSecondary>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>HS CAN3 (VNET B)</Description>
+		<Key>net55</Key>
+		<NetworkName>HS CAN3 (VNET B)</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<BaudRateSecondary>2000000</BaudRateSecondary>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>LIN (VNET B)</Description>
+		<Key>net56</Key>
+		<NetworkName>LIN (VNET B)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>12</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>LIN2 (VNET B)</Description>
+		<Key>net57</Key>
+		<NetworkName>LIN2 (VNET B)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>12</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>LIN3 (VNET B)</Description>
+		<Key>net58</Key>
+		<NetworkName>LIN3 (VNET B)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>12</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>LIN4 (VNET B)</Description>
+		<Key>net59</Key>
+		<NetworkName>LIN4 (VNET B)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>12</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>CGI (VNET B)</Description>
+		<Key>net60</Key>
+		<NetworkName>CGI (VNET B)</NetworkName>
+		<BaudRate>625000</BaudRate>
+		<Protocol>18</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>ISO9141/KW2K (VNET B)</Description>
+		<Key>net61</Key>
+		<NetworkName>ISO9141/KW2K (VNET B)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>6</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>ISO9141/KW2K 2 (VNET B)</Description>
+		<Key>net62</Key>
+		<NetworkName>ISO9141/KW2K 2 (VNET B)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>6</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>ISO9141/KW2K 3 (VNET B)</Description>
+		<Key>net63</Key>
+		<NetworkName>ISO9141/KW2K 3 (VNET B)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>6</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>ISO9141/KW2K 4 (VNET B)</Description>
+		<Key>net64</Key>
+		<NetworkName>ISO9141/KW2K 4 (VNET B)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>6</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>HS CAN4 (VNET A)</Description>
+		<Key>net65</Key>
+		<NetworkName>HS CAN4 (VNET A)</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<BaudRateSecondary>2000000</BaudRateSecondary>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>HS CAN5 (VNET A)</Description>
+		<Key>net66</Key>
+		<NetworkName>HS CAN5 (VNET A)</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<BaudRateSecondary>2000000</BaudRateSecondary>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>LIN5 (VNET A)</Description>
+		<Key>net67</Key>
+		<NetworkName>LIN5 (VNET A)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>12</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>HS CAN4 (VNET B)</Description>
+		<Key>net68</Key>
+		<NetworkName>HS CAN4 (VNET B)</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<BaudRateSecondary>2000000</BaudRateSecondary>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>HS CAN5 (VNET B)</Description>
+		<Key>net69</Key>
+		<NetworkName>HS CAN5 (VNET B)</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<BaudRateSecondary>2000000</BaudRateSecondary>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>LIN5 (VNET B)</Description>
+		<Key>net70</Key>
+		<NetworkName>LIN5 (VNET B)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>12</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>Ethernet DAQ</Description>
+		<Key>net71</Key>
+		<NetworkName>Ethernet DAQ (neoVI 3G)</NetworkName>
+		<BaudRate>0</BaudRate>
+		<Protocol>29</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>Ethernet</Description>
+		<Key>net72</Key>
+		<Protocol>29</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<IsInternalIntrepidIOHardware>True</IsInternalIntrepidIOHardware>
+		<IntrepidIODescription>Ethernet PCAP</IntrepidIODescription>
+		<IntrepidIODLLName>icsenet.dll</IntrepidIODLLName>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>MOST (VNET B)</Description>
+		<Key>net73</Key>
+		<NetworkName>MOST (VNET B)</NetworkName>
+		<BaudRate>1000000</BaudRate>
+		<Protocol>17</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>FlexRay1A (VNET B)</Description>
+		<Key>net74</Key>
+		<NetworkName>FlexRay1A (VNET B)</NetworkName>
+		<BaudRate>5000000</BaudRate>
+		<Protocol>16</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>FlexRay1B (VNET B)</Description>
+		<Key>net75</Key>
+		<NetworkName>FlexRay1B (VNET B)</NetworkName>
+		<BaudRate>5000000</BaudRate>
+		<Protocol>16</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>FlexRay2A (VNET B)</Description>
+		<Key>net76</Key>
+		<NetworkName>FlexRay2A (VNET B)</NetworkName>
+		<BaudRate>5000000</BaudRate>
+		<Protocol>16</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+		<FlexRayCluster>
+			<CAS_RX_LOW_MAX>3473486</CAS_RX_LOW_MAX>
+			<CAS_RX_LOW_MIN>4784128</CAS_RX_LOW_MIN>
+		</FlexRayCluster>
+	</Network>
+	<Network>
+		<Description>FlexRay2B (VNET B)</Description>
+		<Key>net77</Key>
+		<NetworkName>FlexRay2B (VNET B)</NetworkName>
+		<BaudRate>5000000</BaudRate>
+		<Protocol>16</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+		<FlexRayCluster>
+			<CAS_RX_LOW_MAX>3473486</CAS_RX_LOW_MAX>
+			<CAS_RX_LOW_MIN>4784128</CAS_RX_LOW_MIN>
+		</FlexRayCluster>
+	</Network>
+	<Network>
+		<Description>SW CAN2</Description>
+		<Key>net78</Key>
+		<NetworkName>SW CAN2 (neoVI 3G)</NetworkName>
+		<BaudRate>33333</BaudRate>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>SW CAN2 (VNET A)</Description>
+		<Key>net79</Key>
+		<NetworkName>SW CAN2 (VNET A)</NetworkName>
+		<BaudRate>33333</BaudRate>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>SW CAN2 (VNET B)</Description>
+		<Key>net80</Key>
+		<NetworkName>SW CAN2 (VNET B)</NetworkName>
+		<BaudRate>33333</BaudRate>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>FSA</Description>
+		<Key>net81</Key>
+		<NetworkName>(Virtual)</NetworkName>
+		<Protocol>31</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>TCP</Description>
+		<Key>net82</Key>
+		<NetworkName>(Virtual)</NetworkName>
+		<Protocol>32</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>HS CAN6</Description>
+		<Key>net83</Key>
+		<NetworkName>HS CAN6</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<BaudRateSecondary>2000000</BaudRateSecondary>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>HS CAN7</Description>
+		<Key>net84</Key>
+		<NetworkName>HS CAN7</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<BaudRateSecondary>2000000</BaudRateSecondary>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>LIN6</Description>
+		<Key>net85</Key>
+		<NetworkName>LIN6</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>12</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>LSFT CAN2</Description>
+		<Key>net86</Key>
+		<NetworkName>LSFT CAN2</NetworkName>
+		<BaudRate>125000</BaudRate>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>OP (BR) ETH01</Description>
+		<Key>net87</Key>
+		<NetworkName>OP (BR) ETH1</NetworkName>
+		<BaudRate>100</BaudRate>
+		<Protocol>29</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>OP (BR) ETH02</Description>
+		<Key>net88</Key>
+		<NetworkName>OP (BR) ETH2</NetworkName>
+		<BaudRate>100</BaudRate>
+		<Protocol>29</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>OP (BR) ETH03</Description>
+		<Key>net89</Key>
+		<NetworkName>OP (BR) ETH3</NetworkName>
+		<BaudRate>100</BaudRate>
+		<Protocol>29</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>OP (BR) ETH04</Description>
+		<Key>net90</Key>
+		<NetworkName>OP (BR) ETH4</NetworkName>
+		<BaudRate>100</BaudRate>
+		<Protocol>29</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>OP (BR) ETH05</Description>
+		<Key>net91</Key>
+		<NetworkName>OP (BR) ETH5</NetworkName>
+		<BaudRate>100</BaudRate>
+		<Protocol>29</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>OP (BR) ETH06</Description>
+		<Key>net92</Key>
+		<NetworkName>OP (BR) ETH6</NetworkName>
+		<BaudRate>100</BaudRate>
+		<Protocol>29</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>OP (BR) ETH07</Description>
+		<Key>net93</Key>
+		<NetworkName>OP (BR) ETH7</NetworkName>
+		<BaudRate>100</BaudRate>
+		<Protocol>29</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>OP (BR) ETH08</Description>
+		<Key>net94</Key>
+		<NetworkName>OP (BR) ETH8</NetworkName>
+		<BaudRate>100</BaudRate>
+		<Protocol>29</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>OP (BR) ETH09</Description>
+		<Key>net95</Key>
+		<NetworkName>OP (BR) ETH9</NetworkName>
+		<BaudRate>100</BaudRate>
+		<Protocol>29</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>OP (BR) ETH10</Description>
+		<Key>net96</Key>
+		<NetworkName>OP (BR) ETH10</NetworkName>
+		<BaudRate>100</BaudRate>
+		<Protocol>29</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>OP (BR) ETH11</Description>
+		<Key>net97</Key>
+		<NetworkName>OP (BR) ETH11</NetworkName>
+		<BaudRate>100</BaudRate>
+		<Protocol>29</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>OP (BR) ETH12</Description>
+		<Key>net98</Key>
+		<NetworkName>OP (BR) ETH12</NetworkName>
+		<BaudRate>100</BaudRate>
+		<Protocol>29</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>FlexRay</Description>
+		<Key>net99</Key>
+		<NetworkName>FlexRay</NetworkName>
+		<BaudRate>10000000</BaudRate>
+		<Protocol>16</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+		<FlexRayCluster>
+			<CAS_RX_LOW_MAX>3473486</CAS_RX_LOW_MAX>
+			<CAS_RX_LOW_MIN>4784128</CAS_RX_LOW_MIN>
+		</FlexRayCluster>
+	</Network>
+	<Network>
+		<Description>FlexRay2</Description>
+		<Key>net100</Key>
+		<NetworkName>FlexRay2</NetworkName>
+		<BaudRate>10000000</BaudRate>
+		<Protocol>16</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>LIN6 (VNET A)</Description>
+		<Key>net101</Key>
+		<NetworkName>LIN6 (VNET A)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>12</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>LIN6 (VNET B)</Description>
+		<Key>net102</Key>
+		<NetworkName>LIN6 (VNET B)</NetworkName>
+		<BaudRate>10417</BaudRate>
+		<Protocol>12</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>HS CAN6 (VNET A)</Description>
+		<Key>net103</Key>
+		<NetworkName>HS CAN6 (VNET A)</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<BaudRateSecondary>2000000</BaudRateSecondary>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>HS CAN6 (VNET B)</Description>
+		<Key>net104</Key>
+		<NetworkName>HS CAN6 (VNET B)</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<BaudRateSecondary>2000000</BaudRateSecondary>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>HS CAN7 (VNET A)</Description>
+		<Key>net105</Key>
+		<NetworkName>HS CAN7 (VNET A)</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<BaudRateSecondary>2000000</BaudRateSecondary>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>HS CAN7 (VNET B)</Description>
+		<Key>net106</Key>
+		<NetworkName>HS CAN7 (VNET B)</NetworkName>
+		<BaudRate>500000</BaudRate>
+		<BaudRateSecondary>2000000</BaudRateSecondary>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>LSFT CAN2 (VNET A)</Description>
+		<Key>net107</Key>
+		<NetworkName>LSFT CAN2 (VNET A)</NetworkName>
+		<BaudRate>125000</BaudRate>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>LSFT CAN2 (VNET B)</Description>
+		<Key>net108</Key>
+		<NetworkName>LSFT CAN2 (VNET B)</NetworkName>
+		<BaudRate>125000</BaudRate>
+		<Protocol>1</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>Ethernet (VNET A)</Description>
+		<Key>net109</Key>
+		<NetworkName>Ethernet (VNET A)</NetworkName>
+		<BaudRate>0</BaudRate>
+		<Protocol>29</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+	<Network>
+		<Description>Ethernet (VNET B)</Description>
+		<Key>net110</Key>
+		<NetworkName>Ethernet (VNET B)</NetworkName>
+		<BaudRate>0</BaudRate>
+		<Protocol>29</Protocol>
+		<VisibilityType>2</VisibilityType>
+		<EnableOSEKNM>False</EnableOSEKNM>
+		<IgnoreForVSSALLogger>False</IgnoreForVSSALLogger>
+	</Network>
+</Networks>
+<MsgSigs>
+	<MsgSig>
+		<Description>OBDII_RESP</Description>
+		<Key>in0</Key>
+		<ByteString0>7E8</ByteString0>
+		<NetworkKey>net0</NetworkKey>
+	</MsgSig>
+</MsgSigs>
+<SignalGroups>
+	<SignalGroup>
+		<Description>Default</Description>
+		<Key>sgr0</Key>
+		<LogAllData>False</LogAllData>
+		<LogRateMs>10</LogRateMs>
+		<LogPath>icsSpyLogFile</LogPath>
+		<StartMode>0</StartMode>
+	</SignalGroup>
+</SignalGroups>
+<Dialogs>
+	<Dialog>
+		<Caption>Panel 1</Caption>
+		<Key>dia0</Key>
+	</Dialog>
+</Dialogs>
+<J1939AddressManager>
+	<ClaimAtStartup>1</ClaimAtStartup>
+	<StatusAtStartup>1</StatusAtStartup>
+</J1939AddressManager>
+<CoreMini>
+	<LastCreationTime>14375659860960000</LastCreationTime>
+	<SDCardNumDivsions>107</SDCardNumDivsions>
+	<SDCardPartitionLinkage>0</SDCardPartitionLinkage>
+	<UserFilesPaths></UserFilesPaths>
+</CoreMini>
+<HeadsUpDisplay>
+	<LongAccSignal>
+		<Equation>0</Equation>
+	</LongAccSignal>
+</HeadsUpDisplay>
+<TCPIPManager>
+	<TCPIPStack>
+		<Key>tcp0</Key>
+		<EthernetNetworkKey>net72</EthernetNetworkKey>
+		<DHCPServer>
+			<DefaultSubnetMask>-256</DefaultSubnetMask>
+			<DefaultStartAddress>0</DefaultStartAddress>
+			<DefaultEndAddress>255</DefaultEndAddress>
+			<DefaultLeaseTime>86400</DefaultLeaseTime>
+		</DHCPServer>
+	</TCPIPStack>
+</TCPIPManager>
+<DoIP>
+	<AssertActivationLineAtStart>False</AssertActivationLineAtStart>
+</DoIP>
+<RemoteReflasher>
+	<JSONBase64>eyJ2ZXJzaW9uIjogMSwgImVjdXMiOiBbeyJhbGdvcml0aG0iOiAiZ2VuZXJpY19pc28xNDIyOSIsICJ2ZXJzaW9uIjogMSwgIm5hbWUiOiAiTmV3IEVDVSIsICJpc28xNTc2NSI6IHsibmV0d29yayI6ICIiLCAicGh5c2ljYWwiOiB7ImlkIjogIiIsICJmbG93X2NvbnRyb2xfaWQiOiAiIiwgImZsb3dfY29udHJvbF90aW1lb3V0IjogMCwgImZsb3dfY29udHJvbF93YWl0X3RpbWVvdXQiOiAwLCAic3RtaW4iOiAwLCAiYmxvY2tfc2l6ZSI6IDAsICJwYWRkaW5nIjogIiIsICJleHRlbmRlZF9hZGRyZXNzIjogIiIsICJmbG93X2NvbnRyb2xfZXh0ZW5kZWRfYWRkcmVzcyI6ICIiLCAiaWRfaXNfMjliaXQiOiBmYWxzZSwgImZsb3dfY29udHJvbF9pc18yOWJpdCI6IGZhbHNlLCAidXNlX2V4dGVuZGVkX2FkZHJlc3MiOiBmYWxzZSwgImZsb3dfY29udHJvbF91c2VfZXh0ZW5kZWRfYWRkcmVzcyI6IGZhbHNlLCAidXNlX3N0bWluIjogZmFsc2UsICJ1c2VfYmxvY2tfc2l6ZSI6IGZhbHNlLCAidXNlX3BhZGRpbmciOiBmYWxzZX0sICJmdW5jdGlvbmFsIjogeyJpZCI6ICIiLCAiZmxvd19jb250cm9sX2lkIjogIiIsICJmbG93X2NvbnRyb2xfdGltZW91dCI6IDAsICJmbG93X2NvbnRyb2xfd2FpdF90aW1lb3V0IjogMCwgInN0bWluIjogMCwgImJsb2NrX3NpemUiOiAwLCAicGFkZGluZyI6ICIiLCAiZXh0ZW5kZWRfYWRkcmVzcyI6ICIiLCAiZmxvd19jb250cm9sX2V4dGVuZGVkX2FkZHJlc3MiOiAiIiwgImlkX2lzXzI5Yml0IjogZmFsc2UsICJmbG93X2NvbnRyb2xfaXNfMjliaXQiOiBmYWxzZSwgInVzZV9leHRlbmRlZF9hZGRyZXNzIjogZmFsc2UsICJmbG93X2NvbnRyb2xfdXNlX2V4dGVuZGVkX2FkZHJlc3MiOiBmYWxzZSwgInVzZV9zdG1pbiI6IGZhbHNlLCAidXNlX2Jsb2NrX3NpemUiOiBmYWxzZSwgInVzZV9wYWRkaW5nIjogZmFsc2V9fSwgImlzbzE0MjI5IjogeyJ0aW1lb3V0IjogMjAwMH0sICJzdGFnZXMiOiBbeyJuYW1lIjogIk5ldyBTdGFnZSIsICJhY3Rpb25zIjogW3sidHlwZSI6ICJub25lIn1dfV0sICJmYWlsX3N0YWdlIjogeyJuYW1lIjogImZhaWxfc3RhZ2UiLCAiYWN0aW9ucyI6IFt7InR5cGUiOiAibm9uZSJ9XX19XX0A</JSONBase64>
+</RemoteReflasher>
+<JLRMirroring>
+	<Enabled>True</Enabled>
+</JLRMirroring>
+<Desktops>
+	<Desktop>
+		<Description>Desktop 1</Description>
+		<Key>0</Key>
+		<ICONIndex>51</ICONIndex>
+		<LayoutString>QVFET0NLCAAAAACvAAAAngAAALcEAAA1AwAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJAIAAAAAAACA1Hq4Ru70SIM1fakJBnUaAesBAAADAAAAr0j3YGQPjUG1GKYdfRtQyAAAAABIAAAAZwcAAPgDAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//////////8IBAADIAAAA///////////CAQAAyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAKUAAAAAAAAAZYheWHVq60u2XsfC9K8AAAAAAABhAAAAZwcAAPgDAAAAAAAAAAAAAAAQAAAAQyBDb2RlIEludGVyZmFjZQAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA///////////CAQAAyAAAAP//////////WAIAACwBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACkAAAAAAAAAGWIXlh1autLtl7HwvSvAAEAAAAAYQAAAGcHAAD4AwAAAAAAAAAAAAAADwAAAE1lc3NhZ2VzIEVkaXRvcgAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA///////////CAQAAyAAAAP//////////WAIAACwBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</LayoutString>
+		<LayoutStringChecksum>1988169817</LayoutStringChecksum>
+		<DesktopForms>
+			<DesktopForm>
+				<FormKey>0</FormKey>
+				<Key>0</Key>
+				<FormData>PERlc2t0b3BEYXRhPg0KPC9EZXNrdG9wRGF0YT4NCg==</FormData>
+			</DesktopForm>
+			<DesktopForm>
+				<FormKey>1</FormKey>
+				<Key>1</Key>
+				<FormData>PERlc2t0b3BEYXRhPg0KPEN1cnJlbnRWaWV3PjA8L0N1cnJlbnRWaWV3Pg0KPEN1cnJlbnROZXR3b3JrPjA8L0N1cnJlbnROZXR3b3JrPg0KPFNpZ25hbHNTY3JpcHRHcmlkPg0KCTxOdW1PZkNvbHM+Njc8L051bU9mQ29scz4NCgk8TnVtT2ZSb3dzPjQ8L051bU9mUm93cz4NCgk8Q29sPjA8L0NvbD4NCgk8Um93PjI8L1Jvdz4NCgk8Q29sU2VsPjA8L0NvbFNlbD4NCgk8Um93U2VsPjI8L1Jvd1NlbD4NCgk8Q09MPg0KCQk8Q29sSW5kZXg+MDwvQ29sSW5kZXg+DQoJCTxXaWR0aD4yNzc1PC9XaWR0aD4NCgk8L0NPTD4NCgk8Q09MPg0KCQk8Q29sSW5kZXg+MTwvQ29sSW5kZXg+DQoJCTxXaWR0aD4xNDQwPC9XaWR0aD4NCgk8L0NPTD4NCgk8Q09MPg0KCQk8Q29sSW5kZXg+MjwvQ29sSW5kZXg+DQoJCTxXaWR0aD45MzA8L1dpZHRoPg0KCTwvQ09MPg0KCTxDT0w+DQoJCTxDb2xJbmRleD4zPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjQ8L0NvbEluZGV4Pg0KCQk8V2lkdGg+MTUwPC9XaWR0aD4NCgk8L0NPTD4NCgk8Q09MPg0KCQk8Q29sSW5kZXg+NTwvQ29sSW5kZXg+DQoJCTxXaWR0aD4xNTA8L1dpZHRoPg0KCTwvQ09MPg0KCTxDT0w+DQoJCTxDb2xJbmRleD42PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4Pjc8L0NvbEluZGV4Pg0KCQk8V2lkdGg+MTUwPC9XaWR0aD4NCgk8L0NPTD4NCgk8Q09MPg0KCQk8Q29sSW5kZXg+ODwvQ29sSW5kZXg+DQoJCTxXaWR0aD4xNTA8L1dpZHRoPg0KCTwvQ09MPg0KCTxDT0w+DQoJCTxDb2xJbmRleD45PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjEwPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjExPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjEyPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjEzPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjE0PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjE1PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjE2PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjE3PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjE4PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjE5PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjIwPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjIxPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjIyPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjIzPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjI0PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjI1PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjI2PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjI3PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjI4PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjI5PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjMwPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjMxPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjMyPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjMzPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjM0PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjM1PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjM2PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjM3PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjM4PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjM5PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjQwPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjQxPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjQyPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjQzPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjQ0PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjQ1PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjQ2PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjQ3PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjQ4PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjQ5PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjUwPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjUxPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjUyPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjUzPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjU0PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjU1PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjU2PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjU3PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjU4PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjU5PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjYwPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjYxPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjYyPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjYzPC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjY0PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjY1PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjY2PC9Db2xJbmRleD4NCgkJPFdpZHRoPjE1MDwvV2lkdGg+DQoJPC9DT0w+DQo8L1NpZ25hbHNTY3JpcHRHcmlkPg0KPE1lc3NhZ2VzU2NyaXB0R3JpZD4NCgk8TnVtT2ZDb2xzPjE4PC9OdW1PZkNvbHM+DQoJPE51bU9mUm93cz4zPC9OdW1PZlJvd3M+DQoJPENvbD4yPC9Db2w+DQoJPFJvdz4yPC9Sb3c+DQoJPENvbFNlbD4yPC9Db2xTZWw+DQoJPFJvd1NlbD4yPC9Sb3dTZWw+DQoJPENPTD4NCgkJPENvbEluZGV4PjA8L0NvbEluZGV4Pg0KCQk8V2lkdGg+NjAwPC9XaWR0aD4NCgk8L0NPTD4NCgk8Q09MPg0KCQk8Q29sSW5kZXg+MTwvQ29sSW5kZXg+DQoJCTxXaWR0aD4yNzAwPC9XaWR0aD4NCgk8L0NPTD4NCgk8Q09MPg0KCQk8Q29sSW5kZXg+MjwvQ29sSW5kZXg+DQoJCTxXaWR0aD4xNjUwPC9XaWR0aD4NCgk8L0NPTD4NCgk8Q09MPg0KCQk8Q29sSW5kZXg+MzwvQ29sSW5kZXg+DQoJCTxXaWR0aD45MDA8L1dpZHRoPg0KCTwvQ09MPg0KCTxDT0w+DQoJCTxDb2xJbmRleD40PC9Db2xJbmRleD4NCgkJPFdpZHRoPjkwMDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjU8L0NvbEluZGV4Pg0KCQk8V2lkdGg+MTgwMDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjY8L0NvbEluZGV4Pg0KCQk8V2lkdGg+NDUwPC9XaWR0aD4NCgk8L0NPTD4NCgk8Q09MPg0KCQk8Q29sSW5kZXg+NzwvQ29sSW5kZXg+DQoJCTxXaWR0aD40NTA8L1dpZHRoPg0KCTwvQ09MPg0KCTxDT0w+DQoJCTxDb2xJbmRleD44PC9Db2xJbmRleD4NCgkJPFdpZHRoPjQ1MDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4Pjk8L0NvbEluZGV4Pg0KCQk8V2lkdGg+NDUwPC9XaWR0aD4NCgk8L0NPTD4NCgk8Q09MPg0KCQk8Q29sSW5kZXg+MTA8L0NvbEluZGV4Pg0KCQk8V2lkdGg+NDUwPC9XaWR0aD4NCgk8L0NPTD4NCgk8Q09MPg0KCQk8Q29sSW5kZXg+MTE8L0NvbEluZGV4Pg0KCQk8V2lkdGg+NDUwPC9XaWR0aD4NCgk8L0NPTD4NCgk8Q09MPg0KCQk8Q29sSW5kZXg+MTI8L0NvbEluZGV4Pg0KCQk8V2lkdGg+NDUwPC9XaWR0aD4NCgk8L0NPTD4NCgk8Q09MPg0KCQk8Q29sSW5kZXg+MTM8L0NvbEluZGV4Pg0KCQk8V2lkdGg+NDUwPC9XaWR0aD4NCgk8L0NPTD4NCgk8Q09MPg0KCQk8Q29sSW5kZXg+MTQ8L0NvbEluZGV4Pg0KCQk8V2lkdGg+MTIwMDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjE1PC9Db2xJbmRleD4NCgkJPFdpZHRoPjkwMDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjE2PC9Db2xJbmRleD4NCgkJPFdpZHRoPjkwMDwvV2lkdGg+DQoJPC9DT0w+DQoJPENPTD4NCgkJPENvbEluZGV4PjE3PC9Db2xJbmRleD4NCgkJPFdpZHRoPjkwMDwvV2lkdGg+DQoJPC9DT0w+DQo8L01lc3NhZ2VzU2NyaXB0R3JpZD4NCjwvRGVza3RvcERhdGE+DQo=</FormData>
+			</DesktopForm>
+		</DesktopForms>
+	</Desktop>
+</Desktops>
+<ICSForms>
+	<ICSForm>
+		<FormType>68</FormType>
+		<Key>0</Key>
+		<WindowStyle>0</WindowStyle>
+		<Caption>C Code Interface</Caption>
+	</ICSForm>
+	<ICSForm>
+		<FormType>1</FormType>
+		<Key>1</Key>
+		<WindowStyle>0</WindowStyle>
+		<Caption>Messages Editor</Caption>
+	</ICSForm>
+</ICSForms>
+</VSpy3>

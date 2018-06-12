@@ -1,0 +1,18 @@
+package/lib/lib/ccs/m4/slnetsock_release/bsd/netdb.oem4: bsd/netdb.c /opt/ti/ccs-latest/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stdint.h /opt/ti/ccs-latest/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/string.h bsd/sys/socket.h slnetutils.h bsd/netdb.h /opt/ti/ccs-latest/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/linkage.h /opt/ti/ccs-latest/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stddef.h /vagrant/Q4_04/sdk_root/source/ti/posix/ccs/sys/types.h bsd/errnoutil.h slnetsock.h ./slnetsock.h /vagrant/Q4_04/sdk_root/source/ti/posix/ccs/sys/_internal.h ./slnetif.h ./slnetutils.h ./slneterr.h /opt/ti/ccs-latest/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stdbool.h 
+bsd/netdb.c:
+/opt/ti/ccs-latest/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stdint.h:
+/opt/ti/ccs-latest/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/string.h:
+bsd/sys/socket.h:
+slnetutils.h:
+bsd/netdb.h:
+/opt/ti/ccs-latest/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/linkage.h:
+/opt/ti/ccs-latest/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stddef.h:
+/vagrant/Q4_04/sdk_root/source/ti/posix/ccs/sys/types.h:
+bsd/errnoutil.h:
+slnetsock.h:
+./slnetsock.h:
+/vagrant/Q4_04/sdk_root/source/ti/posix/ccs/sys/_internal.h:
+./slnetif.h:
+./slnetutils.h:
+./slneterr.h:
+/opt/ti/ccs-latest/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stdbool.h:

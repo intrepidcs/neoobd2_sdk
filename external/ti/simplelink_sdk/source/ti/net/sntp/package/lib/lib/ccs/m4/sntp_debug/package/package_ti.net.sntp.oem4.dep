@@ -1,0 +1,11 @@
+package/lib/lib/ccs/m4/sntp_debug/package/package_ti.net.sntp.oem4: package/package_ti.net.sntp.c /opt/ti/xdctools_3_50_04_43_core/packages/xdc/std.h /opt/ti/ccs-latest/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stdarg.h /opt/ti/ccs-latest/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stddef.h /vagrant/Q4_04/sdk_root/kernel/tirtos/packages/ti/targets/arm/elf/std.h /vagrant/Q4_04/sdk_root/kernel/tirtos/packages/ti/targets/select.h /vagrant/Q4_04/sdk_root/kernel/tirtos/packages/iar/targets/select.h /vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/select.h /vagrant/Q4_04/sdk_root/kernel/tirtos/packages/ti/targets/std.h /opt/ti/ccs-latest/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stdint.h 
+package/package_ti.net.sntp.c:
+/opt/ti/xdctools_3_50_04_43_core/packages/xdc/std.h:
+/opt/ti/ccs-latest/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stdarg.h:
+/opt/ti/ccs-latest/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stddef.h:
+/vagrant/Q4_04/sdk_root/kernel/tirtos/packages/ti/targets/arm/elf/std.h:
+/vagrant/Q4_04/sdk_root/kernel/tirtos/packages/ti/targets/select.h:
+/vagrant/Q4_04/sdk_root/kernel/tirtos/packages/iar/targets/select.h:
+/vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/select.h:
+/vagrant/Q4_04/sdk_root/kernel/tirtos/packages/ti/targets/std.h:
+/opt/ti/ccs-latest/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stdint.h:
