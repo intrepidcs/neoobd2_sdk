@@ -15,13 +15,13 @@ Follow these steps to enable the ability to transmit messages from your program:
 1. **IMPORTANT:** In order to transmit messages from your program, a **CoreMini script** must be programmed in the neoOBD2 PRO. **If transmitting CAN/LIN/Ethernet messages is the only requirement for your application** (i.e. if your program does not need to receive any messages from vehicle networks), all you need to do is to put a default CoreMini script that is available when you open up the **CoreMini Console** from Vehicle Spy Professional. To program a default CoreMini script to your neoOBD2 PRO, follow these steps:
 
 	1) Open Vehicle Spy Professional.
-	
+
 	2) From top menu select **Tools**. Then, select **CoreMini Console**.
-	
+
 	3) From **CoreMini Console**, click the **Clear** button first to clear out any old script already running in the device.
-	
+
 	4) Click the **Send** button to program the new CoreMini script.
-	
+
     **IMPORTANT: If your application requires you to receive messages / data from vehicle networks**, additional steps are required for setting up CoreMini accordingly. This is described in the **[How to Capture Vehicle Network Receive Messages from your ISM Program](OBD2PRO_ISM_RX_MSG_GUIDE.md)** guide.
 
     Note that when you program your Wi-Fi application with Vehicle Spy Professional as described in the **Programming the Application into neoOBD2 PRO** section of the **Getting Started with your first Wi-Fi Application for neoOBD2 PRO** guide, you are programming a CoreMini script together with the Wi-Fi application binary.
@@ -33,7 +33,7 @@ Follow these steps to enable the ability to transmit messages from your program:
 3. **Non-OS Environment**
 
 	1) As part of your initialization process, insert the following code to initialize the ISM library. This must be added before you start calling the icsISM_Main method in the program's main while(1) loop. Make sure you have included the **'obd2pro_wifi_cc32xx_ism.h'** and **'obd2pro_wifi_cc32xx.h'** headers.
-	
+
 	```c
 	icsISM_PreInit();
 
@@ -48,62 +48,30 @@ Follow these steps to enable the ability to transmit messages from your program:
 
     icsISM_Init();
 	```
-	
+
 	2) Below is a full sample implementation of a non-OS main. Use the code below as a reference.
-	
+
 	```c
-    /*
-    * Copyright (c) 2017, Texas Instruments Incorporated
-    * All rights reserved.
-    *
-    * Redistribution and use in source and binary forms, with or without
-    * modification, are permitted provided that the following conditions
-    * are met:
-    *
-    * *  Redistributions of source code must retain the above copyright
-    *    notice, this list of conditions and the following disclaimer.
-    *
-    * *  Redistributions in binary form must reproduce the above copyright
-    *    notice, this list of conditions and the following disclaimer in the
-    *    documentation and/or other materials provided with the distribution.
-    *
-    * *  Neither the name of Texas Instruments Incorporated nor the names of
-    *    its contributors may be used to endorse or promote products derived
-    *    from this software without specific prior written permission.
-    *
-    * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-    * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
-    * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-    * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
-    * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-    * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-    * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
-    * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-    
-    * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
-    * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
-    * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    */
-    
+
 	// stdlib includes
     #include <stdint.h>
     #include <stddef.h>
-    
+
     #include <NoRTOS.h>
-    
+
     #include "Board.h"
-    
+
     // ISM Lib includes
     #include "obd2pro_wifi_cc32xx_ism.h"
     #include "obd2pro_wifi_cc32xx.h"
-    
+
     extern void Spy_EveryLoop(unsigned int);
     extern void Spy_BeforeStarted(void);
     extern void Spy_Started(void);
     extern void Spy_Main(void);
     extern void Spy_ErrorFrame(int, int, int, int);
     extern void Spy_ErrorState(int, int, int, int);
-    
+
     void *mainThread(void* arg0)
     {
         icsISM_PreInit();
@@ -116,28 +84,28 @@ Follow these steps to enable the ability to transmit messages from your program:
         RegisterErrorFrameFunc(Spy_ErrorFrame);
         RegisterErrorStateFunc(Spy_ErrorState);
         RegisterEveryMessageFunc(CM_EveryMessage);
-    
+
         icsISM_Init();
-    
-        while (1)//lint !e716 while1
+
+        while (1)
         {
             icsISM_Main();
         }
-    
-        return 0; //lint !e527
+
+        return 0; 
     }
-    
+
     int main(void)
     {
         /* Call driver init functions */
         Board_initGeneral();
-        
+
         /* Start NoRTOS */
         NoRTOS_start();
-        
+
         /* Call mainThread function */
         mainThread(NULL);
-        
+
         while (1);
     }
 
@@ -146,7 +114,7 @@ Follow these steps to enable the ability to transmit messages from your program:
 2. **Amazon FreeRTOS Environment**
 
     1) The process is very similar to that of the non-OS environment. The key point is that **you have to ensure the full ISM initialization process is executed before you start any tasks, including the task where you will need to call icsISM_Main method in a while(1) loop that never terminates**. You would normally want to execute the full initialization process in the startup hook that runs when configUSE_DAEMON_TASK_STARTUP_HOOK = 1. Below is a reference code from main.c of the **aws-mqtt sample project** included with the SDK. Also, make sure you have included the **'obd2pro_wifi_cc32xx_ism.h'** and **'obd2pro_wifi_cc32xx.h'** headers.
-	
+
 	```c
 	void vApplicationDaemonTaskStartupHook(void);
 
@@ -195,18 +163,14 @@ Follow these steps to enable the ability to transmit messages from your program:
 			WIFINetworkParams_t xNetworkParams;
 
 			Board_initGPIO();
-			Board_initSPI(); /* AN:  Is the SPI actually used? */
+			Board_initSPI();
 
 			/* Configure the UART. */
 			xtUartHndl = InitTerm();
 			UART_control(xtUartHndl, UART_CMD_RXDISABLE, NULL);
 
-			/* Initialize WiFi module, start simple link device. */
 			WIFI_On();
 
-			/* A simple example to demonstrate key and certificate provisioning in
-			 * flash using PKCS#11 interface. This should be replaced
-			 * by production ready key provisioning mechanism. */
 			vDevModeKeyProvisioning();
 
 			/* Initialize the AWS library system. */
@@ -220,16 +184,15 @@ Follow these steps to enable the ability to transmit messages from your program:
 			xNetworkParams.ucPasswordLength = sizeof(clientcredentialWIFI_PASSWORD);
 			xNetworkParams.xSecurity = clientcredentialWIFI_SECURITY;
 
-			/* Connect to WIFI. */
 			WIFI_ConnectAP(&xNetworkParams);
-			
+
 			/* Initialize the Intrepid ISM Library before starting app tasks */
 			ismInit();
 
 			DEMO_RUNNER_RunDemos();
 	}
 	```
-	
+
 ## Transmitting Classical CAN Messages
 
 First, **[ensure you have completed the prerequisite section of this guide](#prereq)** bofore proceeding.
