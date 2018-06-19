@@ -1,0 +1,11 @@
+.launches
+.settings
+.metadata
+.jxbrowser-data
+RemoteSystemsTempFiles
+Debug
+Release
+targetConfigs
+.vs
+CppProperties.json
+.tags*
