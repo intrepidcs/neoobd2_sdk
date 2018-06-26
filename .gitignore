@@ -3,8 +3,6 @@
 .metadata
 .jxbrowser-data
 RemoteSystemsTempFiles
-Debug
-Release
 targetConfigs
 .vs
 CppProperties.json
