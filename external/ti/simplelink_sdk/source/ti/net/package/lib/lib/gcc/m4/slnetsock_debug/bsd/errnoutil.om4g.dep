@@ -1,0 +1,22 @@
+package/lib/lib/gcc/m4/slnetsock_debug/bsd/errnoutil.om4g:  bsd/errnoutil.c /vagrant/Q4_04/sdk_root/source/ti/posix/gcc/errno.h  /vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/../include/errno.h  /vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/sys/errno.h  /vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/sys/reent.h  /vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/_ansi.h  /vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/newlib-nano/newlib.h  /vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/_newlib_version.h  /vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/sys/config.h  /vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/machine/ieeefp.h  /vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/sys/features.h  /opt/ti/ccs7.4.0.00012/ccsv7/tools/compiler/gcc-arm-none-eabi-6-2017-q1-update/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h  /vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/sys/_types.h  /vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/machine/_types.h  /vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/machine/_default_types.h  /vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/sys/lock.h  ../../ti/net/bsd/errnoutil.h  /vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/stdint.h  /vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/sys/_intsup.h  /vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/sys/_stdint.h  ../../ti/net/slneterr.h
+bsd/errnoutil.c:
+/vagrant/Q4_04/sdk_root/source/ti/posix/gcc/errno.h:
+/vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/../include/errno.h:
+/vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/sys/errno.h:
+/vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/sys/reent.h:
+/vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/_ansi.h:
+/vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/newlib-nano/newlib.h:
+/vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/_newlib_version.h:
+/vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/sys/config.h:
+/vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/machine/ieeefp.h:
+/vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/sys/features.h:
+/opt/ti/ccs7.4.0.00012/ccsv7/tools/compiler/gcc-arm-none-eabi-6-2017-q1-update/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h:
+/vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/sys/_types.h:
+/vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/machine/_types.h:
+/vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/machine/_default_types.h:
+/vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/sys/lock.h:
+../../ti/net/bsd/errnoutil.h:
+/vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/stdint.h:
+/vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/sys/_intsup.h:
+/vagrant/Q4_04/sdk_root/kernel/tirtos/packages/gnu/targets/arm//libs/install-native/arm-none-eabi/include/sys/_stdint.h:
+../../ti/net/slneterr.h:
