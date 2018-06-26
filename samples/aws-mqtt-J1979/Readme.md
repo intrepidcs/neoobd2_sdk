@@ -99,7 +99,7 @@ The **aws_iot_config** file is a text file that contains credentials and setting
 
 ### Build the Application
 
-1. Open CCS and import the Greengrass sample project from <*SDK_PATH*>/samples/aws-greengrass. Build the project.
+1. Open CCS and import the AWS J1979 sample project from <*SDK_PATH*>/samples/aws-mqtt-J1979. Build the project.
 
 	![alt text](../../docs/neoobd2_pro/images/55-CCS_Build_Project.PNG "Import and Build Project in CCS")
 
