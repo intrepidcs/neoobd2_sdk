@@ -142,7 +142,10 @@ int main(void)
 	Board_initGPIO();
 	Board_initSPI(); /* AN:  Is the SPI actually used? */
 
-
+    /* Initialize GPIO to enable UART0 as UART Terminal */
+    GPIO_write(CC_UART_EN, 1);
+    GPIO_write(WIFI_INT, 1);
+    GPIO_write(CC_LED0, 1);
 
 	ismInit();
 

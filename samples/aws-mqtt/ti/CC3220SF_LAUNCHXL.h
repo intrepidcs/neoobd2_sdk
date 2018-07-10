@@ -64,6 +64,17 @@ typedef enum CC3220SF_LAUNCHXL_ADCName {
 } CC3220SF_LAUNCHXL_ADCName;
 
 /*!
+ *  @def    CC3220SF_LAUNCHXL_CaptureName
+ *  @brief  Enum of Capture names on the CC3220SF_LAUNCHXL dev board
+ */
+typedef enum CC3220SF_LAUNCHXL_CaptureName {
+    CC3220SF_LAUNCHXL_CAPTURE0 = 0,
+    CC3220SF_LAUNCHXL_CAPTURE1,
+
+    CC3220SF_LAUNCHXL_CAPTURECOUNT
+} CC3220SF_LAUNCHXL_CaptureName;
+
+/*!
  *  @def    CC3220SF_LAUNCHXL_CryptoName
  *  @brief  Enum of Crypto names on the CC3220SF_LAUNCHXL dev board
  */
@@ -78,18 +89,32 @@ typedef enum CC3220SF_LAUNCHXL_CryptoName {
  *  @brief  Enum of GPIO names on the CC3220SF_LAUNCHXL dev board
  */
 typedef enum CC3220SF_LAUNCHXL_GPIOName {
+#if defined (BUILD_OBD2PRO_WIFI_LAUNCHXL_ISM_PROJECT)
     CC3220SF_LAUNCHXL_GPIO_SW2 = 0,
     CC3220SF_LAUNCHXL_GPIO_SW3,
     CC3220SF_LAUNCHXL_GPIO_LED_D7,
 
     /*
      *  CC3220SF_LAUNCHXL_GPIO_LED_D5 and CC3220SF_LAUNCHXL_GPIO_LED_D6 are shared with the
-     *  I2C and PWM peripherals. In this application the LEDs are in use.
+     *  I2C and PWM peripherals. In order for those examples to work, these
+     *  LEDs are  taken out of gpioPinCOnfig[]
      */
-    CC3220SF_LAUNCHXL_GPIO_LED_D6,
-    CC3220SF_LAUNCHXL_GPIO_LED_D5,
+    //CC3220SF_LAUNCHXL_GPIO_LED_D6,
+    //CC3220SF_LAUNCHXL_GPIO_LED_D5,
 
     CC3220SF_LAUNCHXL_GPIOCOUNT
+#elif defined (BUILD_OBD2PRO_WIFI_CC32XX_ISM_PROJECT)
+    CC_GPIO_8 = 0,
+    CC_GPIO_9,
+    CC_GPIO_10,
+    CC_GPIO_11,
+
+    WIFI_INT,
+    CC_UART_EN,
+    CC_LED0,
+
+    CC3220SF_LAUNCHXL_GPIOCOUNT
+#endif
 } CC3220SF_LAUNCHXL_GPIOName;
 
 /*!

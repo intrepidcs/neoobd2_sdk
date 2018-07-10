@@ -185,6 +185,11 @@ void vApplicationDaemonTaskStartupHook(void)
     Board_initGPIO();
     Board_initSPI();
 
+	/* Initialize GPIO to enable UART0 as UART Terminal */
+	GPIO_write(CC_UART_EN, 1);
+	GPIO_write(WIFI_INT, 1);
+	GPIO_write(CC_LED0, 1);
+	
     /* Configure the UART. */
     xtUartHndl = InitTerm();
     UART_control( xtUartHndl, UART_CMD_RXDISABLE, NULL );
