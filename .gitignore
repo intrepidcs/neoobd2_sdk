@@ -1,3 +1,5 @@
+samples/*/Debug
+samples/*/Release
 .launches
 .settings
 .metadata
