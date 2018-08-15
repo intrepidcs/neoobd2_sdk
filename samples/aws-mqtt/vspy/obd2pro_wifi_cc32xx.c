@@ -86,12 +86,30 @@ void AS_SetAt(int index, int element, double value)
 
 int GenericMessageTransmit(GenericMessage * pM)
 {
-    return CM_TransmitMessage(pM->iNetwork, pM->iID, pM->iNumDataBytes, pM->iBitField, pM->btData);
+    int iID;
+    int iBitField;
+    iID = pM->iID;
+    iBitField = pM->iBitField;
+    if (isExtId(iID))
+    {
+        iBitField |= ATTR_CAN_29BIT_ID_FRAME;
+    }
+
+    return CM_TransmitMessage(pM->iNetwork, iID, pM->iNumDataBytes, iBitField, pM->btData);
 }
 
 int GenericLongMessageTransmit(GenericLongMessage * pM)
 {
-    return CM_TransmitMessage(pM->iNetwork, pM->iID, pM->iNumDataBytes, pM->iBitField, pM->btData);
+    int iID;
+    int iBitField;
+    iID = pM->iID;
+    iBitField = pM->iBitField;
+    if (isExtId(iID))
+    {
+        iBitField |= ATTR_CAN_29BIT_ID_FRAME;
+    }
+
+    return CM_TransmitMessage(pM->iNetwork, iID, pM->iNumDataBytes, iBitField, pM->btData);
 }
 
 int CANFDMessageTransmit(GenericLongMessage * pM, uint8_t bBRS)
@@ -102,12 +120,13 @@ int CANFDMessageTransmit(GenericLongMessage * pM, uint8_t bBRS)
     iBitField = pM->iBitField;
     if (isExtId(iID))
     {
-        iID = mkStdId(iID);
         iBitField |= ATTR_CAN_29BIT_ID_FRAME;
     }
     iBitField |= ATTR_CANFD_FRAME;
     if (bBRS)
+    {
         iBitField |= ATTR_CANFD_BRS;
+    }
 
     return CM_TransmitMessage(pM->iNetwork, iID, pM->iNumDataBytes, iBitField, pM->btData);
 }
@@ -136,10 +155,19 @@ void SpySetTxEvent(unsigned int msgIndex)
     txSetSignal.iType = 2;
     CM_GetSetValue(CM_GETSET_SET_TXSIGNAL, msgIndex, &txSetSignal);
 }
+
+int ControlMainChipLEDColor(unsigned int ledColor)
+{
+    sfifoISMChipLEDControl stData = { 0 };
+    stData.red = (ledColor & 0x00ff0000) >> 16;
+    stData.green = (ledColor & 0x0000ff00) >> 8;
+    stData.blue = ledColor & 0x000000ff;
+    return CM_SendCommandToMainChip(ISM_CMD_CTRL_LED_COLOR, sizeof(sfifoISMChipLEDControl), &stData);
+}
+
 void SpyAppSig_CallAllHandlers()
 {
 }
-
 
 node_t cb_app_signal_nodes[1];
 node_t cb_message_nodes[1];
@@ -162,6 +190,7 @@ uint64_t (*CM_SignalPhysicalToRaw)(unsigned short iType, unsigned short msgIndex
 int (* CM_UpdateMessageSignalsFromBytes)(unsigned short iType, unsigned short msgIndex, unsigned char * bytes, int numBytes);
 int (* CM_UpdateBytesFromSignals)(unsigned short iType, unsigned short msgIndex, double * pSignals, int signalMaxCnt, unsigned char * bytes, int numBytes);
 int (* CM_UpdateBytesFromRawSignals)(unsigned short iType, unsigned short msgIndex, uint64_t * pSignals, int signalMaxCnt, unsigned char * bytes, int numBytes);
+int (* CM_SendCommandToMainChip)(unsigned int iCommand, unsigned int iDataSizeBytes, const void* btData);
 
 void CM_ExtensionInit(const struct stCallBackPointers * pCb)
 {
@@ -180,6 +209,7 @@ void CM_ExtensionInit(const struct stCallBackPointers * pCb)
     CM_UpdateMessageSignalsFromBytes = (int (*)(unsigned short, unsigned short, unsigned char *, int))pCb->pUpdateMessageSignalsFromBytes;
     CM_UpdateBytesFromSignals = (int (*)(unsigned short, unsigned short, double *, int, unsigned char *, int))pCb->pUpdateBytesFromSignals;
     CM_UpdateBytesFromRawSignals = (int (*)(unsigned short, unsigned short, uint64_t *, int, unsigned char *,int))pCb->pUpdateBytesFromRawSignals;
+    CM_SendCommandToMainChip = (int (*)(unsigned int, unsigned int, const void*))pCb->pSendCommandToMainChip;
 
     map_init(icsISM_GetAppSignalMap(), cb_app_signal_nodes, sizeof(cb_app_signal_nodes)/sizeof(node_t));
     map_init(icsISM_GetMessageMap(), cb_message_nodes, sizeof(cb_message_nodes)/sizeof(node_t));
@@ -187,7 +217,6 @@ void CM_ExtensionInit(const struct stCallBackPointers * pCb)
     map_init(icsISM_GetMessageMgMap(), cb_message_mg_nodes, sizeof(cb_message_mg_nodes)/sizeof(node_t));
     map_init(icsISM_GetMessageTxMap(), cb_message_tx_nodes, sizeof(cb_message_tx_nodes)/sizeof(node_t));
     map_init(icsISM_GetBeforeMessageTxMap(), cb_before_message_tx_nodes, sizeof(cb_before_message_tx_nodes)/sizeof(node_t));
-
 }
 
 void CM_EveryMessage(int iNetwork, int iID, uint64_t iTimeNanoseconds, unsigned int iTimeMilliseconds, int iNumDataBytes, int iBitField, const unsigned char * p_btData)

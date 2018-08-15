@@ -24,6 +24,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef _OBD2PRO_WIFI_CC32XX_H_
 #define _OBD2PRO_WIFI_CC32XX_H_
 #include "obd2pro_wifi_cc32xx_ism.h"
+#include "ism_to_mchip_commands.h"
 #include <string.h>
 #include <stdint.h>
 
@@ -133,11 +134,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 void CM_ExtensionInit(const struct stCallBackPointers *);
 void CM_EveryMessage(int,int,uint64_t,unsigned int,int,int,const unsigned char *);
 
-#define CAN_ID_EXTENDED_BIT   0x80000000
-#define isStdId(id) ((id & CAN_ID_EXTENDED_BIT) == 0)
-#define isExtId(id) ((id & CAN_ID_EXTENDED_BIT) == CAN_ID_EXTENDED_BIT)
-#define mkExtId(id) (id | CAN_ID_EXTENDED_BIT)
-#define mkStdId(id) (id & (~CAN_ID_EXTENDED_BIT))
+#define CAN_ID_EXTENDED_MASK   (0x1FFFF800)
+#define CAN_ID_STANDARD_MASK   (0x000007FF)
+
+#define isStdId(id) (id & CAN_ID_STANDARD_MASK)
+#define isExtId(id) (id & CAN_ID_EXTENDED_MASK)
+#define mkExtId(id) (id & CAN_ID_EXTENDED_MASK)
+#define mkStdId(id) (id & CAN_ID_STANDARD_MASK)
+#define valOfId(id) ((long)id)
 void SetUseExtendedIdBit(void);
 
 unsigned int getStartDelay(void);
@@ -218,12 +222,14 @@ extern uint64_t (*CM_SignalPhysicalToRaw)(unsigned short iType, unsigned short m
 extern int (* CM_UpdateMessageSignalsFromBytes)(unsigned short iType, unsigned short msgIndex, unsigned char * bytes, int numBytes);
 extern int (* CM_UpdateBytesFromSignals)(unsigned short iType, unsigned short msgIndex, double * pSignals, int signalMaxCnt, unsigned char * bytes, int numBytes);
 extern int (* CM_UpdateBytesFromRawSignals)(unsigned short iType, unsigned short msgIndex, uint64_t * pSignals, int signalMaxCnt, unsigned char * bytes, int numBytes);
+extern int(* CM_SendCommandToMainChip)(unsigned int iCommand, unsigned int iDataSizeBytes, const void* btData);
 
 void Spy_EveryMessage(GenericMessage * p_Msg);
 void Spy_EveryLongMessage(GenericLongMessage * p_Msg);
 int GenericMessageTransmit(GenericMessage * p_Msg);
 int GenericLongMessageTransmit(GenericLongMessage * p_Msg);
 int CANFDMessageTransmit(GenericLongMessage * p_Msg, uint8_t bBRS);
+int ControlMainChipLEDColor(unsigned int ledColor);
 
 extern int MG_OBDII_RESP_HS_CAN_Index;
 typedef struct {

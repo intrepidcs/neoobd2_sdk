@@ -55,6 +55,7 @@ struct stCallBackPointers
 	void* pUpdateMessageSignalsFromBytes;
 	void* pUpdateBytesFromSignals;
 	void* pUpdateBytesFromRawSignals;
+	void* pSendCommandToMainChip;
 };
 
 // map - exposed methods

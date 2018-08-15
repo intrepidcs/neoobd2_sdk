@@ -67,7 +67,6 @@ void Spy_ErrorFrame(int iNetwork, int iTxErrorCount, int iRxErrorCount, int iErr
 
 void Spy_Stopped()
 {
-
 	// TODO: add stopped code
 }
 

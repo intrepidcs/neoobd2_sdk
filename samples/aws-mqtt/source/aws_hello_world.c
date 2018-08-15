@@ -509,6 +509,9 @@ static void prvMQTTConnectAndPublishTask(void *pvParameters)
 
     if( xReturned == pdPASS )
     {
+        /* Set the LED to indicate the WiFi is online */
+        ControlMainChipLEDColor(COLOR_WIFI_ONLINE);
+
         /* Create the task that echoes data received in the callback back to the
          * MQTT broker. */
         xReturned = xTaskCreate( prvMessageEchoingTask,               /* The function that implements the task. */
@@ -573,6 +576,9 @@ void vStartMQTTEchoDemo(void)
      * for the message length, which is held in a size_t variable. */
     xEchoMessageBuffer = xMessageBufferCreate( ( size_t ) echoMAX_DATA_LENGTH + sizeof( size_t ) );
     configASSERT( xEchoMessageBuffer );
+
+    /* Set the LED to indicate the WiFi is offline */
+    ControlMainChipLEDColor(COLOR_WIFI_OFFLINE);
 
     /* Create the task that publishes messages to the MQTT broker every five
      * seconds.  This task, in turn, creates the task that echoes data received
