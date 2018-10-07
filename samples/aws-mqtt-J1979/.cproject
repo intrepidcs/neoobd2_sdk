@@ -54,6 +54,7 @@
 									<listOptionValue builtIn="false" value="${SDK_ROOT}/external/amazon/afreertos/lib/third_party/pkcs11"/>
 									<listOptionValue builtIn="false" value="${SDK_ROOT}/external/amazon/afreertos/lib/third_party/jsmn"/>
 									<listOptionValue builtIn="false" value="${PROJECT_LOC}/vspy"/>
+									<listOptionValue builtIn="false" value="${PROJECT_LOC}/vspy/ismlib_32bit"/>
 								</option>
 								<option id="com.ti.ccstudio.buildDefinitions.TMS470_16.9.compilerID.DEBUGGING_MODEL.1860063955" name="Debugging model" superClass="com.ti.ccstudio.buildDefinitions.TMS470_16.9.compilerID.DEBUGGING_MODEL" value="com.ti.ccstudio.buildDefinitions.TMS470_16.9.compilerID.DEBUGGING_MODEL.SYMDEBUG__DWARF" valueType="enumerated"/>
 								<option id="com.ti.ccstudio.buildDefinitions.TMS470_16.9.compilerID.DIAG_WARNING.570685881" name="Treat diagnostic &lt;id&gt; as warning (--diag_warning, -pdsw)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_16.9.compilerID.DIAG_WARNING" valueType="stringList">
@@ -75,7 +76,7 @@
 								<option id="com.ti.ccstudio.buildDefinitions.TMS470_16.9.linkerID.OUTPUT_FILE.415238314" name="Specify output file name (--output_file, -o)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_16.9.linkerID.OUTPUT_FILE" value="${ProjName}.out" valueType="string"/>
 								<option id="com.ti.ccstudio.buildDefinitions.TMS470_16.9.linkerID.LIBRARY.137101225" name="Include library file or command file as input (--library, -l)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_16.9.linkerID.LIBRARY" valueType="libs">
 									<listOptionValue builtIn="false" value="libc.a"/>
-									<listOptionValue builtIn="false" value="${PROJECT_LOC}/vspy/obd2pro_wifi_cc32xx_ism.a"/>
+									<listOptionValue builtIn="false" value="${PROJECT_LOC}/vspy/ismlib_32bit/obd2pro_wifi_cc32xx_ism.a"/>
 									<listOptionValue builtIn="false" value="${SDK_ROOT}//external/ti/simplelink_sdk/source/ti/devices/cc32xx/driverlib/ccs/Release/driverlib.a"/>
 									<listOptionValue builtIn="false" value="${SDK_ROOT}/external/ti/simplelink_sdk/source/ti/drivers/lib/drivers_cc32xx.aem4"/>
 									<listOptionValue builtIn="false" value="${SDK_ROOT}//external/ti/simplelink_sdk/source/ti/drivers/net/wifi/ccs/rtos/simplelink.a"/>
@@ -83,7 +84,7 @@
 								<option id="com.ti.ccstudio.buildDefinitions.TMS470_16.9.linkerID.SEARCH_PATH.1319493619" name="Add &lt;dir&gt; to library search path (--search_path, -i)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_16.9.linkerID.SEARCH_PATH" valueType="libPaths">
 									<listOptionValue builtIn="false" value="${CG_TOOL_ROOT}/lib"/>
 									<listOptionValue builtIn="false" value="${CG_TOOL_ROOT}/include"/>
-									<listOptionValue builtIn="false" value="${PROJECT_LOC}/vspy"/>
+									<listOptionValue builtIn="false" value="${PROJECT_LOC}/vspy/ismlib_32bit"/>
 								</option>
 								<option id="com.ti.ccstudio.buildDefinitions.TMS470_16.9.linkerID.DIAG_SUPPRESS.1844846861" name="Suppress diagnostic &lt;id&gt; (--diag_suppress)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_16.9.linkerID.DIAG_SUPPRESS" valueType="stringList">
 									<listOptionValue builtIn="false" value="10063"/>
