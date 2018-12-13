@@ -25,12 +25,12 @@
 		<link>
 			<name>application_code</name>
 			<type>2</type>
-			<locationURI>BASE_DIR_ROOT/demos/intrepid/neoodb2_pro/aws-mqtt/application_code</locationURI>
+			<locationURI>BASE_DIR_ROOT/demos/intrepid/neoobd2_pro/aws-mqtt/application_code</locationURI>
 		</link>
 		<link>
 			<name>config_files</name>
 			<type>2</type>
-			<locationURI>BASE_DIR_ROOT/demos/intrepid/neoodb2_pro/aws-mqtt/config_files</locationURI>
+			<locationURI>BASE_DIR_ROOT/demos/intrepid/neoobd2_pro/aws-mqtt/config_files</locationURI>
 		</link>
 		<link>
 			<name>lib/aws</name>
