@@ -44,20 +44,20 @@
 									<listOptionValue builtIn="false" value="${BASE_DIR_ROOT}/lib/FreeRTOS-Plus-POSIX/include/portable/ti/cc3220_launchpad"/>
 									<listOptionValue builtIn="false" value="${BASE_DIR_ROOT}/lib/third_party/intrepid/ism_lib/wifi-ism_lib/16bit/CCS/CC32XX_NEOOBD2_PRO"/>
 									<listOptionValue builtIn="false" value="${BASE_DIR_ROOT}/lib/third_party/mcu_vendor/ti/SimpleLink_CC32xx/v2_10_00_04/source"/>
+									<listOptionValue builtIn="false" value="${BASE_DIR_ROOT}/lib/ota/portable/ti/cc3220_launchpad"/>
 									<listOptionValue builtIn="false" value="${CG_TOOL_ROOT}/include"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/config_files}"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/lib/aws/include}"/>
-									<listOptionValue builtIn="false" value="${BASE_DIR_ROOT}/lib/ota/portable/ti/cc3220_launchpad"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/lib/aws/include/private}"/>
-									<listOptionValue builtIn="false" value="${ORIGINAL_PROJECT_ROOT}/application_code/ti"/>
-									<listOptionValue builtIn="false" value="${ORIGINAL_PROJECT_ROOT}/application_code/include"/>
+									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/application_code/ti}"/>
+									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/application_code/include}"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/lib/aws/FreeRTOS/portable/CCS/ARM_CM3}"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/lib/third_party/jsmn}"/>
 									<listOptionValue builtIn="false" value="${BASE_DIR_ROOT}/lib/third_party/pkcs11"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/lib/third_party/tinycbor}"/>
 									<listOptionValue builtIn="false" value="${BASE_DIR_ROOT}/lib/third_party/mbedtls/include"/>
 									<listOptionValue builtIn="false" value="${BASE_DIR_ROOT}/lib/third_party/pkcs11"/>
-									<listOptionValue builtIn="false" value="${ORIGINAL_PROJECT_ROOT}/application_code/vspy"/>
+									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/application_code/vspy}"/>
 								</option>
 								<option id="com.ti.ccstudio.buildDefinitions.TMS470_16.9.compilerID.DEBUGGING_MODEL.892347834" name="Debugging model" superClass="com.ti.ccstudio.buildDefinitions.TMS470_16.9.compilerID.DEBUGGING_MODEL" value="com.ti.ccstudio.buildDefinitions.TMS470_16.9.compilerID.DEBUGGING_MODEL.SYMDEBUG__DWARF" valueType="enumerated"/>
 								<option id="com.ti.ccstudio.buildDefinitions.TMS470_16.9.compilerID.DIAG_WARNING.1764135101" name="Treat diagnostic &lt;id&gt; as warning (--diag_warning, -pdsw)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_16.9.compilerID.DIAG_WARNING" valueType="stringList">

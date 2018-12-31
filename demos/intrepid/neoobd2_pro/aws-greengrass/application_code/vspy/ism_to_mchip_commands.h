@@ -8,6 +8,9 @@
 
 #define ISM_CMD_CTRL_LED_COLOR (0x01)
 
+#define COLOR_WIFI_OFFLINE (0x00ff0000)
+#define COLOR_WIFI_ONLINE (0x000000ff)
+
 typedef struct _sfifoISMChipLEDControl
 {
     uint8_t red;
