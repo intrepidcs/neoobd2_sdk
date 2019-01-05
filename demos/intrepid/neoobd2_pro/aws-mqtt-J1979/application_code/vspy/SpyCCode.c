@@ -29,7 +29,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // module variables
 
 // TODO: add global variables here
-unsigned char pidValueArray[PUBLISH_OBD_LENGTH];
+char pidValueArray[PUBLISH_OBD_LENGTH];
+double RPM_Dvalue;
 
 // TODO: add event handlers here
 void SpyMsg_MG_OBDII_RESP_HS_CAN(MG_OBDII_RESP_HS_CAN * pMG_OBDII_RESP_HS_CAN)
@@ -40,8 +41,18 @@ void SpyMsg_MG_OBDII_RESP_HS_CAN(MG_OBDII_RESP_HS_CAN * pMG_OBDII_RESP_HS_CAN)
     {
         if (pMG_OBDII_RESP_HS_CAN->MessageData.btData[2] == pidNumberLookup[i])
         {
-            //memcpy(&pidValueArray[(i*4)+2], &pMG_OBDII_RESP_HS_CAN->MessageData.btData[3], 4);
-            memcpy(pidValueArray, &pMG_OBDII_RESP_HS_CAN->MessageData.btData, PUBLISH_OBD_LENGTH);
+            RPM_Dvalue = (
+                           (
+                               ((pMG_OBDII_RESP_HS_CAN->MessageData.btData[3] & 0xFFFF) << 8 )
+                               |
+                               (pMG_OBDII_RESP_HS_CAN->MessageData.btData[4] & 0xFFFF)
+                           )
+                           / 4
+                         );
+
+            (void) snprintf(pidValueArray,PUBLISH_OBD_LENGTH, "%f", RPM_Dvalue);
+
+            //memcpy(pidValueArray, &pMG_OBDII_RESP_HS_CAN->MessageData.btData, PUBLISH_OBD_LENGTH);
 
             xBytesSend = xMessageBufferSend(xPIDResponseBuffer, pidValueArray, PUBLISH_OBD_LENGTH, 0);
             if (xBytesSend > 0)

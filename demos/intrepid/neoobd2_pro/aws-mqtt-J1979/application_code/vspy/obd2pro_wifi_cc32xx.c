@@ -1,25 +1,3 @@
-/*
-Copyright (c) 2018 Intrepid Control Systems, Inc.
-All rights reserved.
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-1. Redistributions of source code must retain the above copyright notice, this
-   list of conditions and the following disclaimer.
-2. Redistributions in binary form must reproduce the above copyright notice,
-   this list of conditions and the following disclaimer in the documentation
-   and/or other materials provided with the distribution.
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
-ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-
 // vspy generated implementation file
 #include "obd2pro_wifi_cc32xx.h"
 #include "obd2pro_wifi_cc32xx_ism.h"
@@ -159,6 +137,8 @@ void SpySetTxEvent(unsigned int msgIndex)
 int ControlMainChipLEDColor(unsigned int ledColor)
 {
     sfifoISMChipLEDControl stData = { 0 };
+    if (CM_SendCommandToMainChip == 0)
+        return 0;
     stData.red = (ledColor & 0x00ff0000) >> 16;
     stData.green = (ledColor & 0x0000ff00) >> 8;
     stData.blue = ledColor & 0x000000ff;
@@ -267,8 +247,8 @@ void MG_OBDII_RESP_HS_CAN_Init(MG_OBDII_RESP_HS_CAN * pMsg)
 {
     int iActualSignalMaxCount;
 
-    CM_MessageGenericInit(1,
-    MG_OBDII_RESP_HS_CAN_Index, &pMsg->Statistics, &pMsg->MessageData.iNetwork,
+    CM_MessageGenericInit(1, 
+    MG_OBDII_RESP_HS_CAN_Index, &pMsg->Statistics, &pMsg->MessageData.iNetwork, 
     &pMsg->MessageData.iNumDataBytes, sizeof(pMsg->MessageData.btData),
     &pMsg->iDefaultPeriodMilliseconds, &pMsg->MessageData.iID,
     &pMsg->MessageData.iBitField, &pMsg->MessageData.btData[0],
@@ -288,3 +268,4 @@ int MG_OBDII_RESP_HS_CAN_Transmit_raw(MG_OBDII_RESP_HS_CAN * pMsg)
 {
     return CM_TxFromRawSignals(1, MG_OBDII_RESP_HS_CAN_Index, pMsg->MessageData.btData, pMsg->MessageData.iNumDataBytes, pMsg->MessageData.iNetwork, 0, 0);
 }
+

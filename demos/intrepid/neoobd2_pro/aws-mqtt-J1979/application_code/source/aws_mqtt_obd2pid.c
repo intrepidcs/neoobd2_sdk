@@ -221,7 +221,7 @@ static BaseType_t prvCreateClientAndConnectToBroker( void )
 }
 /*-----------------------------------------------------------*/
 
-extern unsigned char pidValueArray[PUBLISH_OBD_LENGTH];
+extern char pidValueArray[PUBLISH_OBD_LENGTH];
 static MQTTAgentReturnCode_t prvPublishOBDIIMessage( char *cDataBuffer, char *cTopicName )
 {
     MQTTAgentPublishParams_t xPublishParameters;
@@ -322,12 +322,13 @@ static void prvRunMqttPubTask(void* pvParams)
     {
       xBytesReceived = xMessageBufferReceive( xPIDResponseBuffer,
                                               cDataBuffer,
-                                              (size_t) PUBLISH_OBD_LENGTH,
+                                              PID_BUFFER_LENGTH,
                                               portMAX_DELAY );
         /* Publish the 132-byte data containing 32 OBDII PIDs */
       if(xBytesReceived == PUBLISH_OBD_LENGTH) {
-          (void ) snprintf(cTopicName, echoMAX_DATA_LENGTH, "%s/%d",(char*) echoTOPIC_NAME, (int) cDataBuffer[2]);
+          (void ) snprintf(cTopicName, echoMAX_DATA_LENGTH, "%s/%d",(char*) echoTOPIC_NAME, pidNumberLookup[0]);
                   xReturned = prvPublishOBDIIMessage(cDataBuffer, cTopicName);
+
                   if (xReturned == eMQTTAgentSuccess)
         {
                       configPRINTF( ( "Published data '%s' on topic '%s' \r\n", cDataBuffer, cTopicName ) );
@@ -430,7 +431,7 @@ void vStartMQTTEchoDemo( void )
      * message buffer will only ever have to hold one message as messages are only
      * published every 5 seconds.  The message buffer requires that there is space
      * for the message length, which is held in a size_t variable. */
-    xPIDResponseBuffer = xMessageBufferCreate( ( size_t ) PUBLISH_OBD_LENGTH + sizeof( size_t ) );
+    xPIDResponseBuffer = xMessageBufferCreate( (size_t) PID_BUFFER_LENGTH + sizeof( size_t ) );
     configASSERT( xPIDResponseBuffer );
 
     /* Set the LED to indicate the WiFi is offline */
