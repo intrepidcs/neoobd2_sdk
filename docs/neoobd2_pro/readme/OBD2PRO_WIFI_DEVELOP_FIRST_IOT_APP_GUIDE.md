@@ -20,11 +20,11 @@ Required Hardware:
 Required Software:
 
 1. neoOBD2 SDK
-2. Vehicle Spy Professional
+2. Vehicle Spy Enterprise
 
-    [Vehicle Spy Professional](http://store.intrepidcs.com/Vehicle-Spy-p/vspy-3-pro.htm) is a single tool for diagnostics, node/ECU simulation, data acquisition, automated testing, and in-vehicle communication networks bus monitoring.
+    [Vehicle Spy Enterprise](https://store.intrepidcs.com/Vehicle-Spy-p/vspy-3-ent.htm) is a single tool for diagnostics, node/ECU simulation, data acquisition, automated testing, and in-vehicle communication networks bus monitoring.
     
-    For introduction, tutorials, and documentations on Vehicle Spy Professional, please [click here](https://cdn.intrepidcs.net/support/VehicleSpy/vehiclespyhelpdoc.html).
+    For introduction, tutorials, and documentations on Vehicle Spy Enterprise, please [click here](https://cdn.intrepidcs.net/support/VehicleSpy/vehiclespyhelpdoc.html).
 
 3. TI Code Composer Studio (CCS) IDE
 
@@ -87,13 +87,13 @@ Misc requirements:
 
 	4. Choose **Generate and save aws_clientcredential_keys.h**, and then save the file in your CCS project directory at <*Your_CCS_Project_Path*>/include. This overwrites the stub file in the directory.
 
-## Importing auto-generated ISM codes from Vehicle Spy Professional
+## Importing auto-generated ISM codes from Vehicle Spy Enterprise
 
-The **ISM library (obd2pro_wifi_cc32xx_ism.a)** and a set of **auto-generated ISM source files (obd2pro_wifi_cc32xx.c, obd2pro_wifi_cc32xx.h, and SpyCCode.c) from Vehicle Spy Professional** are the software components that grant the code running on CC3220SF transmit and receive access to data over the vehicle networks supported by neoOBD2 PRO (CAN/CANFD, LIN, and Ethernet).
+The **ISM library (obd2pro_wifi_cc32xx_ism.a)** and a set of **auto-generated ISM source files (obd2pro_wifi_cc32xx.c, obd2pro_wifi_cc32xx.h, and SpyCCode.c) from Vehicle Spy Enterprise** are the software components that grant the code running on CC3220SF transmit and receive access to data over the vehicle networks supported by neoOBD2 PRO (CAN/CANFD, LIN, and Ethernet).
 
 Although the **aws-mqtt** sample project comes with those files already integrated, please follow this guide to learn how to generate and import them as they are essential components of Wi-Fi application development with neoOBD2 PRO.
 
-1. Open Vehicle Spy Professional. Go to the **Scripting and Automation** menu and select **C Code Interface.** 
+1. Open Vehicle Spy Enterprise. Go to the **Scripting and Automation** menu and select **C Code Interface.** 
 
 2. Click **Add Project...** button and select **New Project...**
 
@@ -107,7 +107,7 @@ Although the **aws-mqtt** sample project comes with those files already integrat
 
 	![alt text](../images/17-Open_CCIF_Proj_Folder.PNG "Open the create CCIF Project Root Directory")
 
-6. **IMPORTANT:** Before proceeding further, save the Vehicle Spy Professional project (.vs3) by going to **File** on top menu and selecting **Save**. The saved .vs3 project will be used later to program the completed application into the CC3220SF in neoOBD2 PRO.
+6. **IMPORTANT:** Before proceeding further, save the Vehicle Spy Enterprise project (.vs3) by going to **File** on top menu and selecting **Save**. The saved .vs3 project will be used later to program the completed application into the CC3220SF in neoOBD2 PRO.
 
 	![alt text](../images/26-Save_Vspy_Project.PNG "Open the create CCIF Project Root Directory")
 
@@ -163,9 +163,9 @@ Now that you have successfully imported and built your first sample Wi-Fi projec
 
 	![alt text](../images/29-aws_iot_console_helloworld.PNG "MQTT messages in AWS IoT console")
 
-10. In Vehicle Spy Professional, you should see neoOBD2 PRO transmitting a classical CAN message with Arbitration ID 0x01 on HSCAN1 network.
+10. In Vehicle Spy Enterprise, you should see neoOBD2 PRO transmitting a classical CAN message with Arbitration ID 0x01 on HSCAN1 network.
 
-	![alt text](../images/31-vspy_helloworld.PNG "Vehicle Spy Professional messages view")
+	![alt text](../images/31-vspy_helloworld.PNG "Vehicle Spy Enterprise messages view")
 	
 ## Programming the Application into neoOBD2 PRO
 
@@ -173,7 +173,7 @@ Once your Wi-Fi program is ready to be deployed in neoOBD2 PRO, you can use Vehi
 
 The CC3220SF Wi-Fi module in neoOBD2 PRO is programmed with an application bootloader at production, which allows Vehicle Spy to program application binary. The application bootloader is always executed first from external secure FLASH. If the application bootloader detects a valid application in the external FLASH, it will load it into its internal FLASH and begin execution. Otherwise, the application bootloader will wait indefinitely for Vehicle Spy to send a valid application. 
 
-1. Open the **.vs3 project saved from step 6 of Importing auto-generated ISM codes from Vehicle Spy Professional** section. 
+1. Open the **.vs3 project saved from step 6 of Importing auto-generated ISM codes from Vehicle Spy Enterprise** section. 
 
 2. Go to **Scripting and Automation** from the top menu and select **C Code Interface**. Click the **Folder** button which will open up a file explorer in the root directory of the generated C Code Project. 
 
