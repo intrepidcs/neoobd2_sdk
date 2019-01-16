@@ -34,13 +34,13 @@ Misc requirements:
 	
 ## Importing the Sample Project and Building it in CCS
 
-1. To get started with a project in CCS select "*SDK_PATH*/samples" as the Workspace in the startup dialog box, where *SDK_PATH* is the local path where you have downloaded the neoOBD2 SDK. 
+1. To get started with a project in CCS select "*SDK_PATH*/demos/intrepid/neoobd2_pro" as the Workspace in the startup dialog box, where *SDK_PATH* is the local path where you have downloaded the neoOBD2 SDK. 
 	
 2. Go to **File** on the top menu and select **Import...**. When prompted, select **CCS Projects**.
 	
 	![alt text](../images/13-CCS_Import.PNG "CCS Import Project")
 	
-3. Browse to the Workspace path itself, i.e. "*SDK_PATH*/samples" folder. Then, a list of available samples will be populated. Select the **aws-mqtt** sample from the list. Enable the **Copy projects into workspace** checkbox and click Finish to complete the import process.
+3. Browse to the Workspace path itself, i.e. "*SDK_PATH*/demos/intrepid/neoobd2_pro" folder. Then, a list of available samples will be populated. Select the **aws-mqtt** sample from the list. Enable the **Copy projects into workspace** checkbox and click Finish to complete the import process.
 
 	![alt text](../images/14-CCS_Import.PNG "CCS Import Project")
 	
@@ -58,7 +58,7 @@ Misc requirements:
 
 4. In the left navigation pane, choose **Settings**.
 
-5. Copy your AWS IoT endpoint from the **Endpoint** text box. It should look like <*1234567890123*>.iot.<*us-east-1*>.amazonaws.com.
+5. Copy your AWS IoT endpoint from the **Endpoint** text box. It should look like <*1234567890123-ats*>.iot.<*us-east-1*>.amazonaws.com.
 	
 6. Open *include/aws_clientcredential.h* from **CCS project explorer** and set clientcredentialMQTT_BROKER_ENDPOINT to your AWS IoT endpoint. You also need to know your Wi-FI network SSID, password, and security type, and the name of the AWS IoT thing that represents your device. Valid security types are:
 
@@ -79,7 +79,7 @@ Misc requirements:
 	
 7. The certificate and private key must be hard-coded into the sample code. Amazon FreeRTOS is a C language project, and the certificate and private key must be specially formatted to be added to the project. **To format your certificate and private key:**
 
-	1. In a browser window, open <*SDK_Path*>\external\amazon\afreertos\demos\common\devmode_key_provisioning\CertificateConfigurationTool\CertificateConfigurator.html.
+	1. In a browser window, open <*SDK_Path*>\tools\certificate_configuration\CertificateConfigurator.html.
 
 	2. Under **Certificate PEM file**, choose the <*ID*>-certificate.pem.crt you downloaded from the AWS IoT console.
 
