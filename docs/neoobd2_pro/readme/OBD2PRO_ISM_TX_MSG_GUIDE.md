@@ -5,16 +5,16 @@ The ISM library provides C methods that allow you to freely construct and transm
 * neoOBD2 PRO: CAN/CANFD, SWCAN, LIN, and Ethernet
 * neoOBD2 LC: CAN/CANFD, SWCAN, and LIN
 
-For a complete documentations on **Vehicle Spy Professional**, please [click here](https://cdn.intrepidcs.net/support/VehicleSpy/vehiclespyhelpdoc.html).
+For a complete documentations on **Vehicle Spy Enterprise**, please [click here](https://cdn.intrepidcs.net/support/VehicleSpy/vehiclespyhelpdoc.html).
 
 <a name='prereq'></a>
 ## Prerequisites
 
 Follow these steps to enable the ability to transmit messages from your program:
 
-1. **IMPORTANT:** In order to transmit messages from your program, a **CoreMini script** must be programmed in the neoOBD2 PRO. **If transmitting CAN/LIN/Ethernet messages is the only requirement for your application** (i.e. if your program does not need to receive any messages from vehicle networks), all you need to do is to put a default CoreMini script that is available when you open up the **CoreMini Console** from Vehicle Spy Professional. To program a default CoreMini script to your neoOBD2 PRO, follow these steps:
+1. **IMPORTANT:** In order to transmit messages from your program, a **CoreMini script** must be programmed in the neoOBD2 PRO. **If transmitting CAN/LIN/Ethernet messages is the only requirement for your application** (i.e. if your program does not need to receive any messages from vehicle networks), all you need to do is to put a default CoreMini script that is available when you open up the **CoreMini Console** from Vehicle Spy Enterprise. To program a default CoreMini script to your neoOBD2 PRO, follow these steps:
 
-	1) Open Vehicle Spy Professional.
+	1) Open Vehicle Spy Enterprise.
 
 	2) From top menu select **Tools**. Then, select **CoreMini Console**.
 
@@ -24,7 +24,7 @@ Follow these steps to enable the ability to transmit messages from your program:
 
     **IMPORTANT: If your application requires you to receive messages / data from vehicle networks**, additional steps are required for setting up CoreMini accordingly. This is described in the **[How to Capture Vehicle Network Receive Messages from your ISM Program](OBD2PRO_ISM_RX_MSG_GUIDE.md)** guide.
 
-    Note that when you program your Wi-Fi application with Vehicle Spy Professional as described in the **Programming the Application into neoOBD2 PRO** section of the **Getting Started with your first Wi-Fi Application for neoOBD2 PRO** guide, you are programming a CoreMini script together with the Wi-Fi application binary.
+    Note that when you program your Wi-Fi application with Vehicle Spy Enterprise as described in the **Programming the Application into neoOBD2 PRO** section of the **Getting Started with your first Wi-Fi Application for neoOBD2 PRO** guide, you are programming a CoreMini script together with the Wi-Fi application binary.
 
 2. **IMPORTANT:** Ensure that the ISM precompiled static library **obd2pro_wifi_cc32xx_ism.a** is linked to your project. Do this in CCS by going to the **File Search Path** under **ARM Linker** section in project properties. The correct version of the library file can be located in <*SDK_PATH*>/library/ism_lib/wifi-ism_lib/CCS. **IMPORTANT:** It is critical that **the order in which the ISM library is linked to the project is higher than other libraries such as driverlib.a and simplelink.a.**
 
