@@ -19,7 +19,7 @@ Required Software:
 
 2. Texas Instruments Code Composer Studio IDE
 	
-## Install Vehicle Spy Professional and Configure Basic Hardware Settings
+## Install Vehicle Spy Enterprise and Configure Basic Hardware Settings
 
 1. Run the offline installer provided with your purchase of **Vehicle Spy Enterprise**. Please [contact Intrepid Control Systems](https://www.intrepidcs.com/support/contact-support/) for a version of installer that is compatible with your neoOBD2 PRO.
 
