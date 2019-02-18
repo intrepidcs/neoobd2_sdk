@@ -1,5 +1,5 @@
 /*
- * Amazon FreeRTOS V1.0.0
+ * Amazon FreeRTOS V1.4.4
  * Copyright (C) 2017 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -10,8 +10,7 @@
  * subject to the following conditions:
  *
  * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software. If you wish to use our Amazon
- * FreeRTOS name, please do so in a fair use way that does not cause confusion.
+ * copies or substantial portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
@@ -24,41 +23,42 @@
  * http://www.FreeRTOS.org
  */
 
-#ifndef _AWS_MQTT_OBD2PID_H_
-#define _AWS_MQTT_OBD2PID_H_
+/**
+ * @file aws_mqtt_config.h
+ * @brief MQTT config options.
+ */
 
-/* FreeRTOS includes. */
-#include "FreeRTOS.h"
-#include "task.h"
-#include "message_buffer.h"
+#ifndef _AWS_MQTT_CONFIG_H_
+#define _AWS_MQTT_CONFIG_H_
 
-/* MQTT includes. */
-#include "aws_mqtt_agent.h"
+/**
+ * @brief Enable subscription management.
+ *
+ * This gives the user flexibility of registering a callback per topic.
+ */
+#define mqttconfigENABLE_SUBSCRIPTION_MANAGEMENT            ( 1 )
 
-/* Credentials includes. */
-#include "aws_clientcredential.h"
+/**
+ * @brief Maximum length of the topic which can be stored in subscription
+ * manager.
+ */
+#define mqttconfigSUBSCRIPTION_MANAGER_MAX_TOPIC_LENGTH     ( 128 )
 
-/* Demo includes. */
-#include "aws_demo_config.h"
-#include "obd2pro_wifi_cc32xx.h"
-#include "obd2pro_wifi_cc32xx_ism.h"
-#include "aws_demo.h"
-/* Maximum number of OBDII PIDs configurable for this sample application */
-#define MAX_NUM_PIDS            (32)
+/**
+ * @brief Maximum number of subscriptions which can be stored in subscription
+ * manager.
+ */
+#define mqttconfigSUBSCRIPTION_MANAGER_MAX_SUBSCRIPTIONS    ( 8 )
 
-#define PID_BUFFER_LENGTH            (132)
+/*
+ * Uncomment the following two lines to enable asserts.
+ */
+/* extern void vAssertCalled( const char *pcFile, uint32_t ulLine ); */
+/* #define mqttconfigASSERT( x )                       if( ( x ) == 0 ) vAssertCalled( __FILE__, __LINE__ ) */
 
-#define PUBLISH_OBD_LENGTH          (8)
-/* The maximum size of the entire configuration file */
-#define MAX_FILE_BUFFER_SIZE    (12*1024)
+/**
+ * @brief Set this macro to 1 for enabling debug logs.
+ */
+#define mqttconfigENABLE_DEBUG_LOGS    0
 
-extern MessageBufferHandle_t xPIDResponseBuffer;
-extern MessageBufferHandle_t xDataBuffer;
-
-
-static const unsigned char pidNumberLookup[32] = {12};
-MQTTAgentReturnCode_t prvPublishOBDIIMessage( char*, char*, size_t);
-
-demoDECLARE_DEMO( vStartMQTTEchoDemo );
-
-#endif
+#endif /* _AWS_MQTT_CONFIG_H_ */

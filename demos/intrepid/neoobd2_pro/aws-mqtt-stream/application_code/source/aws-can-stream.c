@@ -75,7 +75,7 @@
  */
 
 /* Standard includes. */
-#include <alexa_cluster.h>
+#include <aws-can-stream.h>
 #include "string.h"
 #include "stdio.h"
 
@@ -85,15 +85,14 @@
  *
  * It must be unique per MQTT broker.
  */
-#define echoCLIENT_ID          ( ( const uint8_t * ) "OBD2PIDAPP" )
+#define echoCLIENT_ID          ( ( const uint8_t * ) "CANSTREAM" )
 
 /**
  * @brief The topic that the MQTT client both subscribes and publishes to.
  */
-#define SUB_TOPIC         ( ( const uint8_t * ) "alexa/command" )
 
-#define PUB_TOPIC          (( const uint8_t * ) "alexa/cluster" )
-#define CAN_PUB_TOPIC          (( const uint8_t * ) "alexa/can" )
+#define CAN_PUB_TOPIC          (( const uint8_t * ) "aws/can" )
+#define SUB_TOPIC         ( ( const uint8_t * ) "alexa/command" )
 
 #define LBYTE               0x01
 #define RBYTE               0x02
@@ -144,7 +143,7 @@ static BaseType_t prvCreateClientAndConnectToBroker( void );
  */
 //static void prvPublishNextMessage( BaseType_t xMessageNumber );
 
-MQTTAgentReturnCode_t prvPublishOBDIIMessage( char*, char*, size_t);
+MQTTAgentReturnCode_t prvPublishMessage( char*, char*, size_t);
 
 /*-----------------------------------------------------------*/
 
@@ -260,7 +259,7 @@ static MQTTBool_t prvMQTTCallback( void * pvUserData,
     return eMQTTFalse;
 }
 
- MQTTAgentReturnCode_t prvPublishOBDIIMessage( char *cDataBuffer, char *cTopicName, size_t len )
+ MQTTAgentReturnCode_t prvPublishMessage( char *cDataBuffer, char *cTopicName, size_t len )
 {
     MQTTAgentPublishParams_t xPublishParameters;
     MQTTAgentReturnCode_t xReturned;
@@ -376,23 +375,19 @@ static void prvEchoCANTask(void* pvParams)
     (void) pvParams;
     MQTTAgentReturnCode_t xReturned;
     char cDataBuffer[echoMAX_DATA_LENGTH] = {0};
-    uint8_t uGearNibble =0;
     size_t xBytesReceived;
-
 
     configASSERT( xDataBuffer != NULL );
 
     while (1)
     {
 
-        xBytesReceived = xMessageBufferReceive(xDataBuffer, &uGearNibble,
-                                               sizeof (uint8_t),
+        xBytesReceived = xMessageBufferReceive(xDataBuffer, cDataBuffer,
+                                               STREAM_DATA_LENGTH,
                                                portMAX_DELAY);
         if (xBytesReceived > 0)
         {
-            //(void ) snprintf(cDataBuffer, 2, "%d", uGearNibble);
-            //xReturned = prvPublishOBDIIMessage(cDataBuffer, (char*)CAN_PUB_TOPIC, xBytesReceived );
-            xReturned = prvPublishOBDIIMessage(&uGearNibble, (char*)CAN_PUB_TOPIC, xBytesReceived );
+            xReturned = prvPublishMessage(cDataBuffer, (char*)CAN_PUB_TOPIC, xBytesReceived );
 
             if (xReturned != eMQTTAgentSuccess){
                 configPRINTF(( "Published on CAN topic failed \r\n" ));
@@ -403,107 +398,6 @@ static void prvEchoCANTask(void* pvParams)
     }
 }
 /*-----------------------------------------------------------*/
-
-static void prvRunMqttPubTask(void* pvParams)
-{
-    (void) pvParams;
-    MQTTAgentReturnCode_t xReturned;
-    char cDataBuffer[ PID_BUFFER_LENGTH ] = {0};
-    size_t xBytesReceived;
-    static char command =0;
-    static TaskHandle_t xCANTxTask = NULL;
-
-    configASSERT( xCommandBuffer != NULL );
-
-    while (1)
-    {
-
-        xBytesReceived = xMessageBufferReceive(xCommandBuffer, cDataBuffer,
-                                               echoMAX_DATA_LENGTH,
-                                               portMAX_DELAY);
-        if (xBytesReceived > 0)
-        {
-            command = cDataBuffer[0];
-            switch (command)
-            {
-                case 'R':
-                case 'r':
-                if (xCANTxTask == NULL)
-                {
-                    commandByte = RBYTE;
-                    xReturned = xTaskCreate( prvCANTxTask,
-                                             "CANTxTask",
-                                             1024,
-                                             NULL,
-                                             tskIDLE_PRIORITY,
-                                             &( xCANTxTask )
-                                           );
-                    if( xReturned != pdPASS )
-                        configPRINTF( ( "CAN Tx task could not be created - out of heap space?\r\n" ) );
-                }
-                else
-                {
-                    commandByte = RBYTE;
-                }
-                break;
-
-                case 'L':
-                case 'l':
-                if (xCANTxTask == NULL)
-                {
-                    commandByte = LBYTE;
-                    xReturned = xTaskCreate( prvCANTxTask, "CANTxTask", 1024, NULL, tskIDLE_PRIORITY, &( xCANTxTask ) );
-                    if( xReturned != pdPASS )
-                        configPRINTF( ( "CAN Tx task could not be created - out of heap space?\r\n" ) );
-                }
-                else
-                {
-                    commandByte = LBYTE;
-                }
-                break;
-
-                case 'O':
-                case 'o':
-                case 'S':
-                case 's':
-                if (xCANTxTask != NULL){
-                    vTaskDelete( xCANTxTask );
-                    xCANTxTask = NULL;
-                }
-                break;
-
-                default:
-                configPRINTF( ( "Invalid Command\r\n" ) );
-                strncpy(cDataBuffer, "Invalid", sizeof("Invalid"));
-                if (xCANTxTask != NULL){
-                    vTaskDelete( xCANTxTask );
-                    xCANTxTask = NULL;
-                }
-                break;
-            }
-
-            xReturned = prvPublishOBDIIMessage(cDataBuffer, (char*)PUB_TOPIC, xBytesReceived);
-
-            if (xReturned == eMQTTAgentSuccess)
-            {
-                configPRINTF(
-                        ( "Published data '%s' on topic '%s' \r\n", cDataBuffer, PUB_TOPIC ));
-
-            }
-            else
-            {
-                configPRINTF(
-                        ( "ERROR:  Could not publish OBD Frame \n'%x'\r\n", cDataBuffer ));
-                // MQTT publish failed. No error handler provided.
-            }
-
-        }
-        else
-        {
-            configPRINTF(( "ERROR:  Received 0 bytes for publish\r\n" ));
-        }
-    }
-}
 
 static void prvMQTTConnectAndPublishTask( void * pvParameters )
 {
@@ -527,25 +421,12 @@ static void prvMQTTConnectAndPublishTask( void * pvParameters )
         if( xReturned == pdPASS )
         {
         /* Create the MQTT Publish Task */
-            xReturned = xTaskCreate( prvRunMqttPubTask,                     /* The function that implements the demo task. */
-                                     "MqttPub",                             /* The name to assign to the task being created. */
-                                     1024,                                  /* The size, in WORDS (not bytes), of the stack to allocate for the task being created. */
-                                     NULL,                                  /* The task parameter is not being used. */
-                                     tskIDLE_PRIORITY,                      /* Runs at the lowest priority. */
-                                     &( xMqttPubTask ) );                   /* Not storing the task's handle. */
-
-            if( xReturned != pdPASS )
-            {
-                /* The task could not be created because there was insufficient FreeRTOS
-                 * heap available to create the task's data structures and/or stack. */
-                configPRINTF( ( "MQTT Publish task could not be created - out of heap space?\r\n" ) );
-                }
-                xReturned = xTaskCreate( prvEchoCANTask,                    /* The function that implements the demo task. */
-                                         "CANEcho",                         /* The name to assign to the task being created. */
-                                         1024,                              /* The size, in WORDS (not bytes), of the stack to allocate for the task being created. */
-                                         NULL,                              /* The task parameter is not being used. */
-                                         tskIDLE_PRIORITY,                  /* Runs at the lowest priority. */
-                                         &( xMqttPubTask ) );               /* Not storing the task's handle. */
+           xReturned = xTaskCreate( prvEchoCANTask,         /* The function that implements the demo task. */
+                         "CANEcho",                         /* The name to assign to the task being created. */
+                         1024,                              /* The size, in WORDS (not bytes), of the stack to allocate for the task being created. */
+                         NULL,                              /* The task parameter is not being used. */
+                         tskIDLE_PRIORITY,                  /* Runs at the lowest priority. */
+                         &( xMqttPubTask ) );               /* Not storing the task's handle. */
 
             if( xReturned != pdPASS )
             {
@@ -577,8 +458,7 @@ void vStartMQTTEchoDemo( void )
     //TaskHandle_t xISMTask = NULL;
     configPRINTF( ( "Creating MQTT Echo Task...\r\n" ) );
 
-    xCommandBuffer = xMessageBufferCreate( (size_t) echoMAX_DATA_LENGTH + sizeof( size_t ) );
-    xDataBuffer = xMessageBufferCreate( (size_t) sizeof (uint8_t) + sizeof( size_t ) );
+    xDataBuffer = xMessageBufferCreate( (size_t) STREAM_DATA_LENGTH + sizeof( size_t ) );
 
     configASSERT( xCommandBuffer );
     ControlMainChipLEDColor(COLOR_WIFI_OFFLINE);

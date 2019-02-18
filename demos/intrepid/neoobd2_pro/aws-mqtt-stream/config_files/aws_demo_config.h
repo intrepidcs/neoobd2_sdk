@@ -68,7 +68,7 @@
 #define democonfigMQTT_ECHO_TASK_PRIORITY                    ( tskIDLE_PRIORITY )
 
 /* ISM task parameters */
-#define democonfigISM_TASK_STACK_SIZE                        ( 4000 ) //Stack size required for continuous CAN messages from VSPY.
+#define democonfigISM_TASK_STACK_SIZE                        ( 4000 )
 #define democonfigISM_TASK_PRIORITY                          ( tskIDLE_PRIORITY )
 
 /* Timeout used when establishing a connection, which required TLS

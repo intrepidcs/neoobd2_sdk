@@ -213,18 +213,18 @@ int GenericLongMessageTransmit(GenericLongMessage * p_Msg);
 int CANFDMessageTransmit(GenericLongMessage * p_Msg, uint8_t bBRS);
 int ControlMainChipLEDColor(unsigned int ledColor);
 
-extern int MG_GearStatus_HS_CAN_Index;
+extern int MG_Message_HS_CAN_1_HS_CAN_Index;
 typedef struct {
     GenericMessage MessageData; /// Message Data
     MessageStats Statistics; /// Message Statistics
     int iDefaultPeriodMilliseconds; /// Default Message Period
-} MG_GearStatus_HS_CAN;
-void MG_GearStatus_HS_CAN_Init(MG_GearStatus_HS_CAN * pMsg);
-int MG_GearStatus_HS_CAN_Transmit(MG_GearStatus_HS_CAN * pMsg);
-int MG_GearStatus_HS_CAN_Transmit_raw(MG_GearStatus_HS_CAN * pMsg);
-#define MG_GearStatus_HS_CAN_ClearStats() \
-    CM_GetSetValue(CM_GETSET_TX_STATS_CLR, MG_GearStatus_HS_CAN_Index, 0)
+} MG_Message_HS_CAN_1_HS_CAN;
+void MG_Message_HS_CAN_1_HS_CAN_Init(MG_Message_HS_CAN_1_HS_CAN * pMsg);
+int MG_Message_HS_CAN_1_HS_CAN_Transmit(MG_Message_HS_CAN_1_HS_CAN * pMsg);
+int MG_Message_HS_CAN_1_HS_CAN_Transmit_raw(MG_Message_HS_CAN_1_HS_CAN * pMsg);
+#define MG_Message_HS_CAN_1_HS_CAN_ClearStats() \
+    CM_GetSetValue(CM_GETSET_TX_STATS_CLR, MG_Message_HS_CAN_1_HS_CAN_Index, 0)
 
-void SpyMsg_MG_GearStatus_HS_CAN(MG_GearStatus_HS_CAN * pMG_GearStatus_HS_CAN);
+void SpyMsg_MG_Message_HS_CAN_1_HS_CAN(MG_Message_HS_CAN_1_HS_CAN * pMG_Message_HS_CAN_1_HS_CAN);
 
 #endif // VSPY_GENERATED_HEADER

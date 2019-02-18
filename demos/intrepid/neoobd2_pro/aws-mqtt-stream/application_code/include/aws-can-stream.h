@@ -44,20 +44,15 @@
 #include "obd2pro_wifi_cc32xx_ism.h"
 #include "aws_demo.h"
 /* Maximum number of OBDII PIDs configurable for this sample application */
+
+#define STREAM_DATA_LENGTH      (8)
 #define MAX_NUM_PIDS            (32)
 
-#define PID_BUFFER_LENGTH            (132)
-
-#define PUBLISH_OBD_LENGTH          (8)
-/* The maximum size of the entire configuration file */
-#define MAX_FILE_BUFFER_SIZE    (12*1024)
-
-extern MessageBufferHandle_t xPIDResponseBuffer;
 extern MessageBufferHandle_t xDataBuffer;
 
-
 static const unsigned char pidNumberLookup[32] = {12};
-MQTTAgentReturnCode_t prvPublishOBDIIMessage( char*, char*, size_t);
+
+MQTTAgentReturnCode_t prvPublishMessage( char*, char*, size_t);
 
 demoDECLARE_DEMO( vStartMQTTEchoDemo );
 

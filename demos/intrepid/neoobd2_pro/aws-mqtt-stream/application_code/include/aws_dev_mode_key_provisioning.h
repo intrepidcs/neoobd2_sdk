@@ -1,5 +1,5 @@
 /*
- * Amazon FreeRTOS V1.0.0
+ * Amazon FreeRTOS V1.4.4
  * Copyright (C) 2017 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -10,8 +10,7 @@
  * subject to the following conditions:
  *
  * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software. If you wish to use our Amazon
- * FreeRTOS name, please do so in a fair use way that does not cause confusion.
+ * copies or substantial portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
@@ -24,41 +23,33 @@
  * http://www.FreeRTOS.org
  */
 
-#ifndef _AWS_MQTT_OBD2PID_H_
-#define _AWS_MQTT_OBD2PID_H_
 
-/* FreeRTOS includes. */
-#include "FreeRTOS.h"
-#include "task.h"
-#include "message_buffer.h"
+#ifndef _AWS_DEV_MODE_KEY_PROVISIONING_H_
+#define _AWS_DEV_MODE_KEY_PROVISIONING_H_
 
-/* MQTT includes. */
-#include "aws_mqtt_agent.h"
+#include "aws_pkcs11.h"
 
-/* Credentials includes. */
-#include "aws_clientcredential.h"
+typedef struct ProvisioningParams_t
+{
+    uint32_t ulClientPrivateKeyType;
+    uint8_t * pcClientPrivateKey;
+    uint32_t ulClientPrivateKeyLength;
+    uint8_t * pcClientCertificate;
+    uint32_t ulClientCertificateLength;
+} ProvisioningParams_t;
 
-/* Demo includes. */
-#include "aws_demo_config.h"
-#include "obd2pro_wifi_cc32xx.h"
-#include "obd2pro_wifi_cc32xx_ism.h"
-#include "aws_demo.h"
-/* Maximum number of OBDII PIDs configurable for this sample application */
-#define MAX_NUM_PIDS            (32)
+void vDevModeKeyProvisioning( void );
 
-#define PID_BUFFER_LENGTH            (132)
+void vAlternateKeyProvisioning( ProvisioningParams_t * xParams );
 
-#define PUBLISH_OBD_LENGTH          (8)
-/* The maximum size of the entire configuration file */
-#define MAX_FILE_BUFFER_SIZE    (12*1024)
+CK_RV xInitializePkcsSession( CK_FUNCTION_LIST_PTR * ppxFunctionList,
+                              CK_SLOT_ID * pxSlotId,
+                              CK_SESSION_HANDLE * pxSession );
 
-extern MessageBufferHandle_t xPIDResponseBuffer;
-extern MessageBufferHandle_t xDataBuffer;
+CK_RV xProvisionCertificate( CK_SESSION_HANDLE xSession,
+                             uint8_t * pucCertificate,
+                             size_t xCertificateLength,
+                             uint8_t * pucLabel,
+                             CK_OBJECT_HANDLE_PTR xObjectHandle );
 
-
-static const unsigned char pidNumberLookup[32] = {12};
-MQTTAgentReturnCode_t prvPublishOBDIIMessage( char*, char*, size_t);
-
-demoDECLARE_DEMO( vStartMQTTEchoDemo );
-
-#endif
+#endif /* _AWS_DEV_MODE_KEY_PROVISIONING_H_ */

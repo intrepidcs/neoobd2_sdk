@@ -145,11 +145,11 @@ int ControlMainChipLEDColor(unsigned int ledColor)
     return CM_SendCommandToMainChip(ISM_CMD_CTRL_LED_COLOR, sizeof(sfifoISMChipLEDControl), &stData);
 }
 
-void CM_MG_GearStatus_HS_CAN()
+void CM_MG_Message_HS_CAN_1_HS_CAN()
 {
-    MG_GearStatus_HS_CAN stMyStruct;
-    MG_GearStatus_HS_CAN_Init(&stMyStruct);
-    SpyMsg_MG_GearStatus_HS_CAN(&stMyStruct);
+    MG_Message_HS_CAN_1_HS_CAN stMyStruct;
+    MG_Message_HS_CAN_1_HS_CAN_Init(&stMyStruct);
+    SpyMsg_MG_Message_HS_CAN_1_HS_CAN(&stMyStruct);
 }
 
 void SpyAppSig_CallAllHandlers()
@@ -206,7 +206,7 @@ void CM_ExtensionInit(const struct stCallBackPointers * pCb)
     map_init(icsISM_GetMessageTxMap(), cb_message_tx_nodes, sizeof(cb_message_tx_nodes)/sizeof(node_t));
     map_init(icsISM_GetBeforeMessageTxMap(), cb_before_message_tx_nodes, sizeof(cb_before_message_tx_nodes)/sizeof(node_t));
 
-    CM_RegisterCallback(CM_CALLBACKTYPE_MESSAGE_MG, MG_GearStatus_HS_CAN_Index,CM_MG_GearStatus_HS_CAN);
+    CM_RegisterCallback(CM_CALLBACKTYPE_MESSAGE_MG, MG_Message_HS_CAN_1_HS_CAN_Index,CM_MG_Message_HS_CAN_1_HS_CAN);
 }
 
 void CM_EveryMessage(int iNetwork, int iID, uint64_t iTimeNanoseconds, unsigned int iTimeMilliseconds, int iNumDataBytes, int iBitField, const unsigned char * p_btData)
@@ -241,14 +241,14 @@ void CM_EveryMessage(int iNetwork, int iID, uint64_t iTimeNanoseconds, unsigned 
     }
 }
 
-int MG_GearStatus_HS_CAN_Index = 0;
+int MG_Message_HS_CAN_1_HS_CAN_Index = 0;
 
-void MG_GearStatus_HS_CAN_Init(MG_GearStatus_HS_CAN * pMsg)
+void MG_Message_HS_CAN_1_HS_CAN_Init(MG_Message_HS_CAN_1_HS_CAN * pMsg)
 {
     int iActualSignalMaxCount;
 
     CM_MessageGenericInit(1, 
-    MG_GearStatus_HS_CAN_Index, &pMsg->Statistics, &pMsg->MessageData.iNetwork, 
+    MG_Message_HS_CAN_1_HS_CAN_Index, &pMsg->Statistics, &pMsg->MessageData.iNetwork, 
     &pMsg->MessageData.iNumDataBytes, sizeof(pMsg->MessageData.btData),
     &pMsg->iDefaultPeriodMilliseconds, &pMsg->MessageData.iID,
     &pMsg->MessageData.iBitField, &pMsg->MessageData.btData[0],
@@ -259,13 +259,13 @@ void MG_GearStatus_HS_CAN_Init(MG_GearStatus_HS_CAN * pMsg)
         pMsg->MessageData.iID = mkExtId(pMsg->MessageData.iID);
 }
 
-int MG_GearStatus_HS_CAN_Transmit(MG_GearStatus_HS_CAN * pMsg)
+int MG_Message_HS_CAN_1_HS_CAN_Transmit(MG_Message_HS_CAN_1_HS_CAN * pMsg)
 {
-    return CM_TxFromSignals(1, MG_GearStatus_HS_CAN_Index, pMsg->MessageData.btData, pMsg->MessageData.iNumDataBytes, pMsg->MessageData.iNetwork, 0, 0);
+    return CM_TxFromSignals(1, MG_Message_HS_CAN_1_HS_CAN_Index, pMsg->MessageData.btData, pMsg->MessageData.iNumDataBytes, pMsg->MessageData.iNetwork, 0, 0);
 }
 
-int MG_GearStatus_HS_CAN_Transmit_raw(MG_GearStatus_HS_CAN * pMsg)
+int MG_Message_HS_CAN_1_HS_CAN_Transmit_raw(MG_Message_HS_CAN_1_HS_CAN * pMsg)
 {
-    return CM_TxFromRawSignals(1, MG_GearStatus_HS_CAN_Index, pMsg->MessageData.btData, pMsg->MessageData.iNumDataBytes, pMsg->MessageData.iNetwork, 0, 0);
+    return CM_TxFromRawSignals(1, MG_Message_HS_CAN_1_HS_CAN_Index, pMsg->MessageData.btData, pMsg->MessageData.iNumDataBytes, pMsg->MessageData.iNetwork, 0, 0);
 }
 

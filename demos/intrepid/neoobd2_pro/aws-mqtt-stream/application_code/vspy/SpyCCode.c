@@ -26,7 +26,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifdef BUILD_VSPY_DLL_PROJECT
 #include "vspy.h"
 #elif defined(BUILD_OBD2PRO_WIFI_CC32XX_ISM_PROJECT)
-#include <alexa_cluster.h>
+#include <aws-can-stream.h>
 #include "obd2pro_wifi_cc32xx.h"
 #endif
 
@@ -35,16 +35,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // TODO: add global variables here
 
 // TODO: add event handlers here
-
-void SpyMsg_MG_GearStatus_HS_CAN(MG_GearStatus_HS_CAN * pMG_GearStatus_HS_CAN)
+void SpyMsg_MG_Message_HS_CAN_1_HS_CAN(MG_Message_HS_CAN_1_HS_CAN * pMG_Message_HS_CAN_1_HS_CAN)
 {
     size_t xBytesSend;
-   uint8_t uGearNibble =0;
-   uGearNibble = pMG_GearStatus_HS_CAN->MessageData.btData[5] & 0x0f;
-   xBytesSend = xMessageBufferSend(xDataBuffer, &uGearNibble, sizeof (uint8_t) , 0);
-   //if (xBytesSend > 0)
-     //  configPRINTF(( "Sent '%d' bytes \r\n", xBytesSend ));
+
+    prvPublishMessage(&pMG_Message_HS_CAN_1_HS_CAN->MessageData.btData, "alexa/can", 8);
+    //xBytesSend = xMessageBufferSend(xDataBuffer, &pMG_Message_HS_CAN_1_HS_CAN->MessageData.btData, 8 , 0);
 }
+
 
 void Spy_EveryMessage(GenericMessage * p_Msg)
 {

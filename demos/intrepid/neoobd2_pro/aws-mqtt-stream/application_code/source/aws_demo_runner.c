@@ -1,5 +1,5 @@
 /*
- * Amazon FreeRTOS V1.0.0
+ * Amazon FreeRTOS V1.4.4
  * Copyright (C) 2017 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -10,8 +10,7 @@
  * subject to the following conditions:
  *
  * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software. If you wish to use our Amazon
- * FreeRTOS name, please do so in a fair use way that does not cause confusion.
+ * copies or substantial portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
@@ -24,41 +23,23 @@
  * http://www.FreeRTOS.org
  */
 
-#ifndef _AWS_MQTT_OBD2PID_H_
-#define _AWS_MQTT_OBD2PID_H_
+#include "aws_demo_runner.h"
 
-/* FreeRTOS includes. */
-#include "FreeRTOS.h"
-#include "task.h"
-#include "message_buffer.h"
+/* Demo declarations. */
+extern void vStartMQTTEchoDemo( void );
+/* extern void vStartGreenGrassDiscoveryTask( void ); */
+/* extern void vStartShadowDemoTasks( void ); */
+/* extern void vStartOTAUpdateDemoTask( void ); */
 
-/* MQTT includes. */
-#include "aws_mqtt_agent.h"
+/*-----------------------------------------------------------*/
 
-/* Credentials includes. */
-#include "aws_clientcredential.h"
-
-/* Demo includes. */
-#include "aws_demo_config.h"
-#include "obd2pro_wifi_cc32xx.h"
-#include "obd2pro_wifi_cc32xx_ism.h"
-#include "aws_demo.h"
-/* Maximum number of OBDII PIDs configurable for this sample application */
-#define MAX_NUM_PIDS            (32)
-
-#define PID_BUFFER_LENGTH            (132)
-
-#define PUBLISH_OBD_LENGTH          (8)
-/* The maximum size of the entire configuration file */
-#define MAX_FILE_BUFFER_SIZE    (12*1024)
-
-extern MessageBufferHandle_t xPIDResponseBuffer;
-extern MessageBufferHandle_t xDataBuffer;
-
-
-static const unsigned char pidNumberLookup[32] = {12};
-MQTTAgentReturnCode_t prvPublishOBDIIMessage( char*, char*, size_t);
-
-demoDECLARE_DEMO( vStartMQTTEchoDemo );
-
-#endif
+/**
+ * @brief Runs demos in the system.
+ */
+void DEMO_RUNNER_RunDemos( void )
+{
+    vStartMQTTEchoDemo();
+    /* vStartGreenGrassDiscoveryTask(); */
+    /* vStartShadowDemoTasks(); */
+    /* vStartOTAUpdateDemoTask(); */
+}
