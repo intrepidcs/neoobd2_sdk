@@ -1,5 +1,4 @@
-samples/*/Debug
-samples/*/Release
+demos/intrepid/neoobd2_pro/*/Debug
 .launches
 .settings
 .metadata
