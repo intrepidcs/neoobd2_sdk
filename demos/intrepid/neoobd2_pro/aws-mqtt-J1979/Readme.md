@@ -34,39 +34,39 @@ The **aws_iot_config** file is a text file that contains credentials and setting
 
 2. Locate the first configurable field in the file, which shall be **static const unsigned char pidNumberLookup[32]**.
 
-	![alt text](../../docs/neoobd2_pro/images/42-aws_iot_config_1.PNG "AWS IoT Config OBDII PID list")
+	![alt text](../../../../docs/neoobd2_pro/images/42-aws_iot_config_1.PNG "AWS IoT Config OBDII PID list")
 
 3. In decimal value, enter the OBDII PID number you wish to collect & publish to AWS IoT. The list of available OBDII PID numbers can be found [**here**](https://en.wikipedia.org/wiki/OBD-II_PIDs) under the section **Mode 01**.
 
 4. For example, if you would like to collect & publish the Engine RPM (PID 12) and Vehicle Speed (PID 13). The pidNumberLookup should be configured as follows:
 
-	![alt text](../../docs/neoobd2_pro/images/43-aws_iot_config_2.PNG "AWS IoT Config OBDII PID list sample")
+	![alt text](../../../../docs/neoobd2_pro/images/43-aws_iot_config_2.PNG "AWS IoT Config OBDII PID list sample")
 
 5. Download your certificate and private key from the AWS IoT console. Use the **CertificateConfigurator.html** tool to convert the certificate and private key into a char array format compatible for C language. Copy and paste the certificate and private key into the aws_iot_config file under matching fields at **clientcredentialCLIENT_CERTIFICATE_PEM** and **clientcredentialCLIENT_PRIVATE_KEY_PEM**.
 
 6. Locate the field **clientcredentialMQTT_BROKER_ENDPOINT**. Copy and paste your AWS IoT endpoint here. It should look like <*1234567890123*>.iot.<*us-east-1*>.amazonaws.com
 
-	![alt text](../../docs/neoobd2_pro/images/44-aws_iot_config_3.PNG "AWS IoT Config AWS IoT Broker Endpoint Address")
+	![alt text](../../../../docs/neoobd2_pro/images/44-aws_iot_config_3.PNG "AWS IoT Config AWS IoT Broker Endpoint Address")
 
 7. Locate the field **clientcredentialMQTT_BROKER_PORT**. Set this to 8883.
 
-	![alt text](../../docs/neoobd2_pro/images/45-aws_iot_config_4.PNG "AWS IoT Config AWS IoT Broker Port Number")
+	![alt text](../../../../docs/neoobd2_pro/images/45-aws_iot_config_4.PNG "AWS IoT Config AWS IoT Broker Port Number")
 
 8. Locate the field **clientcredentialGREENGRASS_DISCOVERY_PORT**. Set this to 8443. This is just a dummy entry for this specific application; the application is programmed to connect to AWS IoT and not Greengrass.
 
-	![alt text](../../docs/neoobd2_pro/images/46-aws_iot_config_5.PNG "AWS IoT Config Greengrass Port Number")
+	![alt text](../../../../docs/neoobd2_pro/images/46-aws_iot_config_5.PNG "AWS IoT Config Greengrass Port Number")
 
 9. Locate the field **clientcredentialWIFI_SSID**. Set it to the SSID for your WiFi network.
 
-	![alt text](../../docs/neoobd2_pro/images/47-aws_iot_config_6.PNG "AWS IoT Config Wi-Fi SSID")
+	![alt text](../../../../docs/neoobd2_pro/images/47-aws_iot_config_6.PNG "AWS IoT Config Wi-Fi SSID")
 
 10. Locate the field **clientcredentialWIFI_PASSWORD**. Set it to the password for your WiFi network.
 
-	![alt text](../../docs/neoobd2_pro/images/48-aws_iot_config_7.PNG "AWS IoT Config Wi-Fi Password")
+	![alt text](../../../../docs/neoobd2_pro/images/48-aws_iot_config_7.PNG "AWS IoT Config Wi-Fi Password")
 
 11. Locate the field **clientcredentialWIFI_SECURITY**. Set it to the security type for your WiFi network.
 
-	![alt text](../../docs/neoobd2_pro/images/49-aws_iot_config_8.PNG "AWS IoT Config Wi-Fi Security")
+	![alt text](../../../../docs/neoobd2_pro/images/49-aws_iot_config_8.PNG "AWS IoT Config Wi-Fi Security")
 
 ### Programming the Config File
 
@@ -74,24 +74,24 @@ The **aws_iot_config** file is a text file that contains credentials and setting
 
 2. Open the Uniflash software. Verify the connection is **Stellaris in-Circuit Debug Interface**. Then, search and choose the **CC3220SF-LAUNCHXL**. Verify the Selected Connection is set to **Serial(UART) Interface** and click the **Start Image Creator** button.
 
-	![alt text](../../docs/neoobd2_pro/images/50-uniflash.PNG "Uniflash")
+	![alt text](../../../../docs/neoobd2_pro/images/50-uniflash.PNG "Uniflash")
 
 3. Create a **New Project**. Select **Device Type to CC3220SF** and **Device Mode to Develop**.
 
-	![alt text](../../docs/neoobd2_pro/images/51-uniflash.PNG "Uniflash Setup new Project")
+	![alt text](../../../../docs/neoobd2_pro/images/51-uniflash.PNG "Uniflash Setup new Project")
 
 4. Click the Connect button.
 
 5. Click the User File Browser button.
 
-	![alt text](../../docs/neoobd2_pro/images/52-uniflash.PNG "Uniflash File Browser")
+	![alt text](../../../../docs/neoobd2_pro/images/52-uniflash.PNG "Uniflash File Browser")
 
 6. If there is already an aws_iot_config file in the filesystem, delete it.
 
 7. Add your aws_iot_config file by pressing the Add File button. In the pop-up window, click Write button with default settings.
 
-	![alt text](../../docs/neoobd2_pro/images/53-uniflash.PNG "Uniflash File Browser")
-	![alt text](../../docs/neoobd2_pro/images/54-uniflash.PNG "Uniflash File Browser")
+	![alt text](../../../../docs/neoobd2_pro/images/53-uniflash.PNG "Uniflash File Browser")
+	![alt text](../../../../docs/neoobd2_pro/images/54-uniflash.PNG "Uniflash File Browser")
 
 8. Close the Uniflash application. Disconnect your neoOBD2 PRO from PC by removing the USB cable.
 
@@ -101,11 +101,11 @@ The **aws_iot_config** file is a text file that contains credentials and setting
 
 1. Open CCS and import the AWS J1979 sample project from <*SDK_PATH*>/samples/aws-mqtt-J1979. Build the project.
 
-	![alt text](../../docs/neoobd2_pro/images/55-CCS_Build_Project.PNG "Import and Build Project in CCS")
+	![alt text](../../../../docs/neoobd2_pro/images/55-CCS_Build_Project.PNG "Import and Build Project in CCS")
 
 2. Locate the output binary file from **Debug** directory.
 
-	![alt text](../../docs/neoobd2_pro/images/56-CCS_Build_Project.PNG "Verify output binary file")
+	![alt text](../../../../docs/neoobd2_pro/images/56-CCS_Build_Project.PNG "Verify output binary file")
 
 ### Use Vehicle Spy Professional to Program the Application
 
@@ -121,21 +121,21 @@ The **aws_iot_config** file is a text file that contains credentials and setting
 
 6. Click the **Create embedded projects for Intrepid Security Module (ISM) devices** checkbox to inflate additional view. Select **neoOBD2 PRO WiFi CC32XX** and add it to the list of Selected ISM Targets on the right.
 
-	![alt text](../../docs/neoobd2_pro/images/57-j1979_program_app.PNG "Create an Embedded CCIF Project")
+	![alt text](../../../../docs/neoobd2_pro/images/57-j1979_program_app.PNG "Create an Embedded CCIF Project")
 
 7. Click the **Edit** button from C Code Interface to open the **C Code Module Setup** view.
 
 8. Go to the **Message Events** tab. Select the **Rx Messages** radio button. You should see the **OBDII_RESP** message, double click to add it to the Selected Messages list. Make sure to click the **OK** button to exit the setup.
 
-	![alt text](../../docs/neoobd2_pro/images/58-j1979_program_app.PNG "Add OBDII response message")
+	![alt text](../../../../docs/neoobd2_pro/images/58-j1979_program_app.PNG "Add OBDII response message")
 
 9. Click the **Folder** button from C Code Interface to open the created project directory. Open the **neoOBD2PRO_WIFI_CC32XX** folder. From there, create a new folder with name **Release**.
 
-	![alt text](../../docs/neoobd2_pro/images/59-j1979_program_app.PNG "Create a Release folder")
+	![alt text](../../../../docs/neoobd2_pro/images/59-j1979_program_app.PNG "Create a Release folder")
 
 10. Copy and paste the output binary file (.bin) from your CCS project into the **Release** folder.
 
-	![alt text](../../docs/neoobd2_pro/images/60-j1979_program_app.PNG "Copy and paste the bin file")
+	![alt text](../../../../docs/neoobd2_pro/images/60-j1979_program_app.PNG "Copy and paste the bin file")
 
 11. Plug-in the neoOBD2 PRO to your laptop via USB Type-A to Type-C cable.
 
@@ -143,11 +143,11 @@ The **aws_iot_config** file is a text file that contains credentials and setting
 
 13. Click the **Clear** button.
 
-	![alt text](../../docs/neoobd2_pro/images/61-j1979_program_app.PNG "Clear CoreMini")
+	![alt text](../../../../docs/neoobd2_pro/images/61-j1979_program_app.PNG "Clear CoreMini")
 
 14. Click the **Send** button to program the output binary file into your neoOBD2 PRO. When successfully completed, disconnect your neoOBD2 PRO from PC by removing the USB cable.
 
-	![alt text](../../docs/neoobd2_pro/images/62-j1979_program_app.PNG "Send CoreMini to program the CC3220SF application")
+	![alt text](../../../../docs/neoobd2_pro/images/62-j1979_program_app.PNG "Send CoreMini to program the CC3220SF application")
 
 ## Running the Application
 
@@ -155,7 +155,7 @@ Connect the neoOBD2 PRO to a OBDII diagnostics port in your car and the sample a
 
 The sample application packs upto 32 4-byte OBDII PIDs into a 132-byte binary payload that is encapsulated in 2-byte header and footer 0xAAAA (2 byte footer + 128 byte data + 2 byte header = 132 byte total).
 
-![alt text](../../docs/neoobd2_pro/images/63-j1979_program_app.PNG "Running the application")
+![alt text](../../../../docs/neoobd2_pro/images/63-j1979_program_app.PNG "Running the application")
 
 ## Troubleshooting
 
