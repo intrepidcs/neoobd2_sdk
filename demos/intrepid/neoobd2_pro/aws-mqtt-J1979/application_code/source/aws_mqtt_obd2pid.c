@@ -380,7 +380,7 @@ static void prvMQTTConnectAndPublishTask( void * pvParameters )
         /* Create the IntrepidCS Security Module Task */
         xReturned = xTaskCreate( prvRunISMTask,                         /* The function that implements the demo task. */
                                  "ISMTask",                             /* The name to assign to the task being created. */
-                                 3000,                                  /* The size, in WORDS (not bytes), of the stack to allocate for the task being created. */
+                                 4096,                                  /* The size, in WORDS (not bytes), of the stack to allocate for the task being created. */
                                  NULL,                                  /* The task parameter is not being used. */
                                  tskIDLE_PRIORITY,                      /* Runs at the lowest priority. */
                                  &( xISMTask ) );                       /* Not storing the task's handle. */

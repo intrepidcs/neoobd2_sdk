@@ -275,7 +275,7 @@ static void prvDiscoverGreenGrassCore( void * pvParameters )
             {
                 xReturned = xTaskCreate( prvISMTask, /* The function that implements the demo task. */
                                          "ISMTask", /* The name to assign to the task being created. */
-                                         3000, /* The size, in WORDS (not bytes), of the stack to allocate for the task being created. */
+                                         4096, /* The size, in WORDS (not bytes), of the stack to allocate for the task being created. */
                                          NULL, /* The task parameter is not being used. */
                                          democonfigISM_TASK_PRIORITY, /* The priority at which the task being created will run. */
                                          & ( xISMTask ) ); /* Not storing the task's handle. */

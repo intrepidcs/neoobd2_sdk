@@ -68,7 +68,7 @@
 #define democonfigMQTT_ECHO_TASK_PRIORITY                    ( tskIDLE_PRIORITY )
 
 /* ISM task parameters */
-#define democonfigISM_TASK_STACK_SIZE                        ( 2048 )
+#define democonfigISM_TASK_STACK_SIZE                        ( 4096 )
 #define democonfigISM_TASK_PRIORITY                          ( tskIDLE_PRIORITY )
 
 /* Timeout used when establishing a connection, which required TLS
