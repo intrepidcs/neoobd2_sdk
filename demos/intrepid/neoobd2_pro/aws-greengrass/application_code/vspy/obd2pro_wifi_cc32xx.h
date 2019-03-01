@@ -124,6 +124,8 @@ typedef unsigned int DWORD;
 #define CM_GETSET_REQ_NET_OFF_OTHER_BUS               87
 #define CM_GETSET_TABLE_FBLOCK_ACTIVATE_SLOT            88
 #define CM_GETSET_TABLE_FBLOCK_DEACTIVATE_SLOT        89
+#define CM_GETSET_MSG_DISSECTED_INSTANCE_VALUE      90
+#define CM_GETSET_DB_DISSECTED_INSTANCE_VALUE         91
 
 #define ATTR_ACTIVE_INIT                        0x10
 #define ATTR_CAN_29BIT_ID_FRAME                     0x20
@@ -137,7 +139,7 @@ typedef unsigned int DWORD;
 void CM_ExtensionInit(const struct stCallBackPointers *);
 void CM_EveryMessage(int,int,uint64_t,unsigned int,int,int,const unsigned char *);
 
-#define CAN_ID_EXTENDED_MASK   (0x1FFFF800)
+#define CAN_ID_EXTENDED_MASK   (0x1FFFFFFF)
 #define CAN_ID_STANDARD_MASK   (0x000007FF)
 
 #define isStdId(id) (id & CAN_ID_STANDARD_MASK)
@@ -234,6 +236,7 @@ int GenericMessageTransmit(GenericMessage * p_Msg);
 int GenericLongMessageTransmit(GenericLongMessage * p_Msg);
 int CANFDMessageTransmit(GenericLongMessage * p_Msg, uint8_t bBRS);
 int ControlMainChipLEDColor(unsigned int ledColor);
+int ControlDeviceFemaleOBDPowerOutput(unsigned char outputState);
 
 
 #endif // VSPY_GENERATED_HEADER

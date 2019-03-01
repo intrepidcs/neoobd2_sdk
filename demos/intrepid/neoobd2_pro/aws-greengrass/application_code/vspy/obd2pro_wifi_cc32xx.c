@@ -159,15 +159,27 @@ void SpySetTxEvent(unsigned int msgIndex)
 int ControlMainChipLEDColor(unsigned int ledColor)
 {
     sfifoISMChipLEDControl stData = { 0 };
+    if (CM_SendCommandToMainChip == 0)
+        return 0;
     stData.red = (ledColor & 0x00ff0000) >> 16;
     stData.green = (ledColor & 0x0000ff00) >> 8;
     stData.blue = ledColor & 0x000000ff;
     return CM_SendCommandToMainChip(ISM_CMD_CTRL_LED_COLOR, sizeof(sfifoISMChipLEDControl), &stData);
 }
 
+
+int ControlDeviceFemaleOBDPowerOutput(unsigned char outputState)
+{
+    unsigned char stData = outputState;
+    if (CM_SendCommandToMainChip == 0)
+        return 0;
+    return CM_SendCommandToMainChip(ISM_CMD_CTRL_PWR_OUT_OBD, sizeof(unsigned char), &stData);
+}
+
 void SpyAppSig_CallAllHandlers()
 {
 }
+
 
 node_t cb_app_signal_nodes[1];
 node_t cb_message_nodes[1];
@@ -217,6 +229,7 @@ void CM_ExtensionInit(const struct stCallBackPointers * pCb)
     map_init(icsISM_GetMessageMgMap(), cb_message_mg_nodes, sizeof(cb_message_mg_nodes)/sizeof(node_t));
     map_init(icsISM_GetMessageTxMap(), cb_message_tx_nodes, sizeof(cb_message_tx_nodes)/sizeof(node_t));
     map_init(icsISM_GetBeforeMessageTxMap(), cb_before_message_tx_nodes, sizeof(cb_before_message_tx_nodes)/sizeof(node_t));
+
 }
 
 void CM_EveryMessage(int iNetwork, int iID, uint64_t iTimeNanoseconds, unsigned int iTimeMilliseconds, int iNumDataBytes, int iBitField, const unsigned char * p_btData)

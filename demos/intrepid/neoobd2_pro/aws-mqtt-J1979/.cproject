@@ -42,7 +42,7 @@
 									<listOptionValue builtIn="false" value="${BASE_DIR_ROOT}/lib/include/FreeRTOS_POSIX"/>
 									<listOptionValue builtIn="false" value="${BASE_DIR_ROOT}/lib/FreeRTOS-Plus-POSIX/include"/>
 									<listOptionValue builtIn="false" value="${BASE_DIR_ROOT}/lib/FreeRTOS-Plus-POSIX/include/portable/ti/cc3220_launchpad"/>
-									<listOptionValue builtIn="false" value="${BASE_DIR_ROOT}/lib/third_party/intrepid/ism_lib/wifi-ism_lib/16bit/CCS/CC32XX_NEOOBD2_PRO"/>
+									<listOptionValue builtIn="false" value="${BASE_DIR_ROOT}/lib/third_party/intrepid/ism_lib/wifi-ism_lib/32bit/CCS/CC32XX_NEOOBD2_PRO"/>
 									<listOptionValue builtIn="false" value="${BASE_DIR_ROOT}/lib/third_party/mcu_vendor/ti/SimpleLink_CC32xx/v2_10_00_04/source"/>
 									<listOptionValue builtIn="false" value="${CG_TOOL_ROOT}/include"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/config_files}"/>

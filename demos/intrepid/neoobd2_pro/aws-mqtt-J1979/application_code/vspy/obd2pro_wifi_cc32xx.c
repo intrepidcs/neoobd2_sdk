@@ -145,6 +145,14 @@ int ControlMainChipLEDColor(unsigned int ledColor)
     return CM_SendCommandToMainChip(ISM_CMD_CTRL_LED_COLOR, sizeof(sfifoISMChipLEDControl), &stData);
 }
 
+int ControlDeviceFemaleOBDPowerOutput(unsigned char outputState)
+{
+    unsigned char stData = outputState;
+    if (CM_SendCommandToMainChip == 0)
+        return 0;
+    return CM_SendCommandToMainChip(ISM_CMD_CTRL_PWR_OUT_OBD, sizeof(unsigned char), &stData);
+}
+
 void CM_MG_OBDII_RESP_HS_CAN()
 {
     MG_OBDII_RESP_HS_CAN stMyStruct;
