@@ -35,14 +35,47 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // TODO: add global variables here
 
 // TODO: add event handlers here
-void SpyMsg_MG_Message_HS_CAN_1_HS_CAN(MG_Message_HS_CAN_1_HS_CAN * pMG_Message_HS_CAN_1_HS_CAN)
-{
-    size_t xBytesSend;
 
-    prvPublishMessage(&pMG_Message_HS_CAN_1_HS_CAN->MessageData.btData, "alexa/can", 8);
+void SpyMsg_MG_Message_HS_CAN_1_HS_CAN(
+        MG_Message_HS_CAN_1_HS_CAN * pMG_Message_HS_CAN_1_HS_CAN)
+{
+    //size_t xBytesSend;
+    char timeval[20] = { 0 };
+    char payload[30] = { 0 };
+
+    uint8_t count = 0;
+    char cStreamData[60] = { 0 };
+
+    char *start = payload;
+    char *end = payload + sizeof(payload);
+
+    for (count = 0; count < 8; count++)
+    {
+        /* i use 5 here since we are going to add at most
+         3 chars, need a space for the end '\n' and need
+         a null terminator */
+        if (start + 5 < end)
+        {
+            if (count > 0)
+            {
+                start += sprintf(start, ":");
+            }
+            start += sprintf(
+                    start, "%02X",
+                    pMG_Message_HS_CAN_1_HS_CAN->MessageData.btData[count]);
+        }
+    }
+    start += sprintf(start, "\n");
+
+    getSNTPTime(timeval, sizeof(timeval));
+    //(void ) snprintf(cStreamData, 60, "%s %d: %s: %s %s: %s","ID", pMG_Message_HS_CAN_1_HS_CAN->MessageData.iID, "Data", payload, "Time", timeval);
+    (void) snprintf(cStreamData, 60, "%s: %3x %s: %s %s: %s", "ID",
+                    pMG_Message_HS_CAN_1_HS_CAN->MessageData.iID, "Data",
+                    payload, "time", timeval);
+    prvPublishMessage(cStreamData, CAN_PUB_TOPIC, 60);
+
     //xBytesSend = xMessageBufferSend(xDataBuffer, &pMG_Message_HS_CAN_1_HS_CAN->MessageData.btData, 8 , 0);
 }
-
 
 void Spy_EveryMessage(GenericMessage * p_Msg)
 {

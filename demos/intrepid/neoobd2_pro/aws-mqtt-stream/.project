@@ -257,6 +257,7 @@
 			<type>1</type>
 			<locationURI>BASE_DIR_ROOT/lib/third_party/mcu_vendor/ti/SimpleLink_CC32xx/v2_10_00_04/kernel/freertos/startup/startup_cc32xx_ccs.c</locationURI>
 		</link>
+
 	</linkedResources>
 	<filteredResources>
 		<filter>

@@ -78,6 +78,7 @@
 #include <aws-can-stream.h>
 #include "string.h"
 #include "stdio.h"
+#include <time.h>
 
 
 /**
@@ -85,25 +86,14 @@
  *
  * It must be unique per MQTT broker.
  */
-#define echoCLIENT_ID          ( ( const uint8_t * ) "CANSTREAM" )
+#define CLIENT_ID          ( ( const uint8_t * ) "CANSTREAM" )
 
 /**
  * @brief The topic that the MQTT client both subscribes and publishes to.
  */
 
-#define CAN_PUB_TOPIC          (( const uint8_t * ) "aws/can" )
-#define SUB_TOPIC         ( ( const uint8_t * ) "alexa/command" )
-
-#define LBYTE               0x01
-#define RBYTE               0x02
-#define OFFBYTE             0x00
 
 #define NETWORK_ID          0x01
-/**
- * @brief Dimension of the character array buffers used to hold data (strings in
- * this case) that is published to and received from the MQTT broker (in the cloud).
- */
-#define echoMAX_DATA_LENGTH    20
 
 /**
  * @brief A block time of 0 simply means "don't block".
@@ -111,6 +101,8 @@
 #define echoDONT_BLOCK         ( ( TickType_t ) 0 )
 
 #define echoMAX_DELAY        ( ( TickType_t ) 2000 )
+
+
 
 /*-----------------------------------------------------------*/
 
@@ -152,7 +144,6 @@ MQTTAgentReturnCode_t prvPublishMessage( char*, char*, size_t);
  * function (see prvMQTTCallback() above) to the task that echoes the data back to
  * the broker.
  */
- MessageBufferHandle_t xCommandBuffer = NULL;
  MessageBufferHandle_t xDataBuffer = NULL;
 
 /**
@@ -163,6 +154,31 @@ static MQTTAgentHandle_t xMQTTHandle = NULL;
 static uint8_t commandByte = 0x00;
 
 /*-----------------------------------------------------------*/
+//static void setNwpTime(time_t ts)
+//{
+//    SlDateTime_t dt;
+//    struct tm tm;
+//
+//    /* Convert time since Epoch to local time */
+//    tm = *localtime(&ts);
+//
+//    /* Set system clock on network processor to validate certificate */
+//    dt.tm_day  = tm.tm_mday;
+//    /* tm.tm_mon is the month since January, so add 1 to get the actual month */
+//    dt.tm_mon  = tm.tm_mon + 1;
+//    /* tm.tm_year is the year since 1900, so add 1900 to get the actual year */
+//    dt.tm_year = tm.tm_year + 1900;
+//    dt.tm_hour = tm.tm_hour;
+//    dt.tm_min  = tm.tm_min;
+//    dt.tm_sec  = tm.tm_sec;
+//    sl_DeviceSet(SL_DEVICE_GENERAL, SL_DEVICE_GENERAL_DATE_TIME,
+//            sizeof(SlDateTime_t), (unsigned char *)(&dt));
+//}
+
+/*-----------------------------------------------------------*/
+
+/*-----------------------------------------------------------*/
+
 
 static BaseType_t prvCreateClientAndConnectToBroker( void )
 {
@@ -174,7 +190,7 @@ static BaseType_t prvCreateClientAndConnectToBroker( void )
         democonfigMQTT_AGENT_CONNECT_FLAGS,   /* Connection flags. */
         pdFALSE,                              /* Deprecated. */
         0,                                    /* Port number on which the MQTT broker is listening. Can be overridden by ALPN connection flag. */
-        echoCLIENT_ID,                        /* Client Identifier of the MQTT client. It should be unique per broker. */
+        CLIENT_ID,                        /* Client Identifier of the MQTT client. It should be unique per broker. */
         0,                                    /* The length of the client Id, filled in later as not const. */
         pdFALSE,                              /* Deprecated. */
         NULL,                                 /* User data supplied to the callback. Can be NULL. */
@@ -199,7 +215,7 @@ static BaseType_t prvCreateClientAndConnectToBroker( void )
         /* Fill in the MQTTAgentConnectParams_t member that is not const,
          * and therefore could not be set in the initializer (where
          * xConnectParameters is declared in this function). */
-        xConnectParameters.usClientIdLength = ( uint16_t ) strlen( ( const char * ) echoCLIENT_ID );
+        xConnectParameters.usClientIdLength = ( uint16_t ) strlen( ( const char * ) CLIENT_ID );
 
         /* Connect to the broker. */
         configPRINTF( ( "MQTT echo attempting to connect to %s.\r\n", clientcredentialMQTT_BROKER_ENDPOINT ) );
@@ -223,41 +239,6 @@ static BaseType_t prvCreateClientAndConnectToBroker( void )
     return xReturn;
 }
 /*-----------------------------------------------------------*/
-static MQTTBool_t prvMQTTCallback( void * pvUserData,
-                                   const MQTTPublishData_t * const pxPublishParameters )
-{
-    char cBuffer[ echoMAX_DATA_LENGTH ];
-    uint32_t ulBytesToCopy = ( echoMAX_DATA_LENGTH - 1 ); /* Bytes to copy initialized to ensure it fits in the buffer. One place is left for NULL terminator. */
-
-    /* Remove warnings about the unused parameters. */
-    ( void ) pvUserData;
-
-    /* Don't expect the callback to be invoked for any other topics. */
-    configASSERT( ( size_t ) ( pxPublishParameters->usTopicLength ) == strlen( ( const char * ) SUB_TOPIC ) );
-    configASSERT( memcmp( pxPublishParameters->pucTopic, SUB_TOPIC, ( size_t ) ( pxPublishParameters->usTopicLength ) ) == 0 );
-
-    /* THe ulBytesToCopy has already been initialized to ensure it does not copy
-     * more bytes than will fit in the buffer.  Now check it does not copy more
-     * bytes than are available. */
-    if( pxPublishParameters->ulDataLength < ulBytesToCopy )
-    {
-        ulBytesToCopy = pxPublishParameters->ulDataLength;
-    }
-
-    /* Set the buffer to zero and copy the data into the buffer to ensure
-     * there is a NULL terminator and the buffer can be accessed as a
-     * string. */
-    memset( cBuffer, 0x00, sizeof( cBuffer ) );
-    memcpy( cBuffer, pxPublishParameters->pvData, ( size_t ) ulBytesToCopy );
-
-    ( void ) xMessageBufferSend( xCommandBuffer, cBuffer, ( size_t ) ulBytesToCopy + ( size_t ) 1, echoDONT_BLOCK );
-
-    /* The data was copied into the FreeRTOS message buffer, so the buffer
-     * containing the data is no longer required.  Returning eMQTTFalse tells the
-     * MQTT agent that the ownership of the buffer containing the message lies with
-     * the agent and it is responsible for freeing the buffer. */
-    return eMQTTFalse;
-}
 
  MQTTAgentReturnCode_t prvPublishMessage( char *cDataBuffer, char *cTopicName, size_t len )
 {
@@ -317,9 +298,6 @@ static void prvCANTxTask(void* pvParams)
         msg.btData[0] = (commandByte);
         GenericMessageTransmit(&msg);
         vTaskDelay(pdMS_TO_TICKS(400));
-        msg.btData[0] = OFFBYTE;
-        GenericMessageTransmit(&msg);
-        vTaskDelay(pdMS_TO_TICKS(400));
     }
 }
 
@@ -338,43 +316,11 @@ static void prvRunISMTask(void* pvParams)
 
 /*-----------------------------------------------------------*/
 
-static BaseType_t prvSubscribe( void )
-{
-    MQTTAgentReturnCode_t xReturned;
-    BaseType_t xReturn;
-    MQTTAgentSubscribeParams_t xSubscribeParams;
-
-    xSubscribeParams.pucTopic = SUB_TOPIC;
-    xSubscribeParams.pvPublishCallbackContext = NULL;
-    xSubscribeParams.pxPublishCallback = prvMQTTCallback;
-    xSubscribeParams.usTopicLength = ( uint16_t ) strlen( ( const char * ) SUB_TOPIC );
-    xSubscribeParams.xQoS = eMQTTQoS1;
-
-    /* Subscribe to the topic. */
-    xReturned = MQTT_AGENT_Subscribe( xMQTTHandle,
-                                      &xSubscribeParams,
-                                      democonfigMQTT_TIMEOUT );
-
-    if( xReturned == eMQTTAgentSuccess )
-    {
-        configPRINTF( ( "MQTT Echo demo subscribed to %s\r\n", SUB_TOPIC ) );
-        xReturn = pdPASS;
-    }
-    else
-    {
-        configPRINTF( ( "ERROR:  MQTT Echo demo could not subscribe to %s\r\n", SUB_TOPIC ) );
-        xReturn = pdFAIL;
-    }
-
-    return xReturn;
-}
-/*-----------------------------------------------------------*/
-
 static void prvEchoCANTask(void* pvParams)
 {
     (void) pvParams;
     MQTTAgentReturnCode_t xReturned;
-    char cDataBuffer[echoMAX_DATA_LENGTH] = {0};
+    char cDataBuffer[STREAM_DATA_LENGTH] = {0};
     size_t xBytesReceived;
 
     configASSERT( xDataBuffer != NULL );
@@ -415,28 +361,21 @@ static void prvMQTTConnectAndPublishTask( void * pvParameters )
         /* Set the LED to indicate the WiFi is online */
         ControlMainChipLEDColor(COLOR_WIFI_ONLINE);
 
-        /* Subscribe to the echo topic. */
-        xReturned = prvSubscribe();
-
-        if( xReturned == pdPASS )
-        {
         /* Create the MQTT Publish Task */
-           xReturned = xTaskCreate( prvEchoCANTask,         /* The function that implements the demo task. */
-                         "CANEcho",                         /* The name to assign to the task being created. */
-                         1024,                              /* The size, in WORDS (not bytes), of the stack to allocate for the task being created. */
-                         NULL,                              /* The task parameter is not being used. */
-                         tskIDLE_PRIORITY,                  /* Runs at the lowest priority. */
-                         &( xMqttPubTask ) );               /* Not storing the task's handle. */
+       xReturned = xTaskCreate( prvEchoCANTask,         /* The function that implements the demo task. */
+                     "CANEcho",                         /* The name to assign to the task being created. */
+                     1024,                              /* The size, in WORDS (not bytes), of the stack to allocate for the task being created. */
+                     NULL,                              /* The task parameter is not being used. */
+                     tskIDLE_PRIORITY,                  /* Runs at the lowest priority. */
+                     &( xMqttPubTask ) );               /* Not storing the task's handle. */
 
-            if( xReturned != pdPASS )
-            {
-                /* The task could not be created because there was insufficient FreeRTOS
-                 * heap available to create the task's data structures and/or stack. */
-                configPRINTF( ( "CAN Echo task could not be created - out of heap space?\r\n" ) );
-            }
-        } else {
-            configPRINTF( ( "ERROR:  MQTT Echo demo could not subscribe to %s\r\n", SUB_TOPIC ) );
+        if( xReturned != pdPASS )
+        {
+            /* The task could not be created because there was insufficient FreeRTOS
+             * heap available to create the task's data structures and/or stack. */
+            configPRINTF( ( "CAN Echo task could not be created - out of heap space?\r\n" ) );
         }
+
     }
     else
     {
@@ -460,7 +399,7 @@ void vStartMQTTEchoDemo( void )
 
     xDataBuffer = xMessageBufferCreate( (size_t) STREAM_DATA_LENGTH + sizeof( size_t ) );
 
-    configASSERT( xCommandBuffer );
+    configASSERT( xDataBuffer );
     ControlMainChipLEDColor(COLOR_WIFI_OFFLINE);
     ( void ) xTaskCreate( prvMQTTConnectAndPublishTask,
                           "MQTTEcho",

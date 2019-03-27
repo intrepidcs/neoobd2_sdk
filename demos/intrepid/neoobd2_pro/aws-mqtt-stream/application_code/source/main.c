@@ -60,7 +60,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stddef.h>
-
+#include <time.h>
 /* EDIT THIS FILE:
  * Wi-Fi SSID, password & security settings,
  * AWS endpoint, certificate, private key & thing name. */
@@ -89,6 +89,10 @@
 #include <ti/drivers/GPIO.h>
 #include <ti/drivers/SPI.h>
 #include <ti/drivers/net/wifi/simplelink.h>
+/* TI Network Library. */
+#include "ti/drivers/net/wifi/slnetifwifi.h"
+#include "ti/net/sntp/sntp.h"
+
 /* CC3220SF board file. */
 #include "Board.h"
 
@@ -106,6 +110,23 @@ const AppVersion32_t xAppFirmwareVersion =
     .u.x.ucMinor = APP_VERSION_MINOR,
     .u.x.usBuild = APP_VERSION_BUILD,
 };
+
+ const char* ntpServers[1] = { "time.nplindia.org" };
+
+ uint32_t glbTimeSec;
+
+ uint32_t glbTimeMilli;
+
+#define TIME_BASEDIFF (0x83AA7E80)
+
+#define TIME_NTP_TO_UNIX(t) ((t) - TIME_BASEDIFF)
+
+ /*  Time to wait for reply from server (seconds) */
+ #define NTP_REPLY_WAIT_TIME 30
+
+ /* Must wait at least 15 sec to retry NTP server (RFC 4330) */
+ #define NTP_POLL_TIME 15
+
 
 /* The length of the logging task's queue to hold messages. */
 #define mainLOGGING_MESSAGE_QUEUE_LENGTH    (15)
@@ -178,6 +199,39 @@ int main( void )
 }
 
 /*-----------------------------------------------------------*/
+//void getSNTPTime(char* timestring, uint8_t length)
+void getSNTPTime(void)
+{
+    int32_t retryCnt = 0;
+    uint64_t timeFull;
+    SlNetSock_Timeval_t timeVal;
+    //time_t ts;
+    int32_t retval;
+
+    timeVal.tv_sec = NTP_REPLY_WAIT_TIME;
+    timeVal.tv_usec = 0;
+
+    do {
+            /* Get the time using the built in NTP server list: */
+            retval = SNTP_getTime(NULL, 0, &timeVal, &timeFull);
+            if (retval != 0) {
+                configPRINTF(("startSNTP: couldn't get time (%d), will retry in %d secs ...",retval, NTP_POLL_TIME));
+                vTaskDelay(NTP_POLL_TIME*1000);
+                configPRINTF(("startSNTP: retrying ..."));
+            }
+
+        } while (retval < 0 && ++retryCnt < 10);
+
+    // The seconds value is stored in the upper 32 bits sync to global time variable
+    glbTimeSec = ((0xFFFFFFFF00000000 & timeFull) >> 32) - TIME_BASEDIFF;
+    // Reset millisecond count to 0 and count upwards
+    glbTimeMilli = 0;
+
+    //ts = glbTimeSec;
+    /* Print out the time in calendar format: */
+    //(void) snprintf(timestring, length, "%s\n", ctime(&ts));
+}
+/*-----------------------------------------------------------*/
 
 /**
  * @brief Completes board, Wi-Fi, and AWS system initializations
@@ -190,10 +244,18 @@ void vApplicationDaemonTaskStartupHook(void)
     UART_Handle xtUartHndl;
     WIFIReturnCode_t xWifiStatus;
 
+
+    /* Configure SlNetSock layer with CC3220SF interface */
+    SlNetIf_init(0);
+    SlNetIf_add(SLNETIF_ID_1, "CC3220", (const SlNetIf_Config_t *)&SlNetIfConfigWifi, 5);
+    SlNetSock_init(0);
+    SlNetUtil_init(0);
+
+    configPRINTF( ( "NetProc..." ) );
     /* Hardware initialization required after the RTOS is running. */
     GPIO_init();
     SPI_init();
-	
+
     /* Configure the UART. */
     xtUartHndl = InitTerm();
     UART_control( xtUartHndl, UART_CMD_RXDISABLE, NULL );
@@ -224,6 +286,8 @@ void vApplicationDaemonTaskStartupHook(void)
      * by production ready key provisioning mechanism. This function must be called after
      * initializing the TI File System using WIFI_On. */
     vDevModeKeyProvisioning();
+
+
 	
     prvProvisionRootCA();
 	/* Initialize the AWS Libraries system. */
@@ -234,6 +298,7 @@ void vApplicationDaemonTaskStartupHook(void)
 		/* Initialize the Intrepid ISM Library before starting app tasks */
 		ismInit();
 		
+		getSNTPTime();
         DEMO_RUNNER_RunDemos();
     }
 }

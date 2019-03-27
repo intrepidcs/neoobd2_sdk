@@ -32,6 +32,10 @@
 #include "task.h"
 #include "message_buffer.h"
 
+#include <ti/net/sntp/sntp.h>
+
+#include <ti/drivers/net/wifi/simplelink.h>
+
 /* MQTT includes. */
 #include "aws_mqtt_agent.h"
 
@@ -48,11 +52,23 @@
 #define STREAM_DATA_LENGTH      (8)
 #define MAX_NUM_PIDS            (32)
 
+#define CAN_PUB_TOPIC          "aws/can"
+//#define SUB_TOPIC         ( ( const uint8_t * ) "alexa/command" )
+
+
 extern MessageBufferHandle_t xDataBuffer;
 
 static const unsigned char pidNumberLookup[32] = {12};
 
+
+extern uint32_t glbTimeSec;
+
+extern uint32_t glbTimeMilli;
+
+
+
 MQTTAgentReturnCode_t prvPublishMessage( char*, char*, size_t);
+extern void getSNTPTime(char* timestring, uint8_t length);
 
 demoDECLARE_DEMO( vStartMQTTEchoDemo );
 
