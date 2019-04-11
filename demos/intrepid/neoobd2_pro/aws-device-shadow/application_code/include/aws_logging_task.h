@@ -23,51 +23,22 @@
  * http://www.FreeRTOS.org
  */
 
-
-#ifndef __AWS_CLIENTCREDENTIAL__H__
-#define __AWS_CLIENTCREDENTIAL__H__
-
-/*
- * Include for device certificate and private key
- */
-#include "aws_clientcredential_keys.h"
+#ifndef AWS_LOGGING_TASK_H
+#define AWS_LOGGING_TASK_H
 
 /*
- * MQTT Broker endpoint.
- */
-static const char clientcredentialMQTT_BROKER_ENDPOINT[] = "";
-
-
-/* Use of a "define" and not a "static const" here to be able to
-* use pre-compile concatenation on the string. */
-#define clientcredentialIOT_THING_NAME "Thing1"
+ * Called once to create the logging task and queue.  Must be called before any
+ * calls to vLoggingPrintf().
+*/
+BaseType_t xLoggingTaskInitialize( uint16_t usStackSize, UBaseType_t uxPriority, UBaseType_t uxQueueLength );
 
 /*
- * Port number the MQTT broker is using.
+ * Uses the same semantics as printf().  How the print is performed depends on
+ * which files are being built.  Some vLoggingPrintf() implementations will
+ * output directly, others will use a logging task to allow log message to be
+ * output in the background should the output device be too slow for output to
+ * be performed inline.
  */
-#define clientcredentialMQTT_BROKER_PORT 8883
+void vLoggingPrintf( const char *pcFormat, ... );
 
-/*
- * Port number the Green Grass Discovery use for JSON retrieval from cloud is using.
- */
-#define clientcredentialGREENGRASS_DISCOVERY_PORT 8443
-
-/*
- * Wi-Fi network to join.
- */
-#define clientcredentialWIFI_SSID       ""
-
-/*
- * Password needed to join Wi-Fi network.
- */
-#define clientcredentialWIFI_PASSWORD   ""
-
-/**
- * @brief Security type
- * WPA2 Security, @see WIFISecurity_t
- * Possible values are - eWiFiSecurityOpen, eWiFiSecurityWEP, eWiFiSecurityWPA,
- * eWiFiSecurityWPA2
- */
-#define clientcredentialWIFI_SECURITY   eWiFiSecurityWPA2
-
-#endif
+#endif /* AWS_LOGGING_TASK_H */

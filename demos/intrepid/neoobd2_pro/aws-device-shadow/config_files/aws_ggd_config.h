@@ -24,50 +24,23 @@
  */
 
 
-#ifndef __AWS_CLIENTCREDENTIAL__H__
-#define __AWS_CLIENTCREDENTIAL__H__
-
-/*
- * Include for device certificate and private key
+/**
+ * @file aws_ggd_config.h
+ * @brief GGD config options.
  */
-#include "aws_clientcredential_keys.h"
 
-/*
- * MQTT Broker endpoint.
- */
-static const char clientcredentialMQTT_BROKER_ENDPOINT[] = "";
+#ifndef _AWS_GGD_CONFIG_H_
+#define _AWS_GGD_CONFIG_H_
 
-
-/* Use of a "define" and not a "static const" here to be able to
-* use pre-compile concatenation on the string. */
-#define clientcredentialIOT_THING_NAME "Thing1"
-
-/*
- * Port number the MQTT broker is using.
- */
-#define clientcredentialMQTT_BROKER_PORT 8883
-
-/*
- * Port number the Green Grass Discovery use for JSON retrieval from cloud is using.
- */
-#define clientcredentialGREENGRASS_DISCOVERY_PORT 8443
-
-/*
- * Wi-Fi network to join.
- */
-#define clientcredentialWIFI_SSID       ""
-
-/*
- * Password needed to join Wi-Fi network.
- */
-#define clientcredentialWIFI_PASSWORD   ""
 
 /**
- * @brief Security type
- * WPA2 Security, @see WIFISecurity_t
- * Possible values are - eWiFiSecurityOpen, eWiFiSecurityWEP, eWiFiSecurityWPA,
- * eWiFiSecurityWPA2
+ * @brief The number of your network interface here.
  */
-#define clientcredentialWIFI_SECURITY   eWiFiSecurityWPA2
+#define ggdconfigCORE_NETWORK_INTERFACE     ( 0 )
 
-#endif
+/**
+ * @brief Size of the array used by jsmn to store the tokens.
+ */
+#define ggdconfigJSON_MAX_TOKENS            ( 128 )
+
+#endif /* _AWS_GGD_CONFIG_H_ */

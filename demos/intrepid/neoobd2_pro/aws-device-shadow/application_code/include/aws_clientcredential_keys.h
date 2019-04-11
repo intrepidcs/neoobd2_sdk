@@ -12,6 +12,7 @@
  * "-----END CERTIFICATE-----\n"
  */
 #define keyCLIENT_CERTIFICATE_PEM 
+    
 
 /*
  * PEM-encoded issuer certificate for AWS IoT Just In Time Registration (JITR).
@@ -40,7 +41,7 @@
  * "-----END RSA PRIVATE KEY-----\n"
  */
 #define keyCLIENT_PRIVATE_KEY_PEM 
-
+    
 
 /* The constants above are set to const char * pointers defined in aws_dev_mode_key_provisioning.c,
  * and externed here for use in C files.  NOTE!  THIS IS DONE FOR CONVENIENCE

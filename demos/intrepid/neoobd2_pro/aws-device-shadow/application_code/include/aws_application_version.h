@@ -23,51 +23,14 @@
  * http://www.FreeRTOS.org
  */
 
+#ifndef _AWS_APPLICATION_VERSION_H_
+#define _AWS_APPLICATION_VERSION_H_
 
-#ifndef __AWS_CLIENTCREDENTIAL__H__
-#define __AWS_CLIENTCREDENTIAL__H__
+#include "aws_appversion32.h"
+extern const AppVersion32_t xAppFirmwareVersion;
 
-/*
- * Include for device certificate and private key
- */
-#include "aws_clientcredential_keys.h"
-
-/*
- * MQTT Broker endpoint.
- */
-static const char clientcredentialMQTT_BROKER_ENDPOINT[] = "";
-
-
-/* Use of a "define" and not a "static const" here to be able to
-* use pre-compile concatenation on the string. */
-#define clientcredentialIOT_THING_NAME "Thing1"
-
-/*
- * Port number the MQTT broker is using.
- */
-#define clientcredentialMQTT_BROKER_PORT 8883
-
-/*
- * Port number the Green Grass Discovery use for JSON retrieval from cloud is using.
- */
-#define clientcredentialGREENGRASS_DISCOVERY_PORT 8443
-
-/*
- * Wi-Fi network to join.
- */
-#define clientcredentialWIFI_SSID       ""
-
-/*
- * Password needed to join Wi-Fi network.
- */
-#define clientcredentialWIFI_PASSWORD   ""
-
-/**
- * @brief Security type
- * WPA2 Security, @see WIFISecurity_t
- * Possible values are - eWiFiSecurityOpen, eWiFiSecurityWEP, eWiFiSecurityWPA,
- * eWiFiSecurityWPA2
- */
-#define clientcredentialWIFI_SECURITY   eWiFiSecurityWPA2
+#define APP_VERSION_MAJOR  0
+#define APP_VERSION_MINOR  9
+#define APP_VERSION_BUILD  2
 
 #endif

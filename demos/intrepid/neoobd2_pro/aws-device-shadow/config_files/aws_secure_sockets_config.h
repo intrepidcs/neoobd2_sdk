@@ -24,50 +24,48 @@
  */
 
 
-#ifndef __AWS_CLIENTCREDENTIAL__H__
-#define __AWS_CLIENTCREDENTIAL__H__
-
-/*
- * Include for device certificate and private key
+/**
+ * @file aws_secure_sockets_config.h
+ * @brief Sockets configuration options.
  */
-#include "aws_clientcredential_keys.h"
 
-/*
- * MQTT Broker endpoint.
- */
-static const char clientcredentialMQTT_BROKER_ENDPOINT[] = "";
-
-
-/* Use of a "define" and not a "static const" here to be able to
-* use pre-compile concatenation on the string. */
-#define clientcredentialIOT_THING_NAME "Thing1"
-
-/*
- * Port number the MQTT broker is using.
- */
-#define clientcredentialMQTT_BROKER_PORT 8883
-
-/*
- * Port number the Green Grass Discovery use for JSON retrieval from cloud is using.
- */
-#define clientcredentialGREENGRASS_DISCOVERY_PORT 8443
-
-/*
- * Wi-Fi network to join.
- */
-#define clientcredentialWIFI_SSID       ""
-
-/*
- * Password needed to join Wi-Fi network.
- */
-#define clientcredentialWIFI_PASSWORD   ""
+#ifndef AWS_INC_SOCKETS_CONFIG_H_
+#define AWS_INC_SOCKETS_CONFIG_H_
 
 /**
- * @brief Security type
- * WPA2 Security, @see WIFISecurity_t
- * Possible values are - eWiFiSecurityOpen, eWiFiSecurityWEP, eWiFiSecurityWPA,
- * eWiFiSecurityWPA2
+ * @brief Byte order of the target MCU.
+ *
+ * Valid values are pdLITTLE_ENDIAN and pdBIG_ENDIAN.
  */
-#define clientcredentialWIFI_SECURITY   eWiFiSecurityWPA2
+#define socketsconfigBYTE_ORDER              pdLITTLE_ENDIAN
 
-#endif
+/**
+ * @brief Default socket send timeout.
+ */
+#define socketsconfigDEFAULT_SEND_TIMEOUT    ( 10000 )
+
+/**
+ * @brief Default socket receive timeout.
+ */
+#define socketsconfigDEFAULT_RECV_TIMEOUT    ( 10000 )
+/**
+ * @brief The file name for the root of trust certificate.
+ */
+#define socketsconfigSECURE_FILE_NAME_ROOTCA            "/certs/RootCA.crt"
+
+/**
+ * @brief Custom root CA.
+ */
+#define socketsconfigSECURE_FILE_NAME_CUSTOMROOTCA      "/certs/CustomRootCA.crt"
+
+/**
+ * @brief Client certificate.
+ */
+#define socketsconfigSECURE_FILE_NAME_CLIENTCERT        "/certs/ClientCert.crt"
+
+/**
+ * @brief Client private key.
+ */
+#define socketsconfigSECURE_FILE_NAME_PRIVATEKEY        "/certs/PrivateKey.key"
+
+#endif /* AWS_INC_SOCKETS_CONFIG_H_ */

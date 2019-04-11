@@ -24,50 +24,32 @@
  */
 
 
-#ifndef __AWS_CLIENTCREDENTIAL__H__
-#define __AWS_CLIENTCREDENTIAL__H__
+#ifndef _AWS_DEV_MODE_KEY_PROVISIONING_H_
+#define _AWS_DEV_MODE_KEY_PROVISIONING_H_
 
-/*
- * Include for device certificate and private key
- */
-#include "aws_clientcredential_keys.h"
+#include "aws_pkcs11.h"
 
-/*
- * MQTT Broker endpoint.
- */
-static const char clientcredentialMQTT_BROKER_ENDPOINT[] = "";
+typedef struct ProvisioningParams_t
+{
+    uint32_t ulClientPrivateKeyType;
+    uint8_t * pcClientPrivateKey;
+    uint32_t ulClientPrivateKeyLength;
+    uint8_t * pcClientCertificate;
+    uint32_t ulClientCertificateLength;
+} ProvisioningParams_t;
 
+void vDevModeKeyProvisioning( void );
 
-/* Use of a "define" and not a "static const" here to be able to
-* use pre-compile concatenation on the string. */
-#define clientcredentialIOT_THING_NAME "Thing1"
+void vAlternateKeyProvisioning( ProvisioningParams_t * xParams );
 
-/*
- * Port number the MQTT broker is using.
- */
-#define clientcredentialMQTT_BROKER_PORT 8883
+CK_RV xInitializePkcsSession( CK_FUNCTION_LIST_PTR * ppxFunctionList,
+                              CK_SLOT_ID * pxSlotId,
+                              CK_SESSION_HANDLE * pxSession );
 
-/*
- * Port number the Green Grass Discovery use for JSON retrieval from cloud is using.
- */
-#define clientcredentialGREENGRASS_DISCOVERY_PORT 8443
+CK_RV xProvisionCertificate( CK_SESSION_HANDLE xSession,
+                             uint8_t * pucCertificate,
+                             size_t xCertificateLength,
+                             uint8_t * pucLabel,
+                             CK_OBJECT_HANDLE_PTR xObjectHandle );
 
-/*
- * Wi-Fi network to join.
- */
-#define clientcredentialWIFI_SSID       ""
-
-/*
- * Password needed to join Wi-Fi network.
- */
-#define clientcredentialWIFI_PASSWORD   ""
-
-/**
- * @brief Security type
- * WPA2 Security, @see WIFISecurity_t
- * Possible values are - eWiFiSecurityOpen, eWiFiSecurityWEP, eWiFiSecurityWPA,
- * eWiFiSecurityWPA2
- */
-#define clientcredentialWIFI_SECURITY   eWiFiSecurityWPA2
-
-#endif
+#endif /* _AWS_DEV_MODE_KEY_PROVISIONING_H_ */

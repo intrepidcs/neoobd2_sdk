@@ -23,51 +23,42 @@
  * http://www.FreeRTOS.org
  */
 
-
-#ifndef __AWS_CLIENTCREDENTIAL__H__
-#define __AWS_CLIENTCREDENTIAL__H__
-
-/*
- * Include for device certificate and private key
+/**
+ * @file aws_mqtt_config.h
+ * @brief MQTT config options.
  */
-#include "aws_clientcredential_keys.h"
 
-/*
- * MQTT Broker endpoint.
- */
-static const char clientcredentialMQTT_BROKER_ENDPOINT[] = "";
-
-
-/* Use of a "define" and not a "static const" here to be able to
-* use pre-compile concatenation on the string. */
-#define clientcredentialIOT_THING_NAME "Thing1"
-
-/*
- * Port number the MQTT broker is using.
- */
-#define clientcredentialMQTT_BROKER_PORT 8883
-
-/*
- * Port number the Green Grass Discovery use for JSON retrieval from cloud is using.
- */
-#define clientcredentialGREENGRASS_DISCOVERY_PORT 8443
-
-/*
- * Wi-Fi network to join.
- */
-#define clientcredentialWIFI_SSID       ""
-
-/*
- * Password needed to join Wi-Fi network.
- */
-#define clientcredentialWIFI_PASSWORD   ""
+#ifndef _AWS_MQTT_CONFIG_H_
+#define _AWS_MQTT_CONFIG_H_
 
 /**
- * @brief Security type
- * WPA2 Security, @see WIFISecurity_t
- * Possible values are - eWiFiSecurityOpen, eWiFiSecurityWEP, eWiFiSecurityWPA,
- * eWiFiSecurityWPA2
+ * @brief Enable subscription management.
+ *
+ * This gives the user flexibility of registering a callback per topic.
  */
-#define clientcredentialWIFI_SECURITY   eWiFiSecurityWPA2
+#define mqttconfigENABLE_SUBSCRIPTION_MANAGEMENT            ( 1 )
 
-#endif
+/**
+ * @brief Maximum length of the topic which can be stored in subscription
+ * manager.
+ */
+#define mqttconfigSUBSCRIPTION_MANAGER_MAX_TOPIC_LENGTH     ( 128 )
+
+/**
+ * @brief Maximum number of subscriptions which can be stored in subscription
+ * manager.
+ */
+#define mqttconfigSUBSCRIPTION_MANAGER_MAX_SUBSCRIPTIONS    ( 8 )
+
+/*
+ * Uncomment the following two lines to enable asserts.
+ */
+/* extern void vAssertCalled( const char *pcFile, uint32_t ulLine ); */
+/* #define mqttconfigASSERT( x )                       if( ( x ) == 0 ) vAssertCalled( __FILE__, __LINE__ ) */
+
+/**
+ * @brief Set this macro to 1 for enabling debug logs.
+ */
+#define mqttconfigENABLE_DEBUG_LOGS    0
+
+#endif /* _AWS_MQTT_CONFIG_H_ */
