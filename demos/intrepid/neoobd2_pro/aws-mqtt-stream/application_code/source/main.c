@@ -111,7 +111,7 @@ const AppVersion32_t xAppFirmwareVersion =
     .u.x.usBuild = APP_VERSION_BUILD,
 };
 
- const char* ntpServers[1] = { "time.nplindia.org" };
+ const char ntpServers[] = "time.nplindia.org" ;
 
  uint32_t glbTimeSec;
 
@@ -298,7 +298,7 @@ void vApplicationDaemonTaskStartupHook(void)
 		/* Initialize the Intrepid ISM Library before starting app tasks */
 		ismInit();
 		
-		getSNTPTime();
+		//getSNTPTime();
         DEMO_RUNNER_RunDemos();
     }
 }

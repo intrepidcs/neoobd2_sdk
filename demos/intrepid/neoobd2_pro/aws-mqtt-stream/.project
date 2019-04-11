@@ -128,6 +128,11 @@
 			<locationURI>BASE_DIR_ROOT/lib/third_party/tinycbor</locationURI>
 		</link>
 		<link>
+			<name>lib/third_party/parson</name>
+			<type>2</type>
+			<locationURI>BASE_DIR_ROOT/lib/third_party/parson</locationURI>
+		</link>
+		<link>
 			<name>lib/aws/FreeRTOS-Plus-POSIX/include</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>

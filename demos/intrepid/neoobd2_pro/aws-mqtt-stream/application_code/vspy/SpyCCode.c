@@ -28,6 +28,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #elif defined(BUILD_OBD2PRO_WIFI_CC32XX_ISM_PROJECT)
 #include <aws-can-stream.h>
 #include "obd2pro_wifi_cc32xx.h"
+#include "parson.h"
 #endif
 
 // module variables
@@ -35,14 +36,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // TODO: add global variables here
 
 // TODO: add event handlers here
-
-void SpyMsg_MG_Message_HS_CAN_1_HS_CAN(
-        MG_Message_HS_CAN_1_HS_CAN * pMG_Message_HS_CAN_1_HS_CAN)
+//void SpyMsg_MG_Decode_HS_CAN(MG_Decode_HS_CAN * pMG_Decode_HS_CAN)
+void SpyMsg_MG_Message_HS_CAN_1_HS_CAN(MG_Message_HS_CAN_1_HS_CAN * pMG_Message_HS_CAN_1_HS_CAN)
 {
     //size_t xBytesSend;
-    char timeval[20] = { 0 };
+    //char timeval[20] = { 0 };
     char payload[30] = { 0 };
-
+    int retval = 0;
     uint8_t count = 0;
     char cStreamData[60] = { 0 };
 
@@ -67,13 +67,21 @@ void SpyMsg_MG_Message_HS_CAN_1_HS_CAN(
     }
     start += sprintf(start, "\n");
 
-    getSNTPTime(timeval, sizeof(timeval));
     //(void ) snprintf(cStreamData, 60, "%s %d: %s: %s %s: %s","ID", pMG_Message_HS_CAN_1_HS_CAN->MessageData.iID, "Data", payload, "Time", timeval);
-    (void) snprintf(cStreamData, 60, "%s: %3x %s: %s %s: %s", "ID",
-                    pMG_Message_HS_CAN_1_HS_CAN->MessageData.iID, "Data",
-                    payload, "time", timeval);
-    prvPublishMessage(cStreamData, CAN_PUB_TOPIC, 60);
+    //(void) snprintf(cStreamData, 60, "%s: %3x %s: %s ", "ID", pMG_Message_HS_CAN_1_HS_CAN->MessageData.iID, "Data",payload);
 
+
+    JSON_Value *root_value = json_value_init_object();
+    JSON_Object *root_object = json_value_get_object(root_value);
+    //char *serialized_string = NULL;
+    json_object_set_number(root_object, "ID", pMG_Message_HS_CAN_1_HS_CAN->MessageData.iID);
+    json_object_set_string(root_object, "Data", payload);
+
+    //serialized_string = json_serialize_to_string_pretty(root_value);
+    retval = json_serialize_to_buffer_pretty(root_value, cStreamData, sizeof(cStreamData));
+    prvPublishMessage(cStreamData, CAN_PUB_TOPIC, 60);
+    //prvPublishMessage(&pMG_Message_HS_CAN_1_HS_CAN->MessageData.btData, CAN_PUB_TOPIC, 8);
+    json_value_free(root_value);
     //xBytesSend = xMessageBufferSend(xDataBuffer, &pMG_Message_HS_CAN_1_HS_CAN->MessageData.btData, 8 , 0);
 }
 
