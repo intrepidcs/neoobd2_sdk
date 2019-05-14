@@ -74,7 +74,7 @@ Using git, clone the neoOBD2 SDK from [GitHub](https://github.com/intrepidcs/neo
 
 3. Select **neoOBD2 PRO BLE nRF52** from the list of **Available ISM Targets**. Click the **OK** button to save and close the view. If you have Microsoft Visual Studio installed, Vehicle Spy will automatically open the generated project in Visual Studio.
 
-![alt text](../images/8-vspy_new_ccif_proj_BLE.PNG "Add new BLE C Code Interface Project for ISM")
+![alt text](../images/8-vspy_new_ccif_proj_BLE.png "Add new BLE C Code Interface Project for ISM")
 
 4. Go back to the **C Code Interface** view. From the top menu, click the **Edit** button to open the **C Code Module Setup** view. Navigate to the **ISM Settings** view and click the **Install…** button to open the **ISM Toolchain Downloader**. 
 
