@@ -27,15 +27,15 @@ Required Software:
 
 3. Open Vehicle Spy Professional. Verify Vehicle Spy Professional is able to detect your neoOBD2 PRO. The status LED on neoOBD2 PRO will exhibit a blinking pattern in white color if your PC has successfully enumerated the neoOBD2 PRO.
 
-    ![alt text](images/1-vspy_obd2pro_detect.PNG "Verify Vehicle Spy Pro is able to detect your neoOBD2 PRO")
+    ![alt text](../images/1-vspy_obd2pro_detect.PNG "Verify Vehicle Spy Pro is able to detect your neoOBD2 PRO")
 
 4. Select **Setup** from the top menu and select **Hardware**. This will open the **neoVI Explorer**, a common hardware configuration tool for all hardware interfaces from Intrepid Control Systems. Click the **Connect** button to connect to your neoOBD2 PRO. This will read hardware settings from the connected neoOBD2 PRO. Verify the networks you wish to use are enabled. If any of the three available firmware versions need to be updated, click the **Manual Reflash** button and wait for the firmware update process to come to completion. Make sure to click the **Write Settings** button to commit any changes before closing the Hardware view.
 
-    ![alt text](images/2-vspy_obd2pro_hw_setting.PNG "Configure hardware settings using the neoVI Explorer")
+    ![alt text](../images/2-vspy_obd2pro_hw_setting.PNG "Configure hardware settings using the neoVI Explorer")
 
 5. Click the **Play** button located on the top left corner of the screen. Verify Vehicle Spy Professional properly transitions to **Online** state. If the neoOBD2 PRO is connected to a live CAN bus, you will be able to view all CAN message traffic from the **Messages** view. While in online state, the status LED will exhibit a blinking pattern that transitions rapidly between green and blue.
 
-    ![alt text](images/3-vspy_obd2pro_online.PNG "Go online in Vehicle Spy")
+    ![alt text](../images/3-vspy_obd2pro_online.PNG "Go online in Vehicle Spy")
 
 ## Result
 
