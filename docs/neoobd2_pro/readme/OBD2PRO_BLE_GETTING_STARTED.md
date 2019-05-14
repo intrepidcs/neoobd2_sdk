@@ -94,7 +94,7 @@ Using git, clone the neoOBD2 SDK from [GitHub](https://github.com/intrepidcs/neo
 
 ## Results
 
-By completing this guide and the [Hardware Setup Guide](OBD2PRO_HW_SETUP_GUIDE.md) for neoOBD2 PRO, you are ready to start developing ARM Cortex M4F applications for the nRF5 BLE module on neoOBD2 PRO that leverage ISM library.
+By completing this guide and the [Hardware Setup Guide](OBD2PRO_HW_SETUP_GUIDE_BLE.md) for neoOBD2 PRO, you are ready to start developing ARM Cortex M4F applications for the nRF5 BLE module on neoOBD2 PRO that leverage ISM library.
 
 ## What's Next?
 
