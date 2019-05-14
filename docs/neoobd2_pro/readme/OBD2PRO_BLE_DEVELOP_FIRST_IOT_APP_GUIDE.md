@@ -106,7 +106,7 @@ For a complete documentation on **Vehicle Spy Enterprise**, please [click here](
 2. Click **Add Project...** button and select **New Project...**
 3. Click the **Create embedded projects for Intrepid Security Module (ISM) devices** check box to inflate additional view.
 
-![CCIF Project](../images/16-New_BLE_CCIF_Project.PNG "Vehicle Spy create new CCIF Project")
+![CCIF Project](../images/16-New_BLE_CCIF_Project.png "Vehicle Spy create new CCIF Project")
 
 4. Select **neoOBD2 PRO BLE nRF52** from the list of available ISM targets and add it to the selected ISM targets list. Click **OK** button to generate ISM source files. Note that Visual Studio will open if you have Visual Studio installed on your PC. You may see a dialog called **Retarget Projects**, indicating that the project needs to be updated to use a newer version of the Windows SDK and Platform Toolset. Click **OK** to update.
 5. In Visual Studio, change the configuration to **Release**. From the **Build** menu, select **Rebuild Solution**. 
