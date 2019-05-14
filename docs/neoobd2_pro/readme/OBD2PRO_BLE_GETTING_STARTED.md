@@ -98,4 +98,4 @@ By completing this guide and the [Hardware Setup Guide](OBD2PRO_HW_SETUP_GUIDE_B
 
 ## What's Next?
 
-Please use this step-by-step guide to start building your first BLE application for neoOBD2 PRO. The guide walks through an Amazon FreeRTOS sample project provided with the SDK that transmits a classical CAN 2.0 message and processes a response messagee - **[Getting Started with your first BLE Application for neoOBD2 PRO](OBD2PRO_DEVELOP_FIRST_BLE_APP_GUIDE.md)**
+Please use this step-by-step guide to start building your first BLE application for neoOBD2 PRO. The guide walks through an Amazon FreeRTOS sample project provided with the SDK that transmits a classical CAN 2.0 message and processes a response messagee - **[Getting Started with your first BLE Application for neoOBD2 PRO](OBD2PRO_BLE_DEVELOP_FIRST_IOT_APP_GUIDE.md)**
