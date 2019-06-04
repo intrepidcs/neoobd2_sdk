@@ -266,7 +266,7 @@ static void prvCANTxTask(void* pvParams)
     unsigned char i;
     unsigned char pidTotalNum = strlen((char*)pidNumberLookup);
 
-    msg.iID = 0x7DF;
+    msg.iID = 0x7E0;
     msg.iNetwork = 1;
     msg.iNumDataBytes = 8;
     msg.btData[0] = 0x02;
