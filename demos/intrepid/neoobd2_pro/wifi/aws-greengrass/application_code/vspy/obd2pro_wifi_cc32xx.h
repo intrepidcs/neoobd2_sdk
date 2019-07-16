@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2018 Intrepid Control Systems, Inc.
+Copyright (c) 2019 Intrepid Control Systems, Inc.
 All rights reserved.
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
@@ -122,9 +122,9 @@ typedef unsigned int DWORD;
 #define CM_GETSET_REQ_NET_SHUTDOWN                    85
 #define CM_GETSET_REQ_NET_ON_OTHER_BUS                86
 #define CM_GETSET_REQ_NET_OFF_OTHER_BUS               87
-#define CM_GETSET_TABLE_FBLOCK_ACTIVATE_SLOT		    88
+#define CM_GETSET_TABLE_FBLOCK_ACTIVATE_SLOT            88
 #define CM_GETSET_TABLE_FBLOCK_DEACTIVATE_SLOT        89
-#define CM_GETSET_MSG_DISSECTED_INSTANCE_VALUE		90
+#define CM_GETSET_MSG_DISSECTED_INSTANCE_VALUE      90
 #define CM_GETSET_DB_DISSECTED_INSTANCE_VALUE         91
 
 #define ATTR_ACTIVE_INIT                        0x10
