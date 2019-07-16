@@ -122,9 +122,9 @@ typedef unsigned int DWORD;
 #define CM_GETSET_REQ_NET_SHUTDOWN                    85
 #define CM_GETSET_REQ_NET_ON_OTHER_BUS                86
 #define CM_GETSET_REQ_NET_OFF_OTHER_BUS               87
-#define CM_GETSET_TABLE_FBLOCK_ACTIVATE_SLOT            88
+#define CM_GETSET_TABLE_FBLOCK_ACTIVATE_SLOT		    88
 #define CM_GETSET_TABLE_FBLOCK_DEACTIVATE_SLOT        89
-#define CM_GETSET_MSG_DISSECTED_INSTANCE_VALUE      90
+#define CM_GETSET_MSG_DISSECTED_INSTANCE_VALUE		90
 #define CM_GETSET_DB_DISSECTED_INSTANCE_VALUE         91
 
 #define ATTR_ACTIVE_INIT                        0x10
@@ -139,13 +139,14 @@ typedef unsigned int DWORD;
 void CM_ExtensionInit(const struct stCallBackPointers *);
 void CM_EveryMessage(int,int,uint64_t,unsigned int,int,int,const unsigned char *);
 
-#define CAN_ID_EXTENDED_MASK   (0x1FFFFFFF)
+#define CAN_ID_EXTENDED_MASK   (0x1FFFF800)
 #define CAN_ID_STANDARD_MASK   (0x000007FF)
+#define CAN_ID_EXTENDED_BIT    (0x80000000)
 
-#define isStdId(id) (id & CAN_ID_STANDARD_MASK)
-#define isExtId(id) (id & CAN_ID_EXTENDED_MASK)
-#define mkExtId(id) (id & CAN_ID_EXTENDED_MASK)
-#define mkStdId(id) (id & CAN_ID_STANDARD_MASK)
+#define isStdId(id) ((id & CAN_ID_EXTENDED_BIT) == 0)
+#define isExtId(id) (((id & CAN_ID_EXTENDED_BIT) == CAN_ID_EXTENDED_BIT) || (id & CAN_ID_EXTENDED_MASK))
+#define mkExtId(id) (id | CAN_ID_EXTENDED_BIT)
+#define mkStdId(id) (id & (~CAN_ID_EXTENDED_BIT))
 #define valOfId(id) ((long)id)
 void SetUseExtendedIdBit(void);
 
