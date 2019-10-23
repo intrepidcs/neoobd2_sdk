@@ -51,6 +51,8 @@ Intrepid Control Systems has designed a custom [dual USB-A to USB-C cable](https
 
 The cable provides USB 5V DC power to the neoOBD2 PRO. In addition, one leg of the USB Type A cable connects Vehicle Spy (PC) to the neoOBD2 PRO for realtime bus monitoring, loading CoreMini scripts, and configuring the neoOBD2 PRO. The other USB Type A leg connects to the onboard Texas Instruments CC3220SF JTAG debugger / UART programmer and ARM CMSIS DAPLINK debugger for nRF52832. This unique design allows the neoOBD2 PRO to be online with Vehicle Spy while you are debugging the CC3220SF WiFi MCU.
 
+![alt_text](../images/69-obd2pro_usb_connection_map.PNG "Dual USB-A to USB-C Cable for neoOBD2 PRO")
+
 ## Install Vehicle Spy Enterprise and Configure Basic Hardware Settings
 
 1. Run the offline installer provided with your purchase of **Vehicle Spy Enterprise**. Please [contact Intrepid Control Systems](https://www.intrepidcs.com/support/contact-support/) for a version of installer that is compatible with your neoOBD2 PRO.
