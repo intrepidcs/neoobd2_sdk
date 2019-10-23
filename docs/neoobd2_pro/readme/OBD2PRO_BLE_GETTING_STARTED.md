@@ -40,7 +40,7 @@ Required Software:
     
     For introduction, tutorials, and documentations on Vehicle Spy Enterprise, please [click here](https://cdn.intrepidcs.net/support/VehicleSpy/vehiclespyhelpdoc.html).
 
-5. **[pyOCD](#flash_ble_app_bootloader)**
+5. **[pyOCD for flashing the Intrepid BLE Application Bootloader](#flash_ble_app_bootloader)**
 
     The neoOBD2 PRO features ARM MBED DAPLINK interface for programming and debugging the onboard nRF52832 via USB. We will use pyOCD in this guide to show how the Intrepid BLE application bootloader is programmed into the nRF52832. The bootloader is required for Vehicle Spy Enterprise to program BLE application for release.
     
