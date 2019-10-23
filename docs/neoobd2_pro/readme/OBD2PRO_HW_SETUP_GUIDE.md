@@ -29,7 +29,7 @@ The GND and VBATT pins on the Male OBDII Connector can be connected to a DC powe
 
 While neoOBD2 PRO can also be powered via USB, we recommend powering the hardware via the Male OBDII Connector and use the USB port mainly for data connectivity.
 
-    ![alt_text](../images/66-obd2pro_power_zone.PNG "Power Input & Output")
+![alt_text](../images/66-obd2pro_power_zone.PNG "Power Input & Output")
 
 ## OBDII Connectors and Pin Map
 
@@ -39,12 +39,12 @@ There are two types of default NUC boards, [CAN NUC Board](https://store.intrepi
 
 The CAN NUC board maps four CAN/CANFD, one SWCAN, and two LIN networks of the neoOBD2 PRO to the following pins on the OBD2 connector:
 
-    ![alt_text](../images/67-obd2pro_CAN_NUC.PNG "The CAN NUC Board for neoOBD2 PRO")
+![alt_text](../images/67-obd2pro_CAN_NUC.PNG "The CAN NUC Board for neoOBD2 PRO")
     
 The Ethernet NUC board maps three CAN/CANFD, one SWCAN, one LIN, and one Ethernet networks of the neoOBD2 PRO to the following pins on the OBD2 connector:
 
-    ![alt_text](../images/68-obd2pro_ETHERNET_NUC.PNG "The ETHERNET NUC Board for neoOBD2 PRO")
-
+![alt_text](../images/68-obd2pro_ETHERNET_NUC.PNG "The ETHERNET NUC Board for neoOBD2 PRO")
+    
 ## Custom Dual USB A & USB C Cable for neoOBD2 PRO
 
 Intrepid Control Systems has designed a custom [dual USB-A to USB-C cable](https://store.intrepidcs.com/productdetails_popup.asp?productcode=NEOOBD2-PRO-PROG-CABLE) exclusively for use with neoOBD2 PRO. 
