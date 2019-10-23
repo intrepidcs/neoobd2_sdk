@@ -1,25 +1,33 @@
 # Getting Started with BLE Development on neoOBD2 PRO
 
-**Before proceeding further, please make sure you have completed the neoOBD2 PRO Hardware setup guide** - [click here](OBD2PRO_HW_SETUP_GUIDE_BLE.md).
-
-
-## Overview of the Development Process
-The following diagram gives a high-level view of the process for developing BLE applications for the neoOBD2 PRO
-
-![alt text](../images/neoOBD2_BLE_Development_Process.PNG "Overview")
+**Before proceeding further, please make sure you have completed the neoOBD2 PRO Hardware setup guide** - [click here](OBD2PRO_HW_SETUP_GUIDE.md).
 
 ## Required Hardware:
 
 1. neoOBD2 PRO
-2. Dual USB A & USB C cable
+2. neoOBD2 SIM (Optional)
+3. Dual USB A & USB C cable
 	
 ## Required Software:
+
+1. neoOBD2 SDK
+2. Vehicle Spy Enterprise
+3. pyOCD
+4. ARM MBED DAPLINK compatible ARM Embedded IDE
 
 ### neoOBD2 SDK
 
    The neoOBD2 SDK is a collection of precompiled static libraries from Intrepid Control Systems and third-party SDKs such as Amazon FreeRTOS, TI CC3220 SDK, and Nordic nRF5 SDK that allow embedded developers to create IoT applications with full access to vehicle networks supported by compatible neoOBD2 family of adaptors including CAN/CANFD, LIN, and Ethernet.
     
-   The SDK comes with ready to build sample projects that leverage the Intrepid Security Module (ISM) library, [TI CC3220 SDK](http://www.ti.com/tool/simplelink-cc3220-sdk), and [Amazon FreeRTOS](https://aws.amazon.com/freertos/) with connectivity support for [AWS IoT Core](https://aws.amazon.com/iot-core/) and [AWS Greengrass](https://aws.amazon.com/greengrass/).
+   The SDK comes with ready to build sample projects that leverage the Intrepid Security Module (ISM) library.
+
+### Vehicle Spy Enterprise 
+
+Please complete installation & configuration using the [hardware setup guide](OBD2PRO_HW_SETUP_GUIDE.md)
+
+   [Vehicle Spy Professional](http://store.intrepidcs.com/Vehicle-Spy-p/vspy-3-pro.htm) is a single tool for diagnostics, node/ECU simulation, data acquisition, automated testing, and in-vehicle communication networks bus monitoring.
+    
+   For introduction, tutorials, and documentations on Vehicle Spy Professional, please [click here](https://cdn.intrepidcs.net/support/VehicleSpy/vehiclespyhelpdoc.html).
 
 ### Microsoft Visual Studio
 
@@ -37,15 +45,11 @@ The following diagram gives a high-level view of the process for developing BLE 
 
    The embedded C Code Interface projects in Visual Studio do not support debugging. Therefore, a full fledged embedded IDE is desired for an enhanced development and debugging experience. When developing BLE applications for the Nordic nRF52 BLE module, the Segger Embedded Studio IDE is a popular and recommended choice. Full USB debugging for nRF52 is supported for neoOBD2 PRO from the Segger IDE. All BLE sample projects provided by the SDK can easily be imported into the Segger IDE. Step by step details on developing, building, and deploying projects using the Segger IDE and Vehicle Spy Professional is provided with the SDK.
 
-### Vehicle Spy Professional 
+### pyOCD for Programming and Debugging nRF52832
 
-Please complete installation & configuration using the [hardware setup guide](OBD2PRO_HW_SETUP_GUIDE_BLE.md)
+The neoOBD2 PRO features ARM BED DAPLINK interface for programming and debugging the onboard nRF52832 via USB. 
 
-   [Vehicle Spy Professional](http://store.intrepidcs.com/Vehicle-Spy-p/vspy-3-pro.htm) is a single tool for diagnostics, node/ECU simulation, data acquisition, automated testing, and in-vehicle communication networks bus monitoring.
-    
-   For introduction, tutorials, and documentations on Vehicle Spy Professional, please [click here](https://cdn.intrepidcs.net/support/VehicleSpy/vehiclespyhelpdoc.html).
-
-### Segger Embedded Studio
+### ARM Embedded IDE with support for ARM MBED DAPLINK
 
 Segger Embedded Studio is an Integrated Development Environment (IDE) that is free to use with Nordic nRF52 BLE projects.
 
@@ -94,7 +98,7 @@ Using git, clone the neoOBD2 SDK from [GitHub](https://github.com/intrepidcs/neo
 
 ## Results
 
-By completing this guide and the [Hardware Setup Guide](OBD2PRO_HW_SETUP_GUIDE_BLE.md) for neoOBD2 PRO, you are ready to start developing ARM Cortex M4F applications for the nRF5 BLE module on neoOBD2 PRO that leverage ISM library.
+By completing this guide and the [Hardware Setup Guide](OBD2PRO_HW_SETUP_GUIDE.md) for neoOBD2 PRO, you are ready to start developing ARM Cortex M4F applications for the nRF5 BLE module on neoOBD2 PRO that leverage ISM library.
 
 ## What's Next?
 
