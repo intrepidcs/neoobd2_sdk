@@ -6,10 +6,10 @@ Thank you for purchasing neoOBD2 PRO. This guide provides the minimum level of c
 
 Required Hardware:
 
-1. neoOBD2 PRO
-2. neoOBD2 SIM (Optional)
-3. Dual USB A & USB C Cable
-4. 12V DC Power Supply with Barrel Jack Connector
+1. [neoOBD2 PRO](https://store.intrepidcs.com/neoOBD-2-Pro-p/neoobd2-pro.htm)
+2. [neoOBD2 SIM](https://store.intrepidcs.com/neoECU-CHIP-Simulator-p/neoobd2-sim.htm) (Optional)
+3. [Dual USB A & USB C Cable](https://store.intrepidcs.com/productdetails_popup.asp?productcode=NEOOBD2-PRO-PROG-CABLE)
+4. [12V DC Power Supply with Barrel Jack Connector](https://store.intrepidcs.com/productdetails_popup.asp?productcode=NEOVI-PS)
 
 Required Software:
 
