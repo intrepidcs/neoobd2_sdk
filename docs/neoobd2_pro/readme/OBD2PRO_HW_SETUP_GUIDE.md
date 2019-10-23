@@ -1,6 +1,6 @@
 # Getting Started with neoOBD2 PRO Hardware
 
-This guide provides the minimum level of configurations needed to setup your neoOBD2 PRO hardware for development using TI Code Composer Studio IDE and Vehicle Spy Enterprise software. 
+Thank you for purchasing neoOBD2 PRO. This guide provides the minimum level of configurations needed to setup your neoOBD2 PRO hardware for development using TI Code Composer Studio IDE and Vehicle Spy Enterprise software. 
 
 ## Prerequisites
 
@@ -20,12 +20,42 @@ Required Software:
     For introduction, tutorials, and documentations on Vehicle Spy Enterprise, please [click here](https://cdn.intrepidcs.net/support/VehicleSpy/vehiclespyhelpdoc.html).
 
 2. Texas Instruments Code Composer Studio IDE
-	
+
+## Powering Up your neoOBD2 PRO
+
+The neoOBD2 PRO can be powered via its Male OBDII Connector or via USB Type-C Connector. 
+
+The GND and VBATT pins on the Male OBDII Connector can be connected to a DC power source that provides 4.5V - 40V. This includes OBDII port found in a vehicle or a custom-built harness with GND on pin 4 and VBATT on pin 16 of a Female OBDII Connector. We recommend using a 3A 12V DC power supply for general use. 
+
+While neoOBD2 PRO can also be powered via USB, we recommend powering the hardware via the Male OBDII Connector and use the USB port mainly for data connectivity.
+
+    ![alt_text](../images/66-obd2pro_power_zone.PNG "Power Input & Output")
+
+## OBDII Connectors and Pin Map
+
+The neoOBD2 PRO features Neovi Universal Connector (NUC) boards. The boards allow OBDII pin mappings on the Male and Female OBDII connectors of the hardware to be customized so that they are compatible with the pin mapping found on vehicle OBDII port users would like to connect to.
+
+There are two types of default NUC boards, [CAN NUC Board](https://store.intrepidcs.com/productdetails_popup.asp?productcode=OBD2-CAN-NUC-BD) and [Ethernet NUC Board](https://store.intrepidcs.com/productdetails_popup.asp?productcode=OBD2-ETH-NUC-BD). When a neoOBD2 PRO is shipped, Intrepid Control Systems will install the CAN NUC Board for you. This provides mapping for 4x CAN-FD, 1x SWCAN and 2x LIN. If you intend to use Ethernet for DoIP, contact [support](https://www.intrepidcs.com/support/) at Intrepid Control Systems for assistsance.
+
+The CAN NUC board maps four CAN/CANFD, one SWCAN, and two LIN networks of the neoOBD2 PRO to the following pins on the OBD2 connector:
+
+    ![alt_text](../images/67-obd2pro_CAN_NUC.PNG "The CAN NUC Board for neoOBD2 PRO")
+    
+The Ethernet NUC board maps three CAN/CANFD, one SWCAN, one LIN, and one Ethernet networks of the neoOBD2 PRO to the following pins on the OBD2 connector:
+
+    ![alt_text](../images/68-obd2pro_ETHERNET_NUC.PNG "The ETHERNET NUC Board for neoOBD2 PRO")
+
+## Custom Dual USB A & USB C Cable for neoOBD2 PRO
+
+Intrepid Control Systems has designed a custom [dual USB-A to USB-C cable](https://store.intrepidcs.com/productdetails_popup.asp?productcode=NEOOBD2-PRO-PROG-CABLE) exclusively for use with neoOBD2 PRO. 
+
+The cable provides USB 5V DC power to the neoOBD2 PRO. In addition, one leg of the USB Type A cable connects Vehicle Spy (PC) to the neoOBD2 PRO for realtime bus monitoring, loading CoreMini scripts, and configuring the neoOBD2 PRO. The other USB Type A leg connects to the onboard Texas Instruments CC3220SF JTAG debugger / UART programmer and ARM CMSIS DAPLINK debugger for nRF52832. This unique design allows the neoOBD2 PRO to be online with Vehicle Spy while you are debugging the CC3220SF WiFi MCU.
+
 ## Install Vehicle Spy Enterprise and Configure Basic Hardware Settings
 
 1. Run the offline installer provided with your purchase of **Vehicle Spy Enterprise**. Please [contact Intrepid Control Systems](https://www.intrepidcs.com/support/contact-support/) for a version of installer that is compatible with your neoOBD2 PRO.
 
-2. Let's power up the neoOBD2 PRO. If you have a **neoOBD2 SIM** connect the **12V DC Power Supply** to neoOBD2 SIM via its barrel jack connector. Then, connect the neoOBD2 SIM to power the neoOBD2 PRO via the 16 pin male OBDII connector. If you do not have a neoOBD2 SIM, you can create a custom cable with a female OBDII connector with GND on pin 4 and VBATT on pin 16. Then, supply 12V ~ 24V through the cable. This will provide power to the neoOBD2 PRO. If you are not able to create a custom cable, you will also be able to power the neoOBD2 PRO via USB by using the provided **Dual USB A & USB C cable**. BUt it is recommended that you power the neoOBD2 PRO via its male OBDII connector using a DC power supply. Verify that the first three status LEDs from the left to right on your neoOBD2 PRO are all blinking in orange as shown below. The orange color indicates that the neoOBD2 PRO is not connected to Vehicle Spy and both the WiFi and BLE chips are running the default bootloader.
+2. Let's power up the neoOBD2 PRO. If you have a **neoOBD2 SIM** connect the **12V DC Power Supply** to neoOBD2 SIM via its barrel jack connector. Then, connect the neoOBD2 SIM to power the neoOBD2 PRO via the 16 pin male OBDII connector. If you do not have a neoOBD2 SIM, you can create a custom cable with a Female OBDII connector with GND on pin 4 and VBATT on pin 16. Then, supply 4.5V - 40V DC through the cable. This will provide power to the neoOBD2 PRO. If you are not able to create a custom cable, you will also be able to power the neoOBD2 PRO via USB by using the provided **Dual USB A & USB C cable**. BUt it is recommended that you power the neoOBD2 PRO via its male OBDII connector using a DC power supply. Verify that the first three status LEDs from the left to right on your neoOBD2 PRO are all blinking in orange as shown below. The orange color indicates that the neoOBD2 PRO is not connected to Vehicle Spy and both the WiFi and BLE chips are running the default bootloader.
 
     ![alt_text](../images/64-obd2pro_default_led.PNG "Default LED status on your neoOBD2 PRO after power up")
 
