@@ -40,9 +40,9 @@ Required Software:
     
     For introduction, tutorials, and documentations on Vehicle Spy Enterprise, please [click here](https://cdn.intrepidcs.net/support/VehicleSpy/vehiclespyhelpdoc.html).
 
-5. **pyOCD** for Programming and Debugging nRF52832
+5. **[pyOCD](#flash_ble_app_bootloader)**
 
-    The neoOBD2 PRO features ARM MBED DAPLINK interface for programming and debugging the onboard nRF52832 via USB. We recommend using pyOCD for programming and debugging the onboard nRF52832. We will use pyOCD in this guide to show how the Intrepid application bootloader needs to be programmed into the nRF52832, so that Vehicle Spy can be used to program BLE application.
+    The neoOBD2 PRO features ARM MBED DAPLINK interface for programming and debugging the onboard nRF52832 via USB. We will use pyOCD in this guide to show how the Intrepid BLE application bootloader is programmed into the nRF52832. The bootloader is required for Vehicle Spy Enterprise to program BLE application for release.
     
     pyOCD is available on GitHub [here](https://github.com/mbedmicro/pyOCD)
 
@@ -99,6 +99,31 @@ Microsoft Visual Studio is not required for Wi-Fi development, but may be useful
 ![alt text](../images/10-vspy_ccif_ism_grabber_folder_exists.PNG "ISM Toolchain exists")
 
 ![alt text](../images/12-vspy_ccif_ism_grabber_folder_not_exists_download.PNG "Download/Update ISM Toolchain")
+
+<a name='flash_ble_app_bootloader'></a>
+### Using pyOCD to flash the Intrepid BLE Application Bootloader
+
+In order to use Vehicle Spy Enterprise to program your BLE application for deployment, the Intrepid application bootloader must be present in the onboard nrf52832. When flashed and configured properly, the application bootloader is the application that gets executed on chip reset. The task of the application bootloader is to check if there is a valid BLE application in the FLASH at the starting location of the User Application section. If found, the bootloader will jump to the starting address and execute the application. Otherwise if no application is found, the bootloader will wait for Vehicle Spy Enterprise to load a valid BLE application and program the application when available.
+
+![alt text](../images/70-obd2pro_ble_nrf_flash_map.PNG "Intrepid BLE Application Bootloader")
+
+Please follow these steps to program and configure the Intrepid BLE application bootloader.
+
+1. Follow the installation guide available on pyOCD GitHub repo to install pyOCD on your PC.
+
+2. Connect your neoOBD2 PRO to PC via the provided Dual USB-A to USB-C cable. Ensure your PC finds a Portable Device called "DAPLINK".
+
+![alt text](../images/72-obd2pro_daplink_device_manager.PNG "DAPLINK")
+
+3. Locate the nrf52832_obd2pro_bl_flasher.bat in the neoOBD2 SDK under neoobd2_sdk\demos\intrepid\neoobd2_pro\ble\app_bl.
+
+4. Open Windows command prompt and execute the .bat file.
+
+![alt text](../images/71-obd2pro_ble_bl_flasher.PNG "Intrepid BLE application bootloader flasher")
+
+5. If the bootloader is programmed and configured properly, inspect the neoOBD2 PRO to see if the Bluetooth LED is blinking Orange.
+
+![alt text](../images/65-obd2pro_connected_to_vspy_led.PNG "Check Bluetooth LED")
 
 ## Results
 
