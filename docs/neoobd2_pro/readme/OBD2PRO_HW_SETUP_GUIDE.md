@@ -6,10 +6,10 @@ This guide provides the minimum level of configurations needed to setup your neo
 
 Required Hardware:
 
-1. neoOBD2 PRO
-2. neoOBD2 SIM (Optional)
-3. Dual USB A & USB C Cable
-4. 12V DC Power Supply with Barrel Jack Connector
+1. [neoOBD2 PRO](https://store.intrepidcs.com/neoOBD-2-Pro-p/neoobd2-pro.htm)
+2. [neoOBD2 SIM](https://store.intrepidcs.com/neoECU-CHIP-Simulator-p/neoobd2-sim.htm) (Optional)
+3. [Dual USB A & USB C Cable](https://store.intrepidcs.com/productdetails_popup.asp?productcode=NEOOBD2-PRO-PROG-CABLE)
+4. [12V DC Power Supply with Barrel Jack Connector](https://store.intrepidcs.com/productdetails_popup.asp?productcode=NEOVI-PS)
 
 Required Software:
 
@@ -25,7 +25,7 @@ Required Software:
 
 1. Run the offline installer provided with your purchase of **Vehicle Spy Enterprise**. Please [contact Intrepid Control Systems](https://www.intrepidcs.com/support/contact-support/) for a version of installer that is compatible with your neoOBD2 PRO.
 
-2. Let's power up the neoOBD2 PRO. If you have a **neoOBD2 SIM** connect the **12V DC Power Supply** to neoOBD2 SIM via its barrel jack connector. Then, connect the neoOBD2 SIM to power the neoOBD2 PRO via the 16 pin male OBDII connector. If you do not have a neoOBD2 SIM, you can create a custom cable with a female OBDII connector with GND on pin 4 and VBATT on pin 16. Then, supply 12V ~ 24V through the cable. This will provide power to the neoOBD2 PRO. If you are not able to create a custom cable, you will also be able to power the neoOBD2 PRO via USB by using the provided **Dual USB A & USB C cable**. BUt it is recommended that you power the neoOBD2 PRO via its male OBDII connector using a DC power supply. Verify that the first three status LEDs from the left to right on your neoOBD2 PRO are all blinking in orange as shown below. The orange color indicates that the neoOBD2 PRO is not connected to Vehicle Spy and both the WiFi and BLE chips are running the default bootloader.
+2. Let's power up the neoOBD2 PRO. If you have a neoOBD2 SIM connect the **12V DC Power Supply** to neoOBD2 SIM via its barrel jack connector. Then, connect the neoOBD2 SIM to power the neoOBD2 PRO via the 16 pin male OBDII connector. If you do not have a neoOBD2 SIM, you can create a custom cable with a female OBDII connector with GND on pin 4 and VBATT on pin 16. Then, supply 12V ~ 24V through the cable. This will provide power to the neoOBD2 PRO. If you are not able to create a custom cable, you will also be able to power the neoOBD2 PRO via USB by using the provided **Dual USB A & USB C cable**. BUt it is recommended that you power the neoOBD2 PRO via its male OBDII connector using a DC power supply. Verify that the first three status LEDs from the left to right on your neoOBD2 PRO are all blinking in orange as shown below. The orange color indicates that the neoOBD2 PRO is not connected to Vehicle Spy and both the WiFi and BLE chips are running the default bootloader.
 
     ![alt_text](../images/64-obd2pro_default_led.PNG "Default LED status on your neoOBD2 PRO after power up")
 
