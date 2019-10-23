@@ -48,14 +48,14 @@ Required Software:
 
 6. **ARM Embedded IDE** of your choice with support for ARM MBED DAPLINK
 
-    There are several embedded Integrated Development Environment tools that support the ARM MBED CMSIS-DAP (now DAPLINK) debug protocol to debug / program Nordic nRF52832. 
+    There are several embedded Integrated Development Environment tools that support the ARM MBED DAPLINK (formerly CMSIS-DAP) debug protocol to debug / program Nordic nRF52832. 
 
-    - Rowley CrossWorks for ARM (Recommended)
+    - **Rowley CrossWorks for ARM (Recommended)**
     - ARM KEIL µVision® IDE
     - IAR Embedded Workbench
     - GNU ARM Embedded Toolchain with pyOCD
 
-    Intrepid recommends using **(CrossWorks for ARM)[https://www.rowley.co.uk/arm/index.htm]** from Rowley for BLE development with neoOBD2 PRO. The neoOBD2 SDK provides sample BLE applications in the form of CrossWorks projects. These projects are based on Segger Embedded Studio projects provided by Nordic in their nRF5 SDK.
+    Intrepid recommends using [CrossWorks for ARM](https://www.rowley.co.uk/arm/index.htm) from Rowley for BLE development with neoOBD2 PRO. The neoOBD2 SDK provides sample BLE applications in the form of CrossWorks projects. These projects are based on Segger Embedded Studio projects provided by Nordic in their nRF5 SDK.
 
     Nordic offers an IDE called Segger Embedded Studio to its customers for development with nRF SoC. The nRF5 SDK comes with numerous sample BLE projects that are created using Segger Embedded Studio. What is unique about Segger Embedded Studio is that it is based on an IDE called CrossWorks for ARM by Rowley. In addition to Segger J-Link, CrossWorks supports other debug interfaces including DAPLINK for programming and debugging nRF SOC.
 
