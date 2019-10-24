@@ -79,9 +79,11 @@ the neoOBD2 PRO mounts in Windows as storage device **DAPLINK**. If your neoOBD2
 
 ## Programming the Application into neoOBD2 PRO
 
-Once your BLE program is ready to be deployed in neoOBD2 PRO, you can use Vehicle Spy to do so.
+Once your BLE program is ready to be deployed in neoOBD2 PRO, you can use Vehicle Spy Enterprise to do so.
 
-The nRF52 BLE module in neoOBD2 PRO is programmed with an application bootloader at production, which allows Vehicle Spy to program an application binary. The application bootloader is always executed first from external secure FLASH. If the application boot-loader detects a valid application in the external FLASH, it will load it into its internal FLASH and begin execution. Otherwise, the application boot-loader will wait indefinitely for Vehicle Spy to send a valid application. 
+The Intrepid application bootloader running on the nrf52832 ( allows Vehicle Spy to program your BLE application binary down to it. If the application bootloader detects a valid application in the nrf52832 FLASH, it will load it into its internal FLASH and begin execution. Otherwise, the application bootloader will wait indefinitely for Vehicle Spy to send a valid application. The presence of the bootloader on your neoOBD2 PRO is indicated by the Bluetooth LED blinking in orange.
+
+![Overview](../images/70-obd2pro_ble_nrf_flash_map.PNG "")
 
 1. Open the .vs3 project that was created in the previous section. 
 2. Go to **Tools** from the top menu and select **CoreMini Console**. This will open a utility you can use to program the neoOBD2 PRO. Press the **Clear** button to clean the neoOBD2 PRO first.
