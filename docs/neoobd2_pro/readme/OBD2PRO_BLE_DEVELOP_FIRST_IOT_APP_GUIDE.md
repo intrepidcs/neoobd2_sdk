@@ -34,7 +34,7 @@ The following diagram illustrates how applications and hardware relate to each o
 
 ![Overview](../images/69-obd2pro_usb_connection_map.PNG "Application/Hardware/Cable Overview")
 
-## Import the Sampe Project into CrossWorks for ARM
+## Import the Sample Project into CrossWorks for ARM
 
 This guide is based on the CrossWorks for ARM IDE by Rowley. Download and install the IDE from [here](https://www.rowley.co.uk/arm/index.htm).
 
