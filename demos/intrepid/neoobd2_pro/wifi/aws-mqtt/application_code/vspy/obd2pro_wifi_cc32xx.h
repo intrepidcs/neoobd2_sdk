@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2018 Intrepid Control Systems, Inc.
+Copyright (c) 2019 Intrepid Control Systems, Inc.
 All rights reserved.
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
@@ -139,13 +139,14 @@ typedef unsigned int DWORD;
 void CM_ExtensionInit(const struct stCallBackPointers *);
 void CM_EveryMessage(int,int,uint64_t,unsigned int,int,int,const unsigned char *);
 
-#define CAN_ID_EXTENDED_MASK   (0x1FFFFFFF)
+#define CAN_ID_EXTENDED_MASK   (0x1FFFF800)
 #define CAN_ID_STANDARD_MASK   (0x000007FF)
+#define CAN_ID_EXTENDED_BIT    (0x80000000)
 
-#define isStdId(id) (id & CAN_ID_STANDARD_MASK)
-#define isExtId(id) (id & CAN_ID_EXTENDED_MASK)
-#define mkExtId(id) (id & CAN_ID_EXTENDED_MASK)
-#define mkStdId(id) (id & CAN_ID_STANDARD_MASK)
+#define isStdId(id) ((id & CAN_ID_EXTENDED_BIT) == 0)
+#define isExtId(id) (((id & CAN_ID_EXTENDED_BIT) == CAN_ID_EXTENDED_BIT) || (id & CAN_ID_EXTENDED_MASK))
+#define mkExtId(id) (id | CAN_ID_EXTENDED_BIT)
+#define mkStdId(id) (id & (~CAN_ID_EXTENDED_BIT))
 #define valOfId(id) ((long)id)
 void SetUseExtendedIdBit(void);
 

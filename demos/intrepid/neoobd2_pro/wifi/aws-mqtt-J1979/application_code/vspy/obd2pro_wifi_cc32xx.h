@@ -1,3 +1,25 @@
+/*
+Copyright (c) 2019 Intrepid Control Systems, Inc.
+All rights reserved.
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
 // vspy generated header file
 #ifndef _OBD2PRO_WIFI_CC32XX_H_
 #define _OBD2PRO_WIFI_CC32XX_H_
@@ -117,13 +139,14 @@ typedef unsigned int DWORD;
 void CM_ExtensionInit(const struct stCallBackPointers *);
 void CM_EveryMessage(int,int,uint64_t,unsigned int,int,int,const unsigned char *);
 
-#define CAN_ID_EXTENDED_MASK   (0x1FFFFFFF)
+#define CAN_ID_EXTENDED_MASK   (0x1FFFF800)
 #define CAN_ID_STANDARD_MASK   (0x000007FF)
+#define CAN_ID_EXTENDED_BIT    (0x80000000)
 
-#define isStdId(id) (id & CAN_ID_STANDARD_MASK)
-#define isExtId(id) (id & CAN_ID_EXTENDED_MASK)
-#define mkExtId(id) (id & CAN_ID_EXTENDED_MASK)
-#define mkStdId(id) (id & CAN_ID_STANDARD_MASK)
+#define isStdId(id) ((id & CAN_ID_EXTENDED_BIT) == 0)
+#define isExtId(id) (((id & CAN_ID_EXTENDED_BIT) == CAN_ID_EXTENDED_BIT) || (id & CAN_ID_EXTENDED_MASK))
+#define mkExtId(id) (id | CAN_ID_EXTENDED_BIT)
+#define mkStdId(id) (id & (~CAN_ID_EXTENDED_BIT))
 #define valOfId(id) ((long)id)
 void SetUseExtendedIdBit(void);
 

@@ -1,0 +1,63 @@
+<!DOCTYPE CrossStudio_Session_File>
+<session>
+ <Bookmarks/>
+ <Breakpoints groups="Breakpoints" active_group="Breakpoints">
+  <Exceptions set="MemManage;UsageFault_Coprocessor;UsageFault_CheckingError;UsageFault_StateError;BusFault;ExceptionEntryReturnFault;HardFault"/>
+ </Breakpoints>
+ <ExecutionProfileWindow/>
+ <FrameBufferWindow>
+  <FrameBufferWindow bufferHeight="-1" addressSpace="" addressText="" bufferWidth="-1"/>
+ </FrameBufferWindow>
+ <Memory1>
+  <MemoryWindow addressSpace="" dataSize="1" autoEvaluate="0" viewMode="0" addressOrder="0" columnsText="" refreshPeriod="1000" name="ble_app_template_obd2pro_s132" radix="16" sizeText="" addressText="0"/>
+ </Memory1>
+ <Memory2>
+  <MemoryWindow addressSpace="" dataSize="1" autoEvaluate="0" viewMode="0" addressOrder="0" columnsText="" refreshPeriod="0" name="ble_app_template_obd2pro_s132" radix="16" sizeText="" addressText=""/>
+ </Memory2>
+ <Memory3>
+  <MemoryWindow addressSpace="" dataSize="1" autoEvaluate="0" viewMode="0" addressOrder="0" columnsText="" refreshPeriod="0" name="ble_app_template_obd2pro_s132" radix="16" sizeText="" addressText=""/>
+ </Memory3>
+ <Memory4>
+  <MemoryWindow addressSpace="" dataSize="1" autoEvaluate="0" viewMode="0" addressOrder="0" columnsText="" refreshPeriod="0" name="ble_app_template_obd2pro_s132" radix="16" sizeText="" addressText=""/>
+ </Memory4>
+ <Project>
+  <ProjectSessionItem path="ble_app_template_obd2pro_s132"/>
+  <ProjectSessionItem path="ble_app_template_obd2pro_s132;ble_app_template_obd2pro_s132"/>
+ </Project>
+ <Register1>
+  <RegisterWindow visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/msp;CPU/psp;CPU/cfbp;UICR/UNUSED0;UICR/UNUSED1;UICR/UNUSED2;UICR/UNUSED3;UICR/NRFFW[0];UICR/NRFFW[1];UICR/NRFFW[2];UICR/NRFFW[3];UICR/NRFFW[4];UICR/NRFFW[5];UICR/NRFFW[6];UICR/NRFFW[7];UICR/NRFFW[8];UICR/NRFFW[9];UICR/NRFFW[10];UICR/NRFFW[11];UICR/NRFFW[12];UICR/NRFFW[13];UICR/NRFFW[14];UICR/NRFHW[0];UICR/NRFHW[1];UICR/NRFHW[2];UICR/NRFHW[3];UICR/NRFHW[4];UICR/NRFHW[5];UICR/NRFHW[6];UICR/NRFHW[7];UICR/NRFHW[8];UICR/NRFHW[9];UICR/NRFHW[10];UICR/NRFHW[11];UICR/CUSTOMER[0];UICR/CUSTOMER[1];UICR/CUSTOMER[2];UICR/CUSTOMER[3];UICR/CUSTOMER[4];UICR/CUSTOMER[5];UICR/CUSTOMER[6];UICR/CUSTOMER[7];UICR/CUSTOMER[8];UICR/CUSTOMER[9];UICR/CUSTOMER[10];UICR/CUSTOMER[11];UICR/CUSTOMER[12];UICR/CUSTOMER[13];UICR/CUSTOMER[14];UICR/CUSTOMER[15];UICR/CUSTOMER[16];UICR/CUSTOMER[17];UICR/CUSTOMER[18];UICR/CUSTOMER[19];UICR/CUSTOMER[20];UICR/CUSTOMER[21];UICR/CUSTOMER[22];UICR/CUSTOMER[23];UICR/CUSTOMER[24];UICR/CUSTOMER[25];UICR/CUSTOMER[26];UICR/CUSTOMER[27];UICR/CUSTOMER[28];UICR/CUSTOMER[29];UICR/CUSTOMER[30];UICR/CUSTOMER[31];UICR/PSELRESET[0];UICR/PSELRESET[1];UICR/APPROTECT;UICR/NFCPINS" binaryNodes="" asciiNodes="" openNodes="CPU - Current Context;UICR" name="ble_app_template_obd2pro_s132" decimalNodes="" octalNodes="" unsignedNodes=""/>
+ </Register1>
+ <Register2>
+  <RegisterWindow visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/msp;CPU/psp;CPU/cfbp" binaryNodes="" asciiNodes="" openNodes="CPU - Current Context" name="ble_app_template_obd2pro_s132" decimalNodes="" octalNodes="" unsignedNodes=""/>
+ </Register2>
+ <Register3>
+  <RegisterWindow visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/msp;CPU/psp;CPU/cfbp" binaryNodes="" asciiNodes="" openNodes="CPU - Current Context" name="ble_app_template_obd2pro_s132" decimalNodes="" octalNodes="" unsignedNodes=""/>
+ </Register3>
+ <Register4>
+  <RegisterWindow visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/msp;CPU/psp;CPU/cfbp" binaryNodes="" asciiNodes="" openNodes="CPU - Current Context" name="ble_app_template_obd2pro_s132" decimalNodes="" octalNodes="" unsignedNodes=""/>
+ </Register4>
+ <TargetWindow programLoadAddress="" programSize="" uploadStartAddress="" programMemoryInterface="" programFileName="" uploadMemoryInterface="" programFileType="" uploadFileName="" uploadFileType="" programAction="" uploadSize=""/>
+ <Threads>
+  <ThreadsWindow showLists=""/>
+ </Threads>
+ <TraceWindow>
+  <Trace enabled="Yes"/>
+ </TraceWindow>
+ <Watch1>
+  <Watches active="1" update="Each Second">
+   <Watchpoint numelements="0" expression="m_gatt" evalMode="0" name="m_gatt" radix="-1" linenumber="0" filename="../xworks" list=""/>
+   <Watchpoint numelements="0" expression="m_advertising" evalMode="0" name="m_advertising" radix="-1" linenumber="0" filename="../xworks" list=""/>
+  </Watches>
+ </Watch1>
+ <Watch2>
+  <Watches active="0" update="Never"/>
+ </Watch2>
+ <Watch3>
+  <Watches active="0" update="Never"/>
+ </Watch3>
+ <Watch4>
+  <Watches active="0" update="Never"/>
+ </Watch4>
+ <Files/>
+ <ARMCrossStudioWindow activeProject="ble_app_template_obd2pro_s132" fileDialogDefaultFilter="*.c" autoConnectTarget="CMSIS-DAP" buildConfiguration="THUMB Release" debugSearchFileMap="" fileDialogInitialDirectory="" debugSearchPath="" autoConnectCapabilities="266111"/>
+</session>
