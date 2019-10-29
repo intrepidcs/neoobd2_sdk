@@ -44,6 +44,42 @@ This guide is based on the CrossWorks for ARM IDE by Rowley. Download and instal
 
 ![Overview](../images/73-ble_ide_crossworks_template_built.PNG "BLE Peripheral Template project built in CrossWorks for ARM")
 
+## Importing auto-generated ISM API codes from Vehicle Spy Enterprise
+
+The ISM library (obd2pro_ble_nrf52_ism.a) and a set of auto-generated ISM source files (obd2pro_ble_nrf52.c, obd2pro_ble_nrf52.h, and SpyCCode.c) from Vehicle Spy Enterprise are the software components that grant the code running on nrf52832 transmit and receive access to data over the vehicle networks supported by neoOBD2 PRO (CAN/CANFD, LIN, and KLINE).
+
+Although the ble_app_template sample comes with those files already integrated in the project, please follow this guide to learn how to generate and import them as they are essential components of BLE application development with neoOBD2 PRO.
+
+1. Open Vehicle Spy Enterprise. Go to the **Scripting and Automation** menu and select **C Code Interface**.
+
+2. Click **Add Project...** button and select **New Project...**
+
+3. Click the **Create embedded projects for Intrepid Security Module (ISM) devices** checkbox to inflate additional view.
+
+![Overview](../images/87-ble_eccif_proj_created.PNG "")
+
+4. Select **neoOBD2 PRO BLE nRF52** from the list of available ISM targets and add it to the selected ISM targets list. Click OK button to generate ISM source files. Note that Visual Studio will open if you have Visual Studio installed on your PC.
+
+5. Go back to the C Code Interface view. Click the **Folder** button which will open up a file explorer in the root directory of the generated C Code Project.
+
+![Overview](../images/17-Open_CCIF_Proj_Folder.PNG "")
+
+6. **IMPORTANT**: Before proceeding further, save the Vehicle Spy Enterprise project (.vs3) by going to **File** on top menu and selecting **Save**. The saved .vs3 project will be used later to program the completed application into the nrf52832 in neoOBD2 PRO.
+
+![Overview](../images/91-save_ble_proj_vs3.PNG "")
+
+7. Copy the **SpyCCode.c** file and overwrite the one located inside the **ble_app_template folder** of the sample project in CrossWorks.
+
+![Overview](../images/92-copy_paste_ism_autogen_files.PNG "")
+
+You may need to fix up **SpyCCode.c** so that **obd2pro_ble_nrf52.h** is included properly.
+
+![Overview](../images/93-spyccode_fixup.PNG "")
+
+8. Go back to the file explorer. Open the **ProjectName_neoOBD2PRO_BLE_NRF52** folder. Copy **obd2pro_ble_nrf52.c** and **obd2pro_ble_nrf52.h** files and overwrite the one located inside the **ble_app_template folder** of the aws-mqtt sample project in CrossWorks.
+
+![Overview](../images/94-copy_paste_ism_autogen_nrf_files.PNG "")
+
 ## Debugging Your Application on the neoOBD2 PRO
 
 1. First, we need to program a CoreMini binary from Vehicle Spy Enterprise which will facilitate the Intrepid Secure Module (ISM) API. A CoreMini binary needs to be running in neoOBD2 PRO for your BLE application to interface to vehicle network drivers.
