@@ -95,9 +95,11 @@ The cable provides USB 5V DC power to the neoOBD2 PRO. In addition, one leg of t
 
 ## Result
 
-At this point, your neoOBD2 PRO device is configured for use with Vehicle Spy Enterprise software. During the development process, Vehicle Spy Enterprise will be **required to program the application binary into the CC3220SF Wi-Fi module**. Vehicle Spy Enterprise is also **required to configure callbacks for receive messages you want to capture from your application.**
+At this point, your neoOBD2 PRO device is configured for use with Vehicle Spy Enterprise software. During the development process, Vehicle Spy Enterprise will be **required to program the application binary into the CC3220SF Wi-Fi module and the nRF52832 BLE module**. Vehicle Spy Enterprise is also **required to configure callbacks for receive messages you want to capture from your applicationns running on the Wi-Fi and BLE chips.**
 
-Your neoOBD2 PRO is also ready for TI CCS, which provides a powerful integrated development environment for your projects and supports real time USB debugging via the built-in FTDI USB emulation in neoOBD2 PRO.
+Your neoOBD2 PRO is ready for TI CCS, which provides a powerful integrated development environment for your projects and supports real time USB debugging via the built-in FTDI USB emulation in neoOBD2 PRO.
+
+Your neoOBD2 PRO is also ready for embedded Integrated Development Environment tools for ARM to do BLE application development. The ARM MBED DAPLINK program / debug interface inside your neoOBD2 PRO allows you to do development with nRF52832 BLE SoC.
 
 ## What's Next?
 

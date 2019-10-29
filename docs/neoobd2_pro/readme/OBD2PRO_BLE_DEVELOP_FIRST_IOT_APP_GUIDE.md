@@ -1,142 +1,181 @@
 # Getting Started with your first BLE Application for neoOBD2 PRO
 
-This guide provides a step-by-step guide on creating, debugging, and deploying a sample ready-to-build nRF52 BLE application for neoOBD2 PRO. This sample project is included in the SDK. The application is based on Amazon FreeRTOS. The application runs on the nRF52 in the neoOBD2 PRO and sends a classical CAN message on the HSCAN1 network of the neoOBD2 PRO, and then receives and processes a response from another node on the CAN network. This example does not utilize BLE features, it is only a simple demonstration of how to send and receive CAN messages using the nRF52 and the ISM library. A Vehicle Spy project file (OA_Response.vs3) is provided that can be used to respond to the CAN query message from the neoOBD2 PRO. This will require running a copy of Vehicle Spy with another device that is connected to a desktop CAN network. Alternatively, the project can be modified to send a valid OBD2 query message to an ECU on a vehicle.
+This guide provides a step-by-step guide on creating, debugging, and deploying a sample ready-to-build nrf52832 BLE application for neoOBD2 PRO. This sample project is included in the SDK under neoobd2_sdk/demos/intrepid/ble/nrf5_sdk/examples/ble_peripheral/ble_app_template/obd2pro/s132. The application is based on the "ble_app_template" sample project provided in the Nordic nRF5 SDK. This sample BLE peripheral application sends out BLE advertising packets periodically to BLE central devices that are scanning for peripherals to connect to. In addition to advertising and accepting BLE connection, the application transmits a classical CAN message on the HSCAN1 network of the neoOBD2 PRO using the Intrepid Secure Module (ISM) software API.
 
-When the sample application is programmed into the nRF52 BLE processor, the neoOBD2 PRO will perform the following:
+When the sample application is programmed into the nrf52832 BLE processor, the neoOBD2 PRO will perform the following:
 
-* Initialize and enable the nRF52 subsystem
+* Initialize and enable the nrf52832 subsystem
+* Start BLE advertising and accept connection from a BLE central device
 * Create and start a task that interacts with the ISM library and processes both transmitted and received CAN messages
-* Transmits a classical CAN message at a specified rate
-* Waits for a response and routes it to a handler function in the application
-* Extracts a data value from the response message and displays it in the debug console
+* Transmits a CAN message at a specified rate
 
 ## Prerequisites
 
 ### Required Hardware:
 * neoOBD2 PRO
+* neoOBD2 SIM (Optional)
 * Dual USB A & USB C Cable
 
 ### Required Software:
 * neoOBD2 SDK
+* [nRF52 DK](https://www.nordicsemi.com/eng/Products/Bluetooth-low-energy/nRF52-DK). (Recommended for testing)
+* [nRF Connect for Desktop](https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Connect-for-desktop) or nRF Connect for mobile available from Google Play on Android and App Store for iPhone. (Recommended for testing)
 * Vehicle Spy Professional
 
 	[Vehicle Spy Professional](http://store.intrepidcs.com/Vehicle-Spy-p/vspy-3-pro.htm) is a single tool for diagnostics, node/ECU simulation, data acquisition, automated testing, and in-vehicle communication networks bus monitoring.
     
 	For introduction, tutorials, and documentations on Vehicle Spy Professional, please [click here](https://cdn.intrepidcs.net/support/VehicleSpy/vehiclespyhelpdoc.html).
 
-* Segger Embedded Studio - Please complete installation & configuration using the [hardware setup guide](OBD2PRO_HW_SETUP_GUIDE_BLE.md)
+* Embedded IDE for ARM with DAPLINK support - Please refer to the [hardware setup guide](OBD2PRO_HW_SETUP_GUIDE.md) for recommended IDE
+
+	An embedded IDE for ARM with support for ARM MBED DAPLINK is required for development with nrf52832 in neoOBD2 PRO. This guide is based on [CrossWorks for ARM](https://www.rowley.co.uk/arm/index.htm) by Rowley.
 
 ## Application, Hardware, and Cable Overview
 
-The following diagram illustrates how applications and hardware relate to each other in this development paradigm
+The following diagram illustrates how applications and hardware relate to each other in this development paradigm.
 
-![Overview](../images/App_Hardware_Cable_Diagram.PNG "Application/Hardware/Cable Overview")
+![Overview](../images/69-obd2pro_usb_connection_map.PNG "Application/Hardware/Cable Overview")
 
-## Debugging Your Application on the neoOBD2
-To debug applications running on the neoOBD2 PRO from within Segger Studio, you will need to acquire the following:
+## Import the Sample Project into CrossWorks for ARM
 
-* nRF52 Bluetooth Smart, ANT, 2.4GHz Development Kit (NRF52-DK) by Nordic Semiconductor 
-* TC2030-CTX 6-Pin Cable for ARM Cortex  [Order here](http://www.tag-connect.com/TC2030-CTX)
- 
-### The debugging procedure is as follows:
-1. The application you want to debug must already be downloaded and running on the neoOBD2 PRO. You will be attaching the Segger IDE's debugger to the process running in the BLE SoC on the device, using the NRF52-DK dev board as a pass-through device.
+This guide is based on the CrossWorks for ARM IDE by Rowley. Download and install the IDE from [here](https://www.rowley.co.uk/arm/index.htm).
 
-**Both boards connected**
+1. Navigate to the ble_app_template project directory under neoobd2_sdk/demos/intrepid/ble/nrf5_sdk/examples/ble_peripheral/ble_app_template/obd2pro/s132/xworks. Double click the "ble_app_template_obd2pro_s132.hzp" to open the project in CrossWorks.
 
-![J-Link Connection](../images/JLinkConnection.PNG "J-Link Connection") 
+2. The sample project is ready to be built. Press **F7** or go to **Build -> build ble_app_template_obd2pro_s132"** to build the project.
 
-2. Connect the NRF52-DK board to your computer using the provided USB cable. 
-3. Connect one end of the TC2030-CTX 6-pin cable to the 'Debug Out' connector on the NRF52-DK board.
+![Overview](../images/73-ble_ide_crossworks_template_built.PNG "BLE Peripheral Template project built in CrossWorks for ARM")
 
-![J-Link Connection](../images/Nordic_Dev_Board_JLink_connection.PNG "Nordic dev board connection")
+## Importing auto-generated ISM API codes from Vehicle Spy Enterprise
 
-4. Connect the other end to the J-Tag connector on the neoOBD2 PRO
+The ISM library (obd2pro_ble_nrf52_ism.a) and a set of auto-generated ISM source files (obd2pro_ble_nrf52.c, obd2pro_ble_nrf52.h, and SpyCCode.c) from Vehicle Spy Enterprise are the software components that grant the code running on nrf52832 transmit and receive access to data over the vehicle networks supported by neoOBD2 PRO (CAN/CANFD, LIN, and KLINE).
 
-![J-Link Connection](../images/neoOBD2_Debug_Cable_connection.PNG "neoOBD2 PRO JTag connection")
+Although the ble_app_template sample comes with those files already integrated in the project, please follow this guide to learn how to generate and import them as they are essential components of BLE application development with neoOBD2 PRO.
 
-5. In Segger Studio, with the project you want to debug already open, click on the 'Target' menu, and select "Connect J-Link". In the 'Output' window, you should see "Connecting 'J-Link' using 'USB', and below it "Completed".
-6. Click on the 'Target' menu and select "Attach Debugger". You should see a debug terminal window and any output that is being generated by the application. You should be able to set and stop on breakpoints within the project and examine variables.
+1. Open Vehicle Spy Enterprise. Go to the **Scripting and Automation** menu and select **C Code Interface**.
 
-### Note: Do not select "Erase All" from the 'Target' menu while connected to the neoOBD2 PRO. This will erase the boot-loader in the neoOBD2 PRO
-
-## Downloading and Installing the Nordic nRF5 SDK
-* Download the Nordic nRF5 SDK, version 15.2.0 from Nordic **Can't find the download for this, only the latest**
-* Unzip the SDK to a location on your system. You will need to specify the location the settings for your projects
-
-## Important Project Files
-* **SpyCCode.c** - Contains the init_vspy() function that initializes and starts the main application worker thread. It also has callback functions necessary to send the query message on the CAN bus and process the responses.
-
-* **obd2pro_ble_nrf52_ism.a** - The ISM library file that is linked to the application .bin file. It provides the API that allows the application to interact with the vehicle networks on the neoOBD2 PRO.
-
-* **OA_Response.vs3** - A Vehicle Spy project file that is setup to receive the CAN bus queries from the application and send a response message. Open this file in Vehicle Spy and go online with a separate neo Device that is connected to the same CAN network as the neoOBD2 PRO.
-
-* **s132_nrf52_6.1.0_softdevice.bin** - This the soft device file in .bin format. The application binary file is added to the end of this file and downloaded to the neoOBD2 PRO.
-
-* **merge.bat** - This batch file is called as a post-link command. It takes a single input parameter string, either 'Debug' or 'Release',  It contains the following commands:
-	
-This command will merge the application the softdevice .bin file with the application .bin, and create **output.bin**
-
-	copy /b /y s132_nrf52_6.1.0_softdevice.bin + Output\%1\ble_first_app_freertos.bin Output\%1\output.bin
-
-The next command copies output.bin to the release directory of the Visual Studio project that will be used to download the .bin file to the neoOBD2 PRO. Change the path to match where you created your Visual Studio project:
-
-	copy Output\%1\output.bin "C:\IntrepidCS\Vehicle Spy 3\Data Directory\Default\ble_testing\ble_testing_neoOBD2PRO_BLE_NRF52\Release\output.bin"
-
-**The post-link command can be specified under project settings:**
-
-![Post-link command](../images/Segger_Post_Link_Command.PNG "Post Link Command")
-
-## Building the Sample Project in Segger Embedded Studio
-1. Open Segger Embeded Studio. Go to **File** on the top menu and select **Open Solution**. Navigate to *SDK_PATH*/samples/ble_first_app_freertos, where *SDK_PATH* is the local path where you have downloaded the neoOBD2 SDK. Select **ble_first_app_freertos.emProject** and click **Open**
-2. Before building, the location of the Nordic nRF5 SDK must be specified. In the *Project Explorer* windows, right-click on the **Project 'ble_first_app_freertos'** node, then click **Edit Options**. Ensure that the configuration selected is **Debug**. In the 'Search Options' field, type **nordicSDK**. Under the **Build** section, double-click on *Project Macros*. For the macro **nordicSDK** change the value to the path where the Nordic nRF5 SDK is located. Click **OK**. Remember to do this for the **Release** configuration also.
-3. You should now be able to build the project. Select **Build** and **Build ble_first_app_freertos**. 
-
-**Note: Segger Studio projects default to creating an application in .hex format. The project we are using has already been changed to produce a .bin file format. For future projects, here is how to change the default setting to hex file format output:**
-
-![bin file setting](../images/SeggerProjectBinFileOutputSetting.PNG "Segger Project Setting for bin output")
-
-In the next section, we will use Vehicle Spy and Visual Studio to create a simple C-Code Interface project that will be used to download the Segger application to the neoOBD2 PRO.
-
-## How to Create a Simple ISM BLE Project to Download Segger Applications to a neoOBD2 PRO Using Vehicle Spy
-Follow below steps to create a basic application that can be used to download a an application created with Segger Studio to a neoOBD2 PRO. 
-
-For a complete documentation on **Vehicle Spy Enterprise**, please [click here](https://cdn.intrepidcs.net/support/VehicleSpy/vehiclespyhelpdoc.html).
-
-1. Open Vehicle Spy Enterprise. Go to the **Scripting and Automation** menu and select **C Code Interface**. 
 2. Click **Add Project...** button and select **New Project...**
-3. Click the **Create embedded projects for Intrepid Security Module (ISM) devices** check box to inflate additional view.
 
-![CCIF Project](../images/16-New_BLE_CCIF_Project.png "Vehicle Spy create new CCIF Project")
+3. Click the **Create embedded projects for Intrepid Security Module (ISM) devices** checkbox to inflate additional view.
 
-4. Select **neoOBD2 PRO BLE nRF52** from the list of available ISM targets and add it to the selected ISM targets list. Click **OK** button to generate ISM source files. Note that Visual Studio will open if you have Visual Studio installed on your PC. You may see a dialog called **Retarget Projects**, indicating that the project needs to be updated to use a newer version of the Windows SDK and Platform Toolset. Click **OK** to update.
-5. In Visual Studio, change the configuration to **Release**. From the **Build** menu, select **Rebuild Solution**. 
-6. In the Solution Explorer panel, you will see that there are two projects defined in the tree. For example:
+![Overview](../images/87-ble_eccif_proj_created.PNG "")
 
-![Example Project](../images/Visual_Studio_CCIF_Project_Example.PNG "Visual Studio Example Project")
+4. Select **neoOBD2 PRO BLE nRF52** from the list of available ISM targets and add it to the selected ISM targets list. Click OK button to generate ISM source files. Note that Visual Studio will open if you have Visual Studio installed on your PC.
 
-When the red high-lighted project **CCodeProject1_neoOBD2PRO_BLE_NRF52** was built, a **Release** directory was created. This is where the Segger Studio project will copy the merged softdevice/application **output.bin** file created by the post-link command. You can open a File Explorer window to it easily by right clicking on the tab for the **main.c** file (high-lighted in red), and selecting **Open Containing Folder**. In the newly opened File Explorer window, double-click on the **Release** folder. 
+5. Go back to the C Code Interface view. Click the **Folder** button which will open up a file explorer in the root directory of the generated C Code Project.
 
-7. After the output.bin file is copied to this location by the Segger Studio project, rename the extension of .bin file that Visual Studio created to something other than .bin (i.e. .XXX), or delete the file. When downloading the .bin file to the neoOBD2 PRO, Vehicle Spy will look in this directory and try to download the first .bin file it sees. **Output.bin** is the file we want Vehicle Spy to locate first. 
+![Overview](../images/17-Open_CCIF_Proj_Folder.PNG "")
+
+6. **IMPORTANT**: Before proceeding further, save the Vehicle Spy Enterprise project (.vs3) by going to **File** on top menu and selecting **Save**. The saved .vs3 project will be used later to program the completed application into the nrf52832 in neoOBD2 PRO.
+
+![Overview](../images/91-save_ble_proj_vs3.PNG "")
+
+7. Copy the **SpyCCode.c** file and overwrite the one located inside the **ble_app_template folder** of the sample project in CrossWorks.
+
+![Overview](../images/92-copy_paste_ism_autogen_files.PNG "")
+
+You may need to fix up **SpyCCode.c** so that **obd2pro_ble_nrf52.h** is included properly.
+
+![Overview](../images/93-spyccode_fixup.PNG "")
+
+8. Go back to the file explorer. Open the **ProjectName_neoOBD2PRO_BLE_NRF52** folder. Copy **obd2pro_ble_nrf52.c** and **obd2pro_ble_nrf52.h** files and overwrite the one located inside the **ble_app_template folder** of the aws-mqtt sample project in CrossWorks.
+
+![Overview](../images/94-copy_paste_ism_autogen_nrf_files.PNG "")
+
+## Debugging Your Application on the neoOBD2 PRO
+
+1. First, we need to program a CoreMini binary from Vehicle Spy Enterprise which will facilitate the Intrepid Secure Module (ISM) API. A CoreMini binary needs to be running in neoOBD2 PRO for your BLE application to interface to vehicle network drivers.
+
+2. Connect the neoOBD2 PRO to your PC using the provided Dual USB-A to USB-C cable. Ensure 
+the neoOBD2 PRO mounts in Windows as storage device **DAPLINK**. If your neoOBD2 PRO mounts as **CRP DISABLED** you must program the DAPLINK firmware. Open the CRP DISABLED drive and delete the firmware.bin file. Then, drag-and-drop the **lpc11u35_nrf52832_mdk_if_crc_0245.bin** file from neoobd2_sdk/demos/intrepid/ble/daplink into the CRP DISABLED drive. Power cycle the neoOBD2 PRO and your Windows should now mount neoOBD2 PRO as **DAPLINK**.
+
+![Overview](../images/74-ble_daplink_mounted.PNG "DAPLINK debug interface mounted successfully")
+
+3. Open Vehicle Spy Enterprise. Verify your neoOBD2 PRO appears on the bootom right corner of the logon screen.
+
+![Overview](../images/1-vspy_obd2pro_detect.PNG "neoOBD2 PRO detected in Vehicle Spy Enterprise")
+
+4.  Go to CoreMini Console by selecting **Tools -> CoreMini Console**. Click the **Send** button to program the CoreMini binary to your connected neoOBD2 PRO. Verify the left-most LED on your neoOBD2 PRO blinking in purple, which indicates CoreMini binary is running.
+
+![Overview](../images/78-coremini_programmed_success.png "CoreMini successfully programmed to neoOBD2 PRO")
+
+![Overview](../images/79-obd2pro_coremini_running.png "CoreMini running in neoOBD2 PRO")
+
+5. Go back to CrossWorks. You can now connect to **CMSIS-DAP** to program and debug your application through DAPLINK. Do this by selecting CMSIS-DAP from **Target->Connect->CMSIS-DAP**.
+
+![Overview](../images/75-ble_daplink_connected.PNG "DAPLINK debug interface connected in CrossWorks")
+
+6. Now that you are connected to the DAPLINK debugger on neoOBD2 PRO, you can program and execute the ble_app_template application in debug mode. Press **F5** or go to **Build->Build and Debug** to start debugging.
+
+7. CrossWorks should breakpoint at the entry of the main() function. Press **F5** or go to **Debug -> Go** to resume the program execution.
+
+![Overview](../images/76-ble_application_in_debug.PNG "ble_app_template_obd2pro_s132 application running in debug")
+
+8. Try scanning Bluetooth devices from your Bluetooth-enabled device such as a smart phone or a laptop. You should see neoOBD2 PRO in your list of available Bluetooth devices for connection. The screenshow below shows the neoOBD2 PRO discovered by a nRF-DK PCA10056 development board using the nRF Connect software.
+
+![Overview](../images/77-obd2pro_ble_detection.png "neoOBD2 PRO detectable from BLE scanning device")
+
+![Overview](../images/81-obd2pro_ble_connected.PNG "neoOBD2 PRO connected to nRF Connect")
+
+9. Now that we have verified the BLE connection, let's see what is happening on the CAN bus. If you open the **SpyCCode.c** source file from the CrossWorks project, you should see a function called Spy_Everyloop() that implements a CAN message being transmitted every 100 milliseconds with ARBID 0x111.
+
+![Overview](../images/82-spyccod_CAN_tx_BLE.PNG "CAN Tx code implemented in SpyCCode.c")
+
+10. Open Vehicle Spy Enterprise and Go Online to verify that your neoOBD2 PRO is transmitting the ARBID 0x111 CAN message on HSCAN1 channel.
+
+![Overview](../images/83-Vspy_CAN_Tx_BLE.PNG "CAN Tx in Vehicle Spy")
 
 ## Programming the Application into neoOBD2 PRO
 
-Once your BLE program is ready to be deployed in neoOBD2 PRO, you can use Vehicle Spy to do so.
+Once your BLE program is ready to be deployed in neoOBD2 PRO, you can use Vehicle Spy Enterprise to do so. Let's try flashing the output binary generated by the **ble_app_template** project on your neoOBD2 PRO.
 
-The nRF52 BLE module in neoOBD2 PRO is programmed with an application bootloader at production, which allows Vehicle Spy to program an application binary. The application bootloader is always executed first from external secure FLASH. If the application boot-loader detects a valid application in the external FLASH, it will load it into its internal FLASH and begin execution. Otherwise, the application boot-loader will wait indefinitely for Vehicle Spy to send a valid application. 
+Before proceeding further, ensure nrf52832 in your neoOBD2 PRO is programmed with the Intrepid application bootloader. Refer to the **Using pyOCD to flash the Intrepid BLE Application Bootloader** section in the [hardware setup guide](OBD2PRO_HW_SETUP_GUIDE_BLE.md) to ensure the bootloader is programmed. The presence of the bootloader on your neoOBD2 PRO is indicated by the Bluetooth LED blinking in orange.
 
-1. Open the .vs3 project that was created in the previous section. 
-2. Go to **Tools** from the top menu and select **CoreMini Console**. This will open a utility you can use to program the neoOBD2 PRO. Press the **Clear** button to clean the neoOBD2 PRO first.
+![Overview](../images/80-bootloader_loaded.PNG "")
+
+The Intrepid application bootloader running on the nrf52832 allows Vehicle Spy to program your BLE application binary down to it. If the application bootloader detects a valid application in the nrf52832 FLASH, it will load it into its internal FLASH and begin execution. Otherwise, the application bootloader will wait indefinitely for Vehicle Spy to send a valid application. 
+
+![Overview](../images/70-obd2pro_ble_nrf_flash_map.PNG "")
+
+1. First, open Vehicle Spy Enterprise and go to **Scripting and Automation -> C Code Interface**.
+
+2. Click Add **Add Project -> New Project...**.
+
+3. Click the **Create embedded projects for Intrepid Security Module (ISM) devices**. Then, double clikc on the **neoOBD2 PRO BLE nRF52** to select the BLE chip on neoOBD2 PRO. Click the **OK** button to generate an Embedded C Code Interface project. If you have Microsoft Visual Studio installed, a project will be created and automatically open in Visual Studio. The Visual Studio project is used for legacy C Code Interface development in Vehicle Spy, you can ignore it.
+
+![Overview](../images/87-ble_eccif_proj_created.PNG "")
+
+4. Click the **Folder** button and navigate to the root directory of the neoOBD2 PRO BLE project. Create a new folder named **Release**.
+
+![Overview](../images/89-ble_eccif_proj_release_folder_created.PNG "")
+
+5. Now navigate to the **ble_app_template_obd2pro_s132** output directory. There should be a .bin file called **obd2pro_ble.bin**. This file is generated by the **merge.bat** batch script. The batch script concatenates the Nordic s132 SoftDevice binary that comes with the nRF5 SDK and the ble_app_template application into the obd2pro_ble.bin file. This concetenation is done so that the Intrepid applciation bootloader can program the nrf52832 FLASH in one go and also ensure the correct version of SoftDevice is used.
+
+![Clear CoreMini](../images/86-sample_ble_project_built.PNG "Sample BLE project built in CrossWorks")
+
+6. Copy the generated **obd2pro_ble.bin** and paste it into the **Release** folder created in step 4.
+
+![Overview](../images/89-ble_eccif_proj_release_folder_created.PNG "")
+
+7. Go back to Vehicle Spy Enterprise. Go to **Tools** from the top menu and select **CoreMini Console**. This will open a utility you can use to program the neoOBD2 PRO. Press the **Clear** button to clean the neoOBD2 PRO first.
 
 ![Clear CoreMini](../images/coremini_clear.PNG "Clear CoreMini")
 
-3. Next, press the **Send** button to program the application into neoOBD2 PRO. Make sure the status message **Sending CCIF Binary Data** appears followed by a Success message. If **Sending CCIF Binary Data** message does not appear during the programming process, go back to step 6 in the previous section and **make sure the output.bin is correctly placed inside the 'Release' folder**. The folder must be named **'Release'**.
+8. Next, press the **Send** button to program the application into neoOBD2 PRO. Make sure the status message **Sending CCIF Binary Data** appears followed by a Success message. If **Sending CCIF Binary Data** message does not appear during the programming process, go back to step 6 in the previous section and **make sure the obd2pro_ble is correctly placed inside the 'Release' folder**. The folder must be named **'Release'**.
 
-![Send CoreMini](../images/28-coremini_send.PNG)
+![Send CoreMini](../images/90-ble_binary_coremini_sent_success.PNG)
 
-4. Unplug the Dual USB A & USB C cable to power off the neoOBD2 PRO.
-5. Plug in the Dual USB A & USB C cable again to power the neoOBD2 PRO back on. At this point the status LED on neoOBD2 PRO should be blinking in magenta (purple), indicating that the program is running. Whenever a new application is programmed, it takes roughly 20 ~ 30 seconds for the program to execute. An existing application typically takes less than 5 seconds to start executing.
+9. Power cycle your neoOBD2 PRO. Wait for a few seconds until the application starts executing. When the application is executing, the left-most LED should be blinking in purple and the Bluetooth status LED should be blinking in white. The right-most LED should be blinking in Green, indicating that a message is being transmitted by your neoOBD2 PRO.
 
 ## What's Next?
+
+The ble_app_template sample project only implements the basic advertising feature of a BLE peripheral device. The following guides from Nordic are excellent training material for those who want to extend the template project with custom advertising data, custom BLE services and characteristics:
+
+* **[Bluetooth low energy Advertising, a beginner's tutorial](https://devzone.nordicsemi.com/nordic/short-range-guides/b/bluetooth-low-energy/posts/ble-advertising-a-beginners-tutorial)**.
+
+* **[Bluetooth low energy Services, a beginner's tutorial](https://devzone.nordicsemi.com/nordic/short-range-guides/b/bluetooth-low-energy/posts/ble-services-a-beginners-tutorial)**.
+
+* **[Bluetooth low energy Characteristics, a beginner's tutorial](https://devzone.nordicsemi.com/nordic/short-range-guides/b/bluetooth-low-energy/posts/ble-characteristics-a-beginners-tutorial)**.
 
 Now that you are able to import, debug, and program a sample project: 
 
