@@ -18,6 +18,8 @@ When the sample application is programmed into the nrf52832 BLE processor, the n
 
 ### Required Software:
 * neoOBD2 SDK
+* [nRF52 DK](https://www.nordicsemi.com/eng/Products/Bluetooth-low-energy/nRF52-DK). (Recommended for testing)
+* [nRF Connect for Desktop](https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Connect-for-desktop) or nRF Connect for mobile available from Google Play on Android and App Store for iPhone. (Recommended for testing)
 * Vehicle Spy Professional
 
 	[Vehicle Spy Professional](http://store.intrepidcs.com/Vehicle-Spy-p/vspy-3-pro.htm) is a single tool for diagnostics, node/ECU simulation, data acquisition, automated testing, and in-vehicle communication networks bus monitoring.
@@ -166,6 +168,14 @@ The Intrepid application bootloader running on the nrf52832 allows Vehicle Spy t
 9. Power cycle your neoOBD2 PRO. Wait for a few seconds until the application starts executing. When the application is executing, the left-most LED should be blinking in purple and the Bluetooth status LED should be blinking in white. The right-most LED should be blinking in Green, indicating that a message is being transmitted by your neoOBD2 PRO.
 
 ## What's Next?
+
+The ble_app_template sample project only implements the basic advertising feature of a BLE peripheral device. The following guides from Nordic are excellent training material for those who want to extend the template project with custom advertising data, custom BLE services and characteristics:
+
+* **[Bluetooth low energy Advertising, a beginner's tutorial](https://devzone.nordicsemi.com/nordic/short-range-guides/b/bluetooth-low-energy/posts/ble-advertising-a-beginners-tutorial)**.
+
+* **[Bluetooth low energy Services, a beginner's tutorial](https://devzone.nordicsemi.com/nordic/short-range-guides/b/bluetooth-low-energy/posts/ble-services-a-beginners-tutorial)**.
+
+* **[Bluetooth low energy Characteristics, a beginner's tutorial](https://devzone.nordicsemi.com/nordic/short-range-guides/b/bluetooth-low-energy/posts/ble-characteristics-a-beginners-tutorial)**.
 
 Now that you are able to import, debug, and program a sample project: 
 
