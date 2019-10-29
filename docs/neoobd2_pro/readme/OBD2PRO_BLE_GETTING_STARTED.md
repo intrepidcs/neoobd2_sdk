@@ -98,7 +98,7 @@ Microsoft Visual Studio is not required for Wi-Fi development, but may be useful
 
 ![alt text](../images/10-vspy_ccif_ism_grabber_folder_exists.PNG "ISM Toolchain exists")
 
-![alt text](../images/12-vspy_ccif_ism_grabber_folder_not_exists_download.PNG "Download/Update ISM Toolchain")
+![alt text](../images/85-vspy_ccif_ism_grabber_folder_not_exists_download.PNG "Download/Update ISM Toolchain for OBD2PRO BLE NRF52")
 
 <a name='flash_ble_app_bootloader'></a>
 ### Using pyOCD to flash the Intrepid BLE Application Bootloader
