@@ -27,21 +27,13 @@ The neoOBD2 SDK is based on [Amazon FreeRTOS](https://aws.amazon.com/documentati
 
 ## SDK Compatibility by Vehicle Spy Versions
 
-The Master branch is compatible with the latest release version of Vehicle Spy, available for download at - [click here](https://www.intrepidcs.com/main/updates).
+The v900_maintenance branch is compatible with the latest release version of Vehicle Spy, available for download at - [click here](https://www.intrepidcs.com/main/updates). The master branch is the development branch containing new features and fixes targetted for future release.
 
-<<<<<<< HEAD
 * Master - Vehicle Spy Beta Versions 3.9.1.XXX
-=======
-A beta version of the upcoming Vehicle Spy is available upon request. Please send your inquiry to icssupport@intrepidcs.com.
 
-* Master - Vehicle Spy Beta Version 3.9.2.XXX
+* v900_maintenance - Vehicle Spy Release Version 3.9.0.79+
 
-* v901_maintenance - Vehicle Spy Release Versions 3.9.1.24
->>>>>>> master
-
-* v900_maintenance - Vehicle Spy Release Version 3.9.0.79
-
-* v803_maintenance - Vehicle Spy Release Version 3.8.3.104
+* v803_maintenance - Vehicle Spy Release Version 3.8.3.104+
 
 ## License
 
