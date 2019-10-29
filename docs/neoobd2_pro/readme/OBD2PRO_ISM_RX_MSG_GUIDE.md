@@ -1,6 +1,6 @@
 # How to Capture Vehicle Network Receive Messages from your ISM Program
 
-Setting up your program to capture receive messages from code requires you to configure Vehicle Spy Professional accordingly. Follow the steps in this guide to capture vehicle network messages in your program.
+Setting up your program to capture receive messages from code requires you to configure Vehicle Spy Enterprise accordingly. Follow the steps in this guide to capture vehicle network messages in your program.
 
 Follow below steps to enable the ability to capture message data from your program. As an example, we will walk through the process of setting up your program to capture the following three different types of messages:
 
