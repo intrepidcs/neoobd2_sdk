@@ -155,7 +155,7 @@ The Intrepid application bootloader running on the nrf52832 allows Vehicle Spy t
 
 6. Copy the generated **obd2pro_ble.bin** and paste it into the **Release** folder created in step 4.
 
-![Overview](../images/89-ble_eccif_proj_release_folder_created.PNG "")
+![Overview](../images/88-ble_eccif_proj_bin_copied_to_release.PNG "")
 
 7. Go back to Vehicle Spy Enterprise. Go to **Tools** from the top menu and select **CoreMini Console**. This will open a utility you can use to program the neoOBD2 PRO. Press the **Clear** button to clean the neoOBD2 PRO first.
 
