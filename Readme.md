@@ -31,7 +31,9 @@ The v901_maintenance branch is compatible with the latest release version of Veh
 
 The master branch contains new features and fixes in development for future release. A beta version of the upcoming Vehicle Spy is available upon request that is compatible with the master branch of SDK. Please send your inquiry to icssupport@intrepidcs.com.
 
-* Master - Vehicle Spy Beta Version 3.9.2.XXX
+* Master - Vehicle Spy Beta Version 3.9.3.XXX
+
+* v902_maintenance - Vehicle Spy Release Versions 3.9.2.XXX
 
 * v901_maintenance - Vehicle Spy Release Versions 3.9.1.27+
 
