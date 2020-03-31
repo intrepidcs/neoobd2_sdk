@@ -7,7 +7,7 @@ The neoOBD2 family of products are designed to give your WiFi / BLE applications
 The list of neoOBD2 devices supported by the SDK are as follows:
 
 * [neoOBD2 PRO](https://www.intrepidcs.com/products/vehicle-network-adapters/neoobd-2-pro/)
-* [neoOBD2 DEV](https://www.intrepidcs.com/products/vehicle-network-adapters/neoobd-2-lc/)
+* [neoOBD2 DEV](https://www.intrepidcs.com/products/vehicle-network-adapters/neoobd-2-lc/) (New!) - Development kit for the [neoOBD2 LC](https://www.intrepidcs.com/products/vehicle-network-adapters/neoobd-2-lc/).
 
 ## Getting Started
 
