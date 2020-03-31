@@ -64,27 +64,27 @@ Microsoft Visual Studio is not required for Wi-Fi development, but may be useful
 
 2. Click the **Add Project** button and select **New Project...**. Click the **Create embedded projects for Intrepid Security Module (ISM) devices** check box to inflate additional options. The **ISM Toolchain Path** will automatically point to the ISM folder at the working directory of Vehicle Spy Enterprise. This must be configured as \<drive>:\IntrepidCS\Vehicle Spy 3\ISM. \<drive> is the drive where Vehicle Spy Enterprise is installed.
 
-    ![alt text](../images/7-vspy_new_ccif_proj.PNG "Add new C Code Interface Project for ISM")
+    ![alt text](../images/9-vspy-new-ccif-proj.PNG "Add new C Code Interface Project for ISM")
 
 3. Select **neoOBD2 DEV WiFi CC32XX** from the list of **Available ISM Targets**. Click the **OK** button to save and close the view. If you have Microsoft Visual Studio installed, Vehicle Spy will automatically open the generated project in Visual Studio.
 
-    ![alt text](../images/8-vspy_new_ccif_proj_wifi.PNG "Add new Wi-Fi C Code Interface Project for ISM")
+    ![alt text](../images/10-vspy-new-ccif-proj-wifi.PNG "Add new Wi-Fi C Code Interface Project for ISM")
 
 4. Go back to the **C Code Interface** view. From the top menu, click the **Edit** button to open the **C Code Module Setup** view. Navigate to the **ISM Settings** view and click the **Install…** button to open the **ISM Toolchain Downloader**. 
 
-    ![alt text](../images/9-vspy_ccif_ismsettings.PNG "ISM Toolchain Downloader")
+    ![alt text](../images/14-vspy-ccif-ism-settings.PNG "ISM Toolchain Downloader")
 
 5. **IMPORTANT: YOU MUST set the installation path of the ISM Toolchain to \<drive>:\IntrepidCS\Vehicle Spy 3\ISM.** \<drive> is the drive where Vehicle Spy Enterprise is installed. This is required because \<drive>:\IntrepidCS\Vehicle Spy 3 is considered as a safe area in your PC for Vehicle Spy to access various resources. To do this, click the **Find Existing Installation** button and navigate to the path. Then perform one of the following:
 
 * **If you do not have the ISM folder** under \<drive>:\IntrepidCS\Vehicle Spy 3, that signifies that ISM Toolchain has never been installed on your PC. If this is the case, keep the path set at \<drive>:\IntrepidCS\Vehicle Spy 3 and click the **Download/Update** button to begin the installation process. When the installation process is completed, you will see that the **ISM folder** is created. Next, select the **OBD2DEV_WIFI_CC32XX** from the populated list of targets and click the **Download/Update Selected Targets** button located on the bottom of the view. Doing so will download the support files needed to build Wi-Fi applications - the download process can take a few minutes to complete.
 
-    ![alt text](../images/11-vspy_ccif_ism_grabber_folder_not_exists.PNG "ISM Toolchain does not exist")
+    ![alt text](../images/11-vspy_ccif_ism_grabber_folder_not_exists.png "ISM Toolchain does not exist")
 
 * **If you have the ISM folder** under \<drive>:\IntrepidCS\Vehicle Spy 3, that signifies that ISM Toolchain has already been installed on your PC. If this is the case, navigate inside the ISM folder and click the **Select Folder** button to exit the view. Then a list of **Additional Targets** will be populated. Select the **OBD2DEV_WIFI_CC32XX** from the list and click the **Download/Update Selected Targets** button located on the bottom of the view. Doing so will update the support files needed to build Wi-Fi applications - the download process can take a few minutes to complete.
 
-    ![alt text](../images/10-vspy_ccif_ism_grabber_folder_exists.PNG "ISM Toolchain exists")
+    ![alt text](../images/12-vspy_ccif_ism_grabber_folder_exists.png "ISM Toolchain exists")
 
-    ![alt text](../images/12-vspy_ccif_ism_grabber_folder_not_exists_download.PNG "Download/Update ISM Toolchain")
+    ![alt text](../images/13-vspy-ism-grabber-install-wifi-package.PNG "Download/Update ISM Toolchain")
 
 ## Results
 
