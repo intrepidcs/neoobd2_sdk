@@ -25,7 +25,7 @@ The neoOBD2 SDK is based on [Amazon FreeRTOS](https://aws.amazon.com/documentati
 
 	* **Please complete the hardware setup guide before you begin development to ensure your neoOBD2 DEV is configured correctly** - please [click here](docs/neoobd2_dev/readme/OBD2DEV_HW_SETUP_GUIDE.md).
 	
-	* For guide on getting started with CC3235SF Wi-Fi application development using the SDK for neoOBD2 DEV - please [click here](docs/neoobd2_dev/readme/OBD2DEV_WIFI_GETING_STARTED.md).
+	* For guide on getting started with CC3235SF Wi-Fi application development using the SDK for neoOBD2 DEV - please [click here](docs/neoobd2_dev/readme/OBD2DEV_WIFI_GETTING_STARTED.md).
 	
 	* For guide on getting started with nRF52840 BLE application development using the SDK for neoOBD2 DEV - please [click here](docs/neoobd2_dev/readme/OBD2DEV_BLE_GETTING_STARTED.md).
 
