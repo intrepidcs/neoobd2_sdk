@@ -11,7 +11,7 @@ The list of neoOBD2 devices supported by the SDK are as follows:
 
 ## Getting Started
 
-The neoOBD2 SDK is based on [Amazon FreeRTOS](https://aws.amazon.com/documentation/freertos/), [CC32XX Simplelink SDK from Texas Instruments](http://www.ti.com/tool/download/SIMPLELINK-CC32XX-SDK), and [nRF52 SDK from Nordic Semiconductor](https://www.nordicsemi.com/Software-and-tools/Software/nRF5-SDK). These three dependencies are already provided with this source package, they are not needed to be installed separately. We are working on adding support for other IoT platforms such as IBM Watson, Google Cloud, and Microsoft Azure.
+The neoOBD2 SDK is based on [Amazon FreeRTOS](https://aws.amazon.com/documentation/freertos/), [CC32XX Simplelink Wi-Fi SDK from Texas Instruments](http://www.ti.com/tool/download/SIMPLELINK-CC32XX-SDK), and [nRF5 SDK from Nordic Semiconductor](https://www.nordicsemi.com/Software-and-tools/Software/nRF5-SDK). These three dependencies are already provided with this source package, they are not needed to be installed separately. We are working on adding support for other IoT platforms such as IBM Watson, Google Cloud, and Microsoft Azure.
 
 * neoOBD2 PRO
 
