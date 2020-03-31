@@ -34,7 +34,7 @@ The GND and VBATT pins on the Male OBDII Connector can be connected to a DC powe
 
 The Male OBDII connector on the neoOBD2 DEV ships with the following default pin mapping:
 
-![alt text](../images/2-obd2dev-default_pinmap "neoOBD2 DEV default Male OBDII connector pin mapping")
+![alt text](../images/2-obd2dev-default-pinmap.png "neoOBD2 DEV default Male OBDII connector pin mapping")
 
 The neoOBD2 DEV also features support for a Neovi Universal Connector (NUC) board. The board allow OBDII pin mappings on the Male OBDII connector of the neoOBD2 DEV to be customized so that they are compatible with the pin mapping found on vehicle OBDII port users would like to connect to.
     
@@ -50,7 +50,7 @@ Standard off-the-shelf USB-A to Micro-B USB 2.0 cables can be used to make the f
 - Connect to the ARM DAPLINK onboard USB-SWD debug probe for programming and debugging the Nordic nRF52840 BLE SoC.
 - Connect to the BG96 to perform firmware updates.
 
-    ![alt_text](../images/3-obd2dev-usb-map.PNG "USB connections to the neoOBD2 DEV components")
+    ![alt_text](../images/3-obd2dev-usb-map.png "USB connections to the neoOBD2 DEV components")
 
 ## Install Vehicle Spy Enterprise and Configure Basic Hardware Settings
 
@@ -58,21 +58,21 @@ Standard off-the-shelf USB-A to Micro-B USB 2.0 cables can be used to make the f
 
 2. Let's power up your neoOBD2 DEV. If you have a **neoOBD2 SIM** connect the **12V DC Power Supply** to neoOBD2 SIM via its barrel jack connector. Then, simply connect the neoOBD2 SIM to power the neoOBD2 DEV via the 16 pin male OBDII connector. If you do not have a neoOBD2 SIM, you can create a custom cable with a Female OBDII connector with GND on pin 4 and VBATT on pin 16. Then, supply 4.5V - 36V DC through the cable. This will provide power to the neoOBD2 DEV. Verify that the first three status LEDs from the left to right on your neoOBD2 DEV are all blinking in orange as shown below. The orange color indicates that the neoOBD2 DEV is not connected to Vehicle Spy and both the WiFi and BLE chips are running the default bootloader.
 
-    ![alt_text](../images/4-obd2dev_default_led.PNG "Default LED status on your neoOBD2 DEV after power up")
+    ![alt_text](../images/4-obd2dev-default-led.PNG "Default LED status on your neoOBD2 DEV after power up")
 
 3. Plug in the **USB-A to USB-C USB 2.0 or 3.1 Cable** to establish connection between your PC and neoOBD2 DEV. Open Vehicle Spy Enterprise. Verify Vehicle Spy Enterprise is able to detect your neoOBD2 DEV. The LED indicated in the image below will exhibit a blinking pattern in white color if your PC has successfully enumerated the neoOBD2 DEV.
 
-    ![alt_text](../images/5-obd2dev_connected_to_vspy_led.PNG "LED status on your neoOBD2 DEV when connected to PC (Vehicle Spy)")
+    ![alt_text](../images/5-obd2dev-connected-to-vspy-led.PNG "LED status on your neoOBD2 DEV when connected to PC (Vehicle Spy)")
 
-    ![alt text](../images/6-vspy_obd2dev_detect.PNG "Verify Vehicle Spy Pro is able to detect your neoOBD2 DEV")
+    ![alt text](../images/6-vspy-obd2dev-detect.PNG "Verify Vehicle Spy Pro is able to detect your neoOBD2 DEV")
 
 4. Select **Setup** from the top menu and select **Hardware**. This will open the **neoVI Explorer**, a common hardware configuration tool for all hardware interfaces from Intrepid Control Systems. Click the **Connect** button to connect to your neoOBD2 DEV. This will read hardware settings from the connected neoOBD2 DEV. Verify the networks you wish to use are enabled. If any of the three available firmware versions need to be updated, click the **Manual Reflash** button and wait for the firmware update process to come to completion. Make sure to click the **Write Settings** button to commit any changes before closing the Hardware view.
 
-    ![alt text](../images/7-vspy_obd2dev_hw_setting.PNG "Configure hardware settings using the neoVI Explorer")
+    ![alt text](../images/7-vspy-obd2dev-hw-setting.PNG "Configure hardware settings using the neoVI Explorer")
 
 5. Click the **Play** button located on the top left corner of the screen. Verify Vehicle Spy Enterprise properly transitions to **Online** state. If the neoOBD2 DEV is connected to a live CAN bus, you will be able to view all CAN message traffic from the **Messages** view. While in online state, the status LED will exhibit a blinking pattern that transitions rapidly between green and blue.
 
-    ![alt text](../images/8-vspy_obd2dev_online.PNG "Go online in Vehicle Spy")
+    ![alt text](../images/8-vspy-obd2dev-online.PNG "Go online in Vehicle Spy")
 
 ## Install Texas Instruments Code Composer Studio
 
