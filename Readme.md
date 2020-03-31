@@ -7,7 +7,7 @@ The neoOBD2 family of products are designed to give your WiFi / BLE applications
 The list of neoOBD2 devices supported by the SDK are as follows:
 
 * [neoOBD2 PRO](https://www.intrepidcs.com/products/vehicle-network-adapters/neoobd-2-pro/)
-* neoOBD2 LC (coming soon)
+* [neoOBD2 DEV](https://www.intrepidcs.com/products/vehicle-network-adapters/neoobd-2-lc/)
 
 ## Getting Started
 
@@ -23,7 +23,11 @@ The neoOBD2 SDK is based on [Amazon FreeRTOS](https://aws.amazon.com/documentati
 
 * neoOBD2 LC
 
-    * Coming soon.
+	* **Please complete the hardware setup guide before you begin development to ensure your neoOBD2 DEV is configured correctly** - please [click here](docs/neoobd2_dev/readme/OBD2DEV_HW_SETUP_GUIDE.md).
+	
+	* For guide on getting started with Wi-Fi application development using the SDK for neoOBD2 DEV - please [click here](docs/neoobd2_dev/readme/OBD2DEV_WIFI_GETING_STARTED.md).
+	
+	* For guide on getting started with BLE application development using the SDK for neoOBD2 DEV - please [click here](docs/neoobd2_dev/readme/OBD2DEV_BLE_GETTING_STARTED.md).
 
 ## SDK Compatibility by Vehicle Spy Versions
 
