@@ -34,7 +34,7 @@ The GND and VBATT pins on the Male OBDII Connector can be connected to a DC powe
 
 The Male OBDII connector on the neoOBD2 DEV ships with the following default pin mapping:
 
-![alt text](../images/2-obd2dev-default-pinmap.png "neoOBD2 DEV default Male OBDII connector pin mapping")
+![alt text](../images/2-obd2dev-default_pinmap.png "neoOBD2 DEV default Male OBDII connector pin mapping")
 
 The neoOBD2 DEV also features support for a Neovi Universal Connector (NUC) board. The board allow OBDII pin mappings on the Male OBDII connector of the neoOBD2 DEV to be customized so that they are compatible with the pin mapping found on vehicle OBDII port users would like to connect to.
     
@@ -50,7 +50,7 @@ Standard off-the-shelf USB-A to Micro-B USB 2.0 cables can be used to make the f
 - Connect to the ARM DAPLINK onboard USB-SWD debug probe for programming and debugging the Nordic nRF52840 BLE SoC.
 - Connect to the BG96 to perform firmware updates.
 
-    ![alt_text](../images/3-obd2dev-usb-map.png "USB connections to the neoOBD2 DEV components")
+![alt_text](../images/3-obd2dev-usb-map.PNG "USB connections to the neoOBD2 DEV components")
 
 ## Install Vehicle Spy Enterprise and Configure Basic Hardware Settings
 
