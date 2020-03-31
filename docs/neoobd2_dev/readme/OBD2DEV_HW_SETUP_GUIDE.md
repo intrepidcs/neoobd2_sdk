@@ -1,6 +1,13 @@
 # Getting Started with neoOBD2 DEV Hardware
 
-Thank you for purchasing neoOBD2 DEV. This guide provides the minimum level of configurations needed to setup your neoOBD2 DEV hardware for development using TI Code Composer Studio IDE and Vehicle Spy Enterprise software. 
+Thank you for purchasing neoOBD2 DEV. This guide provides the configurations needed to setup your neoOBD2 DEV hardware for development. 
+
+neoOBD2 DEV is a versatile development kit for building a wireless vehicle-network applications using Wi-Fi and Bluetooth Low Energy. The development kit provides the following core features:
+
+- Vehicle networks: 3x CANFD, 1x SW-switchable CANFD / SWCAN, 1x SW-switchable LIN / KLINE
+- Wi-Fi: Texas Instruments CC3235SF Simplelink Wi-Fi MCU
+- BLE: Nordic Semiconductor nRF52840 Bluetooth 5 SoC
+- Complete Vehicle Spy Enterprise support including online and standalone scripting features.
 
 ## Prerequisites
 
