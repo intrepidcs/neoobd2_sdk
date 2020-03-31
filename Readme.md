@@ -21,7 +21,7 @@ The neoOBD2 SDK is based on [Amazon FreeRTOS](https://aws.amazon.com/documentati
 
 	* For guide on getting started with BLE application development using the SDK for neoOBD2 PRO - please [click here](docs/neoobd2_pro/readme/OBD2PRO_BLE_GETTING_STARTED.md).
 
-* neoOBD2 LC
+* neoOBD2 DEV
 
 	* **Please complete the hardware setup guide before you begin development to ensure your neoOBD2 DEV is configured correctly** - please [click here](docs/neoobd2_dev/readme/OBD2DEV_HW_SETUP_GUIDE.md).
 	
