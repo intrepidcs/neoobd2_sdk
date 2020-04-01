@@ -31,7 +31,7 @@ Required Software:
 
 ## Powering Up your neoOBD2 DEV
 
-The neoOBD2 DEV can be powered via its Male OBDII Connector. The device cannot be powered via USB.
+The neoOBD2 DEV can only be powered via its Male OBDII Connector. The device cannot be powered via USB.
 
 The GND and VBATT pins on the Male OBDII Connector can be connected to a DC power source that provides 4.5V - 36V. This includes OBDII port found in a vehicle or a custom-built harness with GND on pin 4 and VBATT on pin 16 of a Female OBDII Connector. We recommend using a 3A 12V DC power supply for general use. A standard 12V DC power supply with barrel jack connector is available for purchase from Intrepid [here](https://store.intrepidcs.com/productdetails_popup.asp?productcode=NEOVI-PS).
 
