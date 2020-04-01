@@ -35,6 +35,8 @@ The neoOBD2 DEV can only be powered via its Male OBDII Connector. The device can
 
 The GND and VBATT pins on the Male OBDII Connector can be connected to a DC power source that provides 4.5V - 36V. This includes OBDII port found in a vehicle or a custom-built harness with GND on pin 4 and VBATT on pin 16 of a Female OBDII Connector. We recommend using a 3A 12V DC power supply for general use. A standard 12V DC power supply with barrel jack connector is available for purchase from Intrepid [here](https://store.intrepidcs.com/productdetails_popup.asp?productcode=NEOVI-PS).
 
+The most convenient way to power a neoOBD2 DEV is by using a [neoOBD2 SIM](https://store.intrepidcs.com/neoECU-CHIP-Simulator-p/neoobd2-sim.htm). It is a programmable 2-channel CAN simulator that comes with a Female OBDII Connector, just like the OBDII connector found in a vehicle. This allows you to conveniently connect any OBDII device to provide power and simulated CAN traffic for easy development. The neoOBD2 SIM is powered by a standard barrel jack 12V DC 3A power supply and outputs power via its Female OBDII Connector.
+
 ![alt_text](../images/1-obd2dev-power-zone.png "Power I/O")
 
 ## OBDII Connectors and Pin Map
