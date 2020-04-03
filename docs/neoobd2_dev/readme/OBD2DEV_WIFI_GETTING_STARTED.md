@@ -3,7 +3,7 @@
 ## Prerequisites
 
 **Before proceeding further, please make sure you have completed the neoOBD2 DEV Hardware setup guide** - [click here](OBD2DEV_HW_SETUP_GUIDE.md).
-
+how 
 Required Hardware:
 
 1. neoOBD2 DEV
@@ -45,6 +45,19 @@ Required Software:
 
     Details on this integrated development environment from Texas Instruments can be found [here](http://www.ti.com/tool/CCSTUDIO).
 	
+<a name='neoobd2_wifi_app_bl'></a>
+### Install the neoOBD2 Wi-Fi Application Bootloader
+
+Before starting the Wi-Fi development with neoOBD2 DEV, please ensure that the onboard CC3235SF Wi-Fi chip is running the Intrepid Wi-Fi application bootloader. In order to use Vehicle Spy Enterprise to program your Wi-Fi application on the neoOBD2 DEV, the neoOBD2 application bootloader must be flashed on the CC3235SF. When flashed properly, the bootloader will execute on reset. The execution of the application bootloader is indicated by blinking orange LED as shown in the image below. 
+
+The task of the bootloader is to wait for the Intrepid's proprietary main CPU on the neoOBD2 DEV to validate the existence of bootable application image on the CC3235SF. If found and validated, the main CPU will prompt the CC3235SF to execute the application and pass any information tha the CC3235SF application needs to facilitate the vehicle network data access.
+
+By default, the neoOBD2 DEV ships with the application bootloader pre-flashed on the CC3235SF as the default 'mcuimage.bin' which the ROM bootloader executes on chip reset. The binary is signed using the Intrepid code signing private key. The authenticity of the signature is validated by the CC3235SF using the certificates that are present on the SFLASH up to the root CA.
+
+If the application bootloader has been erased during the development process, you will need to flash it again. For development and prototyping purposes, you may use the dummy keys and certificates provided by TI in the CC32XX SDK. But it is recommended that you use your own root CA certificate, intermediate code signing certificate, and device certificate with matching private key to sign and flash the bootloader binary as the default 'mcuimage.bin'. For a full guide on how to flash a signed binary into the CC3235SF, please refer to the following guide provided by TI - [Simplelink Wi-Fi Certificates Handling](http://www.ti.com/lit/ug/swpu332a/swpu332a.pdf).
+
+The application bootloader binary is provided in the neoOBD2 SDK under demos\intrepid\neoobd2_dev\wifi\app_bl.
+
 <a name='neoobd2_sdk_install'></a>
 ### Install neoOBD2 SDK
 
