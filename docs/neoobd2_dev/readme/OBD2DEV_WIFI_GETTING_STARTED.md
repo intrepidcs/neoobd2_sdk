@@ -3,7 +3,7 @@
 ## Prerequisites
 
 **Before proceeding further, please make sure you have completed the neoOBD2 DEV Hardware setup guide** - [click here](OBD2DEV_HW_SETUP_GUIDE.md).
-how 
+ 
 Required Hardware:
 
 1. neoOBD2 DEV
