@@ -50,7 +50,7 @@ Required Software:
 
 Before starting the Wi-Fi development with neoOBD2 DEV, please ensure that the onboard CC3235SF Wi-Fi chip is running the Intrepid Wi-Fi application bootloader. In order to use Vehicle Spy Enterprise to program your Wi-Fi application on the neoOBD2 DEV, the neoOBD2 application bootloader must be flashed on the CC3235SF. When flashed properly, the bootloader will execute on reset. The execution of the application bootloader is indicated by blinking orange LED as shown in the image below. 
 
-    ![alt text](../images/16-obd2dev_wifi_bl_running.PNG "Intrepid Wi-Fi Application Bootloader running")
+![alt text](../images/16-obd2dev_wifi_bl_running.PNG "Intrepid Wi-Fi Application Bootloader running")
 
 The task of the bootloader is to wait for the Intrepid's proprietary main CPU on the neoOBD2 DEV to validate the existence of bootable application image on the CC3235SF. If found and validated, the main CPU will prompt the CC3235SF to execute the application and pass any information tha the CC3235SF application needs to facilitate the vehicle network data access.
 
