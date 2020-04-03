@@ -1,12 +1,25 @@
 # Getting Started with your first Wi-Fi Application for neoOBD2 DEV
 
-This guide provides a step-by-step guide on creating, debugging, and deploying a sample ready-to-build TI CC3235SF Wi-Fi application for neoOBD2 DEV. This sample project is included in the SDK. The application is based on the Simplelink AWS IoT Plugin for CC32XX. It connects the CC3235SF in the neoOBD2 DEV to AWS IoT Core and exchanges MQTT messages while also transmitting classical CAN messages on HSCAN1 network of neoOBD2 DEV. When the sample application is properly configured and programmed into the CC3235SF Wi-Fi processor, the neoOBD2 DEV will perform the following:
+This guide provides a step-by-step guide on creating, debugging, and deploying a sample ready-to-build TI CC3235SF Wi-Fi application for neoOBD2 DEV. This sample project is available in the neoOBD2 SDK. The application is an extension of the "Subscribe Publish" example application available in the Simplelink AWS IoT Plugin for CC32XX. Intrepid has modified the original example to send data elements gathered from several CAN messages to the AWS Iot Core using MQTT publish. In addition, the example receives an arbitrary data of up to 8 bytes and propgate that data out to the CAN network as a transmit CAN message.
+
+You will learn to do the following:
+
+* Use the CC32XX Simplelink SDK and Simplelink AWS IoT Plugin in CC3235SF to communicate with AWS IoT Core using MQTT.
+* Use the Intrepid Secure Module (ISM) API in CC3235SF to transmit and receive CAN messages configured from the C Code Interface view of Vehicle Spy Enterprise.
+* Publish received CAN signals in realtime to AWS IoT Core using MQTT.
+* Subscribe to a topic to receive some arbitrary data up to 8 bytes and transmit that data as a CAN message.
+
+When the sample application is properly configured and programmed into the CC3235SF Wi-Fi processor, the neoOBD2 DEV will perform the following:
 
 * Initialize and enable the CC3235SF's Wi-Fi subsystem.
+* Initialize various peripherals and the ISM API library.
+* Received CAN messages are processed by the receive message event handler callback functions.
+* A CAN message is transmitted on 100msec interval.
 * Provision *certificate and private key* needed to connect to the AWS IoT Core.
-* Use user-configured *Wi-Fi credentials* to connect to an Access Point.
-* Connect to MQTT broker for your AWS IoT Core account.
-* Publish *"Hello World"* message every five seconds to the *obd2dev/demo/data* topic.
+* Use user-configured *Wi-Fi credentials* to connect to a Wi-Fi Access Point in station mode.
+* Connect to the MQTT endpoint address of your AWS IoT Core account.
+* Publish a payload containing the *"Vehicle Speed, Engine Speed, and Throttle Position"* data parsed from the receive message event handlers to the *obd2dev/demo/data* topic on 500msec interval.
+* Subscribe to a topic containing arbitrary data upto 8 bytes that can be transmitted out as a CAN message on 100msec interval.
 
 ## Prerequisites
 
