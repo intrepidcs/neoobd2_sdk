@@ -34,10 +34,12 @@ Required Software:
 The neoOBD2 family of products provide a unique model that spans the life cycle of a product from the initial software prototyping & development phase to the mass deployment & maintenance phase.
 
 - neoOBD2 DEV (prototyping & development): Full-featured neoOBD2 hardware in development board form-factor. Contains onboard USB-JTAG/SWD debug probes for debugging and programming the ARM Cortex M4 Wi-Fi and BLE SoCs.  
-- neoOBD2 LC (mass deployment): Modular mass deployment device in OBDII dongle form-factor, absent onboard debug probes.
+- neoOBD2 LC (mass deployment): Modular mass deployment device in OBDII dongle form-factor, absent onboard debug probes. This model is typically custom made-to-order based on the features identified by the end user.
 - neoOBD2 SDK: Published SDK available on GitHub with documentation and sample projects for building Wi-Fi and BLE enabled vehicle network applications for ARM Cortex M4 applications processors on the TI CC3235SF Wi-Fi and Nordic nRF52840 BLE SoC, using the Intrepid Secure Module (ISM) vehicle network API.
 
 While the neoOBD2 DEV and neoOBD2 LC exhibit different form factors, they are based on the identical hardware design. This allows the embedded software that was developed and hardened using the neoOBD2 DEV to be mass flashed and deployed on neoOBD2 LC without any software changes. 
+
+Simply put, the neoOBD2 DEV provides the full-featured development environment for the engineering team to develop, debug, and test the applications. The neoOBD2 LC is used to deploy the released applications in mass scale.
 
 ![alt_text](../images/15-obd2dev_model.PNG "neoOBD2 Development & Deployment Model")
 
