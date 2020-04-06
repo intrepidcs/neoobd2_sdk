@@ -104,11 +104,17 @@ Please complete this section to learn how to generate and import the above files
 
 	![alt text](../images/23-obd2dev_additional_ismlib.PNG "Add additional ISM API files")
 	
-11. Open project properties in CCS and go to *File Search Path* under *ARM Linker*. Add *obd2lc_wifi_cc32xx_ism.a* in the first list box. Add *${workspace_loc:/${ProjName}}* in the second box. Make sure *Reread libraries* option is checked.
+11. Open project properties in CCS and go to **File Search Path** under **ARM Linker**. Add **obd2lc_wifi_cc32xx_ism.a** in the first list box. Add **${workspace_loc:/${ProjName}}** in the second box. Make sure **Reread libraries** option is checked.
 
 	![alt text](../images/24-obd2dev_link_ismlib.PNG "Linker settings for ISM API library")
 
-10. Build the CCS project and verify the project builds successfully.
+12. Build the CCS project and verify the project builds successfully.
+
+The ISM API glue codes and library are now all integrated into the project, but they are not actually being executed as we have not added any codes that exercise the library. Next, we will add codes to enable vehicle network communication. This will allow you to receive and transmit CAN messages from the project. Furthermore, we will add codes to forward the CAN data to AWS IoT Core and transmit data received from AWS IoT Core in a CAN message.
+	
+## Add Codes to Facilitate CAN Rx and Tx with AWS IoT Core
+
+
 	
 ## Running and Debugging the Application
 	
