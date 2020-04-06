@@ -50,7 +50,7 @@ Other requirements:
 
 ## Import, Build, and Run the AWS CC32XX Plugin for AWS IoT Core
 
-First, let's import, build, and run the *subscribe_publish_sample_CC3235SF_LAUNCHXL_freertos_ccs* project provided in the plugin as is.
+First, let's import, build, and run the *subscribe_publish_sample_CC3235SF_LAUNCHXL_freertos_ccs* project provided in the plugin.
 
 1. Download and install the AWS CC32XX Plugin for AWS IoT Core.
 
