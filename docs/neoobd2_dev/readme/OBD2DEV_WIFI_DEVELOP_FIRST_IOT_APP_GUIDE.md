@@ -86,27 +86,21 @@ Please complete this section to learn how to generate and import the above files
 
 	![alt text](../images/19-obd2dev_ccif_proj_folder.PNG "Open the create CCIF Project Root Directory")
 
-6. **IMPORTANT:** Before proceeding further, save the Vehicle Spy Enterprise project (.vs3) by going to **File** on top menu and selecting **Save**. The saved .vs3 project will be used later to program the completed application into the CC3220SF in neoOBD2 DEV.
+6. **IMPORTANT:** Before proceeding further, save the Vehicle Spy Enterprise project (.vs3) by going to **File** on top menu and selecting **Save**. The saved .vs3 project will be used later to program the completed application into the CC3235SF in neoOBD2 DEV.
 
-7. Copy the **SpyCCode.c** file and overwrite the one located inside the **vspy** folder of the aws-mqtt sample project in CCS.
+7. Copy the **SpyCCode.c** file and paste it into the CCS project directory.
 
-	![alt text](../images/18-Export_SpyCCode.PNG "Overwrite ISM source codes in CCS project")
+	![alt text](../images/20-obd2dev_overwrite_spyccode.PNG "Integrate ISM source codes into CCS project")
 	
-    **You may need to fix up SpyCCode.c** so that **obd2lc_wifi_cc32xx.h** is included properly.
-	
-	![alt text](../images/32-spyccode_fixup.PNG "Header fix in SpyCCode.c")
-	
-8. Go back to the file explorer. Open the **ProjectName_neoOBD2LC_WIFI_CC32XX** folder. Copy **obd2lc_wifi_cc32xx.c** and **obd2lc_wifi_cc32xx.h** files and overwrite the one located inside the **vspy** folder of the aws-mqtt sample project in CCS.
+8. Go back to the file explorer. Open the **ProjectName_neoOBD2LC_WIFI_CC32XX** folder. Copy **obd2lc_wifi_cc32xx.c** and **obd2lc_wifi_cc32xx.h** files and paste them into the CCS project directory.
 
-	![alt text](../images/19-Export_obd2lc_wifi_cc32xx.PNG "Overwrite ISM source codes in CCS project")
+	![alt text](../images/21-obd2dev_overwrite_lcfiles.PNG "Integrate ISM source codes into CCS project")
 
 9. Open project properties in CCS and verify the **BUILD_OBD2LC_WIFI_CC32XX_ISM_PROJECT** is defined in **Predefined Symobls** list.
 
-	![alt text](../images/20-CCS_wifi_define.PNG "Add preprocessor macro for Wi-Fi project")
+	![alt text](../images/22-obd2dev_preprocessor.PNG "Add preprocessor macro for Wi-Fi project")
 
 10. Build the aws-mqtt project and verify the project builds successfully.
-	
-	![alt text](../images/21-CCS_Success_Build.PNG "Build CCS Project")
 	
 ## Running and Debugging the Application
 	
