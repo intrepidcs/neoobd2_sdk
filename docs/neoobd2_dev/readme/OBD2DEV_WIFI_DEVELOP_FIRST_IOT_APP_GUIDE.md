@@ -62,7 +62,9 @@ First, let's import, build, and run the *subscribe_publish_sample_CC3235SF_LAUNC
 
 4. Follow the rest of the guide exactly as shown. Make sure to follow the *Example Pre-Build Steps* section of the guide to properly configure the settings in the *aws_iot_config.h*.
 
-5. Once you have completed the guide, you should be able to establish MQTT pub/sub between your neoOBD2 DEV and your AWS IoT Core endpoint. Next, we will work on adding the auto-generated C codes from Vehicle Spy's *C Code Interface* tool and the *ISM API library* to expand the sample application to access the CAN network simultaneously while communicating with AWS IoT Core.
+Once you have completed the above steps, you should be able to establish MQTT pub/sub between your neoOBD2 DEV and your AWS IoT Core endpoint. 
+
+Next, we will work on adding the auto-generated C codes from Vehicle Spy's *C Code Interface* tool and the *ISM API library* to expand the sample application to access the CAN network simultaneously while communicating with AWS IoT Core.
 
 ## Importing auto-generated ISM codes from Vehicle Spy Enterprise
 
@@ -76,17 +78,15 @@ Please complete this section to learn how to generate and import the above files
 
 3. Click the **Create embedded projects for Intrepid Security Module (ISM) devices** checkbox to inflate additional view.
 
-	![alt text](../images/16-New_WiFi_CCIF_Project.PNG "Vehicle Spy create new CCIF Project")
+	![alt text](../images/18-obd2dev_new_wifi_ccif_proj.PNG "Vehicle Spy create new CCIF Project")
 
-4. Select **neoOBD2 DEV WiFi CC32XX** from the list of available ISM targets and add it to the selected ISM targets list. Click **OK** button to generate ISM source files. Note that Visual Studio will open if you have Visual Studio installed on your PC.
+4. Select **neoOBD2 LC WiFi CC32XX** from the list of available ISM targets and add it to the selected ISM targets list. Click **OK** button to generate ISM source files. Note that Visual Studio will open if you have Visual Studio installed on your PC.
 
 5. Go back to the **C Code Interface view**. Click the **Folder** button which will open up a file explorer in the root directory of the generated C Code Project. 
 
-	![alt text](../images/17-Open_CCIF_Proj_Folder.PNG "Open the create CCIF Project Root Directory")
+	![alt text](../images/19-obd2dev_ccif_proj_folder.PNG "Open the create CCIF Project Root Directory")
 
 6. **IMPORTANT:** Before proceeding further, save the Vehicle Spy Enterprise project (.vs3) by going to **File** on top menu and selecting **Save**. The saved .vs3 project will be used later to program the completed application into the CC3220SF in neoOBD2 DEV.
-
-	![alt text](../images/26-Save_Vspy_Project.PNG "Open the create CCIF Project Root Directory")
 
 7. Copy the **SpyCCode.c** file and overwrite the one located inside the **vspy** folder of the aws-mqtt sample project in CCS.
 
