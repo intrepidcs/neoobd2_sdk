@@ -44,56 +44,31 @@ Required Software:
 
 4. TI Simplelink CC32XX Plugin for AWS IoT Core - download [here](http://www.ti.com/tool/download/SIMPLELINK-CC32XX-PLUGIN-FOR-AWSIOT)
 
-Misc requirements:
+Other requirements:
 
 1. AWS IoT account with access to the AWS IoT console - [create one here](https://aws.amazon.com)
-	
-## Importing the Sample Project and Building it in CCS
 
-## Setting up your AWS IoT Environment
+## Import, Build, and Run the AWS CC32XX Plugin for AWS IoT Core
 
-1. Before you begin, please see [AWS IoT Prerequisites](https://docs.aws.amazon.com/freertos/latest/userguide/freertos-prereqs.html) to setup an IoT thing, private key, certificate, and policy.
+First, let's import, build, and run the *subscribe_publish_sample_CC3235SF_LAUNCHXL_freertos_ccs* project provided in the plugin as is.
 
-2. Create an AWS IoT account at [https://aws.amazon.com](https://aws.amazon.com).
+1. Download and install the AWS CC32XX Plugin for AWS IoT Core.
 
-3. Browse to the [AWS IoT console.](https://console.aws.amazon.com/iotv2/)
+2. Navigate to the install directory of the plugin and locate the *AWS_Quick_Start_Guide.html* under <install_path>/docs/aws. Open the guide.
 
-4. In the left navigation pane, choose **Settings**.
+3. You may jump to the *Hardware Setup* section. You will notice the *Jumper Settings* section describes the sense-on-power scheme. The SOP pins 0 - 2 on the neoOBD2 DEV is indicated below. 
 
-5. Copy your AWS IoT endpoint from the **Endpoint** text box. It should look like <*1234567890123-ats*>.iot.<*us-east-1*>.amazonaws.com.
-	
-6. Open *include/aws_clientcredential.h* from **CCS project explorer** and set clientcredentialMQTT_BROKER_ENDPOINT to your AWS IoT endpoint. You also need to know your Wi-FI network SSID, password, and security type, and the name of the AWS IoT thing that represents your device. Valid security types are:
+	![alt text](../images/17-obd2dev_cc32xx_sop_pins.PNG "CC32XX SOP Pins on neoOBD2 DEV")
 
-	    * eWiFiSecurityOpen: Open, no security.
-	    * eWiFiSecurityWEP: WEP security.
-	    * eWiFiSecurityWPA: WPA security.
-	    * eWiFiSecurityWPA2: WPA2 security.
+4. Follow the rest of the guide exactly as shown. Make sure to follow the *Example Pre-Build Steps* section of the guide to properly configure the settings in the *aws_iot_config.h*.
 
-    From **CCS project explorer**, open *include\aws_clientcredential.h.*
-
-    Specify values for the following #define constants:
-
-    	* clientcredentialMQTT_BROKER_ENDPOINT: Your AWS IoT endpoint.
-	    * clientcredentialIOT_THING_NAME: The AWS IoT thing for your board.
-	    * clientcredentialWIFI_SSID: The SSID for your Wi-Fi network.
-	    * clientcredentialWIFI_PASSWORD: The password for your Wi-Fi network.
-	    * clientcredentialWIFI_SECURITY: The security type for your Wi-Fi network.
-	
-7. The certificate and private key must be hard-coded into the sample code. Amazon FreeRTOS is a C language project, and the certificate and private key must be specially formatted to be added to the project. **To format your certificate and private key:**
-
-	1. In a browser window, open <*SDK_Path*>\tools\certificate_configuration\CertificateConfigurator.html.
-
-	2. Under **Certificate PEM file**, choose the <*ID*>-certificate.pem.crt you downloaded from the AWS IoT console.
-
-	3. Under **Private Key PEM file**, choose the <*ID*>-private.pem.key you downloaded from the AWS IoT console.
-
-	4. Choose **Generate and save aws_clientcredential_keys.h**, and then save the file in your CCS project directory at <*Your_CCS_Project_Path*>/include. This overwrites the stub file in the directory.
+5. Once you have completed the guide, you should be able to establish MQTT pub/sub between your neoOBD2 DEV and your AWS IoT Core endpoint. Next, we will work on adding the auto-generated C codes from Vehicle Spy's *C Code Interface* tool and the *ISM API library* to expand the sample application to access the CAN network simultaneously while communicating with AWS IoT Core.
 
 ## Importing auto-generated ISM codes from Vehicle Spy Enterprise
 
-The **ISM library (obd2lc_wifi_cc32xx_ism.a)** and a set of **auto-generated ISM source files (obd2lc_wifi_cc32xx.c, obd2lc_wifi_cc32xx.h, and SpyCCode.c) from Vehicle Spy Enterprise** are the software components that grant the code running on CC3220SF transmit and receive access to data over the vehicle networks supported by neoOBD2 DEV (CAN/CANFD, LIN, and Ethernet).
+The **ISM library (obd2lc_wifi_cc32xx_ism.a)** and a set of **auto-generated ISM source files (obd2lc_wifi_cc32xx.c, obd2lc_wifi_cc32xx.h, and SpyCCode.c) from Vehicle Spy Enterprise** are the software components that grant the code running on CC3235SF transmit and receive access to data over the vehicle networks supported by neoOBD2 DEV.
 
-Although the **aws-mqtt** sample project comes with those files already integrated, please follow this guide to learn how to generate and import them as they are essential components of Wi-Fi application development with neoOBD2 DEV.
+Please complete this section to learn how to generate and import the above files into the project as they are essential parts of Wi-Fi application development process using the neoOBD2 DEV.
 
 1. Open Vehicle Spy Enterprise. Go to the **Scripting and Automation** menu and select **C Code Interface.** 
 
