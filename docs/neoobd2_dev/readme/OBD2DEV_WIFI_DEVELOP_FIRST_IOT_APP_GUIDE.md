@@ -100,7 +100,15 @@ Please complete this section to learn how to generate and import the above files
 
 	![alt text](../images/22-obd2dev_preprocessor.PNG "Add preprocessor macro for Wi-Fi project")
 
-10. Build the aws-mqtt project and verify the project builds successfully.
+10. We need to add a few more ISM API source files. Navigate to path <neoobd2sdk_path>\demos\intrepid\neoobd2_dev\wifi\ismlib. Copy all files and paste them into the CCS project directory.
+
+	![alt text](../images/23-obd2dev_additional_ismlib.PNG "Add additional ISM API files")
+	
+11. Open project properties in CCS and go to *File Search Path* under *ARM Linker*. Add *obd2lc_wifi_cc32xx_ism.a* in the first list box. Add *${workspace_loc:/${ProjName}}* in the second box. Make sure *Reread libraries* option is checked.
+
+	![alt text](../images/24-obd2dev_link_ismlib.PNG "Linker settings for ISM API library")
+
+10. Build the CCS project and verify the project builds successfully.
 	
 ## Running and Debugging the Application
 	
