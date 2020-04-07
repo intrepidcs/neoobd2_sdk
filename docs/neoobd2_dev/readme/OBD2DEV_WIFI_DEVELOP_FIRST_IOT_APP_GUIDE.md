@@ -162,7 +162,7 @@ The ISM API glue codes and library are now all integrated into the project, but 
 	
 	![alt text](../images/28-obd2dev_remove_network_calls.PNG "Remove GPIO calls from initWiFi()")
 
-4. 
+4. Let's implement the Receive Message Event Handlers in **SpyCCode.c**.
 
 ## Running and Debugging the Application
 	
