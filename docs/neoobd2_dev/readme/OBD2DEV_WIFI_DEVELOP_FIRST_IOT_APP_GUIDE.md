@@ -164,14 +164,64 @@ The ISM API glue codes and library are now all integrated into the project, but 
 
 4. Let's implement the Receive Message Event Handlers in **SpyCCode.c**.
 
+	First, open **obd2lc_wifi_cc32xx.h** and define the global object that will store the vehicle data points contained in the payload of the received messages.
+	
+	```
+	typedef struct _stVehicleData
+	{
+	    union {
+		uint16_t speed;
+		uint8_t speedBytes[2];
+	    };
+
+	    union {
+		uint16_t rpm;
+		uint8_t rpmBytes[2];
+	    };
+
+	    union {
+		uint16_t throttle;
+		uint8_t throttleBytes[2];
+	    };
+	} stVehicleData;
+	```
+	
+	We will assume the signals are occupying the first two bytes of each corresponding CAN messages. We store the received signal data into our global object.
+	
+	```
+	void SpyMsg_MG_RPM_Msg_HS_CAN(MG_RPM_Msg_HS_CAN * pMG_RPM_Msg_HS_CAN)
+	{
+		// store the vehicle speed occupying the first two bytes of the received CAN message
+		obVehicleData.speedBytes[0] = pMG_RPM_Msg_HS_CAN->MessageData.btData[1];
+		obVehicleData.speedBytes[1] = pMG_RPM_Msg_HS_CAN->MessageData.btData[0];	
+	}
+
+	void SpyMsg_MG_Speed_Msg_HS_CAN(MG_Speed_Msg_HS_CAN * pMG_Speed_Msg_HS_CAN)
+	{
+		// store the engine speed occupying the first two bytes of the received CAN message
+		obVehicleData.rpmBytes[0] = pMG_Speed_Msg_HS_CAN->MessageData.btData[1];
+		obVehicleData.rpmBytes[1] = pMG_Speed_Msg_HS_CAN->MessageData.btData[0];		
+	}
+
+	void SpyMsg_MG_Throttle_Msg_HS_CAN(MG_Throttle_Msg_HS_CAN * pMG_Throttle_Msg_HS_CAN)
+	{
+		// store the throttle position occupying the first two bytes of the received CAN message
+		obVehicleData.throttleBytes[0] = pMG_Throttle_Msg_HS_CAN->MessageData.btData[1];
+		obVehicleData.throttleBytes[1] = pMG_Throttle_Msg_HS_CAN->MessageData.btData[0];
+	}
+	```
+
 	For every CAN message that is associated with each of the event handlers, the ISM process will auto-magically invoke the matching handler. A good way to check if the event handlers are actually receiving the correct CAN message is by implementing the following logic to re-transmit or gateway the received message as another message.
 
 	``` 
-	// TODO: add event handlers here
 	#define ENABLE_GATEWAY_TEST (1)
 	
 	void SpyMsg_MG_RPM_Msg_HS_CAN(MG_RPM_Msg_HS_CAN * pMG_RPM_Msg_HS_CAN)
 	{
+		// store the vehicle speed occupying the first two bytes of the received CAN message
+		obVehicleData.speedBytes[0] = pMG_RPM_Msg_HS_CAN->MessageData.btData[1];
+		obVehicleData.speedBytes[1] = pMG_RPM_Msg_HS_CAN->MessageData.btData[0];	
+	
 	#if ENABLE_GATEWAY_TEST
 		GenericMessage msg = { 0 };
 		msg.iID = pMG_RPM_Msg_HS_CAN->MessageData.iID + 1;
@@ -184,6 +234,10 @@ The ISM API glue codes and library are now all integrated into the project, but 
 
 	void SpyMsg_MG_Speed_Msg_HS_CAN(MG_Speed_Msg_HS_CAN * pMG_Speed_Msg_HS_CAN)
 	{
+		// store the engine speed occupying the first two bytes of the received CAN message
+		obVehicleData.rpmBytes[0] = pMG_Speed_Msg_HS_CAN->MessageData.btData[1];
+		obVehicleData.rpmBytes[1] = pMG_Speed_Msg_HS_CAN->MessageData.btData[0];	
+	
 	#if ENABLE_GATEWAY_TEST
 		GenericMessage msg = { 0 };
 		msg.iID = pMG_Speed_Msg_HS_CAN->MessageData.iID + 2;
@@ -196,6 +250,10 @@ The ISM API glue codes and library are now all integrated into the project, but 
 
 	void SpyMsg_MG_Throttle_Msg_HS_CAN(MG_Throttle_Msg_HS_CAN * pMG_Throttle_Msg_HS_CAN)
 	{
+		// store the throttle position occupying the first two bytes of the received CAN message
+		obVehicleData.throttleBytes[0] = pMG_Throttle_Msg_HS_CAN->MessageData.btData[1];
+		obVehicleData.throttleBytes[1] = pMG_Throttle_Msg_HS_CAN->MessageData.btData[0];
+	
 	#if ENABLE_GATEWAY_TEST
 		GenericMessage msg = { 0 };
 		msg.iID = pMG_Throttle_Msg_HS_CAN->MessageData.iID + 3;
