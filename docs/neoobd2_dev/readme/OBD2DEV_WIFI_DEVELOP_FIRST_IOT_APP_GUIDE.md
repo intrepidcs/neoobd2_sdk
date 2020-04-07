@@ -164,6 +164,51 @@ The ISM API glue codes and library are now all integrated into the project, but 
 
 4. Let's implement the Receive Message Event Handlers in **SpyCCode.c**.
 
+	For every CAN message that is associated with each of the event handlers, the ISM process will auto-magically invoke the matching handler. A good way to check if the event handlers are actually receiving the correct CAN message is by implementing the following logic to re-transmit or gateway the received message as another message.
+
+	``` 
+	// TODO: add event handlers here
+	#define ENABLE_GATEWAY_TEST (1)
+	
+	void SpyMsg_MG_RPM_Msg_HS_CAN(MG_RPM_Msg_HS_CAN * pMG_RPM_Msg_HS_CAN)
+	{
+	#if ENABLE_GATEWAY_TEST
+		GenericMessage msg = { 0 };
+		msg.iID = pMG_RPM_Msg_HS_CAN->MessageData.iID + 1;
+		msg.iNetwork = pMG_RPM_Msg_HS_CAN->MessageData.iNetwork;
+		msg.iNumDataBytes = pMG_RPM_Msg_HS_CAN->MessageData.iNumDataBytes;
+		memcpy(msg.btData, pMG_RPM_Msg_HS_CAN->MessageData.btData, pMG_RPM_Msg_HS_CAN->MessageData.iNumDataBytes);
+		GenericMessageTransmit(&msg);
+	#endif
+	}
+
+	void SpyMsg_MG_Speed_Msg_HS_CAN(MG_Speed_Msg_HS_CAN * pMG_Speed_Msg_HS_CAN)
+	{
+	#if ENABLE_GATEWAY_TEST
+		GenericMessage msg = { 0 };
+		msg.iID = pMG_Speed_Msg_HS_CAN->MessageData.iID + 2;
+		msg.iNetwork = pMG_Speed_Msg_HS_CAN->MessageData.iNetwork;
+		msg.iNumDataBytes = pMG_Speed_Msg_HS_CAN->MessageData.iNumDataBytes;
+		memcpy(msg.btData, pMG_Speed_Msg_HS_CAN->MessageData.btData, pMG_Speed_Msg_HS_CAN->MessageData.iNumDataBytes);
+		GenericMessageTransmit(&msg);
+	#endif
+	}
+
+	void SpyMsg_MG_Throttle_Msg_HS_CAN(MG_Throttle_Msg_HS_CAN * pMG_Throttle_Msg_HS_CAN)
+	{
+	#if ENABLE_GATEWAY_TEST
+		GenericMessage msg = { 0 };
+		msg.iID = pMG_Throttle_Msg_HS_CAN->MessageData.iID + 3;
+		msg.iNetwork = pMG_Throttle_Msg_HS_CAN->MessageData.iNetwork;
+		msg.iNumDataBytes = pMG_Throttle_Msg_HS_CAN->MessageData.iNumDataBytes;
+		memcpy(msg.btData, pMG_Throttle_Msg_HS_CAN->MessageData.btData, pMG_Throttle_Msg_HS_CAN->MessageData.iNumDataBytes);
+		GenericMessageTransmit(&msg);
+	#endif
+	}
+	```
+
+5. 
+
 ## Running and Debugging the Application
 	
 Now that you have successfully imported and built your first sample Wi-Fi project, you can run the application in debug mode via the on-board CC3220SF USB debugger. You can sign in to your AWS IoT cosole to verify that the neoOBD2 DEV is talking to AWS IoT core.
