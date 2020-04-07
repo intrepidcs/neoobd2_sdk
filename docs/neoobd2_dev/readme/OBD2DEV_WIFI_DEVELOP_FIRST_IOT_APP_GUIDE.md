@@ -148,9 +148,23 @@ The ISM API glue codes and library are now all integrated into the project, but 
 	- Timer0
 	- GPIO (*GPIOs are not available for user applications*)
 
-2. Let's start making some code changes. Go to the main() function in **main_freertos.c**. Comment out or delete the GPIO calls.
+2. Let's start making some code changes. 
+
+	First, add the following includes and extern forward protos.
+	
+	![alt text](../images/31-obd2dev_main_freertos_includes.PNG "Add ISM API includes and forward protos")
+
+	Next, go to the main() function in **main_freertos.c**. Comment out or delete the GPIO calls.
 
 	![alt text](../images/26-obd2dev_remove_main_calls.PNG "Remove GPIO calls from main()")
+	
+	Declare a new thread instance for the ISM process, and add the ISM initialization codes.
+	
+	![alt text](../images/33-obd2dev_main_freertos_ism_create.PNG "Add ISM init code")
+	
+	Finally implement the function that shall be executed in the ISM thread.
+	
+	![alt text](../images/34-obd2dev_main_freertos_ism_thread.PNG "Implement ISM thread function")
 
 3. Next, go to **networks.c** and remove the GPIO calls.
 
@@ -162,7 +176,7 @@ The ISM API glue codes and library are now all integrated into the project, but 
 	
 	![alt text](../images/28-obd2dev_remove_network_calls.PNG "Remove GPIO calls from initWiFi()")
 
-4. Let's implement the Receive Message Event Handlers in **SpyCCode.c**.
+5. Let's implement the Receive Message Event Handlers in **SpyCCode.c**.
 
 	First, open **obd2lc_wifi_cc32xx.h** and define the global object that will store the vehicle data points contained in the payload of the received messages.
 	
@@ -186,7 +200,7 @@ The ISM API glue codes and library are now all integrated into the project, but 
 	} stVehicleData;
 	```
 	
-	We will assume the signals are occupying the first two bytes of each corresponding CAN messages. We store the received signal data into our global object.
+	For every CAN message that is associated with each of the event handlers, the ISM process will auto-magically invoke the matching handler. We will assume the signals are occupying the first two bytes of each corresponding CAN messages. We store the received signal data into our global object.
 	
 	```
 	void SpyMsg_MG_RPM_Msg_HS_CAN(MG_RPM_Msg_HS_CAN * pMG_RPM_Msg_HS_CAN)
@@ -211,7 +225,7 @@ The ISM API glue codes and library are now all integrated into the project, but 
 	}
 	```
 
-	For every CAN message that is associated with each of the event handlers, the ISM process will auto-magically invoke the matching handler. A good way to check if the event handlers are actually receiving the correct CAN message is by implementing the following logic to re-transmit or gateway the received message as another message.
+	A good way to check if the event handlers are actually receiving the correct CAN message is by implementing the following logic to re-transmit or gateway the received message as another message.
 
 	``` 
 	#define ENABLE_GATEWAY_TEST (1)
@@ -264,8 +278,23 @@ The ISM API glue codes and library are now all integrated into the project, but 
 	#endif
 	}
 	```
+	
+5. All that remains to be extended is the **subscribe_publish_sample.c**. Open the file and include the **obd2lc_wifi_cc32xx.h** and declare the **stVehicleData** object as an extern so that it is visible.
 
-5. 
+	![alt text](../images/35-obd2dev_pubsub_changes.PNG "")
+	
+	Go to the runAWSClient() function and replace the places where the cPayload is constructed using sprintf as follows.
+	
+	```
+	sprintf(cPayload, 
+	"%s : %d, %s : %d, %s : %d ", 
+	"Speed", 
+	obVehicleData.speed, 
+	"RPM", 
+	obVehicleData.rpm, 
+	"Throttle", 
+	obVehicleData.throttle);
+	```
 
 ## Running and Debugging the Application
 	
