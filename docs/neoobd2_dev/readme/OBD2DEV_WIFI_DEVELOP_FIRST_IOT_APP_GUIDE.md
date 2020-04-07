@@ -42,7 +42,9 @@ Required Software:
 
 3. TI Code Composer Studio (CCS) IDE - download [here](http://www.ti.com/tool/download/CCSTUDIO)
 
-4. TI Simplelink CC32XX Plugin for AWS IoT Core - download [here](http://www.ti.com/tool/download/SIMPLELINK-CC32XX-PLUGIN-FOR-AWSIOT)
+4. TI Uniflash Utility - download [here](http://www.ti.com/tool/UNIFLASH)
+
+5. TI Simplelink CC32XX Plugin for AWS IoT Core - download [here](http://www.ti.com/tool/download/SIMPLELINK-CC32XX-PLUGIN-FOR-AWSIOT)
 
 Other requirements:
 
@@ -59,6 +61,10 @@ First, let's import, build, and run the *subscribe_publish_sample_CC3235SF_LAUNC
 3. You may jump to the **Hardware Setup** section. You will notice the **Jumper Settings** section describes the sense-on-power scheme. The SOP pins 0 - 2 on the neoOBD2 DEV is indicated below. 
 
 	![alt text](../images/17-obd2dev_cc32xx_sop_pins.PNG "CC32XX SOP Pins on neoOBD2 DEV")
+	
+	For debugging in CCS and programming using the TI Uniflash software, you can use the onboard XDS110 USB-JTAG probe. Simply plug-in a Type-A to Micro-B USB cable to the correct Micro USB port that points to the CC3235SF on the neoOBD2. If you flip the board, the USB port is labeled as **WiFi Debug Port**.
+	
+	![alt text](../images/3-obd2dev-usb-map.PNG "XDS110 USB-JTAG USB port")
 
 4. Follow the rest of the guide exactly as shown. Make sure to follow the **Example Pre-Build Steps** section of the guide to properly configure the certificates and the Wi-Fi credentials in the **aws_iot_config.h**.
 
