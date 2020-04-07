@@ -341,7 +341,9 @@ The ISM API glue codes and library are now all integrated into the project, but 
 	```
 	sprintf(cPayload, "%s : %d, %s : %d, %s : %d ", "Speed", obVehicleData.speed, "RPM", obVehicleData.rpm, "Throttle", obVehicleData.throttle);
 	```
-6. All done! Build the project to verify the project builds successfully.	
+6. All done! Build the project to verify the project builds successfully. For your reference, all the source and header files that have been modified in this section are placed in the <neoobd2_sdk>\demos\intrepid\neoobd2_dev\wifi\aws_subscribe_publish_sample directory in the neoOBD2 SDK. If you are having difficulty getting the project up and running, simply copy everything in the directory and paste them into the CCS project.
+
+	![alt text](../images/38-obd2dev_pubsub_ref_files.PNG "Reference source, header, and libs")
 	
 ## Programming the Application into neoOBD2 DEV
 
