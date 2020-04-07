@@ -82,40 +82,53 @@ Please complete this section to learn how to generate and import the above files
 
 4. Select **neoOBD2 LC WiFi CC32XX** from the list of available ISM targets and add it to the selected ISM targets list. Click **OK** button to generate ISM source files. Note that Visual Studio will open if you have Visual Studio installed on your PC.
 
-5. Go back to the **C Code Interface view**. Click the **Folder** button which will open up a file explorer in the root directory of the generated C Code Project. 
+5. Let's add the three CAN messages that will each hold a 2-byte CAN signal; vehicle speed, engine speed, and throttle position. Go to the **Messages Editor** and add three messages under the **Receive** tab as follows.
+
+	![alt text](../images/29-obd2dev_add_rx_msgs.PNG "Create RX Messages")
+	
+6. Create event handlers for the three CAN messages. Go to **C Code Interface** and click the **Edit** button to open the **C Code Module Setup** view. navigate to the **Message Events** tab where you will see the three receive messages that were created in the previous step. Double click to add all of them to the list box on the right.
+
+Navigate to the **Event Handler Code** tab. Click the **Copy** button to copy the generated code stub to the Windows clip board. Click the **OK** button to exit the **C Code Module Setup** view.
+
+Once you are back to the **C Code Interface** view, click the **Update Support Files** button.
+
+**IMPORTANT:** Before proceeding further, save the Vehicle Spy Enterprise project (.vs3) by going to **File** on top menu and selecting **Save**. The saved .vs3 project will be used later to program the completed application into the CC3235SF in neoOBD2 DEV.
+
+7. Go back to the **C Code Interface view**. Click the **Folder** button which will open up a file explorer in the root directory of the generated C Code Project. 
 
 	![alt text](../images/19-obd2dev_ccif_proj_folder.PNG "Open the create CCIF Project Root Directory")
+	
+8. Open the **SpyCCode.c** file in a text editor and paste the **Event Handler Code** stub that you copied from step 6.
 
-6. **IMPORTANT:** Before proceeding further, save the Vehicle Spy Enterprise project (.vs3) by going to **File** on top menu and selecting **Save**. The saved .vs3 project will be used later to program the completed application into the CC3235SF in neoOBD2 DEV.
+	![alt text](../images/30-obd2dev_add_rx_msg_handlers.PNG "Paste the code stub into SpyCCode.c")
 
-7. Copy the **SpyCCode.c** file and paste it into the CCS project directory.
+9. Copy the **SpyCCode.c** file and add it into the CCS project directory.
 
 	![alt text](../images/20-obd2dev_overwrite_spyccode.PNG "Integrate ISM source codes into CCS project")
 	
-8. Go back to the file explorer. Open the **ProjectName_neoOBD2LC_WIFI_CC32XX** folder. Copy **obd2lc_wifi_cc32xx.c** and **obd2lc_wifi_cc32xx.h** files and paste them into the CCS project directory.
+10. Go back to the file explorer. Open the **ProjectName_neoOBD2LC_WIFI_CC32XX** folder. Copy **obd2lc_wifi_cc32xx.c** and **obd2lc_wifi_cc32xx.h** files and paste them into the CCS project directory.
 
 	![alt text](../images/21-obd2dev_overwrite_lcfiles.PNG "Integrate ISM source codes into CCS project")
 
-9. Open project properties in CCS and verify the **BUILD_OBD2LC_WIFI_CC32XX_ISM_PROJECT** is defined in **Predefined Symobls** list.
+11. Open project properties in CCS and verify the **BUILD_OBD2LC_WIFI_CC32XX_ISM_PROJECT** is defined in **Predefined Symobls** list.
 
 	![alt text](../images/22-obd2dev_preprocessor.PNG "Add preprocessor macro for Wi-Fi project")
 
-10. We need to add a few more ISM API source files. Navigate to path <neoobd2sdk_path>\demos\intrepid\neoobd2_dev\wifi\ismlib. Copy all files and paste them into the CCS project directory.
+12. We need to add a few more ISM API source files. Navigate to path <neoobd2sdk_path>\demos\intrepid\neoobd2_dev\wifi\ismlib. Copy all files and paste them into the CCS project directory.
 
 	![alt text](../images/23-obd2dev_additional_ismlib.PNG "Add additional ISM API files")
 	
-11. Open project properties in CCS and go to **File Search Path** under **ARM Linker**. Add **obd2lc_wifi_cc32xx_ism.a** in the first list box. Add **${workspace_loc:/${ProjName}}** in the second box. Make sure **Reread libraries** option is checked.
+13. Open project properties in CCS and go to **File Search Path** under **ARM Linker**. Add **obd2lc_wifi_cc32xx_ism.a** in the first list box. Add **${workspace_loc:/${ProjName}}** in the second box. Make sure **Reread libraries** option is checked.
 
 	![alt text](../images/24-obd2dev_link_ismlib.PNG "Linker settings for ISM API library")
 
-12. Build the CCS project and verify the project builds successfully.
+14. Build the CCS project and verify the project builds successfully.
 
 The ISM API glue codes and library are now all integrated into the project, but they are not actually being executed as we have not added any codes that exercise the library. Next, we will add codes to enable vehicle network communication. This will allow you to receive and transmit CAN messages from the project. Furthermore, we will add codes to forward the CAN data to AWS IoT Core and transmit data received from AWS IoT Core in a CAN message.
 	
 ## Add Codes to Facilitate CAN Rx and Tx with AWS IoT Core
 
 1. From the project explorer, open the aws_iot.syscfg file. From the menu window that pops up, delete the following peripherals.
-
 - SPI
 - DMA
 - GPIO
@@ -125,17 +138,26 @@ These peripherals are already in use by the ISM API library (obd2lc_wifi_cc32xx_
 First, choose SPI from the list and click the *Remove All* button. You will notice DMA automatically removed when SPI is removed. Then, choose GPIO from the list and click the *Removal All* button.
 
 Verify that only the following are enabled from the *TI Driver* list.
-
 - Display
 - Power
 - RTOS
 - UART
 
-**Please note that the following peripherals are in use by the ISM API library (obd2lc_wifi_cc32xx_ism.a), and hence are not available for your application.**
-
+***Please note that the following peripherals are used by the ISM API library (obd2lc_wifi_cc32xx_ism.a), and are not available for your application.***
 - GSPI
 - Timer0
 - GPIO (*GPIOs are not available for user applications*)
+
+2. Let's start making some code changes. Go to the main() function in *main_freertos.c*. Comment out or delete the GPIO calls.
+
+	![alt text](../images/26-obd2dev_remove_main_calls.PNG "Remove GPIO calls from main()")
+
+3. Next, go to *networks.c* and remove the GPIO calls.
+
+	![alt text](../images/27-obd2dev_remove_network_calls.PNG "Remove GPIO calls from network_startup()")
+	![alt text](../images/28-obd2dev_remove_network_calls.PNG "Remove GPIO calls from initWiFi()")
+
+4. 
 
 ## Running and Debugging the Application
 	
