@@ -154,7 +154,12 @@ Verify that only the following are enabled from the **TI Driver** list.
 
 3. Next, go to **networks.c** and remove the GPIO calls.
 
+	Remove GPIO calls from network_startup():
+	
 	![alt text](../images/27-obd2dev_remove_network_calls.PNG "Remove GPIO calls from network_startup()")
+	
+	Remove GPIO calls from initWiFi():
+	
 	![alt text](../images/28-obd2dev_remove_network_calls.PNG "Remove GPIO calls from initWiFi()")
 
 4. 
