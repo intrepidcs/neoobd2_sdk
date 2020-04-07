@@ -286,14 +286,7 @@ The ISM API glue codes and library are now all integrated into the project, but 
 	Go to the runAWSClient() function and replace the places where the cPayload is constructed using sprintf as follows.
 	
 	```
-	sprintf(cPayload, 
-	"%s : %d, %s : %d, %s : %d ", 
-	"Speed", 
-	obVehicleData.speed, 
-	"RPM", 
-	obVehicleData.rpm, 
-	"Throttle", 
-	obVehicleData.throttle);
+	sprintf(cPayload, "%s : %d, %s : %d, %s : %d ", "Speed", obVehicleData.speed, "RPM", obVehicleData.rpm, "Throttle", obVehicleData.throttle);
 	```
 
 ## Running and Debugging the Application
