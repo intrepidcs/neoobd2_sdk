@@ -129,24 +129,24 @@ The ISM API glue codes and library are now all integrated into the project, but 
 ## Add Codes to Facilitate CAN Rx and Tx with AWS IoT Core
 
 1. From the project explorer, open the **aws_iot.syscfg** file. From the menu window that pops up, delete the following peripherals.
-- SPI
-- DMA
-- GPIO
+	- SPI
+	- DMA
+	- GPIO
 
-These peripherals are already in use by the ISM API library (obd2lc_wifi_cc32xx_ism.a). If you attempt to compile with the above peripherals defined in the **aws_iot.syscfg** file, the compiler will throw an error saying some of the functions are re-defined. 
+	These peripherals are already in use by the ISM API library (obd2lc_wifi_cc32xx_ism.a). If you attempt to compile with the above peripherals defined in the **aws_iot.syscfg** file, the compiler will throw an error saying some of the functions are re-defined. 
 
-First, choose SPI from the list and click the **Remove All** button. You will notice DMA automatically removed when SPI is removed. Then, choose GPIO from the list and click the **Removal All** button.
+	First, choose SPI from the list and click the **Remove All** button. You will notice DMA automatically removed when SPI is removed. Then, choose GPIO from the list and click the **Removal All** button.
 
-Verify that only the following are enabled from the **TI Driver** list.
-- Display
-- Power
-- RTOS
-- UART
+	Verify that only the following are enabled from the **TI Driver** list.
+	- Display
+	- Power
+	- RTOS
+	- UART
 
-***Please note that the following peripherals are used by the ISM API library (obd2lc_wifi_cc32xx_ism.a), and are not available for your application.***
-- GSPI
-- Timer0
-- GPIO (*GPIOs are not available for user applications*)
+	***Please note that the following peripherals are used by the ISM API library (obd2lc_wifi_cc32xx_ism.a), and are not available for your application.***
+	- GSPI
+	- Timer0
+	- GPIO (*GPIOs are not available for user applications*)
 
 2. Let's start making some code changes. Go to the main() function in **main_freertos.c**. Comment out or delete the GPIO calls.
 
