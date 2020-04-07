@@ -54,17 +54,17 @@ First, let's import, build, and run the *subscribe_publish_sample_CC3235SF_LAUNC
 
 1. Download and install the [AWS CC32XX Plugin for AWS IoT Core](http://www.ti.com/tool/download/SIMPLELINK-CC32XX-PLUGIN-FOR-AWSIOT).
 
-2. Navigate to the install directory of the plugin and locate the *AWS_Quick_Start_Guide.html* under <install_path>/docs/aws. Open the guide.
+2. Navigate to the install directory of the plugin and locate the **AWS_Quick_Start_Guide.html** under <install_path>/docs/aws. Open the guide.
 
-3. You may jump to the *Hardware Setup* section. You will notice the *Jumper Settings* section describes the sense-on-power scheme. The SOP pins 0 - 2 on the neoOBD2 DEV is indicated below. 
+3. You may jump to the **Hardware Setup** section. You will notice the **Jumper Settings** section describes the sense-on-power scheme. The SOP pins 0 - 2 on the neoOBD2 DEV is indicated below. 
 
 	![alt text](../images/17-obd2dev_cc32xx_sop_pins.PNG "CC32XX SOP Pins on neoOBD2 DEV")
 
-4. Follow the rest of the guide exactly as shown. Make sure to follow the *Example Pre-Build Steps* section of the guide to properly configure the settings in the *aws_iot_config.h*.
+4. Follow the rest of the guide exactly as shown. Make sure to follow the **Example Pre-Build Steps** section of the guide to properly configure the certificates and the Wi-Fi credentials in the **aws_iot_config.h**.
 
-Once you have completed the above steps, you should be able to establish MQTT pub/sub between your neoOBD2 DEV and your AWS IoT Core endpoint. 
+Once you have completed the above steps, you should be able to build and debug your project on the neoOBD2 DEV to establish MQTT pub/sub between the CC3235SF and your AWS IoT Core endpoint. 
 
-Next, we will work on adding the auto-generated C codes from Vehicle Spy's *C Code Interface* tool and the *ISM API library* to expand the sample application to access the CAN network simultaneously while communicating with AWS IoT Core.
+Next, we will work on adding the auto-generated C codes from Vehicle Spy's **C Code Interface** tool and the **ISM API library** to expand the sample application to access the CAN network simultaneously while communicating with AWS IoT Core.
 
 ## Importing auto-generated ISM codes from Vehicle Spy Enterprise
 
