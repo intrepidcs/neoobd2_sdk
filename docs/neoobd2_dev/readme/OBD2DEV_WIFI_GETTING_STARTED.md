@@ -107,4 +107,4 @@ By completing this guide and the [Hardware Setup Guide](OBD2DEV_HW_SETUP_GUIDE.m
 
 ## What's Next?
 
-Please use this step-by-step guide to start building your first automotive Wi-Fi IoT application for neoOBD2 DEV. The guide walks through a TI Simplelink AWS IoT Plugin sample project provided in the SDK. This sample application connects to AWS IoT Core and transmits classical CAN 2.0 traffic - **[Getting started with your first Wi-Fi application for neoOBD2 DEV](OBD2DEV_WIFI_DEVELOP_FIRST_IOT_APP_GUIDE.md)**
+Please use this step-by-step guide to start building your first automotive Wi-Fi IoT application for neoOBD2 DEV. The guide walks through a TI Simplelink AWS IoT Plugin sample project provided in the SDK. This sample application connects to AWS IoT Core and transmits classical CAN 2.0 traffic - **[Getting started with your first Wi-Fi application for neoOBD2 DEV](OBD2DEV_WIFI_DEVELOP_FIRST_AWS_IOT_APP_GUIDE.md)**
