@@ -114,8 +114,29 @@ The ISM API glue codes and library are now all integrated into the project, but 
 	
 ## Add Codes to Facilitate CAN Rx and Tx with AWS IoT Core
 
+1. From the project explorer, open the aws_iot.syscfg file. From the menu window that pops up, delete the following peripherals.
 
-	
+- SPI
+- DMA
+- GPIO
+
+These peripherals are already in use by the ISM API library (obd2lc_wifi_cc32xx_ism.a). If you attempt to compile with the above peripherals defined in the aws_iot.syscfg file, the compiler will throw an error saying some of the functions are re-defined. 
+
+First, choose SPI from the list and click the *Remove All* button. You will notice DMA automatically removed when SPI is removed. Then, choose GPIO from the list and click the *Removal All* button.
+
+Verify that only the following are enabled from the *TI Driver* list.
+
+- Display
+- Power
+- RTOS
+- UART
+
+**Please note that the following peripherals are in use by the ISM API library (obd2lc_wifi_cc32xx_ism.a), and hence are not available for your application.**
+
+- GSPI
+- Timer0
+- GPIO (*GPIOs are not available for user applications*)
+
 ## Running and Debugging the Application
 	
 Now that you have successfully imported and built your first sample Wi-Fi project, you can run the application in debug mode via the on-board CC3220SF USB debugger. You can sign in to your AWS IoT cosole to verify that the neoOBD2 DEV is talking to AWS IoT core.
