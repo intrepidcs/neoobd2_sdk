@@ -200,6 +200,14 @@ The ISM API glue codes and library are now all integrated into the project, but 
 	} stVehicleData;
 	```
 	
+	Then, declare the vehicle data object and the 8-byte buffer to store the CAN Tx data from the server as follows.
+	
+	```
+	// TODO: add global variables here
+	stVehicleData obVehicleData;
+	uint8_t canTxData[8];
+	```
+	
 	For every CAN message that is associated with each of the event handlers, the ISM process will auto-magically invoke the matching handler. We will assume the signals are occupying the first two bytes of each corresponding CAN messages. We store the received signal data into our global object.
 	
 	```
@@ -279,25 +287,65 @@ The ISM API glue codes and library are now all integrated into the project, but 
 	}
 	```
 	
-5. All that remains to be extended is the **subscribe_publish_sample.c**. Open the file and include the **obd2lc_wifi_cc32xx.h** and declare the **stVehicleData** object as an extern so that it is visible.
-
-	![alt text](../images/35-obd2dev_pubsub_changes.PNG "")
+	Finally, go to **Spy_Everyloop()** function and implement it as follows. This function is automatically executed by the ISM process on every 1ms interval. We will setup a CAN message to be transmitted every 100ms using the 8-byte data received from the server via the MQTT topic **sdkTest/cantx**.
 	
-	Go to the runAWSClient() function and replace the places where the cPayload is constructed using sprintf as follows.
+	```
+	void Spy_EveryLoop(unsigned int uiCurrentTime)
+	{
+		static int cnt;
+		if ( !(++cnt % 100) )
+		{
+			GenericMessage msg = {0};
+			msg.iID = 0x777;
+			msg.iNetwork = 1;
+			msg.iNumDataBytes = 8;
+			memcpy(msg.btData, canTxData, msg.iNumDataBytes);
+			GenericMessageTransmit(&msg);
+		}
+	}
+	```
+	
+5. All that remains to be extended is the **subscribe_publish_sample.c**. Open the file and include the **obd2lc_wifi_cc32xx.h**. Declare the **stVehicleData** object and the **canTxData** buffer as an extern so that they are visible. Change the **subscribe_callback_handler()** as follows:
+	
+	```
+	extern stVehicleData obVehicleData;
+	extern uint8_t canTxData[8];
+
+	static void iot_subscribe_callback_handler(AWS_IoT_Client *pClient,
+		char *topicName, uint16_t topicNameLen,
+		IoT_Publish_Message_Params *params, void *pData)
+	{
+	    IOT_UNUSED(pData);
+	    IOT_UNUSED(pClient);
+	    IOT_INFO("Subscribe callback");
+	    IOT_INFO("%.*s\t%.*s",topicNameLen, topicName, (int)params->payloadLen,
+		    (char *)params->payload);
+
+	    // Copy the MQTT payload into canTxData array so it can be
+	    // transmitted as a CAN message from Spy_EveryLoop() in SpyCCode.c
+	    memcpy(canTxData, params->payload, sizeof(canTxData));
+	}
+
+	```
+	
+	Go to the **runAWSClient()** function. Create two variables to store the subscribe topic name and the topic name length. We will set the subscribe topic name to **sdkTest/cantx**.
+	
+	![alt text](../images/36-obd2dev_pubsub_changes.PNG "Create separate topic for subscribe")
+	
+	Replace the existing topic name and length parameters in the **aws_iot_mqtt_subscribe()** call.
+	
+	![alt text](../images/37-obd2dev_pubsub_changes.PNG "Create separate topic for subscribe")
+	
+	Finally, update the code that contsructs the **cPayload** using sprintf as follows.
 	
 	```
 	sprintf(cPayload, "%s : %d, %s : %d, %s : %d ", "Speed", obVehicleData.speed, "RPM", obVehicleData.rpm, "Throttle", obVehicleData.throttle);
 	```
-
-## Running and Debugging the Application
-	
-Now that you have successfully imported and built your first sample Wi-Fi project, you can run the application in debug mode via the on-board CC3220SF USB debugger. You can sign in to your AWS IoT cosole to verify that the neoOBD2 DEV is talking to AWS IoT core.
+6. All done! Build the project to verify the project builds successfully.	
 	
 ## Programming the Application into neoOBD2 DEV
 
 Once your Wi-Fi program is ready to be deployed in neoOBD2 DEV, you can use Vehicle Spy to do so.
-
-The CC3220SF Wi-Fi module in neoOBD2 DEV is programmed with an application bootloader at production, which allows Vehicle Spy to program application binary. The application bootloader is always executed first from external secure FLASH. If the application bootloader detects a valid application in the external FLASH, it will load it into its internal FLASH and begin execution. Otherwise, the application bootloader will wait indefinitely for Vehicle Spy to send a valid application. 
 
 ## What's Next?
 
