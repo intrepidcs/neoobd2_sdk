@@ -345,6 +345,10 @@ The ISM API glue codes and library are now all integrated into the project, but 
 
 	![alt text](../images/38-obd2dev_pubsub_ref_files.PNG "Reference source, header, and libs")
 	
+## Running your Application in Debug Mode
+
+Once you are able to build the project, you are ready to run your application directly from CCS in debug mode.
+	
 ## Programming the Application into neoOBD2 DEV
 
 Once your Wi-Fi program is ready to be deployed in neoOBD2 DEV, you can use Vehicle Spy to do so.
