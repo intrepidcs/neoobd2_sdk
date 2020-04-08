@@ -17,7 +17,7 @@ Required Software:
 
     The neoOBD2 SDK is a collection of precompiled static libraries from Intrepid Control Systems and third-party SDKs such as Amazon FreeRTOS, TI CC32XX SDK, and Nordic nRF5 SDK that allow embedded developers to create IoT applications with full access to vehicle networks supported by compatible neoOBD2 family of adaptors including CAN/CANFD, LIN, and Ethernet.
     
-    The SDK comes with ready to build CCS sample projects that leverage Intrepid Security Module (ISM) library, [TI CC32XX SDK](http://www.ti.com/tool/download/SIMPLELINK-CC32XX-SDK), [Amazon FreeRTOS](https://aws.amazon.com/freertos/), and [TI Simplelink CC32XX plugin for AWS IoT](http://www.ti.com/tool/download/SIMPLELINK-CC32XX-PLUGIN-FOR-AWSIOT) with connectivity support for [AWS IoT Core](https://aws.amazon.com/iot-core/).
+    The SDK contains user guide for creating Wi-Fi and BLE applications that support vehicle network connectivity.
 
 2. **[Microsoft Visual Studio - Optional](#vs_install)**
 
