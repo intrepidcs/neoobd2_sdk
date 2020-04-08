@@ -60,9 +60,11 @@ First, let's import, build, and run the *subscribe_publish_sample_CC3235SF_LAUNC
 	- [TI Uniflash](http://www.ti.com/tool/UNIFLASH)
 	- [AWS CC32XX Plugin for AWS IoT Core](http://www.ti.com/tool/download/SIMPLELINK-CC32XX-PLUGIN-FOR-AWSIOT).
 
-2. Navigate to the install directory of the plugin and locate the **AWS_Quick_Start_Guide.html** under <install_path>/docs/aws. Open the guide.
+2. Power up your neoOBD2 DEV via the Male OBDII Connector, preferrably using a neoOBD2 SIM.
 
-3. You may jump to the **Hardware Setup** section. You will notice the **Jumper Settings** section describes the sense-on-power scheme. The SOP pins 0 - 2 on the neoOBD2 DEV is indicated below. 
+3. Navigate to the install directory of the plugin and locate the **AWS_Quick_Start_Guide.html** under <install_path>/docs/aws. Open the guide.
+
+4. You may jump to the **Hardware Setup** section. You will notice the **Jumper Settings** section describes the sense-on-power scheme. The SOP pins 0 - 2 on the neoOBD2 DEV is indicated below. 
 
 	![alt text](../images/17-obd2dev_cc32xx_sop_pins.PNG "CC32XX SOP Pins on neoOBD2 DEV")
 	
@@ -70,7 +72,7 @@ First, let's import, build, and run the *subscribe_publish_sample_CC3235SF_LAUNC
 	
 	![alt text](../images/3-obd2dev-usb-map.PNG "XDS110 USB-JTAG USB port")
 
-4. Follow the rest of the guide exactly as shown. Make sure to follow the **Example Pre-Build Steps** section of the guide to properly configure the certificates and the Wi-Fi credentials in the **aws_iot_config.h**.
+5. Follow the rest of the guide exactly as shown. Make sure to follow the **Example Pre-Build Steps** section of the guide to properly configure the certificates and the Wi-Fi credentials in the **aws_iot_config.h**.
 
 Once you have completed the above steps, you should be able to build and debug your project on the neoOBD2 DEV to establish MQTT pub/sub between the CC3235SF and your AWS IoT Core endpoint. 
 
@@ -368,13 +370,52 @@ Please complete this section to learn how to generate and import the above files
 	
 ## Running your Application in Debug Mode
 
-Let's run your application in debug and confirm the sample application is running properly.
+Let's run your application in debug and confirm the sample application is running properly. Before you proceed, make sure:
+
+	- neoOBD2 is powered, preferrably using a neoOBD2 SIM.
+	- USB Type-A to Micro USB cable is connected to the Wi-Fi debug port.
+	- CoreMini executable is programmed to the main CPU and is running, indicated by the purple blinking LED (refer to step 7 of the "Importing auto-generated ISM codes from Vehicle Spy Enterprise section").
+
+1. Open the **Terminal** window in CCS. Choose **Serial Terminal** and set the configuration with Baud Rate 115200, Data Size 8, Parity None, and Stop bits 1. Click Ok to connect.
+
+2. Click debug button to execute the sample application.
+
+3. Check the **Terminal** window to see the application status.
+
+	![alt text](../images/41-obd2dev_debugging_app.PNG "Sample application running in debug mode with terminal output")
+
+4. Login to your AWS account. Go to **AWS IoT Core** and click **Test**. Subscribe with **#** topic to filter everything. Verify the "sdkTest/sub" MQTT topic being published from your neoOBD2 DEV. You will notice the Speed, RPM, and Throttle values being sent to AWS IoT Core just as you constructed the payload accordingly from the runAWSClient() function in subscribe_publish_sample.c.
+
+	![alt text](../images/42-obd2dev_aws_iot_running.PNG "AWS IoT Core test console")
+
+5. Let's use Vehicle Spy Enterprise to see what is happening on the CAN bus. Connect your neoOBD2 DEV to the PC using a USB Type-A to Type-C USB cable. Open Vehicle Spy and click the play button on the top left corner of the screen to go online. You should see a CAN message being transmitted by your neoOBD2 DEV. This is the ArbID 0x777 CAN message that is programmed to be transmitted on a 100msec interval from Spy_EveyLoop() function in SpyCCode.c.
+
+	![alt text](../images/43-obd2dev_vspy_running.PNG "Vehicle Spy online with neoOBD2 DEV")
+
+6. From your AWS IoT Core Test console, publish some data such as "12345678" to the topic **sdkTest/cantx**. You will notice the 8-byte payload of the 0x777 CAN message change to "12345678" ("0x31 0x32 0x33 0x34 0x34 0x35 0x36 0x37 0x38" in Hex). This is facilitated by the iot_subscribe_callback_handler() function in subscribe_publish_sample.c.
+
+	Send MQTT data to neoOBD2 DEV via sdkTest/cantx topic:
+	
+	![alt text](../images/44-obd2dev_aws_iot_cantx.PNG "Sending data to neoOBD2 DEV from AWS IoT Core")
+
+	Vehicle Spy shows CAN message data payload change based on the data received from AWS IoT Core:
+	
+	![alt text](../images/45-obd2dev_vspy_cantx.PNG "CAN data changed from AWS IoT Core")
+
+7. As a bonus, you can use a neoOBD2 SIM to simulate the three CAN messages that your neoOBD2 DEV is processing. Open the **three_msg_simulator.vs3** file in Vehicle Spy. The file is located in <neoobd2_sdk>\demos\intrepid\neoobd2_dev\wifi\obd2sim directory of the neoOBD2 SDK. Go to **Tools -> CoreMini Console** and program your neoOBD2 SIM. Go online using your neoOBD2 SIM and verify that you see the ArbID 0x111, 0x222, 0x333 messages being sent to your neoOBD2 DEV. You will also notice that the test code enabled by the **ENABLE_GATEWAY_TEST** preprocessor define is generating CAN messages with ArbID 0x112, 0x224, 0x336 being sent from your neoOBD2 DEV.
+
+	What is happening:
+	
+	![alt text](../images/48-obd2dev_demo_overview.PNG "")
+
+	Online with neoOBD2 SIM after programming the three_msg_simulator CoreMini executable:
+	
+	![alt text](../images/46-obd2dev_vspy_simulated.PNG "")
+	
+	Speed, RPM, and Throttle signals being updated based on the CAN messages simulated by neoOBD2 SIM:
+	
+	![alt text](../images/47-obd2dev_aws_iot_simulated.PNG "")
 	
 ## Programming the Application into neoOBD2 DEV
 
 Once your Wi-Fi program is ready to be deployed in neoOBD2 DEV, you can use Vehicle Spy to do so.
-
-## What's Next?
-
-Now that you are able to import, debug, and program a sample project: 
-
