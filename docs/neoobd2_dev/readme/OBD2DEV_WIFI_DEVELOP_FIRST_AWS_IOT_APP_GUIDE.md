@@ -402,7 +402,7 @@ Let's run your application in debug and confirm the sample application is runnin
 	
 	![alt text](../images/45-obd2dev_vspy_cantx.PNG "CAN data changed from AWS IoT Core")
 
-7. As a bonus, you can use a neoOBD2 SIM to simulate the three CAN messages that your neoOBD2 DEV is processing. Open the **three_msg_simulator.vs3** file in Vehicle Spy. The file is located in <neoobd2_sdk>\demos\intrepid\neoobd2_dev\wifi\obd2sim directory of the neoOBD2 SDK. Go to **Tools -> CoreMini Console** and program your neoOBD2 SIM. Go online using your neoOBD2 SIM and verify that you see the ArbID 0x111, 0x222, 0x333 messages being sent to your neoOBD2 DEV. You will also notice that the test code enabled by the **ENABLE_GATEWAY_TEST** preprocessor define is generating CAN messages with ArbID 0x112, 0x224, 0x336 being sent from your neoOBD2 DEV.
+7. As a bonus, you can use a neoOBD2 SIM to simulate the three CAN messages that your neoOBD2 DEV is processing. Open the **three_msg_simulator.vs3** file in Vehicle Spy. The file is located in <neoobd2_sdk>\demos\intrepid\neoobd2_dev\wifi\obd2sim directory of the neoOBD2 SDK. Go to **Tools -> CoreMini Console** and program your neoOBD2 SIM. Go online using your neoOBD2 SIM and verify that you see the ArbID 0x111, 0x222, 0x333 messages being sent to your neoOBD2 DEV. You will also notice that the test code enabled by the **ENABLE_GATEWAY_TEST** preprocessor definition in the message handlers causes your neoOBD2 DEV to generate CAN messages with ArbID 0x112, 0x224, 0x336 anytime it sees the ArbID 0x111, 0x222, and 0x333 messages.
 
 	What is happening:
 	
