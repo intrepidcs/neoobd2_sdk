@@ -418,4 +418,22 @@ Let's run your application in debug and confirm the sample application is runnin
 	
 ## Programming the Application into neoOBD2 DEV
 
-Once your Wi-Fi program is ready to be deployed in neoOBD2 DEV, you can use Vehicle Spy to do so.
+Once your Wi-Fi program is ready to be deployed in neoOBD2 DEV, you can use Vehicle Spy to do so. Before you proceed, make sure:
+
+- The Intrepid Wi-Fi Application Bootloader is programmed and running on the CC3235SF of your neoOBD2 DEV. If you are unsure, stop the debug session from CCS and power cycle the neoOBD2 DEV. Then, check to see if the Wi-Fi indication LED is blinking orange.
+
+1. Open the .vs3 you saved from step 6 of the "Importing auto-generated ISM codes from Vehicle Spy Enterprise" section.
+
+2. Go to **Scripting and Automation -> C Code Interface**. Click the **Folder** button. Navigate inside the **XXX_neoOBD2LC_WIFI_CC32XX** folder. 
+
+3. Create a new folder and name it **Release**. Copy the generated .bin from the CCS project and paste it inside the created Release folder.
+
+	![alt text](../images/49-obd2dev_programming_1.PNG "")
+	
+4. Go to **Tools -> CoreMini Console**. Click the **Send** button to program the CoreMini executable as you did from step 7 of the "Importing auto-generated ISM codes from Vehicle Spy Enterprise" section. This time however, Vehicle Spy will program not only the CoreMini executable but also the CC3235SF application. Make sure the CC3235SF is running the Intrepid Wi-Fi Applicaiton Bootloader as the bootloader allows the main CPU to program the CC3235SF appilcation.
+
+5. Remove the USB Type-C cable and power cycle the neoOBD2 DEV. It can take about ~10 seconds for the CC3235SF application to be programmed and executed on the first boot. Subsequent boots will take the CC3235SF about ~3 seconds for to execute the programmed application.
+
+	Verify that everything is programmed and running properly based on the image below.
+	
+	![alt text](../images/50-obd2dev_programming_2.PNG "")
