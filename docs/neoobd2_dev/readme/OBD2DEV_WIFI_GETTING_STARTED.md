@@ -107,7 +107,7 @@ By completing this guide and the [Hardware Setup Guide](OBD2DEV_HW_SETUP_GUIDE.m
 
 ## What's Next?
 
-Please use this step-by-step guide to start building your first automotive Wi-Fi IoT application for neoOBD2 DEV.
+Please use this step-by-step guide to start building your first Wi-Fi enabled Automotive IoT application for neoOBD2 DEV.
 
 - **[Getting Started with AWS IoT Core Application for neoOBD2 DEV](OBD2DEV_WIFI_DEVELOP_FIRST_AWS_IOT_APP_GUIDE.md)**
 - **[Getting Started with Microsoft Azure Application for neoOBD2 DEV](OBD2DEV_WIFI_DEVELOP_FIRST_AZURE_APP_GUIDE.md)**
