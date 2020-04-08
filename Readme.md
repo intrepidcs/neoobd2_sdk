@@ -13,6 +13,18 @@ The list of neoOBD2 devices supported by the SDK are as follows:
 
 The neoOBD2 SDK is based on [Amazon FreeRTOS](https://aws.amazon.com/documentation/freertos/), [CC32XX Simplelink Wi-Fi SDK from Texas Instruments](http://www.ti.com/tool/download/SIMPLELINK-CC32XX-SDK), and [nRF5 SDK from Nordic Semiconductor](https://www.nordicsemi.com/Software-and-tools/Software/nRF5-SDK). These three dependencies are already provided with this source package, they are not needed to be installed separately. We are working on adding support for other IoT platforms such as IBM Watson, Google Cloud, and Microsoft Azure.
 
+* neoOBD2 DEV (New!)
+
+	* **Please complete the hardware setup guide before you begin development to ensure your neoOBD2 DEV is configured correctly** - please [click here](docs/neoobd2_dev/readme/OBD2DEV_HW_SETUP_GUIDE.md).
+	
+	* For guide on getting started with CC3235SF Wi-Fi application development using the SDK for neoOBD2 DEV - please [click here](docs/neoobd2_dev/readme/OBD2DEV_WIFI_GETTING_STARTED.md).
+	
+		* For guide on getting started with AWS IoT Core for neoOBD2 DEV - please [click here](docs/neoobd2_dev/readme/OBD2DEV_WIFI_DEVELOP_FIRST_AWS_IOT_APP_GUIDE.md)
+		
+		* For guide on getting started with Microsoft Azure for neoOBD2 DEV - please [click here](docs/neoobd2_dev/readme/OBD2DEV_WIFI_DEVELOP_FIRST_AZURE_APP_GUIDE.md)
+	
+	* For guide on getting started with nRF52840 BLE application development using the SDK for neoOBD2 DEV - please [click here](docs/neoobd2_dev/readme/OBD2DEV_BLE_GETTING_STARTED.md).
+
 * neoOBD2 PRO
 
 	* **Please complete the hardware setup guide before you begin development to ensure your neoOBD2 PRO is configured correctly** - please [click here](docs/neoobd2_pro/readme/OBD2PRO_HW_SETUP_GUIDE.md).
@@ -20,14 +32,6 @@ The neoOBD2 SDK is based on [Amazon FreeRTOS](https://aws.amazon.com/documentati
 	* For guide on getting started with CC3220SF Wi-Fi application development using the SDK for neoOBD2 PRO - please [click here](docs/neoobd2_pro/readme/OBD2PRO_WIFI_GETTING_STARTED.md).
 
 	* For guide on getting started with nRF52832 BLE application development using the SDK for neoOBD2 PRO - please [click here](docs/neoobd2_pro/readme/OBD2PRO_BLE_GETTING_STARTED.md).
-
-* neoOBD2 DEV
-
-	* **Please complete the hardware setup guide before you begin development to ensure your neoOBD2 DEV is configured correctly** - please [click here](docs/neoobd2_dev/readme/OBD2DEV_HW_SETUP_GUIDE.md).
-	
-	* For guide on getting started with CC3235SF Wi-Fi application development using the SDK for neoOBD2 DEV - please [click here](docs/neoobd2_dev/readme/OBD2DEV_WIFI_GETTING_STARTED.md).
-	
-	* For guide on getting started with nRF52840 BLE application development using the SDK for neoOBD2 DEV - please [click here](docs/neoobd2_dev/readme/OBD2DEV_BLE_GETTING_STARTED.md).
 
 ## SDK Compatibility by Vehicle Spy Versions
 
