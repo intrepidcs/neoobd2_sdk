@@ -372,9 +372,9 @@ Please complete this section to learn how to generate and import the above files
 
 Let's run your application in debug and confirm the sample application is running properly. Before you proceed, make sure:
 
-	- neoOBD2 is powered, preferrably using a neoOBD2 SIM.
-	- USB Type-A to Micro USB cable is connected to the Wi-Fi debug port.
-	- CoreMini executable is programmed to the main CPU and is running, indicated by the purple blinking LED (refer to step 7 of the "Importing auto-generated ISM codes from Vehicle Spy Enterprise section").
+- neoOBD2 is powered, preferrably using a neoOBD2 SIM.
+- USB Type-A to Micro USB cable is connected to the Wi-Fi debug port.
+- CoreMini executable is programmed to the main CPU and is running, indicated by the purple blinking LED (refer to step 7 of the "Importing auto-generated ISM codes from Vehicle Spy Enterprise section").
 
 1. Open the **Terminal** window in CCS. Choose **Serial Terminal** and set the configuration with Baud Rate 115200, Data Size 8, Parity None, and Stop bits 1. Click Ok to connect.
 
