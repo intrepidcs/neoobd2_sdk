@@ -98,11 +98,11 @@ Please complete this section to learn how to generate and import the above files
 	
 6. Create event handlers for the three CAN messages. Go to **C Code Interface** and click the **Edit** button to open the **C Code Module Setup** view. navigate to the **Message Events** tab where you will see the three receive messages that were created in the previous step. Double click to add all of them to the list box on the right.
 
-Navigate to the **Event Handler Code** tab. Click the **Copy** button to copy the generated code stub to the Windows clip board. Click the **OK** button to exit the **C Code Module Setup** view.
+	Navigate to the **Event Handler Code** tab. Click the **Copy** button to copy the generated code stub to the Windows clip board. Click the **OK** button to exit the **C Code Module Setup** view.
 
-Once you are back to the **C Code Interface** view, click the **Update Support Files** button.
+	Once you are back to the **C Code Interface** view, click the **Update Support Files** button.
 
-**IMPORTANT:** Before proceeding further, save the Vehicle Spy Enterprise project (.vs3) by going to **File** on top menu and selecting **Save**. The saved .vs3 project will be used later to program the completed application into the CC3235SF in neoOBD2 DEV.
+	**IMPORTANT:** Before proceeding further, save the Vehicle Spy Enterprise project (.vs3) by going to **File** on top menu and selecting **Save**. The saved .vs3 project will be used later to program the completed application into the CC3235SF in neoOBD2 DEV.
 
 7. Now that the auto-generates source files have been updated, We will flash the CoreMini binary down to the main CPU on neoOBD2 DEV. The CoreMini is a critical component, it will filter the received CAN messages and forward the three messages of interest to the appropriate receive message event handlers.
 
@@ -140,7 +140,7 @@ Once you are back to the **C Code Interface** view, click the **Update Support F
 
 15. Build the CCS project and verify the project builds successfully.
 
-The ISM API glue codes and library are now all integrated into the project, but they are not actually being executed as we have not added any codes that exercise the library. Next, we will add codes to enable vehicle network communication. This will allow you to receive and transmit CAN messages from the project. Furthermore, we will add codes to forward the CAN data to AWS IoT Core and transmit data received from AWS IoT Core in a CAN message.
+	The ISM API glue codes and library are now all integrated into the project, but they are not actually being executed as we have not added any codes that exercise the library. Next, we will add codes to enable vehicle network communication. This will allow you to receive and transmit CAN messages from the project. Furthermore, we will add codes to forward the CAN data to AWS IoT Core and transmit data received from AWS IoT Core in a CAN message.
 	
 ## Add Codes to Facilitate CAN Rx and Tx with AWS IoT Core
 
@@ -369,8 +369,6 @@ The ISM API glue codes and library are now all integrated into the project, but 
 ## Running your Application in Debug Mode
 
 Let's run your application in debug and confirm the sample application is running properly.
-
-
 	
 ## Programming the Application into neoOBD2 DEV
 
