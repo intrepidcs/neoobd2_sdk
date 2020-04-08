@@ -416,7 +416,7 @@ Let's run your application in debug and confirm the sample application is runnin
 	
 	![alt text](../images/47-obd2dev_aws_iot_simulated.PNG "")
 	
-## Programming the Application into neoOBD2 DEV
+## Programming the Application to neoOBD2 DEV
 
 Once your Wi-Fi program is ready to be deployed in neoOBD2 DEV, you can use Vehicle Spy to do so. Before you proceed, make sure:
 
