@@ -406,7 +406,7 @@ Let's run your application in debug and confirm the sample application is runnin
 
 	What is happening:
 	
-	![alt text](../images/48-obd2dev_demo_overview.PNG "")
+	![alt text](../images/48-obd2dev_obd2sim_overview.PNG "")
 
 	Online with neoOBD2 SIM after programming the three_msg_simulator CoreMini executable:
 	
