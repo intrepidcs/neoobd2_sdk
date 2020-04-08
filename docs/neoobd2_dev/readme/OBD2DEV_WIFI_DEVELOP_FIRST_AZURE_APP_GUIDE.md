@@ -1,14 +1,14 @@
-# Getting Started with AWS IoT Core Application for neoOBD2 DEV
+# Getting Started with Microsoft Azure Application for neoOBD2 DEV
 
 **Before you begin**: Please ensure you have completed the [Hardware Setup](OBD2DEV_HW_SETUP_GUIDE.md) & [Getting Started with Wi-Fi Development](OBD2DEV_WIFI_GETTING_STARTED.md) guides.
 
-This guide provides a step-by-step guide on creating, debugging, and deploying a sample ready-to-build TI CC3235SF Wi-Fi application for neoOBD2 DEV. This sample project is available in the neoOBD2 SDK. The application is an extension of the "Subscribe Publish" example application available in the Simplelink AWS IoT Plugin for CC32XX. Intrepid has modified the original example to send data elements gathered from several CAN messages to the AWS Iot Core using MQTT publish. In addition, the example receives an arbitrary data of up to 8 bytes and propgate that data out to the CAN network as a transmit CAN message.
+This guide provides a step-by-step guide on creating, debugging, and deploying a sample ready-to-build TI CC3235SF Wi-Fi application for neoOBD2 DEV. This sample project is available in the neoOBD2 SDK. The application is an extension of the "simplesample_http" example application available in the Simplelink Azure IoT Plugin for CC32XX. Intrepid has modified the original example to send data elements gathered from several CAN messages to the Azure IoT Hub. In addition, the example receives an arbitrary data of up to 8 bytes and propgate that data out to the CAN network as a transmit CAN message.
 
 You will learn to do the following:
 
-* Use the CC32XX Simplelink SDK and Simplelink AWS IoT Plugin in CC3235SF to communicate with AWS IoT Core using MQTT.
+* Use the CC32XX Simplelink SDK and Simplelink Microsoft Azure IoT Plugin in CC3235SF to communicate with Azure IoT Hub.
 * Use the Intrepid Secure Module (ISM) API in CC3235SF to transmit and receive CAN messages configured from the C Code Interface view of Vehicle Spy Enterprise.
-* Publish received CAN signals in realtime to AWS IoT Core using MQTT.
+* Publish received CAN signals in realtime to Azure IoT Hub.
 * Subscribe to a topic to receive some arbitrary data up to 8 bytes and transmit that data as a CAN message.
 
 When the sample application is properly configured and programmed into the CC3235SF Wi-Fi processor, the neoOBD2 DEV will perform the following:
