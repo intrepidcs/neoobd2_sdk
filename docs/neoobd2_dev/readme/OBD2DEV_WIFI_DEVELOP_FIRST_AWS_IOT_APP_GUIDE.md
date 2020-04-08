@@ -104,35 +104,41 @@ Once you are back to the **C Code Interface** view, click the **Update Support F
 
 **IMPORTANT:** Before proceeding further, save the Vehicle Spy Enterprise project (.vs3) by going to **File** on top menu and selecting **Save**. The saved .vs3 project will be used later to program the completed application into the CC3235SF in neoOBD2 DEV.
 
-7. Go back to the **C Code Interface view**. Click the **Folder** button which will open up a file explorer in the root directory of the generated C Code Project. 
+7. Now that the auto-generates source files have been updated, We will flash the CoreMini binary down to the main CPU on neoOBD2 DEV. The CoreMini is a critical component, it will filter the received CAN messages and forward the three messages of interest to the appropriate receive message event handlers.
+
+	Connect the neoOBD2 DEV to your PC via the USB Type-C cable. In Vehicle Spy, go to **Tools -> CoreMini Console**. Wait for the **CoreMini Executable Generator** view to appear. Click the **Send** button to program the CoreMini binary. Confirm you have successfully programmed the CoreMini binary by verifying the **Success** message.
+	
+	![alt text](../images/40-obd2dev_coremini_flash.PNG "Flash CoreMini executable")
+
+8. Go back to the **C Code Interface view**. Click the **Folder** button which will open up a file explorer in the root directory of the generated C Code Project. 
 
 	![alt text](../images/19-obd2dev_ccif_proj_folder.PNG "Open the create CCIF Project Root Directory")
 	
-8. Open the **SpyCCode.c** file in a text editor and paste the **Event Handler Code** stub that you copied from step 6.
+9. Open the **SpyCCode.c** file in a text editor and paste the **Event Handler Code** stub that you copied from step 6.
 
 	![alt text](../images/30-obd2dev_add_rx_msg_handlers.PNG "Paste the code stub into SpyCCode.c")
 
-9. Copy the **SpyCCode.c** file and add it into the CCS project directory.
+10. Copy the **SpyCCode.c** file and add it into the CCS project directory.
 
 	![alt text](../images/20-obd2dev_overwrite_spyccode.PNG "Integrate ISM source codes into CCS project")
 	
-10. Go back to the file explorer. Open the **ProjectName_neoOBD2LC_WIFI_CC32XX** folder. Copy **obd2lc_wifi_cc32xx.c** and **obd2lc_wifi_cc32xx.h** files and paste them into the CCS project directory.
+11. Go back to the file explorer. Open the **ProjectName_neoOBD2LC_WIFI_CC32XX** folder. Copy **obd2lc_wifi_cc32xx.c** and **obd2lc_wifi_cc32xx.h** files and paste them into the CCS project directory.
 
 	![alt text](../images/21-obd2dev_overwrite_lcfiles.PNG "Integrate ISM source codes into CCS project")
 
-11. Open project properties in CCS and verify the **BUILD_OBD2LC_WIFI_CC32XX_ISM_PROJECT** is defined in **Predefined Symobls** list.
+12. Open project properties in CCS and verify the **BUILD_OBD2LC_WIFI_CC32XX_ISM_PROJECT** is defined in **Predefined Symobls** list.
 
 	![alt text](../images/22-obd2dev_preprocessor.PNG "Add preprocessor macro for Wi-Fi project")
 
-12. We need to add a few more ISM API source files. Navigate to path <neoobd2sdk_path>\demos\intrepid\neoobd2_dev\wifi\ismlib. Copy all files and paste them into the CCS project directory.
+13. We need to add a few more ISM API source files. Navigate to path <neoobd2sdk_path>\demos\intrepid\neoobd2_dev\wifi\ismlib. Copy all files and paste them into the CCS project directory.
 
 	![alt text](../images/23-obd2dev_additional_ismlib.PNG "Add additional ISM API files")
 	
-13. Open project properties in CCS and go to **File Search Path** under **ARM Linker**. Add **obd2lc_wifi_cc32xx_ism.a** in the first list box. Add **${workspace_loc:/${ProjName}}** in the second box. Make sure **Reread libraries** option is checked.
+14. Open project properties in CCS and go to **File Search Path** under **ARM Linker**. Add **obd2lc_wifi_cc32xx_ism.a** in the first list box. Add **${workspace_loc:/${ProjName}}** in the second box. Make sure **Reread libraries** option is checked.
 
 	![alt text](../images/24-obd2dev_link_ismlib.PNG "Linker settings for ISM API library")
 
-14. Build the CCS project and verify the project builds successfully.
+15. Build the CCS project and verify the project builds successfully.
 
 The ISM API glue codes and library are now all integrated into the project, but they are not actually being executed as we have not added any codes that exercise the library. Next, we will add codes to enable vehicle network communication. This will allow you to receive and transmit CAN messages from the project. Furthermore, we will add codes to forward the CAN data to AWS IoT Core and transmit data received from AWS IoT Core in a CAN message.
 	
@@ -346,18 +352,25 @@ The ISM API glue codes and library are now all integrated into the project, but 
 	
 	![alt text](../images/37-obd2dev_pubsub_changes.PNG "Create separate topic for subscribe")
 	
-	Finally, update the code that contsructs the **cPayload** using sprintf as follows.
+	Finally, replace the places where the **cPayload** is constructed using sprintf as follows.
 	
 	```
 	sprintf(cPayload, "%s : %d, %s : %d, %s : %d ", "Speed", obVehicleData.speed, "RPM", obVehicleData.rpm, "Throttle", obVehicleData.throttle);
 	```
-6. All done! Build the project to verify the project builds successfully. For your reference, all the source and header files that have been modified in this section are placed in the <neoobd2_sdk>\demos\intrepid\neoobd2_dev\wifi\aws_subscribe_publish_sample directory in the neoOBD2 SDK. If you are having difficulty getting the project up and running, simply copy everything in the directory and paste them into the CCS project.
+	
+	![alt text](../images/39-obd2dev_pubsub_payload_adj.PNG "Replace code that constructs the MQTT payload")
+	
+6. All done! Build the project to verify the project builds successfully. 
+
+	For your reference, all source, header, and libraries from this section are placed in the <neoobd2_sdk>\demos\intrepid\neoobd2_dev\wifi\aws_subscribe_publish_sample directory in the neoOBD2 SDK. If you are having difficulty getting the project up and running, simply copy everything in the directory and paste them into the CCS project.
 
 	![alt text](../images/38-obd2dev_pubsub_ref_files.PNG "Reference source, header, and libs")
 	
 ## Running your Application in Debug Mode
 
-Once you are able to build the project, you are ready to run your application directly from CCS in debug mode.
+Let's run your application in debug and confirm the sample application is running properly.
+
+
 	
 ## Programming the Application into neoOBD2 DEV
 
