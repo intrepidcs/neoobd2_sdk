@@ -424,7 +424,7 @@ Once your Wi-Fi program is ready to be deployed in neoOBD2 DEV, you can use Vehi
 
 - The Intrepid Wi-Fi Application Bootloader is programmed and running on the CC3235SF of your neoOBD2 DEV. If you are unsure, stop the debug session from CCS and power cycle the neoOBD2 DEV. Then, check to see if the Wi-Fi indication LED is blinking orange.
 
-1. Make the following changes to the .cmd. Move the FLASH start address to 0x01080000 with length set to 512KB (0x80000).
+1. From the CCS project make the following changes to the .cmd. Move the FLASH start address to 0x01080000 with length set to 512KB (0x80000). Then, re-build the project.
 	
 	![alt text](../images/52-obd2dev_programming_3.PNG "")
 
