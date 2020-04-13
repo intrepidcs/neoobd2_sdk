@@ -6,10 +6,11 @@
  
 Required Hardware:
 
-1. neoOBD2 DEV
-2. neoOBD2 SIM (Optional / highly recommended)
-3. USB-A to USB-C USB 2.0 or 3.1 Cable
-4. USB-A to Micro-B USB 2.0 Cable
+1. [neoOBD2 DEV](https://www.intrepidcs.com/products/vehicle-network-adapters/neoobd-2-lc)
+2. [neoOBD2 SIM](https://store.intrepidcs.com/neoECU-CHIP-Simulator-p/neoobd2-sim.htm) (Optional / highly recommended)
+3. [USB-A to USB-C USB 2.0 or 3.1 Cable](https://store.intrepidcs.com/USB-2-0-Cable-p/microusb-usb-cable.htm)
+4. [SB-A to Micro-B USB 2.0 Cable](https://store.intrepidcs.com/USB-3-0-to-USB-C-Cable-1-meter-3-p/usb3-usbc-cable.htm)
+5. [12V DC Power Supply with Barrel Jack Connector](https://store.intrepidcs.com/productdetails_popup.asp?productcode=NEOVI-PS)
 	
 Required Software:
 
