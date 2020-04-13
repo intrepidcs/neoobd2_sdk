@@ -36,13 +36,13 @@ Required Software:
 
     The embedded C Code Interface projects in Visual Studio do not support debugging. Therefore, a full fledged embedded IDE is desired for enhanced development and debugging experience. When developing Wi-Fi applications for CC32XX, the TI Code Composer Studio (CCS) IDE is a popular and recommended choice. Full USB debugging for CC32XX is supported for neoOBD2 DEV from the CCS IDE. All Wi-Fi sample projects provided by the SDK can easily be imported into CCS IDE. Step by step details on developing, building, and deploying projects using the CCS IDE and Vehicle Spy Enterprise is provided with the SDK.
 
-4. **Vehicle Spy Enterprise** - Please complete installation & configuration using the [hardware setup guide](OBD2DEV_HW_SETUP_GUIDE.md)
+4. **[Vehicle Spy Enterprise](https://store.intrepidcs.com/Vehicle-Spy-p/vspy-3-ent.htm)** - Please complete installation & configuration using the [hardware setup guide](OBD2DEV_HW_SETUP_GUIDE.md)
 
     [Vehicle Spy Enterprise](https://store.intrepidcs.com/Vehicle-Spy-p/vspy-3-ent.htm) is a single tool for diagnostics, node/ECU simulation, data acquisition, automated testing, and in-vehicle communication networks bus monitoring.
     
     For introduction, tutorials, and documentations on Vehicle Spy Enterprise, please [click here](https://cdn.intrepidcs.net/support/VehicleSpy/vehiclespyhelpdoc.html).
 
-5. **TI Code Composer Studio (CCS) IDE** - Please complete installation & configuration using the [hardware setup guide](OBD2DEV_HW_SETUP_GUIDE.md)
+5. **[TI Code Composer Studio (CCS) IDE](http://www.ti.com/tool/CCSTUDIO)** - Please complete installation & configuration using the [hardware setup guide](OBD2DEV_HW_SETUP_GUIDE.md)
 
     Details on this integrated development environment from Texas Instruments can be found [here](http://www.ti.com/tool/CCSTUDIO).
 	
