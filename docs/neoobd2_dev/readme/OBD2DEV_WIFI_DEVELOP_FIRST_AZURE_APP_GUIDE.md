@@ -71,7 +71,7 @@ First, let's import, build, and run the *simplesample_http_CC3235SF_LAUNCHXL_fre
 
 	![alt text](../images/17-obd2dev_cc32xx_sop_pins.PNG "CC32XX SOP Pins on neoOBD2 DEV")
 	
-	For debugging in CCS and programming using the TI Uniflash software, you can use the onboard XDS110 USB-JTAG probe. Simply plug-in a Type-A to Micro-B USB cable to the correct Micro USB port that points to the CC3235SF on the neoOBD2. If you flip the board, the USB port is labeled as **WiFi Debug Port**.
+	For debugging in CCS and programming using the TI Uniflash software, you can use the onboard XDS110 USB-JTAG probe. Simply plug-in a Type-A to Micro-B USB cable to the correct Micro USB port that points to the CC3235SF on the neoOBD2 (Light green path in the image below). If you flip the board, the USB port is labeled as **WiFi Debug Port**.
 	
 	![alt text](../images/3-obd2dev-usb-map.PNG "XDS110 USB-JTAG USB port")
 
