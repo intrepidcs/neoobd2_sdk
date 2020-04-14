@@ -9,28 +9,27 @@ You will learn to do the following:
 * Use the CC32XX Simplelink SDK and Simplelink Microsoft Azure IoT Plugin in CC3235SF to communicate with Azure IoT Hub.
 * Use the Intrepid Secure Module (ISM) API in CC3235SF to transmit and receive CAN messages configured from the C Code Interface view of Vehicle Spy Enterprise.
 * Publish received CAN signals in realtime to Azure IoT Hub.
-* Subscribe to a topic to receive some arbitrary data up to 8 bytes and transmit that data as a CAN message.
 
 When the sample application is properly configured and programmed into the CC3235SF Wi-Fi processor, the neoOBD2 DEV will perform the following:
 
 * Initialize and enable the CC3235SF's Wi-Fi subsystem.
-* Initialize various peripherals and the ISM API library.
-* Received CAN messages are processed by the receive message event handler callback functions.
-* A CAN message is transmitted on 100msec interval.
+* Initialize CC3235SF peripherals and the ISM API library.
+* CAN Rx process: Received CAN messages are processed by the receive message event handler callback functions.
+* CAN Tx process: A CAN message is transmitted on 100msec interval.
 * Provision *certificate and private key* needed to connect to the AWS IoT Core.
 * Use user-configured *Wi-Fi credentials* to connect to a Wi-Fi Access Point in station mode.
-* Connect to the MQTT endpoint address of your AWS IoT Core account.
-* Publish a payload containing the *"Vehicle Speed, Engine Speed, and Throttle Position"* data parsed from the receive message event handlers to the *obd2dev/demo/data* topic on 500msec interval.
-* Subscribe to a topic containing arbitrary data upto 8 bytes that can be transmitted out as a CAN message on 100msec interval.
+* Creates an IoT Hub client for communication with an existing IoT Hub using the specified connection string parameter.
+* Send HTTP message containing the *"Vehicle Speed, Engine Speed, and Throttle Position"* data parsed from the receive message event handlers on 500msec interval.
 
 ## Prerequisites
 
 Required Hardware:
 
-1. neoOBD2 DEV
-2. neoOBD2 SIM (Optional / highly recommended)
-3. USB-A to USB-C USB 2.0 or 3.1 Cable
-4. USB-A to Micro-B USB 2.0 Cable
+1. [neoOBD2 DEV](https://www.intrepidcs.com/products/vehicle-network-adapters/neoobd-2-lc)
+2. [neoOBD2 SIM](https://store.intrepidcs.com/neoECU-CHIP-Simulator-p/neoobd2-sim.htm) (Optional / highly recommended)
+3. [USB-A to USB-C USB 2.0 or 3.1 Cable](https://store.intrepidcs.com/USB-2-0-Cable-p/microusb-usb-cable.htm)
+4. [SB-A to Micro-B USB 2.0 Cable](https://store.intrepidcs.com/USB-3-0-to-USB-C-Cable-1-meter-3-p/usb3-usbc-cable.htm)
+5. [12V DC Power Supply with Barrel Jack Connector](https://store.intrepidcs.com/productdetails_popup.asp?productcode=NEOVI-PS)
 
 Required Software:
 
@@ -46,25 +45,27 @@ Required Software:
 
 4. TI Uniflash Utility - download [here](http://www.ti.com/tool/UNIFLASH)
 
-5. TI Simplelink CC32XX Plugin for AWS IoT Core - download [here](http://www.ti.com/tool/download/SIMPLELINK-CC32XX-PLUGIN-FOR-AWSIOT)
+5. TI Simplelink CC32XX Plugin for Azure IoT Hub - download [here](http://www.ti.com/tool/download/SIMPLELINK-CC32XX-PLUGIN-FOR-AZUREIOT)
 
 Other requirements:
 
-1. AWS IoT account with access to the AWS IoT console - [create one here](https://aws.amazon.com)
+1. Microsoft Azure account with access to the Azure IoT Hub - [create one here](https://catalog.azureiotsolutions.com/docs?title=Azure/azure-iot-device-ecosystem/setup_iothub)
+
+2. Provsion your device on IoT Hub and get its credentials - [here](https://catalog.azureiotsolutions.com/docs?title=Azure/azure-iot-device-ecosystem/manage_iot_hub)
 
 ## Import, Build, and Run the AWS CC32XX Plugin for AWS IoT Core
 
-First, let's import, build, and run the *subscribe_publish_sample_CC3235SF_LAUNCHXL_freertos_ccs* project provided in the plugin.
+First, let's import, build, and run the *simplesample_http_CC3235SF_LAUNCHXL_freertos_ccs* project provided in the plugin.
 
 1. Download and install the following software. 
 
 	- [TI Code Composer Studio (CCS) IDE](http://www.ti.com/tool/download/CCSTUDIO)
 	- [TI Uniflash](http://www.ti.com/tool/UNIFLASH)
-	- [AWS CC32XX Plugin for AWS IoT Core](http://www.ti.com/tool/download/SIMPLELINK-CC32XX-PLUGIN-FOR-AWSIOT).
+	- [TI Simplelink CC32XX Plugin for Azure IoT Hub](http://www.ti.com/tool/download/SIMPLELINK-CC32XX-PLUGIN-FOR-AZUREIOT)
 
 2. Power up your neoOBD2 DEV via the Male OBDII Connector, preferrably using a neoOBD2 SIM.
 
-3. Navigate to the install directory of the plugin and locate the **AWS_Quick_Start_Guide.html** under <install_path>/docs/aws. Open the guide.
+3. Navigate to the install directory of the plugin and locate the **Azure_Quick_Start_Guide.html** under <install_path>/docs/azure. Open the guide.
 
 4. You may jump to the **Hardware Setup** section. You will notice the **Jumper Settings** section describes the sense-on-power scheme. The SOP pins 0 - 2 on the neoOBD2 DEV is indicated below. 
 
@@ -74,9 +75,9 @@ First, let's import, build, and run the *subscribe_publish_sample_CC3235SF_LAUNC
 	
 	![alt text](../images/3-obd2dev-usb-map.PNG "XDS110 USB-JTAG USB port")
 
-5. Follow the rest of the guide exactly as shown. Make sure to follow the **Example Pre-Build Steps** section of the guide to properly configure the certificates and the Wi-Fi credentials in the **aws_iot_config.h**.
+5. Follow the rest of the guide exactly as shown. Make sure to follow the **Example Pre-Build Steps** section of the guide to properly configure the certificates and the Wi-Fi credentials in the **certs.c** and **wificonfig.h**.
 
-Once you have completed the above steps, you should be able to build and debug your project on the neoOBD2 DEV to establish MQTT pub/sub between the CC3235SF and your AWS IoT Core endpoint. 
+Once you have completed the above steps, you should be able to build and debug your project on the neoOBD2 DEV to establish HTTPS data transfer between the CC3235SF and your AWS IoT Core endpoint.
 
 Next, we will work on adding the auto-generated C codes from Vehicle Spy's **C Code Interface** tool and the **ISM API library** to expand the sample application to access the CAN network simultaneously while communicating with AWS IoT Core.
 
@@ -146,7 +147,7 @@ Please complete this section to learn how to generate and import the above files
 
 	The ISM API glue codes and library are now all integrated into the project, but they are not actually being executed as we have not added any codes that exercise the library. Next, we will add codes to enable vehicle network communication. This will allow you to receive and transmit CAN messages from the project. Furthermore, we will add codes to forward the CAN data to AWS IoT Core and transmit data received from AWS IoT Core in a CAN message.
 	
-## Add Codes to Facilitate CAN Rx and Tx with AWS IoT Core
+## Add Codes to Facilitate CAN Rx and Tx with Azure IoT Hub
 
 1. From the project explorer, open the **aws_iot.syscfg** file. From the menu window that pops up, delete the following peripherals.
 	- SPI
