@@ -6,7 +6,7 @@ This guide provides a step-by-step guide on creating, debugging, and deploying a
 
 You will learn to do the following:
 
-* Use the CC32XX Simplelink SDK and Simplelink Microsoft Azure IoT Plugin in CC3235SF to communicate with Azure IoT Hub.
+* Use the CC32XX Simplelink SDK and Simplelink Microsoft Azure IoT Plugin for CC3235SF to communicate with Azure IoT Hub.
 * Use the Intrepid Secure Module (ISM) API in CC3235SF to transmit and receive CAN messages configured from the C Code Interface view of Vehicle Spy Enterprise.
 * Publish received CAN signals in realtime to Azure IoT Hub.
 
