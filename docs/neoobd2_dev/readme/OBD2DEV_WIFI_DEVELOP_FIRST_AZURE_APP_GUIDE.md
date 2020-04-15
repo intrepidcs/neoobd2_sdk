@@ -125,15 +125,15 @@ Please complete this section to learn how to generate and import the above files
 
 10. Copy the **SpyCCode.c** file and add it into the CCS project directory.
 
-	![alt text](../images/20-obd2dev_overwrite_spyccode.PNG "Integrate ISM source codes into CCS project")
+	![alt text](../images/53-obd2dev_copy_ism_to_ccs.PNG "Integrate ISM source codes into CCS project")
 	
 11. Go back to the file explorer. Open the **ProjectName_neoOBD2LC_WIFI_CC32XX** folder. Copy **obd2lc_wifi_cc32xx.c** and **obd2lc_wifi_cc32xx.h** files and paste them into the CCS project directory.
 
-	![alt text](../images/21-obd2dev_overwrite_lcfiles.PNG "Integrate ISM source codes into CCS project")
+	![alt text](../images/54-obd2dev_copy_ism_to_ccs.PNG "Integrate ISM source codes into CCS project")
 
 12. Open project properties in CCS and verify the **BUILD_OBD2LC_WIFI_CC32XX_ISM_PROJECT** is defined in **Predefined Symobls** list.
 
-	![alt text](../images/22-obd2dev_preprocessor.PNG "Add preprocessor macro for Wi-Fi project")
+	![alt text](../images/55-obd2dev_add_preprocessor.PNG "Add preprocessor macro for Wi-Fi project")
 
 13. We need to add a few more ISM API source files. Navigate to path <neoobd2sdk_path>\demos\intrepid\neoobd2_dev\wifi\ismlib. Copy all files and paste them into the CCS project directory.
 
@@ -141,11 +141,11 @@ Please complete this section to learn how to generate and import the above files
 	
 14. Open project properties in CCS and go to **File Search Path** under **ARM Linker**. Add **obd2lc_wifi_cc32xx_ism.a** in the first list box. Add **${workspace_loc:/${ProjName}}** in the second box. Make sure **Reread libraries** option is checked.
 
-	![alt text](../images/24-obd2dev_link_ismlib.PNG "Linker settings for ISM API library")
+	![alt text](../images/56-obd2dev_add_file_search_paths.PNG "Linker settings for ISM API library")
 
 15. Build the CCS project and verify the project builds successfully.
 
-	The ISM API glue codes and library are now all integrated into the project, but they are not actually being executed as we have not added any codes that exercise the library. Next, we will add codes to enable vehicle network communication. This will allow you to receive and transmit CAN messages from the project. Furthermore, we will add codes to forward the CAN data to AWS IoT Core and transmit data received from AWS IoT Core in a CAN message.
+	The ISM API glue codes and library are now all integrated into the project, but they are not actually being executed as we have not added any codes that exercise the library. Next, we will add codes to enable vehicle network communication. This will allow you to receive and transmit CAN messages from the project. Furthermore, we will add codes to forward the CAN data to Azure IoT Hub.
 	
 ## Add Codes to Facilitate CAN Rx and Tx with Azure IoT Hub
 
