@@ -171,21 +171,21 @@ Please complete this section to learn how to generate and import the above files
 
 2. Let's start making some code changes. 
 
-	First, add the following includes and extern forward protos.
+	First, go to the top of the **main_freertos.c** and add the following includes and extern forward protos.
 	
-	![alt text](../images/31-obd2dev_main_freertos_includes.PNG "Add ISM API includes and forward protos")
+	![alt text](../images/57-obd2dev_ismapi_protos.PNG "Add ISM API includes and forward protos")
 
 	Next, go to the main() function in **main_freertos.c**. Comment out or delete the GPIO calls.
 
-	![alt text](../images/26-obd2dev_remove_main_calls.PNG "Remove GPIO calls from main()")
+	![alt text](../images/58-obd2dev_remove_gpio.PNG "Remove GPIO calls from main()")
 	
-	Declare a new thread instance for the ISM process, and add the ISM initialization codes.
+	Declare a new pthread instance for the ISM task, and add the ISM initialization codes.
 	
-	![alt text](../images/33-obd2dev_main_freertos_ism_create.PNG "Add ISM init code")
+	![alt text](../images/59-obd2dev_create_ism_thread.PNG "Add ISM init code")
 	
 	Finally implement the function that shall be executed in the ISM thread.
 	
-	![alt text](../images/34-obd2dev_main_freertos_ism_thread.PNG "Implement ISM thread function")
+	![alt text](../images/60-obd2dev_create_ism_task.PNG "Implement ISM thread function")
 
 3. Next, go to **networks.c** and remove the GPIO calls.
 
@@ -221,12 +221,11 @@ Please complete this section to learn how to generate and import the above files
 	} stVehicleData;
 	```
 	
-	Then, declare the vehicle data object and the 8-byte buffer to store the CAN Tx data from the server as follows.
+	Then, declare the vehicle data object as follows.
 	
 	```
 	// TODO: add global variables here
 	stVehicleData obVehicleData;
-	uint8_t canTxData[8];
 	```
 	
 	For every CAN message that is associated with each of the event handlers, the ISM process will auto-magically invoke the matching handler. We will assume the signals are occupying the first two bytes of each corresponding CAN messages. We store the received signal data into our global object.
@@ -308,7 +307,7 @@ Please complete this section to learn how to generate and import the above files
 	}
 	```
 	
-	Finally, go to **Spy_Everyloop()** function and implement it as follows. This function is automatically executed by the ISM process on every 1ms interval. We will setup a CAN message to be transmitted every 100ms using the 8-byte data received from the server via the MQTT topic **sdkTest/cantx**.
+	Finally, go to **Spy_Everyloop()** function and implement it as follows. This function is automatically executed by the ISM process on every 1ms interval. The implemented logic will instruct the neoOBD2 DEV to transmit a 0x777 CAN message on 100ms interval.
 	
 	```
 	void Spy_EveryLoop(unsigned int uiCurrentTime)
@@ -320,56 +319,29 @@ Please complete this section to learn how to generate and import the above files
 			msg.iID = 0x777;
 			msg.iNetwork = 1;
 			msg.iNumDataBytes = 8;
-			memcpy(msg.btData, canTxData, msg.iNumDataBytes);
+			msg.btData[0] = 0xAA;
+			msg.btData[7] = 0xBB;
 			GenericMessageTransmit(&msg);
 		}
 	}
 	```
 	
-5. All that remains to be extended is the **subscribe_publish_sample.c**. Open the file and include the **obd2lc_wifi_cc32xx.h**. Declare the **stVehicleData** object and the **canTxData** buffer as an extern so that they are visible. Change the **subscribe_callback_handler()** as follows:
+5. All that remains to be extended is the **simplesample_http.c**. Open the file and include the **obd2lc_wifi_cc32xx.h**. Declare the **stVehicleData** object as an extern so that it is visible.
+	
+	Go to the **simplesample_http_run()** function. You will notice that the sample is setup to transmit a simulated average wind speed, minimum temperature, and minimum humidity values. Let's keep things simple and just replace the codes where the payload is constructed as follows. We will keep the original variable names as isf for the sake of simplicity, but feel free to change them.
 	
 	```
-	extern stVehicleData obVehicleData;
-	extern uint8_t canTxData[8];
-
-	static void iot_subscribe_callback_handler(AWS_IoT_Client *pClient,
-		char *topicName, uint16_t topicNameLen,
-		IoT_Publish_Message_Params *params, void *pData)
-	{
-	    IOT_UNUSED(pData);
-	    IOT_UNUSED(pClient);
-	    IOT_INFO("Subscribe callback");
-	    IOT_INFO("%.*s\t%.*s",topicNameLen, topicName, (int)params->payloadLen,
-		    (char *)params->payload);
-
-	    // Copy the MQTT payload into canTxData array so it can be
-	    // transmitted as a CAN message from Spy_EveryLoop() in SpyCCode.c
-	    memcpy(canTxData, params->payload, sizeof(canTxData));
-	}
+	int avgWindSpeed = obVehicleData.speed;
+	float minTemperature = obVehicleData.rpm;
+	float minHumidity = obVehicleData.throttle;
 
 	```
-	
-	Go to the **runAWSClient()** function. Create two variables to store the subscribe topic name and the topic name length. We will set the subscribe topic name to **sdkTest/cantx**.
-	
-	![alt text](../images/36-obd2dev_pubsub_changes.PNG "Create separate topic for subscribe")
-	
-	Replace the existing topic name and length parameters in the **aws_iot_mqtt_subscribe()** call.
-	
-	![alt text](../images/37-obd2dev_pubsub_changes.PNG "Create separate topic for subscribe")
-	
-	Finally, replace the places where the **cPayload** is constructed using sprintf as follows.
-	
-	```
-	sprintf(cPayload, "%s : %d, %s : %d, %s : %d ", "Speed", obVehicleData.speed, "RPM", obVehicleData.rpm, "Throttle", obVehicleData.throttle);
-	```
-	
-	![alt text](../images/39-obd2dev_pubsub_payload_adj.PNG "Replace code that constructs the MQTT payload")
 	
 6. All done! Build the project to verify the project builds successfully. 
 
-	For your reference, all source, header, and libraries from this section are placed in the <neoobd2_sdk>\demos\intrepid\neoobd2_dev\wifi\aws_subscribe_publish_sample directory in the neoOBD2 SDK. If you are having difficulty getting the project up and running, simply copy everything in the directory and paste them into the CCS project.
+	For your reference, all source, header, and libraries from this section are placed in the <neoobd2_sdk>\demos\intrepid\neoobd2_dev\wifi\azure_simplesample_http directory in the neoOBD2 SDK. If you are having difficulty getting the project up and running, simply copy everything in the directory and paste them into the CCS project.
 
-	![alt text](../images/38-obd2dev_pubsub_ref_files.PNG "Reference source, header, and libs")
+	![alt text](../images/61-obd2dev_simplesample_ref_files.PNG "Reference source, header, and libs")
 	
 ## Running your Application in Debug Mode
 
