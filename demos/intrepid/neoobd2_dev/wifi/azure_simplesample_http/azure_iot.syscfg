@@ -1,0 +1,22 @@
+// These arguments were used when this file was generated. They will be automatically applied on subsequent loads 
+// via the GUI or CLI invocations. Run CLI with '--help' for additional information on how to override these arguments.
+// @cliArgs --board "/ti/boards/CC3235SF_LAUNCHXL" --product "azure_cc32xx@3.30.00.02" --product "simplelink_cc32xx_sdk@3.40.00.05"
+// @versions {"data":"2019083011","timestamp":"2019083011","tool":"1.2.952","templates":"2019083011"}
+
+var RTOS = scripting.addModule("/ti/drivers/RTOS");
+var SimpleLinkWifi = scripting.addModule("/ti/drivers/net/wifi/SimpleLinkWifi");
+var SlNet = scripting.addModule("/ti/net/SlNet");
+var SlNet1 = SlNet.addInstance();
+var Power = scripting.addModule("/ti/drivers/Power");
+// name - Select the RTOS being used
+RTOS.name = "FreeRTOS";
+// Name
+SlNet1.$name = "CONFIG_SLNET_0";
+// Enable GPIO Wakeup LPDS - Enable GPIO as a Wakeup Source for Low-Power Deep Sleep (LPDS).
+Power.enableGPIOWakeupLPDS = false;
+// Enable GPIO Wakeup Shutdown - Enable GPIO as a Wakeup Source for Shutdown
+Power.enableGPIOWakeupShutdown = false;
+// Name
+Power.parkPins.$name = "ti_drivers_power_PowerCC32XXPins0";
+var Board = scripting.addModule("/ti/drivers/Board");
+var DriverLib = scripting.addModule("/ti/devices/DriverLib");
