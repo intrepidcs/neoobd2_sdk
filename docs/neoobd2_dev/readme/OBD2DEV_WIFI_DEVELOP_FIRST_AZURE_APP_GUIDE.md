@@ -355,41 +355,31 @@ Let's run your application in debug and confirm the sample application is runnin
 
 2. Click debug button to execute the sample application.
 
-3. Check the **Terminal** window to see the application status.
+3. Check the **Terminal** window or the **Console** window to see the application status.
 
-	![alt text](../images/41-obd2dev_debugging_app.PNG "Sample application running in debug mode with terminal output")
+	![alt text](../images/62-obd2dev_simplesample_ccs_debugging.PNG "Sample application running in debug mode with terminal or console output")
 
 4. Login to your AWS account. Go to **AWS IoT Core** and click **Test**. Subscribe with **#** topic to filter everything. Verify the "sdkTest/sub" MQTT topic being published from your neoOBD2 DEV. You will notice the Speed, RPM, and Throttle values being sent to AWS IoT Core just as you constructed the payload accordingly from the runAWSClient() function in subscribe_publish_sample.c.
 
-	![alt text](../images/42-obd2dev_aws_iot_running.PNG "AWS IoT Core test console")
+	![alt text](../images/63-obd2dev_simplesample_iot_hub_view.PNG "Azure IoT Hub Telemetry view")
 
 5. Let's use Vehicle Spy Enterprise to see what is happening on the CAN bus. Connect your neoOBD2 DEV to the PC using a USB Type-A to Type-C USB cable. Open Vehicle Spy and click the play button on the top left corner of the screen to go online. You should see a CAN message being transmitted by your neoOBD2 DEV. This is the ArbID 0x777 CAN message that is programmed to be transmitted on a 100msec interval from Spy_EveyLoop() function in SpyCCode.c.
 
-	![alt text](../images/43-obd2dev_vspy_running.PNG "Vehicle Spy online with neoOBD2 DEV")
-
-6. From your AWS IoT Core Test console, publish some data such as "12345678" to the topic **sdkTest/cantx**. You will notice the 8-byte payload of the 0x777 CAN message change to "12345678" ("0x31 0x32 0x33 0x34 0x34 0x35 0x36 0x37 0x38" in Hex). This is facilitated by the iot_subscribe_callback_handler() function in subscribe_publish_sample.c.
-
-	Send MQTT data to neoOBD2 DEV via sdkTest/cantx topic:
-	
-	![alt text](../images/44-obd2dev_aws_iot_cantx.PNG "Sending data to neoOBD2 DEV from AWS IoT Core")
-
-	Vehicle Spy shows CAN message data payload change based on the data received from AWS IoT Core:
-	
-	![alt text](../images/45-obd2dev_vspy_cantx.PNG "CAN data changed from AWS IoT Core")
+	![alt text](../images/64-obd2dev_simplesample_vspy.PNG "Vehicle Spy online with neoOBD2 DEV")
 
 7. As a bonus, you can use a neoOBD2 SIM to simulate the three CAN messages that your neoOBD2 DEV is processing. Open the **three_msg_simulator.vs3** file in Vehicle Spy. The file is located in <neoobd2_sdk>\demos\intrepid\neoobd2_dev\wifi\obd2sim directory of the neoOBD2 SDK. Go to **Tools -> CoreMini Console** and program your neoOBD2 SIM. Go online using your neoOBD2 SIM and verify that you see the ArbID 0x111, 0x222, 0x333 messages being sent to your neoOBD2 DEV. You will also notice that the test code enabled by the **ENABLE_GATEWAY_TEST** preprocessor definition in the message handlers causes your neoOBD2 DEV to generate CAN messages with ArbID 0x112, 0x224, 0x336 anytime it sees the ArbID 0x111, 0x222, and 0x333 messages.
 
 	What is happening:
 	
-	![alt text](../images/48-obd2dev_obd2sim_overview.PNG "")
+	![alt text](../images/68-obd2dev_obd2sim_overview.PNG "")
 
 	Online with neoOBD2 SIM after programming the three_msg_simulator CoreMini executable:
 	
-	![alt text](../images/46-obd2dev_vspy_simulated.PNG "")
+	![alt text](../images/65-obd2dev_simplesample_vspy_simulated.PNG "")
 	
 	Speed, RPM, and Throttle signals being updated based on the CAN messages simulated by neoOBD2 SIM:
 	
-	![alt text](../images/47-obd2dev_aws_iot_simulated.PNG "")
+	![alt text](../images/66-obd2dev_simplesample_ioit_hub_simulated.PNG "")
 	
 ## Programming the Application to neoOBD2 DEV
 
@@ -403,7 +393,7 @@ Once your Wi-Fi program is ready to be deployed in neoOBD2 DEV, you can use Vehi
 
 3. Create a new folder and name it **Release**. Copy the generated .bin from the CCS project and paste it inside the created Release folder.
 
-	![alt text](../images/49-obd2dev_programming_1.PNG "")
+	![alt text](../images/67-obd2dev_simplesample_programming.PNG "")
 	
 4. Go to **Tools -> CoreMini Console**. Click the **Send** button to program the CoreMini executable as you did from step 7 of the "Importing auto-generated ISM codes from Vehicle Spy Enterprise" section. This time however, Vehicle Spy will program not only the CoreMini executable but also the CC3235SF application. Make sure the CC3235SF is running the Intrepid Wi-Fi Applicaiton Bootloader as the bootloader allows the main CPU to program the CC3235SF appilcation.
 
