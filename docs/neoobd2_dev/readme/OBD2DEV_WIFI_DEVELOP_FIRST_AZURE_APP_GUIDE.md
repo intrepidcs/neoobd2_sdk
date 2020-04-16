@@ -16,7 +16,7 @@ When the sample application is properly configured and programmed into the CC323
 * Initialize CC3235SF peripherals and the ISM API library.
 * CAN Rx process: Received CAN messages are processed by the receive message event handler callback functions.
 * CAN Tx process: A CAN message is transmitted on 100msec interval.
-* Provision *certificate and private key* needed to connect to the AWS IoT Core.
+* Provision *certificate and private key* needed to connect to the Azure IoT Hub.
 * Use user-configured *Wi-Fi credentials* to connect to a Wi-Fi Access Point in station mode.
 * Creates an IoT Hub client for communication with an existing IoT Hub using the specified connection string parameter.
 * Send HTTP message containing the *"Vehicle Speed, Engine Speed, and Throttle Position"* data parsed from the receive message event handlers on 500msec interval.
@@ -53,7 +53,7 @@ Other requirements:
 
 2. Provsion your device on IoT Hub and get its credentials - [here](https://catalog.azureiotsolutions.com/docs?title=Azure/azure-iot-device-ecosystem/manage_iot_hub)
 
-## Import, Build, and Run the AWS CC32XX Plugin for AWS IoT Core
+## Import, Build, and Run the Azure CC32XX Plugin for Azure IoT Hub
 
 First, let's import, build, and run the *simplesample_http_CC3235SF_LAUNCHXL_freertos_ccs* project provided in the plugin.
 
@@ -77,9 +77,9 @@ First, let's import, build, and run the *simplesample_http_CC3235SF_LAUNCHXL_fre
 
 5. Follow the rest of the guide exactly as shown. Make sure to follow the **Example Pre-Build Steps** section of the guide to properly configure the certificates and the Wi-Fi credentials in the **certs.c** and **wificonfig.h**.
 
-Once you have completed the above steps, you should be able to build and debug your project on the neoOBD2 DEV to establish HTTPS data transfer between the CC3235SF and your AWS IoT Core endpoint.
+Once you have completed the above steps, you should be able to build and debug your project on the neoOBD2 DEV to establish HTTPS data transfer between the CC3235SF and your Azure IoT Hub.
 
-Next, we will work on adding the auto-generated C codes from Vehicle Spy's **C Code Interface** tool and the **ISM API library** to expand the sample application to access the CAN network simultaneously while communicating with AWS IoT Core.
+Next, we will work on adding the auto-generated C codes from Vehicle Spy's **C Code Interface** tool and the **ISM API library** to expand the sample application to access the CAN network simultaneously while communicating with Azure IoT Hub.
 
 ## Importing auto-generated ISM codes from Vehicle Spy Enterprise
 
@@ -149,12 +149,12 @@ Please complete this section to learn how to generate and import the above files
 	
 ## Add Codes to Facilitate CAN Rx and Tx with Azure IoT Hub
 
-1. From the project explorer, open the **aws_iot.syscfg** file. From the menu window that pops up, delete the following peripherals.
+1. From the project explorer, open the **azure_iot.syscfg** file. From the menu window that pops up, delete the following peripherals.
 	- SPI
 	- DMA
 	- GPIO
 
-	These peripherals are already in use by the ISM API library (obd2lc_wifi_cc32xx_ism.a). If you attempt to compile with the above peripherals defined in the **aws_iot.syscfg** file, the compiler will throw an error saying some of the functions are re-defined. 
+	These peripherals are already in use by the ISM API library (obd2lc_wifi_cc32xx_ism.a). If you attempt to compile with the above peripherals defined in the **azure_iot.syscfg** file, the compiler will throw an error saying some of the functions are re-defined. 
 
 	First, choose SPI from the list and click the **Remove All** button. You will notice DMA automatically removed when SPI is removed. Then, choose GPIO from the list and click the **Removal All** button.
 
@@ -328,13 +328,20 @@ Please complete this section to learn how to generate and import the above files
 	
 5. All that remains to be extended is the **simplesample_http.c**. Open the file and include the **obd2lc_wifi_cc32xx.h**. Declare the **stVehicleData** object as an extern so that it is visible.
 	
-	Go to the **simplesample_http_run()** function. You will notice that the sample is setup to transmit a simulated average wind speed, minimum temperature, and minimum humidity values. Let's keep things simple and just replace the codes where the payload is constructed as follows. We will keep the original variable names as isf for the sake of simplicity, but feel free to change them.
+	Go to the **simplesample_http_run()** function. You will notice that the sample is setup to transmit a simulated average wind speed, minimum temperature, and minimum humidity values. Let's keep things simple and just replace the codes where the payload is constructed as follows. We will keep the original variable names as isf for the sake of simplicity, but feel free to change them. Also, ensure you have entered the correct DeviceID for your device.
 	
 	```
 	int avgWindSpeed = obVehicleData.speed;
 	float minTemperature = obVehicleData.rpm;
 	float minHumidity = obVehicleData.throttle;
 
+	```
+
+	```
+	myWeather->DeviceId = "obd2lcdev1";
+	myWeather->WindSpeed = avgWindSpeed + (rand() % 4 + 2);
+	myWeather->Temperature = minTemperature + (rand() % 10);
+	myWeather->Humidity = minHumidity + (rand() % 20);
 	```
 	
 6. All done! Build the project to verify the project builds successfully. 
@@ -359,7 +366,7 @@ Let's run your application in debug and confirm the sample application is runnin
 
 	![alt text](../images/62-obd2dev_simplesample_ccs_debugging.PNG "Sample application running in debug mode with terminal or console output")
 
-4. Login to your AWS account. Go to **AWS IoT Core** and click **Test**. Subscribe with **#** topic to filter everything. Verify the "sdkTest/sub" MQTT topic being published from your neoOBD2 DEV. You will notice the Speed, RPM, and Throttle values being sent to AWS IoT Core just as you constructed the payload accordingly from the runAWSClient() function in subscribe_publish_sample.c.
+4. Open **Azure IoT Explorer**. Go to **Telemetry**. Verify the incoming HTTP traffic from your neoOBD2 DEV. You will notice the Speed, RPM, and Throttle values being sent to Azure IoT Hub. Notice that the values will still appear as WindSpeed, Temperature, and Humidity as we have not changed them.
 
 	![alt text](../images/63-obd2dev_simplesample_iot_hub_view.PNG "Azure IoT Hub Telemetry view")
 
