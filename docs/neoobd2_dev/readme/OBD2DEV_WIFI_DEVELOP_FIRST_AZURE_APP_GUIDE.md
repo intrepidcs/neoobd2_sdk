@@ -346,7 +346,7 @@ Please complete this section to learn how to generate and import the above files
 	
 6. All done! Build the project to verify the project builds successfully. 
 
-	For your reference, all source, header, and libraries from this section are placed in the <neoobd2_sdk>\demos\intrepid\neoobd2_dev\wifi\azure_simplesample_http directory in the neoOBD2 SDK. If you are having difficulty getting the project up and running, simply copy everything in the directory and paste them into the CCS project.
+	For your reference, all source, header, and libraries from this section are placed in the <neoobd2_sdk>\demos\intrepid\neoobd2_dev\wifi\azure_simplesample_http_sample directory in the neoOBD2 SDK. If you are having difficulty getting the project up and running, simply copy everything in the directory and paste them into the CCS project.
 
 	![alt text](../images/61-obd2dev_simplesample_ref_files.PNG "Reference source, header, and libs")
 	
